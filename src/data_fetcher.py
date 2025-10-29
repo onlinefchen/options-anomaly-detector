@@ -53,7 +53,7 @@ class PolygonDataFetcher:
 
     def get_options_chain(self, ticker: str) -> Dict:
         """
-        Get options chain snapshot for a ticker
+        Get options chain snapshot for a ticker with pagination
 
         Args:
             ticker: Stock ticker (e.g., 'SPY')
@@ -62,12 +62,49 @@ class PolygonDataFetcher:
             Dict containing options chain data
         """
         url = f"{self.base_url}/v3/snapshot/options/{ticker}"
-        params = {'apiKey': self.api_key}
+        params = {
+            'apiKey': self.api_key,
+            'limit': 250  # Maximum allowed
+        }
+
+        all_results = []
 
         try:
+            # First request
             response = self.session.get(url, params=params, timeout=10)
             response.raise_for_status()
-            return response.json()
+            data = response.json()
+
+            if data.get('status') != 'OK':
+                return data
+
+            all_results.extend(data.get('results', []))
+
+            # Handle pagination
+            next_url = data.get('next_url')
+            max_pages = 10  # Limit to prevent infinite loops
+            page_count = 1
+
+            while next_url and page_count < max_pages:
+                # Add API key to next_url
+                next_params = {'apiKey': self.api_key}
+                response = self.session.get(next_url, params=next_params, timeout=10)
+                response.raise_for_status()
+                data = response.json()
+
+                if data.get('status') != 'OK':
+                    break
+
+                all_results.extend(data.get('results', []))
+                next_url = data.get('next_url')
+                page_count += 1
+
+            return {
+                'status': 'OK',
+                'results': all_results,
+                'count': len(all_results)
+            }
+
         except requests.RequestException as e:
             print(f"Error fetching options chain for {ticker}: {e}")
             return {'status': 'ERROR', 'results': []}
