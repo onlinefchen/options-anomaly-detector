@@ -1,0 +1,63 @@
+name: Daily Options Analysis
+
+on:
+  # Run daily at 11:30 AM ET (after market open and data availability ~11 AM ET)
+  schedule:
+    - cron: '30 15 * * 1-5'  # 15:30 UTC = 11:30 AM ET (Mon-Fri)
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+  # Run on push to main for testing
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'main.py'
+      - '.github/workflows/**'
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Needed for pushing to gh-pages
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run anomaly detection
+        env:
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+        run: |
+          python main.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages
+          commit_message: 'Update report: ${{ github.event.head_commit.message }}'
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          enable_jekyll: false
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-report
+          path: output/anomaly_report.html
+          retention-days: 30
