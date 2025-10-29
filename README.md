@@ -4,12 +4,29 @@
 
 ## Features
 
+- ⚡ **Hybrid CSV + API Strategy**: Optimal performance with smart fallback
 - 📊 **Volume Analysis**: Detect unusual trading volume spikes
 - 📈 **Put/Call Ratio Anomalies**: Identify extreme sentiment shifts
 - 🎯 **Open Interest Tracking**: Monitor position building and unwinding
 - 🚨 **Real-time Alerts**: Automated anomaly detection
 - 📱 **Interactive Dashboard**: Beautiful HTML reports with charts
 - 🤖 **GitHub Actions**: Automated daily analysis and reports
+
+## Data Strategy
+
+The system uses an intelligent **hybrid data fetching strategy**:
+
+### Strategy 1: CSV + API (Optimal - if Flat Files available)
+1. 📦 Download daily options aggregates CSV (~50-100MB)
+2. ⚡ Parse and aggregate volume data for all tickers (~10 sec)
+3. 🎯 Fetch Open Interest via API for top 30 tickers only (~30 API calls)
+4. ✅ **Total time: ~30 seconds** with complete market coverage
+
+### Strategy 2: Pure API (Fallback - always works)
+1. 📱 Fetch data for ~50 popular tickers via API (~50 calls)
+2. ✅ **Total time: ~15-20 seconds** with targeted coverage
+
+The system **automatically detects** your subscription level and chooses the optimal strategy!
 
 ## Quick Start
 

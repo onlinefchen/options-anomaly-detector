@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 # Add src to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-from data_fetcher import PolygonDataFetcher
+from hybrid_fetcher import HybridDataFetcher
 from anomaly_detector import OptionsAnomalyDetector
 from report_generator import HTMLReportGenerator
 from utils import print_banner, print_summary_table, print_anomalies_summary, print_progress
@@ -30,25 +30,25 @@ def main():
     try:
         # Initialize components
         print_progress("🔧 Initializing components...")
-        fetcher = PolygonDataFetcher()
+        fetcher = HybridDataFetcher()
         detector = OptionsAnomalyDetector()
         reporter = HTMLReportGenerator()
         print_progress("✓ Initialization complete\n")
 
-        # Get list of tickers to analyze
-        print_progress("📋 Getting list of active tickers...")
-        tickers = fetcher.get_top_active_tickers(limit=50)
-        print_progress(f"✓ Analyzing {len(tickers)} tickers\n")
+        # Check strategy
+        strategy_info = fetcher.get_strategy_info()
+        print_progress(f"📋 Data access capabilities:")
+        print_progress(f"   • Flat Files access: {'✓' if strategy_info['has_flat_files_access'] else '✗'}")
+        print_progress(f"   • Recommended strategy: {strategy_info['recommended_strategy'].upper()}\n")
 
-        # Fetch options data
-        print_progress("📡 Fetching options data from Polygon.io...\n")
-        data = fetcher.aggregate_options_by_underlying(tickers)
+        # Fetch options data using hybrid strategy
+        data = fetcher.fetch_data(strategy='auto', top_n_for_oi=30)
 
         if not data:
             print("\n❌ Error: No data fetched. Check your API key and network connection.")
             return 1
 
-        print_progress(f"\n✓ Successfully fetched data for {len(data)} tickers\n")
+        print_progress(f"✓ Successfully fetched data for {len(data)} tickers\n")
 
         # Detect anomalies
         print_progress("🔍 Detecting anomalies...")

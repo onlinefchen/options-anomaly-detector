@@ -12,6 +12,7 @@ def print_banner():
     ║                                                       ║
     ║      📊 OPTIONS ANOMALY DETECTOR 📊                   ║
     ║                                                       ║
+    ║      CSV + API Hybrid Strategy                       ║
     ║      Real-time options market anomaly detection      ║
     ║                                                       ║
     ╚═══════════════════════════════════════════════════════╝
