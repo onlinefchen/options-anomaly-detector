@@ -1,9 +1,9 @@
 name: Daily Options Analysis
 
 on:
-  # Run daily at 11:30 AM ET (after market open and data availability ~11 AM ET)
+  # Run daily at 6:00 AM Beijing Time (after US market close, get previous trading day data)
   schedule:
-    - cron: '30 15 * * 1-5'  # 15:30 UTC = 11:30 AM ET (Mon-Fri)
+    - cron: '0 22 * * 0-4'  # 22:00 UTC = 6:00 AM Beijing Time next day (Sun-Thu UTC = Mon-Fri Beijing)
 
   # Allow manual trigger
   workflow_dispatch:
@@ -50,7 +50,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output
           publish_branch: gh-pages
-          commit_message: 'Update report: ${{ github.event.head_commit.message }}'
+          keep_files: true  # Keep historical data files
+          commit_message: 'Update report - ${{ github.run_id }}'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           enable_jekyll: false

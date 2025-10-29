@@ -213,6 +213,32 @@ class HTMLReportGenerator:
         .stat-card.low .number {{ color: #17a2b8; }}
         .stat-card.total .number {{ color: #667eea; }}
 
+        .nav {{
+            background: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }}
+
+        .nav a {{
+            display: inline-block;
+            padding: 10px 25px;
+            margin: 0 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }}
+
+        .nav a:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }}
+
         .section {{
             background: white;
             padding: 30px;
@@ -280,6 +306,10 @@ class HTMLReportGenerator:
             .header h1 {{
                 font-size: 1.8em;
             }}
+            .nav a {{
+                display: block;
+                margin: 10px 0;
+            }}
         }}
     </style>
 </head>
@@ -288,6 +318,11 @@ class HTMLReportGenerator:
         <div class="header">
             <h1>📊 期权市场异常分析报告</h1>
             <p class="date">{report_date}</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">📊 最新报告</a>
+            <a href="archive.html">📚 历史报告</a>
         </div>
 
         <div class="stats">
