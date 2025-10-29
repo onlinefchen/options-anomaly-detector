@@ -34,8 +34,8 @@ def print_summary_table(data):
     print("="*100)
 
     # Header
-    print(f"{'Rank':<6} {'Ticker':<8} {'Total Vol':<15} {'P/C Vol':<10} "
-          f"{'Open Int':<15} {'P/C OI':<10} {'Put Vol':<12} {'Call Vol':<12}")
+    print(f"{'排名':<6} {'股票':<8} {'总成交量':<15} {'C/P成交比':<12} "
+          f"{'持仓量':<15} {'C/P持仓比':<12} {'Put量':<12} {'Call量':<12}")
     print("-"*100)
 
     # Sort by volume
@@ -44,8 +44,8 @@ def print_summary_table(data):
     # Data rows
     for idx, item in enumerate(sorted_data, 1):
         print(f"{idx:<6} {item['ticker']:<8} {item['total_volume']:>14,} "
-              f"{item['pc_volume_ratio']:>9.2f} {item['total_oi']:>14,} "
-              f"{item['pc_oi_ratio']:>9.2f} {item['put_volume']:>11,} "
+              f"{item['cp_volume_ratio']:>11.2f} {item['total_oi']:>14,} "
+              f"{item['cp_oi_ratio']:>11.2f} {item['put_volume']:>11,} "
               f"{item['call_volume']:>11,}")
 
     print("="*100 + "\n")

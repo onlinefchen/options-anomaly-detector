@@ -39,8 +39,8 @@ class HTMLReportGenerator:
         # Prepare data for charts
         tickers = [d['ticker'] for d in sorted_data]
         volumes = [d['total_volume'] for d in sorted_data]
-        pc_volume_ratios = [d['pc_volume_ratio'] for d in sorted_data]
-        pc_oi_ratios = [d['pc_oi_ratio'] for d in sorted_data]
+        cp_volume_ratios = [d['cp_volume_ratio'] for d in sorted_data]
+        cp_oi_ratios = [d['cp_oi_ratio'] for d in sorted_data]
         open_interests = [d['total_oi'] for d in sorted_data]
 
         # Sort anomalies by severity
@@ -61,8 +61,8 @@ class HTMLReportGenerator:
             low_severity=summary.get('by_severity', {}).get('LOW', 0),
             tickers_json=json.dumps(tickers),
             volumes_json=json.dumps(volumes),
-            pc_volume_ratios_json=json.dumps(pc_volume_ratios),
-            pc_oi_ratios_json=json.dumps(pc_oi_ratios),
+            cp_volume_ratios_json=json.dumps(cp_volume_ratios),
+            cp_oi_ratios_json=json.dumps(cp_oi_ratios),
             open_interests_json=json.dumps(open_interests),
             volume_table_rows=self._generate_table_rows(sorted_data),
             anomaly_rows=self._generate_anomaly_rows(sorted_anomalies)
@@ -89,9 +89,9 @@ class HTMLReportGenerator:
                     <td>{idx}</td>
                     <td><strong>{item['ticker']}</strong></td>
                     <td>{item['total_volume']:,}</td>
-                    <td>{item['pc_volume_ratio']:.2f}</td>
+                    <td>{item['cp_volume_ratio']:.2f}</td>
                     <td>{item['total_oi']:,}</td>
-                    <td>{item['pc_oi_ratio']:.2f}</td>
+                    <td>{item['cp_oi_ratio']:.2f}</td>
                     <td>{item['put_volume']:,}</td>
                     <td>{item['call_volume']:,}</td>
                 </tr>
@@ -101,7 +101,7 @@ class HTMLReportGenerator:
     def _generate_anomaly_rows(self, anomalies: List[Dict]) -> str:
         """Generate anomaly rows HTML"""
         if not anomalies:
-            return '<tr><td colspan="4" style="text-align:center;">No anomalies detected</td></tr>'
+            return '<tr><td colspan="4" style="text-align:center;">未检测到异常</td></tr>'
 
         severity_colors = {
             'HIGH': '#dc3545',
@@ -109,15 +109,22 @@ class HTMLReportGenerator:
             'LOW': '#17a2b8'
         }
 
+        severity_names = {
+            'HIGH': '高',
+            'MEDIUM': '中',
+            'LOW': '低'
+        }
+
         rows = []
         for anomaly in anomalies:
             severity = anomaly['severity']
             color = severity_colors.get(severity, '#6c757d')
+            severity_cn = severity_names.get(severity, severity)
 
             rows.append(f"""
                 <tr>
                     <td><strong>{anomaly['ticker']}</strong></td>
-                    <td><span class="badge" style="background-color:{color}">{severity}</span></td>
+                    <td><span class="badge" style="background-color:{color}">{severity_cn}</span></td>
                     <td>{anomaly['type'].replace('_', ' ')}</td>
                     <td>{anomaly['description']}</td>
                 </tr>
@@ -127,11 +134,11 @@ class HTMLReportGenerator:
     def _get_template(self) -> str:
         """Get HTML template"""
         return '''<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Options Anomaly Report</title>
+    <title>期权市场异常分析报告</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {{
@@ -279,42 +286,42 @@ class HTMLReportGenerator:
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 Options Market Anomaly Report</h1>
+            <h1>📊 期权市场异常分析报告</h1>
             <p class="date">{report_date}</p>
         </div>
 
         <div class="stats">
             <div class="stat-card total">
-                <div class="label">Total Tickers Analyzed</div>
+                <div class="label">分析股票数</div>
                 <div class="number">{total_tickers}</div>
             </div>
             <div class="stat-card total">
-                <div class="label">Total Anomalies</div>
+                <div class="label">异常总数</div>
                 <div class="number">{total_anomalies}</div>
             </div>
             <div class="stat-card high">
-                <div class="label">High Severity</div>
+                <div class="label">高严重</div>
                 <div class="number">{high_severity}</div>
             </div>
             <div class="stat-card medium">
-                <div class="label">Medium Severity</div>
+                <div class="label">中严重</div>
                 <div class="number">{medium_severity}</div>
             </div>
             <div class="stat-card low">
-                <div class="label">Low Severity</div>
+                <div class="label">低严重</div>
                 <div class="number">{low_severity}</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🚨 Detected Anomalies</h2>
+            <h2>🚨 检测到的异常</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Ticker</th>
-                        <th>Severity</th>
-                        <th>Type</th>
-                        <th>Description</th>
+                        <th>股票代码</th>
+                        <th>严重程度</th>
+                        <th>类型</th>
+                        <th>描述</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -324,21 +331,21 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>📈 Top 30 Options Volume Rankings</h2>
+            <h2>📈 期权成交量Top 30排行</h2>
             <div class="chart-container">
                 <canvas id="volumeChart"></canvas>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Rank</th>
-                        <th>Ticker</th>
-                        <th>Total Volume</th>
-                        <th>P/C Volume Ratio</th>
-                        <th>Open Interest</th>
-                        <th>P/C OI Ratio</th>
-                        <th>Put Volume</th>
-                        <th>Call Volume</th>
+                        <th>排名</th>
+                        <th>股票代码</th>
+                        <th>总成交量</th>
+                        <th>C/P 成交比</th>
+                        <th>持仓量</th>
+                        <th>C/P 持仓比</th>
+                        <th>Put 成交量</th>
+                        <th>Call 成交量</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -348,22 +355,22 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>📊 Put/Call Ratios Analysis</h2>
+            <h2>📊 Call/Put 比例分析</h2>
             <div class="chart-container">
-                <canvas id="pcRatioChart"></canvas>
+                <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>💼 Open Interest Distribution</h2>
+            <h2>💼 持仓量分布</h2>
             <div class="chart-container">
                 <canvas id="oiChart"></canvas>
             </div>
         </div>
 
         <div class="footer">
-            <p>Generated by Options Anomaly Detector | Data: Polygon.io</p>
-            <p>⚠️ This report is for informational purposes only. Not financial advice.</p>
+            <p>期权异常检测系统 | 数据来源: Polygon.io</p>
+            <p>⚠️ 本报告仅供参考，不构成投资建议</p>
         </div>
     </div>
 
@@ -375,7 +382,7 @@ class HTMLReportGenerator:
             data: {{
                 labels: {tickers_json},
                 datasets: [{{
-                    label: 'Total Volume',
+                    label: '总成交量',
                     data: {volumes_json},
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
@@ -391,7 +398,7 @@ class HTMLReportGenerator:
                     }},
                     title: {{
                         display: true,
-                        text: 'Options Trading Volume'
+                        text: '期权成交量'
                     }}
                 }},
                 scales: {{
@@ -402,23 +409,23 @@ class HTMLReportGenerator:
             }}
         }});
 
-        // P/C Ratio Chart
-        const pcCtx = document.getElementById('pcRatioChart').getContext('2d');
-        new Chart(pcCtx, {{
+        // C/P Ratio Chart
+        const cpCtx = document.getElementById('cpRatioChart').getContext('2d');
+        new Chart(cpCtx, {{
             type: 'bar',
             data: {{
                 labels: {tickers_json},
                 datasets: [
                     {{
-                        label: 'Volume P/C Ratio',
-                        data: {pc_volume_ratios_json},
+                        label: 'C/P 成交比',
+                        data: {cp_volume_ratios_json},
                         backgroundColor: 'rgba(255, 99, 132, 0.6)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     }},
                     {{
-                        label: 'OI P/C Ratio',
-                        data: {pc_oi_ratios_json},
+                        label: 'C/P 持仓比',
+                        data: {cp_oi_ratios_json},
                         backgroundColor: 'rgba(54, 162, 235, 0.6)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -431,7 +438,7 @@ class HTMLReportGenerator:
                 plugins: {{
                     title: {{
                         display: true,
-                        text: 'Put/Call Ratios Comparison'
+                        text: 'Call/Put 比例对比'
                     }}
                 }},
                 scales: {{
@@ -449,7 +456,7 @@ class HTMLReportGenerator:
             data: {{
                 labels: {tickers_json},
                 datasets: [{{
-                    label: 'Open Interest',
+                    label: '持仓量',
                     data: {open_interests_json},
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
@@ -462,7 +469,7 @@ class HTMLReportGenerator:
                 plugins: {{
                     title: {{
                         display: true,
-                        text: 'Open Interest Distribution'
+                        text: '持仓量分布'
                     }}
                 }},
                 scales: {{

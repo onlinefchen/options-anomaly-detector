@@ -95,58 +95,58 @@ class OptionsAnomalyDetector:
 
     def detect_pc_ratio_anomalies(self, data: List[Dict]):
         """
-        Detect Put/Call ratio anomalies
+        Detect Call/Put ratio anomalies
 
-        - Extreme fear: PC ratio > 1.8
-        - Extreme greed: PC ratio < 0.4
+        - Extreme greed: CP ratio > 2.5 (call volume >> put volume)
+        - Extreme fear: CP ratio < 0.55 (put volume >> call volume)
         """
         for item in data:
             ticker = item['ticker']
-            pc_volume_ratio = item['pc_volume_ratio']
-            pc_oi_ratio = item['pc_oi_ratio']
+            cp_volume_ratio = item['cp_volume_ratio']
+            cp_oi_ratio = item['cp_oi_ratio']
 
             # Skip if no data
-            if pc_volume_ratio == 0 and pc_oi_ratio == 0:
+            if cp_volume_ratio == 0 and cp_oi_ratio == 0:
                 continue
 
-            # Volume PC ratio anomalies
-            if pc_volume_ratio > 1.8:
-                self.anomalies.append({
-                    'ticker': ticker,
-                    'type': 'EXTREME_FEAR',
-                    'severity': 'HIGH',
-                    'description': f'Extreme bearish sentiment (Put/Call volume: {pc_volume_ratio:.2f})',
-                    'value': pc_volume_ratio,
-                    'metric': 'pc_volume_ratio'
-                })
-            elif pc_volume_ratio < 0.4 and pc_volume_ratio > 0:
+            # Volume CP ratio anomalies
+            if cp_volume_ratio > 2.5 and cp_volume_ratio < 999:
                 self.anomalies.append({
                     'ticker': ticker,
                     'type': 'EXTREME_GREED',
                     'severity': 'HIGH',
-                    'description': f'Extreme bullish sentiment (Put/Call volume: {pc_volume_ratio:.2f})',
-                    'value': pc_volume_ratio,
-                    'metric': 'pc_volume_ratio'
+                    'description': f'极度看涨情绪 (Call/Put 成交量: {cp_volume_ratio:.2f})',
+                    'value': cp_volume_ratio,
+                    'metric': 'cp_volume_ratio'
                 })
-
-            # OI PC ratio anomalies
-            if pc_oi_ratio > 2.0:
+            elif cp_volume_ratio < 0.55 and cp_volume_ratio > 0:
                 self.anomalies.append({
                     'ticker': ticker,
-                    'type': 'DEFENSIVE_POSITIONING',
-                    'severity': 'MEDIUM',
-                    'description': f'Heavy defensive positioning (Put/Call OI: {pc_oi_ratio:.2f})',
-                    'value': pc_oi_ratio,
-                    'metric': 'pc_oi_ratio'
+                    'type': 'EXTREME_FEAR',
+                    'severity': 'HIGH',
+                    'description': f'极度看跌情绪 (Call/Put 成交量: {cp_volume_ratio:.2f})',
+                    'value': cp_volume_ratio,
+                    'metric': 'cp_volume_ratio'
                 })
-            elif pc_oi_ratio < 0.3 and pc_oi_ratio > 0:
+
+            # OI CP ratio anomalies
+            if cp_oi_ratio > 3.3 and cp_oi_ratio < 999:
                 self.anomalies.append({
                     'ticker': ticker,
                     'type': 'AGGRESSIVE_POSITIONING',
                     'severity': 'MEDIUM',
-                    'description': f'Heavy aggressive positioning (Put/Call OI: {pc_oi_ratio:.2f})',
-                    'value': pc_oi_ratio,
-                    'metric': 'pc_oi_ratio'
+                    'description': f'重度进攻型持仓 (Call/Put 持仓量: {cp_oi_ratio:.2f})',
+                    'value': cp_oi_ratio,
+                    'metric': 'cp_oi_ratio'
+                })
+            elif cp_oi_ratio < 0.5 and cp_oi_ratio > 0:
+                self.anomalies.append({
+                    'ticker': ticker,
+                    'type': 'DEFENSIVE_POSITIONING',
+                    'severity': 'MEDIUM',
+                    'description': f'重度防御型持仓 (Call/Put 持仓量: {cp_oi_ratio:.2f})',
+                    'value': cp_oi_ratio,
+                    'metric': 'cp_oi_ratio'
                 })
 
     def detect_oi_anomalies(self, data: List[Dict]):

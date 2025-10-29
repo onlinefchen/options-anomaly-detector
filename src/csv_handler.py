@@ -207,14 +207,14 @@ class PolygonCSVHandler:
             if total_volume == 0:
                 continue
 
-            pc_ratio = round(put_volume / call_volume, 2) if call_volume > 0 else 0
+            cp_ratio = round(call_volume / put_volume, 2) if put_volume > 0 else 0
 
             results.append({
                 'ticker': underlying,
                 'total_volume': int(total_volume),
                 'put_volume': int(put_volume),
                 'call_volume': int(call_volume),
-                'pc_volume_ratio': pc_ratio,
+                'cp_volume_ratio': cp_ratio,
                 'contracts_count': len(underlying_df),
                 'put_contracts': len(put_df),
                 'call_contracts': len(call_df),
@@ -222,7 +222,7 @@ class PolygonCSVHandler:
                 'total_oi': 0,
                 'put_oi': 0,
                 'call_oi': 0,
-                'pc_oi_ratio': 0
+                'cp_oi_ratio': 0
             })
 
         # Sort by volume

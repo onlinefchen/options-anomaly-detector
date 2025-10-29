@@ -125,13 +125,13 @@ class HybridDataFetcher:
                         call_oi += oi
 
                 total_oi = put_oi + call_oi
-                pc_oi_ratio = round(put_oi / call_oi, 2) if call_oi > 0 else 0
+                cp_oi_ratio = round(call_oi / put_oi, 2) if put_oi > 0 else 0
 
                 # Update item
                 item['total_oi'] = total_oi
                 item['put_oi'] = put_oi
                 item['call_oi'] = call_oi
-                item['pc_oi_ratio'] = pc_oi_ratio
+                item['cp_oi_ratio'] = cp_oi_ratio
 
                 enriched_count += 1
                 print(f"✓ OI={total_oi:,}")

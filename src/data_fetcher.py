@@ -117,20 +117,20 @@ class PolygonDataFetcher:
             total_volume = put_volume + call_volume
             total_oi = put_oi + call_oi
 
-            # Calculate ratios
-            pc_volume_ratio = round(put_volume / call_volume, 2) if call_volume > 0 else 0
-            pc_oi_ratio = round(put_oi / call_oi, 2) if call_oi > 0 else 0
+            # Calculate ratios (C/P ratio: Call/Put)
+            cp_volume_ratio = round(call_volume / put_volume, 2) if put_volume > 0 else 0
+            cp_oi_ratio = round(call_oi / put_oi, 2) if put_oi > 0 else 0
 
             result = {
                 'ticker': ticker,
                 'total_volume': total_volume,
                 'put_volume': put_volume,
                 'call_volume': call_volume,
-                'pc_volume_ratio': pc_volume_ratio,
+                'cp_volume_ratio': cp_volume_ratio,
                 'total_oi': total_oi,
                 'put_oi': put_oi,
                 'call_oi': call_oi,
-                'pc_oi_ratio': pc_oi_ratio,
+                'cp_oi_ratio': cp_oi_ratio,
                 'contracts_count': len(contracts)
             }
 
