@@ -78,6 +78,32 @@
         .stat-card.low .number { color: #17a2b8; }
         .stat-card.total .number { color: #667eea; }
 
+        .nav {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 10px 25px;
+            margin: 0 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
         .section {
             background: white;
             padding: 30px;
@@ -145,6 +171,10 @@
             .header h1 {
                 font-size: 1.8em;
             }
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -152,7 +182,12 @@
     <div class="container">
         <div class="header">
             <h1>📊 期权市场异常分析报告</h1>
-            <p class="date">2025-10-29 12:14:06 ET</p>
+            <p class="date">2025-10-29 13:07:58 ET</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">📊 最新报告</a>
+            <a href="archive.html">📚 历史报告</a>
         </div>
 
         <div class="stats">
@@ -166,11 +201,11 @@
             </div>
             <div class="stat-card high">
                 <div class="label">高严重</div>
-                <div class="number">20</div>
+                <div class="number">21</div>
             </div>
             <div class="stat-card medium">
                 <div class="label">中严重</div>
-                <div class="number">5</div>
+                <div class="number">4</div>
             </div>
             <div class="stat-card low">
                 <div class="label">低严重</div>
@@ -202,14 +237,14 @@
                     <td><strong>NVDA</strong></td>
                     <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
-                    <td>Volume 36.8x above median</td>
+                    <td>Volume 36.7x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>SPY</strong></td>
                     <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
-                    <td>Volume 18.6x above median</td>
+                    <td>Volume 18.3x above median</td>
                 </tr>
             
                 <tr>
@@ -223,7 +258,7 @@
                     <td><strong>QQQ</strong></td>
                     <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
-                    <td>Volume 12.4x above median</td>
+                    <td>Volume 12.3x above median</td>
                 </tr>
             
                 <tr>
@@ -244,21 +279,21 @@
                     <td><strong>INTC</strong></td>
                     <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
-                    <td>Volume 8.7x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>IWM</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 6.6x above median</td>
+                    <td>Volume 8.8x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>VIX</strong></td>
                     <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
-                    <td>Volume 6.0x above median</td>
+                    <td>Volume 6.8x above median</td>
+                </tr>
+            
+                <tr>
+                    <td><strong>IWM</strong></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
+                    <td>VOLUME SPIKE</td>
+                    <td>Volume 6.5x above median</td>
                 </tr>
             
                 <tr>
@@ -286,14 +321,21 @@
                     <td><strong>INTC</strong></td>
                     <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>EXTREME GREED</td>
-                    <td>极度看涨情绪 (Call/Put 成交量: 3.09)</td>
+                    <td>极度看涨情绪 (Call/Put 成交量: 3.12)</td>
                 </tr>
             
                 <tr>
                     <td><strong>AAPL</strong></td>
                     <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>EXTREME GREED</td>
-                    <td>极度看涨情绪 (Call/Put 成交量: 2.80)</td>
+                    <td>极度看涨情绪 (Call/Put 成交量: 2.76)</td>
+                </tr>
+            
+                <tr>
+                    <td><strong>MSFT</strong></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
+                    <td>EXTREME GREED</td>
+                    <td>极度看涨情绪 (Call/Put 成交量: 2.51)</td>
                 </tr>
             
                 <tr>
@@ -324,13 +366,6 @@
                     <td>极度看涨情绪 (Call/Put 成交量: 4.04)</td>
                 </tr>
             
-                <tr>
-                    <td><strong>JNJ</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
-                    <td>EXTREME GREED</td>
-                    <td>极度看涨情绪 (Call/Put 成交量: 2.88)</td>
-                </tr>
-            
                 </tbody>
             </table>
         </div>
@@ -358,56 +393,56 @@
                 <tr>
                     <td>1</td>
                     <td><strong>NVDA</strong></td>
-                    <td>5,005,982</td>
+                    <td>4,989,036</td>
                     <td>3.07</td>
                     <td>14,140,638</td>
                     <td>1.20</td>
-                    <td>1,229,410</td>
-                    <td>3,776,572</td>
+                    <td>1,225,256</td>
+                    <td>3,763,780</td>
                 </tr>
             
                 <tr>
                     <td>2</td>
                     <td><strong>SPY</strong></td>
-                    <td>2,533,148</td>
-                    <td>0.95</td>
-                    <td>5,348,816</td>
-                    <td>0.32</td>
-                    <td>1,302,094</td>
-                    <td>1,231,054</td>
+                    <td>2,490,585</td>
+                    <td>0.98</td>
+                    <td>4,723,246</td>
+                    <td>0.36</td>
+                    <td>1,256,101</td>
+                    <td>1,234,484</td>
                 </tr>
             
                 <tr>
                     <td>3</td>
                     <td><strong>TSLA</strong></td>
-                    <td>2,008,005</td>
+                    <td>2,008,505</td>
                     <td>1.88</td>
                     <td>4,729,336</td>
                     <td>1.00</td>
-                    <td>696,732</td>
-                    <td>1,311,273</td>
+                    <td>697,131</td>
+                    <td>1,311,374</td>
                 </tr>
             
                 <tr>
                     <td>4</td>
                     <td><strong>QQQ</strong></td>
-                    <td>1,687,230</td>
-                    <td>0.75</td>
-                    <td>3,794,835</td>
-                    <td>0.47</td>
-                    <td>965,048</td>
-                    <td>722,182</td>
+                    <td>1,676,352</td>
+                    <td>0.94</td>
+                    <td>2,809,798</td>
+                    <td>0.76</td>
+                    <td>865,093</td>
+                    <td>811,259</td>
                 </tr>
             
                 <tr>
                     <td>5</td>
                     <td><strong>SOFI</strong></td>
-                    <td>1,417,823</td>
+                    <td>1,417,845</td>
                     <td>2.76</td>
                     <td>4,419,403</td>
                     <td>1.49</td>
-                    <td>377,461</td>
-                    <td>1,040,362</td>
+                    <td>377,469</td>
+                    <td>1,040,376</td>
                 </tr>
             
                 <tr>
@@ -424,133 +459,133 @@
                 <tr>
                     <td>7</td>
                     <td><strong>INTC</strong></td>
-                    <td>1,188,072</td>
-                    <td>3.09</td>
-                    <td>7,003,673</td>
+                    <td>1,201,973</td>
+                    <td>3.12</td>
+                    <td>7,011,200</td>
                     <td>1.44</td>
-                    <td>290,558</td>
-                    <td>897,514</td>
+                    <td>291,658</td>
+                    <td>910,315</td>
                 </tr>
             
                 <tr>
                     <td>8</td>
-                    <td><strong>IWM</strong></td>
-                    <td>900,956</td>
-                    <td>0.58</td>
-                    <td>6,678,793</td>
-                    <td>0.47</td>
-                    <td>570,107</td>
-                    <td>330,849</td>
+                    <td><strong>VIX</strong></td>
+                    <td>924,986</td>
+                    <td>1.35</td>
+                    <td>12,971,039</td>
+                    <td>2.13</td>
+                    <td>393,501</td>
+                    <td>531,485</td>
                 </tr>
             
                 <tr>
                     <td>9</td>
-                    <td><strong>VIX</strong></td>
-                    <td>815,806</td>
-                    <td>1.78</td>
-                    <td>12,971,039</td>
-                    <td>2.13</td>
-                    <td>293,921</td>
-                    <td>521,885</td>
+                    <td><strong>IWM</strong></td>
+                    <td>887,344</td>
+                    <td>0.56</td>
+                    <td>6,176,809</td>
+                    <td>0.40</td>
+                    <td>569,921</td>
+                    <td>317,423</td>
                 </tr>
             
                 <tr>
                     <td>10</td>
                     <td><strong>AMZN</strong></td>
-                    <td>631,892</td>
+                    <td>632,015</td>
                     <td>2.45</td>
                     <td>4,759,694</td>
                     <td>1.43</td>
-                    <td>183,268</td>
-                    <td>448,624</td>
+                    <td>183,299</td>
+                    <td>448,716</td>
                 </tr>
             
                 <tr>
                     <td>11</td>
                     <td><strong>AMD</strong></td>
-                    <td>631,490</td>
+                    <td>631,527</td>
                     <td>1.62</td>
                     <td>3,700,994</td>
                     <td>1.07</td>
-                    <td>240,738</td>
-                    <td>390,752</td>
+                    <td>240,749</td>
+                    <td>390,778</td>
                 </tr>
             
                 <tr>
                     <td>12</td>
                     <td><strong>AAPL</strong></td>
-                    <td>588,045</td>
-                    <td>2.80</td>
+                    <td>597,723</td>
+                    <td>2.76</td>
                     <td>5,555,767</td>
                     <td>1.47</td>
-                    <td>154,832</td>
-                    <td>433,213</td>
+                    <td>158,791</td>
+                    <td>438,932</td>
                 </tr>
             
                 <tr>
                     <td>13</td>
                     <td><strong>GLD</strong></td>
-                    <td>527,229</td>
-                    <td>1.60</td>
-                    <td>2,626,686</td>
+                    <td>525,537</td>
+                    <td>1.61</td>
+                    <td>2,604,575</td>
                     <td>1.97</td>
-                    <td>202,787</td>
-                    <td>324,442</td>
+                    <td>201,077</td>
+                    <td>324,460</td>
                 </tr>
             
                 <tr>
                     <td>14</td>
                     <td><strong>PLTR</strong></td>
-                    <td>519,571</td>
-                    <td>2.35</td>
-                    <td>3,291,107</td>
+                    <td>521,951</td>
+                    <td>2.36</td>
+                    <td>3,293,714</td>
                     <td>1.06</td>
-                    <td>155,137</td>
-                    <td>364,434</td>
+                    <td>155,181</td>
+                    <td>366,770</td>
                 </tr>
             
                 <tr>
                     <td>15</td>
-                    <td><strong>SLV</strong></td>
-                    <td>486,762</td>
-                    <td>1.80</td>
-                    <td>6,236,115</td>
-                    <td>1.44</td>
-                    <td>173,908</td>
-                    <td>312,854</td>
+                    <td><strong>MSFT</strong></td>
+                    <td>461,547</td>
+                    <td>2.51</td>
+                    <td>2,087,897</td>
+                    <td>1.38</td>
+                    <td>131,653</td>
+                    <td>329,894</td>
                 </tr>
             
                 <tr>
                     <td>16</td>
-                    <td><strong>MSFT</strong></td>
-                    <td>460,061</td>
-                    <td>2.50</td>
-                    <td>2,087,897</td>
-                    <td>1.38</td>
-                    <td>131,582</td>
-                    <td>328,479</td>
+                    <td><strong>SLV</strong></td>
+                    <td>452,784</td>
+                    <td>2.22</td>
+                    <td>6,038,714</td>
+                    <td>1.46</td>
+                    <td>140,599</td>
+                    <td>312,185</td>
                 </tr>
             
                 <tr>
                     <td>17</td>
                     <td><strong>UNH</strong></td>
-                    <td>399,302</td>
+                    <td>399,316</td>
                     <td>2.39</td>
                     <td>1,743,573</td>
                     <td>2.04</td>
-                    <td>117,700</td>
-                    <td>281,602</td>
+                    <td>117,701</td>
+                    <td>281,615</td>
                 </tr>
             
                 <tr>
                     <td>18</td>
                     <td><strong>TLT</strong></td>
-                    <td>342,882</td>
-                    <td>0.93</td>
-                    <td>6,163,098</td>
+                    <td>346,131</td>
+                    <td>0.92</td>
+                    <td>6,166,228</td>
                     <td>1.41</td>
-                    <td>177,712</td>
-                    <td>165,170</td>
+                    <td>180,413</td>
+                    <td>165,718</td>
                 </tr>
             
                 <tr>
@@ -567,23 +602,23 @@
                 <tr>
                     <td>20</td>
                     <td><strong>GOOGL</strong></td>
-                    <td>299,145</td>
-                    <td>1.43</td>
-                    <td>3,316,987</td>
+                    <td>300,162</td>
+                    <td>1.44</td>
+                    <td>3,317,914</td>
                     <td>1.37</td>
-                    <td>123,186</td>
-                    <td>175,959</td>
+                    <td>123,191</td>
+                    <td>176,971</td>
                 </tr>
             
                 <tr>
                     <td>21</td>
                     <td><strong>META</strong></td>
-                    <td>233,248</td>
+                    <td>233,174</td>
                     <td>1.55</td>
                     <td>1,268,411</td>
                     <td>1.23</td>
-                    <td>91,506</td>
-                    <td>141,742</td>
+                    <td>91,509</td>
+                    <td>141,665</td>
                 </tr>
             
                 <tr>
@@ -600,12 +635,12 @@
                 <tr>
                     <td>23</td>
                     <td><strong>BABA</strong></td>
-                    <td>171,042</td>
+                    <td>171,046</td>
                     <td>1.83</td>
                     <td>2,437,015</td>
                     <td>1.70</td>
-                    <td>60,543</td>
-                    <td>110,499</td>
+                    <td>60,545</td>
+                    <td>110,501</td>
                 </tr>
             
                 <tr>
@@ -622,33 +657,33 @@
                 <tr>
                     <td>25</td>
                     <td><strong>BA</strong></td>
-                    <td>133,791</td>
+                    <td>133,803</td>
                     <td>2.20</td>
                     <td>1,150,830</td>
                     <td>1.08</td>
-                    <td>41,827</td>
-                    <td>91,964</td>
+                    <td>41,837</td>
+                    <td>91,966</td>
                 </tr>
             
                 <tr>
                     <td>26</td>
                     <td><strong>NFLX</strong></td>
-                    <td>118,862</td>
+                    <td>118,883</td>
                     <td>2.03</td>
                     <td>338,972</td>
                     <td>1.69</td>
-                    <td>39,210</td>
-                    <td>79,652</td>
+                    <td>39,216</td>
+                    <td>79,667</td>
                 </tr>
             
                 <tr>
                     <td>27</td>
                     <td><strong>PFE</strong></td>
-                    <td>111,684</td>
+                    <td>111,663</td>
                     <td>3.09</td>
                     <td>3,637,904</td>
                     <td>1.50</td>
-                    <td>27,306</td>
+                    <td>27,285</td>
                     <td>84,378</td>
                 </tr>
             
@@ -666,23 +701,23 @@
                 <tr>
                     <td>29</td>
                     <td><strong>WMT</strong></td>
-                    <td>93,906</td>
+                    <td>93,893</td>
                     <td>1.86</td>
                     <td>1,035,452</td>
                     <td>1.18</td>
-                    <td>32,879</td>
-                    <td>61,027</td>
+                    <td>32,843</td>
+                    <td>61,050</td>
                 </tr>
             
                 <tr>
                     <td>30</td>
                     <td><strong>XLE</strong></td>
-                    <td>91,580</td>
+                    <td>91,656</td>
                     <td>0.55</td>
                     <td>2,226,281</td>
                     <td>0.52</td>
-                    <td>59,093</td>
-                    <td>32,487</td>
+                    <td>59,130</td>
+                    <td>32,526</td>
                 </tr>
             
                 </tbody>
@@ -715,10 +750,10 @@
         new Chart(volumeCtx, {
             type: 'bar',
             data: {
-                labels: ["NVDA", "SPY", "TSLA", "QQQ", "SOFI", "HYG", "INTC", "IWM", "VIX", "AMZN", "AMD", "AAPL", "GLD", "PLTR", "SLV", "MSFT", "UNH", "TLT", "EEM", "GOOGL", "META", "VZ", "BABA", "T", "BA", "NFLX", "PFE", "BAC", "WMT", "XLE"],
+                labels: ["NVDA", "SPY", "TSLA", "QQQ", "SOFI", "HYG", "INTC", "VIX", "IWM", "AMZN", "AMD", "AAPL", "GLD", "PLTR", "MSFT", "SLV", "UNH", "TLT", "EEM", "GOOGL", "META", "VZ", "BABA", "T", "BA", "NFLX", "PFE", "BAC", "WMT", "XLE"],
                 datasets: [{
                     label: '总成交量',
-                    data: [5005982, 2533148, 2008005, 1687230, 1417823, 1402825, 1188072, 900956, 815806, 631892, 631490, 588045, 527229, 519571, 486762, 460061, 399302, 342882, 322319, 299145, 233248, 181089, 171042, 138275, 133791, 118862, 111684, 102712, 93906, 91580],
+                    data: [4989036, 2490585, 2008505, 1676352, 1417845, 1402825, 1201973, 924986, 887344, 632015, 631527, 597723, 525537, 521951, 461547, 452784, 399316, 346131, 322319, 300162, 233174, 181089, 171046, 138275, 133803, 118883, 111663, 102712, 93893, 91656],
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1
@@ -749,18 +784,18 @@
         new Chart(cpCtx, {
             type: 'bar',
             data: {
-                labels: ["NVDA", "SPY", "TSLA", "QQQ", "SOFI", "HYG", "INTC", "IWM", "VIX", "AMZN", "AMD", "AAPL", "GLD", "PLTR", "SLV", "MSFT", "UNH", "TLT", "EEM", "GOOGL", "META", "VZ", "BABA", "T", "BA", "NFLX", "PFE", "BAC", "WMT", "XLE"],
+                labels: ["NVDA", "SPY", "TSLA", "QQQ", "SOFI", "HYG", "INTC", "VIX", "IWM", "AMZN", "AMD", "AAPL", "GLD", "PLTR", "MSFT", "SLV", "UNH", "TLT", "EEM", "GOOGL", "META", "VZ", "BABA", "T", "BA", "NFLX", "PFE", "BAC", "WMT", "XLE"],
                 datasets: [
                     {
                         label: 'C/P 成交比',
-                        data: [3.07, 0.95, 1.88, 0.75, 2.76, 0.12, 3.09, 0.58, 1.78, 2.45, 1.62, 2.8, 1.6, 2.35, 1.8, 2.5, 2.39, 0.93, 1.43, 1.43, 1.55, 1.31, 1.83, 3.05, 2.2, 2.03, 3.09, 2.2, 1.86, 0.55],
+                        data: [3.07, 0.98, 1.88, 0.94, 2.76, 0.12, 3.12, 1.35, 0.56, 2.45, 1.62, 2.76, 1.61, 2.36, 2.51, 2.22, 2.39, 0.92, 1.43, 1.44, 1.55, 1.31, 1.83, 3.05, 2.2, 2.03, 3.09, 2.2, 1.86, 0.55],
                         backgroundColor: 'rgba(255, 99, 132, 0.6)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'C/P 持仓比',
-                        data: [1.2, 0.32, 1.0, 0.47, 1.49, 0.22, 1.44, 0.47, 2.13, 1.43, 1.07, 1.47, 1.97, 1.06, 1.44, 1.38, 2.04, 1.41, 0.72, 1.37, 1.23, 1.4, 1.7, 1.55, 1.08, 1.69, 1.5, 0.88, 1.18, 0.52],
+                        data: [1.2, 0.36, 1.0, 0.76, 1.49, 0.22, 1.44, 2.13, 0.4, 1.43, 1.07, 1.47, 1.97, 1.06, 1.38, 1.46, 2.04, 1.41, 0.72, 1.37, 1.23, 1.4, 1.7, 1.55, 1.08, 1.69, 1.5, 0.88, 1.18, 0.52],
                         backgroundColor: 'rgba(54, 162, 235, 0.6)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -789,10 +824,10 @@
         new Chart(oiCtx, {
             type: 'bar',
             data: {
-                labels: ["NVDA", "SPY", "TSLA", "QQQ", "SOFI", "HYG", "INTC", "IWM", "VIX", "AMZN", "AMD", "AAPL", "GLD", "PLTR", "SLV", "MSFT", "UNH", "TLT", "EEM", "GOOGL", "META", "VZ", "BABA", "T", "BA", "NFLX", "PFE", "BAC", "WMT", "XLE"],
+                labels: ["NVDA", "SPY", "TSLA", "QQQ", "SOFI", "HYG", "INTC", "VIX", "IWM", "AMZN", "AMD", "AAPL", "GLD", "PLTR", "MSFT", "SLV", "UNH", "TLT", "EEM", "GOOGL", "META", "VZ", "BABA", "T", "BA", "NFLX", "PFE", "BAC", "WMT", "XLE"],
                 datasets: [{
                     label: '持仓量',
-                    data: [14140638, 5348816, 4729336, 3794835, 4419403, 9501153, 7003673, 6678793, 12971039, 4759694, 3700994, 5555767, 2626686, 3291107, 6236115, 2087897, 1743573, 6163098, 6859708, 3316987, 1268411, 1220723, 2437015, 1213068, 1150830, 338972, 3637904, 2888404, 1035452, 2226281],
+                    data: [14140638, 4723246, 4729336, 2809798, 4419403, 9501153, 7011200, 12971039, 6176809, 4759694, 3700994, 5555767, 2604575, 3293714, 2087897, 6038714, 1743573, 6166228, 6859708, 3317914, 1268411, 1220723, 2437015, 1213068, 1150830, 338972, 3637904, 2888404, 1035452, 2226281],
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1

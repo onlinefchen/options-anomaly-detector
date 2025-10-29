@@ -1,0 +1,988 @@
+{
+  "date": "2025-10-29",
+  "timestamp": "2025-10-29T13:07:58.872540",
+  "tickers_count": 48,
+  "anomalies_count": 48,
+  "data": [
+    {
+      "ticker": "SPY",
+      "total_volume": 2490585,
+      "put_volume": 1256101,
+      "call_volume": 1234484,
+      "cp_volume_ratio": 0.98,
+      "total_oi": 4723246,
+      "put_oi": 3475095,
+      "call_oi": 1248151,
+      "cp_oi_ratio": 0.36,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "QQQ",
+      "total_volume": 1676352,
+      "put_volume": 865093,
+      "call_volume": 811259,
+      "cp_volume_ratio": 0.94,
+      "total_oi": 2809798,
+      "put_oi": 1600507,
+      "call_oi": 1209291,
+      "cp_oi_ratio": 0.76,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "IWM",
+      "total_volume": 887344,
+      "put_volume": 569921,
+      "call_volume": 317423,
+      "cp_volume_ratio": 0.56,
+      "total_oi": 6176809,
+      "put_oi": 4418356,
+      "call_oi": 1758453,
+      "cp_oi_ratio": 0.4,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "DIA",
+      "total_volume": 77774,
+      "put_volume": 37558,
+      "call_volume": 40216,
+      "cp_volume_ratio": 1.07,
+      "total_oi": 403810,
+      "put_oi": 263717,
+      "call_oi": 140093,
+      "cp_oi_ratio": 0.53,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "NVDA",
+      "total_volume": 4989036,
+      "put_volume": 1225256,
+      "call_volume": 3763780,
+      "cp_volume_ratio": 3.07,
+      "total_oi": 14140638,
+      "put_oi": 6434960,
+      "call_oi": 7705678,
+      "cp_oi_ratio": 1.2,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "TSLA",
+      "total_volume": 2008505,
+      "put_volume": 697131,
+      "call_volume": 1311374,
+      "cp_volume_ratio": 1.88,
+      "total_oi": 4729336,
+      "put_oi": 2367356,
+      "call_oi": 2361980,
+      "cp_oi_ratio": 1.0,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "AAPL",
+      "total_volume": 597723,
+      "put_volume": 158791,
+      "call_volume": 438932,
+      "cp_volume_ratio": 2.76,
+      "total_oi": 5555767,
+      "put_oi": 2248240,
+      "call_oi": 3307527,
+      "cp_oi_ratio": 1.47,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "MSFT",
+      "total_volume": 461547,
+      "put_volume": 131653,
+      "call_volume": 329894,
+      "cp_volume_ratio": 2.51,
+      "total_oi": 2087897,
+      "put_oi": 876318,
+      "call_oi": 1211579,
+      "cp_oi_ratio": 1.38,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "GOOGL",
+      "total_volume": 300162,
+      "put_volume": 123191,
+      "call_volume": 176971,
+      "cp_volume_ratio": 1.44,
+      "total_oi": 3317914,
+      "put_oi": 1398572,
+      "call_oi": 1919342,
+      "cp_oi_ratio": 1.37,
+      "contracts_count": 2466
+    },
+    {
+      "ticker": "META",
+      "total_volume": 233174,
+      "put_volume": 91509,
+      "call_volume": 141665,
+      "cp_volume_ratio": 1.55,
+      "total_oi": 1268411,
+      "put_oi": 568585,
+      "call_oi": 699826,
+      "cp_oi_ratio": 1.23,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "AMZN",
+      "total_volume": 632015,
+      "put_volume": 183299,
+      "call_volume": 448716,
+      "cp_volume_ratio": 2.45,
+      "total_oi": 4759694,
+      "put_oi": 1961280,
+      "call_oi": 2798414,
+      "cp_oi_ratio": 1.43,
+      "contracts_count": 2090
+    },
+    {
+      "ticker": "AMD",
+      "total_volume": 631527,
+      "put_volume": 240749,
+      "call_volume": 390778,
+      "cp_volume_ratio": 1.62,
+      "total_oi": 3700994,
+      "put_oi": 1785184,
+      "call_oi": 1915810,
+      "cp_oi_ratio": 1.07,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "INTC",
+      "total_volume": 1201973,
+      "put_volume": 291658,
+      "call_volume": 910315,
+      "cp_volume_ratio": 3.12,
+      "total_oi": 7011200,
+      "put_oi": 2873453,
+      "call_oi": 4137747,
+      "cp_oi_ratio": 1.44,
+      "contracts_count": 1382
+    },
+    {
+      "ticker": "NFLX",
+      "total_volume": 118883,
+      "put_volume": 39216,
+      "call_volume": 79667,
+      "cp_volume_ratio": 2.03,
+      "total_oi": 338972,
+      "put_oi": 125984,
+      "call_oi": 212988,
+      "cp_oi_ratio": 1.69,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "BABA",
+      "total_volume": 171046,
+      "put_volume": 60545,
+      "call_volume": 110501,
+      "cp_volume_ratio": 1.83,
+      "total_oi": 2437015,
+      "put_oi": 901619,
+      "call_oi": 1535396,
+      "cp_oi_ratio": 1.7,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "NIO",
+      "total_volume": 90680,
+      "put_volume": 19435,
+      "call_volume": 71245,
+      "cp_volume_ratio": 3.67,
+      "total_oi": 4348888,
+      "put_oi": 1776524,
+      "call_oi": 2572364,
+      "cp_oi_ratio": 1.45,
+      "contracts_count": 526
+    },
+    {
+      "ticker": "PLTR",
+      "total_volume": 521951,
+      "put_volume": 155181,
+      "call_volume": 366770,
+      "cp_volume_ratio": 2.36,
+      "total_oi": 3293714,
+      "put_oi": 1598241,
+      "call_oi": 1695473,
+      "cp_oi_ratio": 1.06,
+      "contracts_count": 2378
+    },
+    {
+      "ticker": "SOFI",
+      "total_volume": 1417845,
+      "put_volume": 377469,
+      "call_volume": 1040376,
+      "cp_volume_ratio": 2.76,
+      "total_oi": 4419403,
+      "put_oi": 1777129,
+      "call_oi": 2642274,
+      "cp_oi_ratio": 1.49,
+      "contracts_count": 1168
+    },
+    {
+      "ticker": "BAC",
+      "total_volume": 102712,
+      "put_volume": 32084,
+      "call_volume": 70628,
+      "cp_volume_ratio": 2.2,
+      "total_oi": 2888404,
+      "put_oi": 1534179,
+      "call_oi": 1354225,
+      "cp_oi_ratio": 0.88,
+      "contracts_count": 1012
+    },
+    {
+      "ticker": "JPM",
+      "total_volume": 62249,
+      "put_volume": 20246,
+      "call_volume": 42003,
+      "cp_volume_ratio": 2.07,
+      "total_oi": 761021,
+      "put_oi": 379669,
+      "call_oi": 381352,
+      "cp_oi_ratio": 1.0,
+      "contracts_count": 2168
+    },
+    {
+      "ticker": "GS",
+      "total_volume": 36497,
+      "put_volume": 16205,
+      "call_volume": 20292,
+      "cp_volume_ratio": 1.25,
+      "total_oi": 222460,
+      "put_oi": 118310,
+      "call_oi": 104150,
+      "cp_oi_ratio": 0.88,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "WFC",
+      "total_volume": 40451,
+      "put_volume": 18961,
+      "call_volume": 21490,
+      "cp_volume_ratio": 1.13,
+      "total_oi": 1165566,
+      "put_oi": 593884,
+      "call_oi": 571682,
+      "cp_oi_ratio": 0.96,
+      "contracts_count": 1240
+    },
+    {
+      "ticker": "C",
+      "total_volume": 49604,
+      "put_volume": 23235,
+      "call_volume": 26369,
+      "cp_volume_ratio": 1.13,
+      "total_oi": 1642481,
+      "put_oi": 830057,
+      "call_oi": 812424,
+      "cp_oi_ratio": 0.98,
+      "contracts_count": 1366
+    },
+    {
+      "ticker": "XLE",
+      "total_volume": 91656,
+      "put_volume": 59130,
+      "call_volume": 32526,
+      "cp_volume_ratio": 0.55,
+      "total_oi": 2226281,
+      "put_oi": 1465736,
+      "call_oi": 760545,
+      "cp_oi_ratio": 0.52,
+      "contracts_count": 1806
+    },
+    {
+      "ticker": "USO",
+      "total_volume": 39138,
+      "put_volume": 24423,
+      "call_volume": 14715,
+      "cp_volume_ratio": 0.6,
+      "total_oi": 415071,
+      "put_oi": 197420,
+      "call_oi": 217651,
+      "cp_oi_ratio": 1.1,
+      "contracts_count": 1116
+    },
+    {
+      "ticker": "XOM",
+      "total_volume": 39851,
+      "put_volume": 16532,
+      "call_volume": 23319,
+      "cp_volume_ratio": 1.41,
+      "total_oi": 972943,
+      "put_oi": 373732,
+      "call_oi": 599211,
+      "cp_oi_ratio": 1.6,
+      "contracts_count": 1308
+    },
+    {
+      "ticker": "CVX",
+      "total_volume": 27942,
+      "put_volume": 12686,
+      "call_volume": 15256,
+      "cp_volume_ratio": 1.2,
+      "total_oi": 557429,
+      "put_oi": 222143,
+      "call_oi": 335286,
+      "cp_oi_ratio": 1.51,
+      "contracts_count": 1334
+    },
+    {
+      "ticker": "VIX",
+      "total_volume": 924986,
+      "put_volume": 393501,
+      "call_volume": 531485,
+      "cp_volume_ratio": 1.35,
+      "total_oi": 12971039,
+      "put_oi": 4140123,
+      "call_oi": 8830916,
+      "cp_oi_ratio": 2.13,
+      "contracts_count": 1400
+    },
+    {
+      "ticker": "UVXY",
+      "total_volume": 84935,
+      "put_volume": 16858,
+      "call_volume": 68077,
+      "cp_volume_ratio": 4.04,
+      "total_oi": 536038,
+      "put_oi": 179831,
+      "call_oi": 356207,
+      "cp_oi_ratio": 1.98,
+      "contracts_count": 1188
+    },
+    {
+      "ticker": "VIXY",
+      "total_volume": 3963,
+      "put_volume": 1827,
+      "call_volume": 2136,
+      "cp_volume_ratio": 1.17,
+      "total_oi": 19902,
+      "put_oi": 9530,
+      "call_oi": 10372,
+      "cp_oi_ratio": 1.09,
+      "contracts_count": 980
+    },
+    {
+      "ticker": "GLD",
+      "total_volume": 525537,
+      "put_volume": 201077,
+      "call_volume": 324460,
+      "cp_volume_ratio": 1.61,
+      "total_oi": 2604575,
+      "put_oi": 876504,
+      "call_oi": 1728071,
+      "cp_oi_ratio": 1.97,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "SLV",
+      "total_volume": 452784,
+      "put_volume": 140599,
+      "call_volume": 312185,
+      "cp_volume_ratio": 2.22,
+      "total_oi": 6038714,
+      "put_oi": 2457144,
+      "call_oi": 3581570,
+      "cp_oi_ratio": 1.46,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "TLT",
+      "total_volume": 346131,
+      "put_volume": 180413,
+      "call_volume": 165718,
+      "cp_volume_ratio": 0.92,
+      "total_oi": 6166228,
+      "put_oi": 2555507,
+      "call_oi": 3610721,
+      "cp_oi_ratio": 1.41,
+      "contracts_count": 2258
+    },
+    {
+      "ticker": "HYG",
+      "total_volume": 1402825,
+      "put_volume": 1255012,
+      "call_volume": 147813,
+      "cp_volume_ratio": 0.12,
+      "total_oi": 9501153,
+      "put_oi": 7764587,
+      "call_oi": 1736566,
+      "cp_oi_ratio": 0.22,
+      "contracts_count": 1436
+    },
+    {
+      "ticker": "EEM",
+      "total_volume": 322319,
+      "put_volume": 132801,
+      "call_volume": 189518,
+      "cp_volume_ratio": 1.43,
+      "total_oi": 6859708,
+      "put_oi": 3997253,
+      "call_oi": 2862455,
+      "cp_oi_ratio": 0.72,
+      "contracts_count": 1436
+    },
+    {
+      "ticker": "PFE",
+      "total_volume": 111663,
+      "put_volume": 27285,
+      "call_volume": 84378,
+      "cp_volume_ratio": 3.09,
+      "total_oi": 3637904,
+      "put_oi": 1454918,
+      "call_oi": 2182986,
+      "cp_oi_ratio": 1.5,
+      "contracts_count": 788
+    },
+    {
+      "ticker": "JNJ",
+      "total_volume": 35480,
+      "put_volume": 9153,
+      "call_volume": 26327,
+      "cp_volume_ratio": 2.88,
+      "total_oi": 411242,
+      "put_oi": 171892,
+      "call_oi": 239350,
+      "cp_oi_ratio": 1.39,
+      "contracts_count": 1182
+    },
+    {
+      "ticker": "UNH",
+      "total_volume": 399316,
+      "put_volume": 117701,
+      "call_volume": 281615,
+      "cp_volume_ratio": 2.39,
+      "total_oi": 1743573,
+      "put_oi": 573204,
+      "call_oi": 1170369,
+      "cp_oi_ratio": 2.04,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "ABBV",
+      "total_volume": 21391,
+      "put_volume": 7987,
+      "call_volume": 13404,
+      "cp_volume_ratio": 1.68,
+      "total_oi": 332198,
+      "put_oi": 150711,
+      "call_oi": 181487,
+      "cp_oi_ratio": 1.2,
+      "contracts_count": 1400
+    },
+    {
+      "ticker": "WMT",
+      "total_volume": 93893,
+      "put_volume": 32843,
+      "call_volume": 61050,
+      "cp_volume_ratio": 1.86,
+      "total_oi": 1035452,
+      "put_oi": 475872,
+      "call_oi": 559580,
+      "cp_oi_ratio": 1.18,
+      "contracts_count": 1176
+    },
+    {
+      "ticker": "HD",
+      "total_volume": 17343,
+      "put_volume": 6266,
+      "call_volume": 11077,
+      "cp_volume_ratio": 1.77,
+      "total_oi": 251584,
+      "put_oi": 105679,
+      "call_oi": 145905,
+      "cp_oi_ratio": 1.38,
+      "contracts_count": 1924
+    },
+    {
+      "ticker": "MCD",
+      "total_volume": 12783,
+      "put_volume": 5579,
+      "call_volume": 7204,
+      "cp_volume_ratio": 1.29,
+      "total_oi": 201476,
+      "put_oi": 103907,
+      "call_oi": 97569,
+      "cp_oi_ratio": 0.94,
+      "contracts_count": 1612
+    },
+    {
+      "ticker": "DIS",
+      "total_volume": 31007,
+      "put_volume": 13823,
+      "call_volume": 17184,
+      "cp_volume_ratio": 1.24,
+      "total_oi": 738468,
+      "put_oi": 332035,
+      "call_oi": 406433,
+      "cp_oi_ratio": 1.22,
+      "contracts_count": 1178
+    },
+    {
+      "ticker": "BA",
+      "total_volume": 133803,
+      "put_volume": 41837,
+      "call_volume": 91966,
+      "cp_volume_ratio": 2.2,
+      "total_oi": 1150830,
+      "put_oi": 554284,
+      "call_oi": 596546,
+      "cp_oi_ratio": 1.08,
+      "contracts_count": 1656
+    },
+    {
+      "ticker": "CAT",
+      "total_volume": 32903,
+      "put_volume": 16540,
+      "call_volume": 16363,
+      "cp_volume_ratio": 0.99,
+      "total_oi": 199096,
+      "put_oi": 110156,
+      "call_oi": 88940,
+      "cp_oi_ratio": 0.81,
+      "contracts_count": 2500
+    },
+    {
+      "ticker": "GE",
+      "total_volume": 18731,
+      "put_volume": 9308,
+      "call_volume": 9423,
+      "cp_volume_ratio": 1.01,
+      "total_oi": 230842,
+      "put_oi": 109897,
+      "call_oi": 120945,
+      "cp_oi_ratio": 1.1,
+      "contracts_count": 1552
+    },
+    {
+      "ticker": "T",
+      "total_volume": 138275,
+      "put_volume": 34170,
+      "call_volume": 104105,
+      "cp_volume_ratio": 3.05,
+      "total_oi": 1213068,
+      "put_oi": 475284,
+      "call_oi": 737784,
+      "cp_oi_ratio": 1.55,
+      "contracts_count": 748
+    },
+    {
+      "ticker": "VZ",
+      "total_volume": 181089,
+      "put_volume": 78348,
+      "call_volume": 102741,
+      "cp_volume_ratio": 1.31,
+      "total_oi": 1220723,
+      "put_oi": 508667,
+      "call_oi": 712056,
+      "cp_oi_ratio": 1.4,
+      "contracts_count": 816
+    }
+  ],
+  "anomalies": [
+    {
+      "ticker": "NVDA",
+      "type": "HIGH_VOLUME",
+      "severity": "HIGH",
+      "description": "Extremely high trading volume (Z-score: 5.21)",
+      "value": 4989036,
+      "metric": "volume",
+      "z_score": 5.208818496994923
+    },
+    {
+      "ticker": "NVDA",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 36.7x above median",
+      "value": 4989036,
+      "metric": "volume"
+    },
+    {
+      "ticker": "SPY",
+      "type": "HIGH_VOLUME",
+      "severity": "MEDIUM",
+      "description": "Extremely high trading volume (Z-score: 2.31)",
+      "value": 2490585,
+      "metric": "volume",
+      "z_score": 2.3058613977938927
+    },
+    {
+      "ticker": "SPY",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 18.3x above median",
+      "value": 2490585,
+      "metric": "volume"
+    },
+    {
+      "ticker": "TSLA",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 14.8x above median",
+      "value": 2008505,
+      "metric": "volume"
+    },
+    {
+      "ticker": "QQQ",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 12.3x above median",
+      "value": 1676352,
+      "metric": "volume"
+    },
+    {
+      "ticker": "SOFI",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 10.4x above median",
+      "value": 1417845,
+      "metric": "volume"
+    },
+    {
+      "ticker": "HYG",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 10.3x above median",
+      "value": 1402825,
+      "metric": "volume"
+    },
+    {
+      "ticker": "INTC",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 8.8x above median",
+      "value": 1201973,
+      "metric": "volume"
+    },
+    {
+      "ticker": "VIX",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 6.8x above median",
+      "value": 924986,
+      "metric": "volume"
+    },
+    {
+      "ticker": "IWM",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 6.5x above median",
+      "value": 887344,
+      "metric": "volume"
+    },
+    {
+      "ticker": "NVDA",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 3.07)",
+      "value": 3.07,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "SPY",
+      "type": "DEFENSIVE_POSITIONING",
+      "severity": "MEDIUM",
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.36)",
+      "value": 0.36,
+      "metric": "cp_oi_ratio"
+    },
+    {
+      "ticker": "SOFI",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 2.76)",
+      "value": 2.76,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "HYG",
+      "type": "EXTREME_FEAR",
+      "severity": "HIGH",
+      "description": "极度看跌情绪 (Call/Put 成交量: 0.12)",
+      "value": 0.12,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "HYG",
+      "type": "DEFENSIVE_POSITIONING",
+      "severity": "MEDIUM",
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.22)",
+      "value": 0.22,
+      "metric": "cp_oi_ratio"
+    },
+    {
+      "ticker": "INTC",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 3.12)",
+      "value": 3.12,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "IWM",
+      "type": "DEFENSIVE_POSITIONING",
+      "severity": "MEDIUM",
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.40)",
+      "value": 0.4,
+      "metric": "cp_oi_ratio"
+    },
+    {
+      "ticker": "AAPL",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 2.76)",
+      "value": 2.76,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "MSFT",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 2.51)",
+      "value": 2.51,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "T",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 3.05)",
+      "value": 3.05,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "PFE",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 3.09)",
+      "value": 3.09,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "NIO",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 3.67)",
+      "value": 3.67,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "UVXY",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 4.04)",
+      "value": 4.04,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "JNJ",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 2.88)",
+      "value": 2.88,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "VIX",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.07), strong position holding",
+      "value": 0.07131163509723469,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "SLV",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.07), strong position holding",
+      "value": 0.0749802027385301,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "TLT",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.06), strong position holding",
+      "value": 0.05613334440439115,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "EEM",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.05), strong position holding",
+      "value": 0.04698727700945871,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "GOOGL",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.09), strong position holding",
+      "value": 0.09046708263083371,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "BABA",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.07), strong position holding",
+      "value": 0.0701866832990359,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "PFE",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.03), strong position holding",
+      "value": 0.030694322884825986,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "BAC",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.04), strong position holding",
+      "value": 0.03556012247594173,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "WMT",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.09), strong position holding",
+      "value": 0.09067827383596729,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "XLE",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.04), strong position holding",
+      "value": 0.04117000504428686,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "NIO",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.02), strong position holding",
+      "value": 0.020851307276710737,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "JPM",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.08), strong position holding",
+      "value": 0.08179669154990467,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "C",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.03), strong position holding",
+      "value": 0.03020065376707554,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "WFC",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.03), strong position holding",
+      "value": 0.03470502742873419,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "XOM",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.04), strong position holding",
+      "value": 0.04095923399418054,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "USO",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.09), strong position holding",
+      "value": 0.09429230179896933,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "JNJ",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.09), strong position holding",
+      "value": 0.08627523453343773,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "DIS",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.04), strong position holding",
+      "value": 0.04198827843589702,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "CVX",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.05), strong position holding",
+      "value": 0.05012656320356494,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "ABBV",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.06), strong position holding",
+      "value": 0.0643923202427468,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "GE",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.08), strong position holding",
+      "value": 0.08114207986414951,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "HD",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.07), strong position holding",
+      "value": 0.06893522640549478,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "MCD",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.06), strong position holding",
+      "value": 0.06344676288987273,
+      "metric": "vol_oi_ratio"
+    }
+  ],
+  "summary": {
+    "total": 48,
+    "by_severity": {
+      "HIGH": 21,
+      "MEDIUM": 4,
+      "LOW": 23
+    },
+    "by_type": {
+      "HIGH_VOLUME": 2,
+      "VOLUME_SPIKE": 9,
+      "EXTREME_GREED": 10,
+      "DEFENSIVE_POSITIONING": 3,
+      "EXTREME_FEAR": 1,
+      "LOW_TURNOVER": 23
+    }
+  }
+}
