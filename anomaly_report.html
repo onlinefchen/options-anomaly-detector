@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Options Anomaly Report</title>
+    <title>期权市场异常分析报告</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
@@ -151,142 +151,114 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 Options Market Anomaly Report</h1>
-            <p class="date">2025-10-29 06:48:18 ET</p>
+            <h1>📊 期权市场异常分析报告</h1>
+            <p class="date">2025-10-29 10:45:07 ET</p>
         </div>
 
         <div class="stats">
             <div class="stat-card total">
-                <div class="label">Total Tickers Analyzed</div>
+                <div class="label">分析股票数</div>
                 <div class="number">48</div>
             </div>
             <div class="stat-card total">
-                <div class="label">Total Anomalies</div>
-                <div class="number">14</div>
+                <div class="label">异常总数</div>
+                <div class="number">10</div>
             </div>
             <div class="stat-card high">
-                <div class="label">High Severity</div>
+                <div class="label">高严重</div>
                 <div class="number">8</div>
             </div>
             <div class="stat-card medium">
-                <div class="label">Medium Severity</div>
-                <div class="number">6</div>
+                <div class="label">中严重</div>
+                <div class="number">2</div>
             </div>
             <div class="stat-card low">
-                <div class="label">Low Severity</div>
+                <div class="label">低严重</div>
                 <div class="number">0</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🚨 Detected Anomalies</h2>
+            <h2>🚨 检测到的异常</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Ticker</th>
-                        <th>Severity</th>
-                        <th>Type</th>
-                        <th>Description</th>
+                        <th>股票代码</th>
+                        <th>严重程度</th>
+                        <th>类型</th>
+                        <th>描述</th>
                     </tr>
                 </thead>
                 <tbody>
                     
                 <tr>
                     <td><strong>UVXY</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>HIGH VOLUME</td>
                     <td>Extremely high trading volume (Z-score: 6.48)</td>
                 </tr>
             
                 <tr>
                     <td><strong>UVXY</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
                     <td>Volume 57.3x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>SOFI</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
                     <td>Volume 13.3x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>VIX</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
                     <td>Volume 10.1x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>PLTR</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
                     <td>Volume 7.6x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>VZ</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
                     <td>Volume 6.6x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>NIO</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
                     <td>Volume 6.3x above median</td>
                 </tr>
             
                 <tr>
                     <td><strong>GOOGL</strong></td>
-                    <td><span class="badge" style="background-color:#dc3545">HIGH</span></td>
+                    <td><span class="badge" style="background-color:#dc3545">高</span></td>
                     <td>VOLUME SPIKE</td>
                     <td>Volume 5.9x above median</td>
                 </tr>
             
                 <tr>
-                    <td><strong>QQQ</strong></td>
-                    <td><span class="badge" style="background-color:#ffc107">MEDIUM</span></td>
-                    <td>HIGH TURNOVER</td>
-                    <td>High turnover (Volume/OI: 76.00), possible day trading</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>NFLX</strong></td>
-                    <td><span class="badge" style="background-color:#ffc107">MEDIUM</span></td>
-                    <td>HIGH TURNOVER</td>
-                    <td>High turnover (Volume/OI: 2.03), possible day trading</td>
-                </tr>
-            
-                <tr>
                     <td><strong>GS</strong></td>
-                    <td><span class="badge" style="background-color:#ffc107">MEDIUM</span></td>
+                    <td><span class="badge" style="background-color:#ffc107">中</span></td>
                     <td>HIGH TURNOVER</td>
                     <td>High turnover (Volume/OI: 2.07), possible day trading</td>
                 </tr>
             
                 <tr>
-                    <td><strong>SLV</strong></td>
-                    <td><span class="badge" style="background-color:#ffc107">MEDIUM</span></td>
+                    <td><strong>HD</strong></td>
+                    <td><span class="badge" style="background-color:#ffc107">中</span></td>
                     <td>HIGH TURNOVER</td>
-                    <td>High turnover (Volume/OI: 45.00), possible day trading</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>UNH</strong></td>
-                    <td><span class="badge" style="background-color:#ffc107">MEDIUM</span></td>
-                    <td>HIGH TURNOVER</td>
-                    <td>High turnover (Volume/OI: 4.22), possible day trading</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>JPM</strong></td>
-                    <td><span class="badge" style="background-color:#ffc107">MEDIUM</span></td>
-                    <td>HIGH TURNOVER</td>
-                    <td>High turnover (Volume/OI: 2.33), possible day trading</td>
+                    <td>High turnover (Volume/OI: 7.00), possible day trading</td>
                 </tr>
             
                 </tbody>
@@ -294,21 +266,21 @@
         </div>
 
         <div class="section">
-            <h2>📈 Top 30 Options Volume Rankings</h2>
+            <h2>📈 期权成交量Top 30排行</h2>
             <div class="chart-container">
                 <canvas id="volumeChart"></canvas>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Rank</th>
-                        <th>Ticker</th>
-                        <th>Total Volume</th>
-                        <th>P/C Volume Ratio</th>
-                        <th>Open Interest</th>
-                        <th>P/C OI Ratio</th>
-                        <th>Put Volume</th>
-                        <th>Call Volume</th>
+                        <th>排名</th>
+                        <th>股票代码</th>
+                        <th>总成交量</th>
+                        <th>C/P 成交比</th>
+                        <th>持仓量</th>
+                        <th>C/P 持仓比</th>
+                        <th>Put 成交量</th>
+                        <th>Call 成交量</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -318,7 +290,7 @@
                     <td><strong>UVXY</strong></td>
                     <td>2,262</td>
                     <td>0.00</td>
-                    <td>10,747</td>
+                    <td>11,056</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>2,262</td>
@@ -329,7 +301,7 @@
                     <td><strong>SOFI</strong></td>
                     <td>524</td>
                     <td>0.00</td>
-                    <td>1,698</td>
+                    <td>1,618</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>524</td>
@@ -340,7 +312,7 @@
                     <td><strong>VIX</strong></td>
                     <td>400</td>
                     <td>0.00</td>
-                    <td>3,577</td>
+                    <td>3,767</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>400</td>
@@ -351,7 +323,7 @@
                     <td><strong>PLTR</strong></td>
                     <td>299</td>
                     <td>0.00</td>
-                    <td>2,317</td>
+                    <td>2,271</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>299</td>
@@ -362,7 +334,7 @@
                     <td><strong>VZ</strong></td>
                     <td>261</td>
                     <td>0.00</td>
-                    <td>268</td>
+                    <td>372</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>261</td>
@@ -373,7 +345,7 @@
                     <td><strong>NIO</strong></td>
                     <td>247</td>
                     <td>0.00</td>
-                    <td>3,510</td>
+                    <td>3,501</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>247</td>
@@ -384,7 +356,7 @@
                     <td><strong>GOOGL</strong></td>
                     <td>234</td>
                     <td>0.00</td>
-                    <td>175</td>
+                    <td>262</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>234</td>
@@ -395,7 +367,7 @@
                     <td><strong>WFC</strong></td>
                     <td>186</td>
                     <td>0.00</td>
-                    <td>380</td>
+                    <td>381</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>186</td>
@@ -406,7 +378,7 @@
                     <td><strong>WMT</strong></td>
                     <td>125</td>
                     <td>0.00</td>
-                    <td>144</td>
+                    <td>243</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>125</td>
@@ -417,7 +389,7 @@
                     <td><strong>GE</strong></td>
                     <td>117</td>
                     <td>0.00</td>
-                    <td>147</td>
+                    <td>164</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>117</td>
@@ -428,7 +400,7 @@
                     <td><strong>VIXY</strong></td>
                     <td>95</td>
                     <td>0.00</td>
-                    <td>543</td>
+                    <td>569</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>95</td>
@@ -439,7 +411,7 @@
                     <td><strong>AMD</strong></td>
                     <td>86</td>
                     <td>0.00</td>
-                    <td>74</td>
+                    <td>95</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>86</td>
@@ -450,7 +422,7 @@
                     <td><strong>XLE</strong></td>
                     <td>77</td>
                     <td>0.00</td>
-                    <td>113</td>
+                    <td>116</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>77</td>
@@ -461,7 +433,7 @@
                     <td><strong>QQQ</strong></td>
                     <td>76</td>
                     <td>0.00</td>
-                    <td>1</td>
+                    <td>76</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>76</td>
@@ -472,7 +444,7 @@
                     <td><strong>C</strong></td>
                     <td>74</td>
                     <td>0.00</td>
-                    <td>97</td>
+                    <td>96</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>74</td>
@@ -483,7 +455,7 @@
                     <td><strong>NFLX</strong></td>
                     <td>73</td>
                     <td>0.00</td>
-                    <td>36</td>
+                    <td>92</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>73</td>
@@ -494,7 +466,7 @@
                     <td><strong>USO</strong></td>
                     <td>70</td>
                     <td>0.00</td>
-                    <td>312</td>
+                    <td>355</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>70</td>
@@ -505,7 +477,7 @@
                     <td><strong>TSLA</strong></td>
                     <td>68</td>
                     <td>0.00</td>
-                    <td>171</td>
+                    <td>189</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>68</td>
@@ -527,7 +499,7 @@
                     <td><strong>MSFT</strong></td>
                     <td>60</td>
                     <td>0.00</td>
-                    <td>84</td>
+                    <td>103</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>60</td>
@@ -538,7 +510,7 @@
                     <td><strong>AMZN</strong></td>
                     <td>55</td>
                     <td>0.00</td>
-                    <td>4,092</td>
+                    <td>4,102</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>55</td>
@@ -549,7 +521,7 @@
                     <td><strong>SLV</strong></td>
                     <td>45</td>
                     <td>0.00</td>
-                    <td>1</td>
+                    <td>37</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>45</td>
@@ -560,7 +532,7 @@
                     <td><strong>NVDA</strong></td>
                     <td>42</td>
                     <td>0.00</td>
-                    <td>203</td>
+                    <td>227</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>42</td>
@@ -582,7 +554,7 @@
                     <td><strong>INTC</strong></td>
                     <td>38</td>
                     <td>0.00</td>
-                    <td>222</td>
+                    <td>233</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>38</td>
@@ -593,7 +565,7 @@
                     <td><strong>UNH</strong></td>
                     <td>38</td>
                     <td>0.00</td>
-                    <td>9</td>
+                    <td>29</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>38</td>
@@ -604,7 +576,7 @@
                     <td><strong>BAC</strong></td>
                     <td>36</td>
                     <td>0.00</td>
-                    <td>298</td>
+                    <td>305</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>36</td>
@@ -615,7 +587,7 @@
                     <td><strong>BABA</strong></td>
                     <td>35</td>
                     <td>0.00</td>
-                    <td>21</td>
+                    <td>28</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>35</td>
@@ -637,7 +609,7 @@
                     <td><strong>META</strong></td>
                     <td>27</td>
                     <td>0.00</td>
-                    <td>109</td>
+                    <td>110</td>
                     <td>0.00</td>
                     <td>0</td>
                     <td>27</td>
@@ -648,22 +620,22 @@
         </div>
 
         <div class="section">
-            <h2>📊 Put/Call Ratios Analysis</h2>
+            <h2>📊 Call/Put 比例分析</h2>
             <div class="chart-container">
-                <canvas id="pcRatioChart"></canvas>
+                <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>💼 Open Interest Distribution</h2>
+            <h2>💼 持仓量分布</h2>
             <div class="chart-container">
                 <canvas id="oiChart"></canvas>
             </div>
         </div>
 
         <div class="footer">
-            <p>Generated by Options Anomaly Detector | Data: Polygon.io</p>
-            <p>⚠️ This report is for informational purposes only. Not financial advice.</p>
+            <p>期权异常检测系统 | 数据来源: Polygon.io</p>
+            <p>⚠️ 本报告仅供参考，不构成投资建议</p>
         </div>
     </div>
 
@@ -675,7 +647,7 @@
             data: {
                 labels: ["UVXY", "SOFI", "VIX", "PLTR", "VZ", "NIO", "GOOGL", "WFC", "WMT", "GE", "VIXY", "AMD", "XLE", "QQQ", "C", "NFLX", "USO", "TSLA", "GS", "MSFT", "AMZN", "SLV", "NVDA", "PFE", "INTC", "UNH", "BAC", "BABA", "HYG", "META"],
                 datasets: [{
-                    label: 'Total Volume',
+                    label: '总成交量',
                     data: [2262, 524, 400, 299, 261, 247, 234, 186, 125, 117, 95, 86, 77, 76, 74, 73, 70, 68, 62, 60, 55, 45, 42, 41, 38, 38, 36, 35, 33, 27],
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
@@ -691,7 +663,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Options Trading Volume'
+                        text: '期权成交量'
                     }
                 },
                 scales: {
@@ -702,23 +674,23 @@
             }
         });
 
-        // P/C Ratio Chart
-        const pcCtx = document.getElementById('pcRatioChart').getContext('2d');
-        new Chart(pcCtx, {
+        // C/P Ratio Chart
+        const cpCtx = document.getElementById('cpRatioChart').getContext('2d');
+        new Chart(cpCtx, {
             type: 'bar',
             data: {
                 labels: ["UVXY", "SOFI", "VIX", "PLTR", "VZ", "NIO", "GOOGL", "WFC", "WMT", "GE", "VIXY", "AMD", "XLE", "QQQ", "C", "NFLX", "USO", "TSLA", "GS", "MSFT", "AMZN", "SLV", "NVDA", "PFE", "INTC", "UNH", "BAC", "BABA", "HYG", "META"],
                 datasets: [
                     {
-                        label: 'Volume P/C Ratio',
-                        data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                        label: 'C/P 成交比',
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                         backgroundColor: 'rgba(255, 99, 132, 0.6)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     },
                     {
-                        label: 'OI P/C Ratio',
-                        data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                        label: 'C/P 持仓比',
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                         backgroundColor: 'rgba(54, 162, 235, 0.6)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -731,7 +703,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Put/Call Ratios Comparison'
+                        text: 'Call/Put 比例对比'
                     }
                 },
                 scales: {
@@ -749,8 +721,8 @@
             data: {
                 labels: ["UVXY", "SOFI", "VIX", "PLTR", "VZ", "NIO", "GOOGL", "WFC", "WMT", "GE", "VIXY", "AMD", "XLE", "QQQ", "C", "NFLX", "USO", "TSLA", "GS", "MSFT", "AMZN", "SLV", "NVDA", "PFE", "INTC", "UNH", "BAC", "BABA", "HYG", "META"],
                 datasets: [{
-                    label: 'Open Interest',
-                    data: [10747, 1698, 3577, 2317, 268, 3510, 175, 380, 144, 147, 543, 74, 113, 1, 97, 36, 312, 171, 30, 84, 4092, 1, 203, 115, 222, 9, 298, 21, 33, 109],
+                    label: '持仓量',
+                    data: [11056, 1618, 3767, 2271, 372, 3501, 262, 381, 243, 164, 569, 95, 116, 76, 96, 92, 355, 189, 30, 103, 4102, 37, 227, 115, 233, 29, 305, 28, 33, 110],
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
@@ -762,7 +734,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Open Interest Distribution'
+                        text: '持仓量分布'
                     }
                 },
                 scales: {
