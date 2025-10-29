@@ -31,6 +31,8 @@ class HTMLReportGenerator:
             summary: Anomaly summary statistics
             output_file: Output file path
         """
+        import os
+        import shutil
         # Sort data by volume
         sorted_data = sorted(data, key=lambda x: x['total_volume'], reverse=True)[:30]
 
@@ -71,6 +73,12 @@ class HTMLReportGenerator:
             f.write(html)
 
         print(f"\n✓ HTML report generated: {output_file}")
+
+        # Also create index.html for GitHub Pages
+        output_dir = os.path.dirname(output_file)
+        index_file = os.path.join(output_dir, 'index.html')
+        shutil.copy2(output_file, index_file)
+        print(f"✓ GitHub Pages index created: {index_file}")
 
     def _generate_table_rows(self, data: List[Dict]) -> str:
         """Generate table rows HTML for volume rankings"""
