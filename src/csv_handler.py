@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import requests
+from utils import get_market_times
 
 
 class PolygonCSVHandler:
@@ -115,19 +116,34 @@ class PolygonCSVHandler:
             # Default to yesterday (data available next day ~11 AM ET)
             date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
+        # Get current market session to determine caching strategy
+        time_info = get_market_times()
+        market_session = time_info['session']
+        is_market_hours = (market_session == 'market-hours')
+
         # Check if file already exists locally
         if save_to_disk:
             local_file = self._get_local_csv_path(date)
             if os.path.exists(local_file):
-                print(f"  📂 Loading from local cache: {local_file}")
-                try:
-                    with open(local_file, 'rb') as f:
-                        data = f.read()
-                    size_mb = len(data) / 1024 / 1024
-                    print(f"  ✓ Loaded {size_mb:.1f} MB from cache")
-                    return data
-                except Exception as e:
-                    print(f"  ⚠️  Cache read failed: {e}, downloading from server...")
+                # If in market hours, always re-download to get latest data
+                if is_market_hours:
+                    print(f"  📊 盘中时段检测到缓存文件，但需要重新下载以获取最新数据")
+                    print(f"  🔄 删除旧缓存: {local_file}")
+                    try:
+                        os.remove(local_file)
+                    except Exception as e:
+                        print(f"  ⚠️  删除缓存失败: {e}")
+                else:
+                    # If not in market hours, use cache
+                    print(f"  📂 {time_info['session_cn']}时段，使用本地缓存: {local_file}")
+                    try:
+                        with open(local_file, 'rb') as f:
+                            data = f.read()
+                        size_mb = len(data) / 1024 / 1024
+                        print(f"  ✓ 从缓存加载 {size_mb:.1f} MB (节省下载时间)")
+                        return data
+                    except Exception as e:
+                        print(f"  ⚠️  缓存读取失败: {e}, 重新下载...")
 
         url = self._get_csv_url(date)
 
