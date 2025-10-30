@@ -1,6 +1,6 @@
 {
   "date": "2025-10-30",
-  "timestamp": "2025-10-30T01:39:17.246786",
+  "timestamp": "2025-10-30T01:42:35.448479",
   "tickers_count": 48,
   "anomalies_count": 44,
   "data": [
@@ -16,10 +16,16 @@
       "cp_oi_ratio": 0.36,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 1.0,
+        "best_rank": 1,
+        "worst_rank": 1,
+        "today_rank": 1,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -34,10 +40,16 @@
       "cp_oi_ratio": 0.76,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 2.0,
+        "best_rank": 2,
+        "worst_rank": 2,
+        "today_rank": 2,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -52,10 +64,16 @@
       "cp_oi_ratio": 0.4,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 3.0,
+        "best_rank": 3,
+        "worst_rank": 3,
+        "today_rank": 3,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -70,10 +88,16 @@
       "cp_oi_ratio": 0.53,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 4.0,
+        "best_rank": 4,
+        "worst_rank": 4,
+        "today_rank": 4,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -88,10 +112,16 @@
       "cp_oi_ratio": 1.2,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 5.0,
+        "best_rank": 5,
+        "worst_rank": 5,
+        "today_rank": 5,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -106,10 +136,16 @@
       "cp_oi_ratio": 1.0,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 6.0,
+        "best_rank": 6,
+        "worst_rank": 6,
+        "today_rank": 6,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -124,10 +160,16 @@
       "cp_oi_ratio": 1.47,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 7.0,
+        "best_rank": 7,
+        "worst_rank": 7,
+        "today_rank": 7,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -142,10 +184,16 @@
       "cp_oi_ratio": 1.38,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 8.0,
+        "best_rank": 8,
+        "worst_rank": 8,
+        "today_rank": 8,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -160,10 +208,16 @@
       "cp_oi_ratio": 1.37,
       "contracts_count": 2466,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 9.0,
+        "best_rank": 9,
+        "worst_rank": 9,
+        "today_rank": 9,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -178,10 +232,16 @@
       "cp_oi_ratio": 1.23,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 10.0,
+        "best_rank": 10,
+        "worst_rank": 10,
+        "today_rank": 10,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -196,10 +256,16 @@
       "cp_oi_ratio": 1.43,
       "contracts_count": 2090,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 11.0,
+        "best_rank": 11,
+        "worst_rank": 11,
+        "today_rank": 11,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -214,10 +280,16 @@
       "cp_oi_ratio": 1.07,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 12.0,
+        "best_rank": 12,
+        "worst_rank": 12,
+        "today_rank": 12,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -232,10 +304,16 @@
       "cp_oi_ratio": 1.44,
       "contracts_count": 1382,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 13.0,
+        "best_rank": 13,
+        "worst_rank": 13,
+        "today_rank": 13,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -250,10 +328,16 @@
       "cp_oi_ratio": 1.69,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 14.0,
+        "best_rank": 14,
+        "worst_rank": 14,
+        "today_rank": 14,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -268,10 +352,16 @@
       "cp_oi_ratio": 1.7,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 15.0,
+        "best_rank": 15,
+        "worst_rank": 15,
+        "today_rank": 15,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -286,10 +376,16 @@
       "cp_oi_ratio": 1.45,
       "contracts_count": 526,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 16.0,
+        "best_rank": 16,
+        "worst_rank": 16,
+        "today_rank": 16,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -304,10 +400,16 @@
       "cp_oi_ratio": 1.06,
       "contracts_count": 2378,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 17.0,
+        "best_rank": 17,
+        "worst_rank": 17,
+        "today_rank": 17,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -322,10 +424,16 @@
       "cp_oi_ratio": 1.49,
       "contracts_count": 1168,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 18.0,
+        "best_rank": 18,
+        "worst_rank": 18,
+        "today_rank": 18,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -340,10 +448,16 @@
       "cp_oi_ratio": 0.88,
       "contracts_count": 1012,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 19.0,
+        "best_rank": 19,
+        "worst_rank": 19,
+        "today_rank": 19,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -358,10 +472,16 @@
       "cp_oi_ratio": 1.0,
       "contracts_count": 2168,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 20.0,
+        "best_rank": 20,
+        "worst_rank": 20,
+        "today_rank": 20,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -376,10 +496,16 @@
       "cp_oi_ratio": 0.88,
       "contracts_count": 2500,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 21.0,
+        "best_rank": 21,
+        "worst_rank": 21,
+        "today_rank": 21,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -394,10 +520,16 @@
       "cp_oi_ratio": 0.96,
       "contracts_count": 1240,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 22.0,
+        "best_rank": 22,
+        "worst_rank": 22,
+        "today_rank": 22,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -412,10 +544,16 @@
       "cp_oi_ratio": 0.98,
       "contracts_count": 1366,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 23.0,
+        "best_rank": 23,
+        "worst_rank": 23,
+        "today_rank": 23,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -430,10 +568,16 @@
       "cp_oi_ratio": 0.52,
       "contracts_count": 1806,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 24.0,
+        "best_rank": 24,
+        "worst_rank": 24,
+        "today_rank": 24,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -448,10 +592,16 @@
       "cp_oi_ratio": 1.1,
       "contracts_count": 1116,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 25.0,
+        "best_rank": 25,
+        "worst_rank": 25,
+        "today_rank": 25,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -466,10 +616,16 @@
       "cp_oi_ratio": 1.6,
       "contracts_count": 1308,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 26.0,
+        "best_rank": 26,
+        "worst_rank": 26,
+        "today_rank": 26,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -484,10 +640,16 @@
       "cp_oi_ratio": 1.51,
       "contracts_count": 1334,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 27.0,
+        "best_rank": 27,
+        "worst_rank": 27,
+        "today_rank": 27,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -502,10 +664,16 @@
       "cp_oi_ratio": 2.13,
       "contracts_count": 1400,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 28.0,
+        "best_rank": 28,
+        "worst_rank": 28,
+        "today_rank": 28,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -520,10 +688,16 @@
       "cp_oi_ratio": 1.98,
       "contracts_count": 1188,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 29.0,
+        "best_rank": 29,
+        "worst_rank": 29,
+        "today_rank": 29,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -538,10 +712,16 @@
       "cp_oi_ratio": 1.09,
       "contracts_count": 980,
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "trend": "new",
-        "icon": "🆕"
+        "appearances": 2,
+        "appearance_rate": 100.0,
+        "avg_rank": 30.0,
+        "best_rank": 30,
+        "worst_rank": 30,
+        "today_rank": 30,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 2,
+        "icon": "🔥"
       }
     },
     {
@@ -558,7 +738,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -576,7 +762,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -594,7 +786,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -612,7 +810,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -630,7 +834,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -648,7 +858,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -666,7 +882,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -684,7 +906,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -702,7 +930,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -720,7 +954,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -738,7 +978,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -756,7 +1002,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -774,7 +1026,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -792,7 +1050,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -810,7 +1074,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -828,7 +1098,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -846,7 +1122,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     },
@@ -864,7 +1146,13 @@
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
         "trend": "new",
+        "streak": 0,
         "icon": "🆕"
       }
     }
