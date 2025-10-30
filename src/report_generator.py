@@ -70,7 +70,9 @@ class HTMLReportGenerator:
             cp_oi_ratios_json=json.dumps(cp_oi_ratios),
             open_interests_json=json.dumps(open_interests),
             volume_table_rows=self._generate_table_rows(sorted_data),
-            anomaly_rows=self._generate_anomaly_rows(sorted_anomalies)
+            anomaly_rows=self._generate_anomaly_rows(sorted_anomalies),
+            # Add complete data for client-side sorting
+            table_data_json=json.dumps(sorted_data, ensure_ascii=False)
         )
 
         # Write to file
@@ -279,6 +281,39 @@ class HTMLReportGenerator:
             font-weight: 600;
         }}
 
+        table th.sortable {{
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: background 0.2s;
+        }}
+
+        table th.sortable:hover {{
+            background: linear-gradient(135deg, #7688f0 0%, #8655b0 100%);
+        }}
+
+        table th.sortable.sorted-asc .sort-icon {{
+            color: #ffd700;
+        }}
+
+        table th.sortable.sorted-asc .sort-icon::after {{
+            content: ' ▲';
+        }}
+
+        table th.sortable.sorted-desc .sort-icon {{
+            color: #ffd700;
+        }}
+
+        table th.sortable.sorted-desc .sort-icon::after {{
+            content: ' ▼';
+        }}
+
+        .sort-icon {{
+            font-size: 0.8em;
+            opacity: 0.6;
+            margin-left: 5px;
+        }}
+
         table td {{
             padding: 12px 15px;
             border-bottom: 1px solid #eee;
@@ -375,20 +410,20 @@ class HTMLReportGenerator:
             <div class="chart-container">
                 <canvas id="volumeChart"></canvas>
             </div>
-            <table>
+            <table id="volumeTable">
                 <thead>
                     <tr>
                         <th>排名</th>
-                        <th>股票代码</th>
-                        <th>总成交量</th>
-                        <th>C/P 成交比</th>
-                        <th>持仓量</th>
-                        <th>C/P 持仓比</th>
-                        <th>Put 成交量</th>
-                        <th>Call 成交量</th>
+                        <th class="sortable" data-column="ticker" data-type="string">股票代码 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-column="total_volume" data-type="number">总成交量 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-column="put_volume" data-type="number">Put 成交量 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-column="call_volume" data-type="number">Call 成交量 <span class="sort-icon">⇅</span></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="volumeTableBody">
                     {volume_table_rows}
                 </tbody>
             </table>
@@ -415,6 +450,92 @@ class HTMLReportGenerator:
     </div>
 
     <script>
+        // Store table data for sorting
+        const tableData = {table_data_json};
+        let currentSortColumn = 'total_volume';
+        let currentSortOrder = 'desc';
+
+        // Table sorting function
+        function sortTable(column, type) {{
+            // Toggle sort order if clicking same column
+            if (currentSortColumn === column) {{
+                currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+            }} else {{
+                currentSortColumn = column;
+                currentSortOrder = 'desc'; // Default to descending
+            }}
+
+            // Sort data
+            const sortedData = [...tableData].sort((a, b) => {{
+                let valA = a[column];
+                let valB = b[column];
+
+                // Handle string comparison
+                if (type === 'string') {{
+                    valA = String(valA).toLowerCase();
+                    valB = String(valB).toLowerCase();
+                    return currentSortOrder === 'asc'
+                        ? valA.localeCompare(valB)
+                        : valB.localeCompare(valA);
+                }}
+
+                // Handle number comparison
+                valA = Number(valA) || 0;
+                valB = Number(valB) || 0;
+                return currentSortOrder === 'asc' ? valA - valB : valB - valA;
+            }});
+
+            // Update table
+            renderTable(sortedData);
+
+            // Update sort indicators
+            document.querySelectorAll('th.sortable').forEach(th => {{
+                th.classList.remove('sorted-asc', 'sorted-desc');
+            }});
+            const activeHeader = document.querySelector(`th[data-column="${{column}}"]`);
+            if (activeHeader) {{
+                activeHeader.classList.add(`sorted-${{currentSortOrder}}`);
+            }}
+        }}
+
+        // Render table with data
+        function renderTable(data) {{
+            const tbody = document.getElementById('volumeTableBody');
+            tbody.innerHTML = '';
+
+            data.forEach((item, idx) => {{
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${{idx + 1}}</td>
+                    <td><strong>${{item.ticker}}</strong></td>
+                    <td>${{item.total_volume.toLocaleString()}}</td>
+                    <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                    <td>${{item.total_oi.toLocaleString()}}</td>
+                    <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
+                    <td>${{item.put_volume.toLocaleString()}}</td>
+                    <td>${{item.call_volume.toLocaleString()}}</td>
+                `;
+                tbody.appendChild(row);
+            }});
+        }}
+
+        // Add click handlers to sortable headers
+        document.addEventListener('DOMContentLoaded', () => {{
+            document.querySelectorAll('th.sortable').forEach(th => {{
+                th.addEventListener('click', () => {{
+                    const column = th.dataset.column;
+                    const type = th.dataset.type;
+                    sortTable(column, type);
+                }});
+            }});
+
+            // Set initial sort indicator
+            const initialHeader = document.querySelector('th[data-column="total_volume"]');
+            if (initialHeader) {{
+                initialHeader.classList.add('sorted-desc');
+            }}
+        }});
+
         // Volume Chart
         const volumeCtx = document.getElementById('volumeChart').getContext('2d');
         new Chart(volumeCtx, {{
