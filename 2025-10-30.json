@@ -1,19 +1,19 @@
 {
   "date": "2025-10-30",
-  "timestamp": "2025-10-30T03:30:55.925241",
+  "timestamp": "2025-10-30T08:52:22.861751",
   "tickers_count": 48,
-  "anomalies_count": 44,
+  "anomalies_count": 46,
   "data": [
     {
       "ticker": "SPY",
-      "total_volume": 6222645,
-      "put_volume": 3268339,
-      "call_volume": 2954306,
-      "cp_volume_ratio": 0.9,
-      "total_oi": 4723246,
-      "put_oi": 3475095,
-      "call_oi": 1248151,
-      "cp_oi_ratio": 0.36,
+      "total_volume": 2665117,
+      "put_volume": 1418137,
+      "call_volume": 1246980,
+      "cp_volume_ratio": 0.88,
+      "total_oi": 4363130,
+      "put_oi": 3233473,
+      "call_oi": 1129657,
+      "cp_oi_ratio": 0.35,
       "contracts_count": 2500,
       "top_3_contracts": [
         {
@@ -22,7 +22,7 @@
           "strike": 530,
           "expiry": "2025-11-07",
           "type": "put",
-          "percentage": 4.5
+          "percentage": 4.8
         },
         {
           "ticker": "O:SPY251031P00480000",
@@ -30,7 +30,7 @@
           "strike": 480,
           "expiry": "2025-10-31",
           "type": "put",
-          "percentage": 4.4
+          "percentage": 4.8
         },
         {
           "ticker": "O:SPY251031P00510000",
@@ -38,23 +38,23 @@
           "strike": 510,
           "expiry": "2025-10-31",
           "type": "put",
-          "percentage": 4.3
+          "percentage": 4.6
         }
       ],
       "strike_concentration": {
         "range": "500-550",
-        "oi": 621342,
-        "percentage": 13.2,
+        "oi": 618754,
+        "percentage": 14.2,
         "dominant_strike": 530
       },
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 17.5,
-        "best_rank": 5,
+        "avg_rank": 15.0,
+        "best_rank": 1,
         "worst_rank": 27,
-        "today_rank": 26,
-        "rank_change": -16,
+        "today_rank": 1,
+        "rank_change": 9,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -62,55 +62,55 @@
     },
     {
       "ticker": "QQQ",
-      "total_volume": 3578437,
-      "put_volume": 1903856,
-      "call_volume": 1674581,
-      "cp_volume_ratio": 0.88,
-      "total_oi": 2809798,
-      "put_oi": 1600507,
-      "call_oi": 1209291,
-      "cp_oi_ratio": 0.76,
+      "total_volume": 2003996,
+      "put_volume": 1110969,
+      "call_volume": 893027,
+      "cp_volume_ratio": 0.8,
+      "total_oi": 3516981,
+      "put_oi": 2416635,
+      "call_oi": 1100346,
+      "cp_oi_ratio": 0.46,
       "contracts_count": 2500,
       "top_3_contracts": [
+        {
+          "ticker": "O:QQQ251121P00540000",
+          "oi": 78949,
+          "strike": 540,
+          "expiry": "2025-11-21",
+          "type": "put",
+          "percentage": 2.2
+        },
+        {
+          "ticker": "O:QQQ251121P00500000",
+          "oi": 71735,
+          "strike": 500,
+          "expiry": "2025-11-21",
+          "type": "put",
+          "percentage": 2.0
+        },
         {
           "ticker": "O:QQQ251031P00600000",
           "oi": 66868,
           "strike": 600,
           "expiry": "2025-10-31",
           "type": "put",
-          "percentage": 2.4
-        },
-        {
-          "ticker": "O:QQQ251031P00580000",
-          "oi": 59029,
-          "strike": 580,
-          "expiry": "2025-10-31",
-          "type": "put",
-          "percentage": 2.1
-        },
-        {
-          "ticker": "O:QQQ251121C00600000",
-          "oi": 49974,
-          "strike": 600,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.8
+          "percentage": 1.9
         }
       ],
       "strike_concentration": {
         "range": "600-650",
-        "oi": 1495333,
-        "percentage": 53.2,
+        "oi": 1456116,
+        "percentage": 41.4,
         "dominant_strike": 600
       },
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 14.9,
-        "best_rank": 4,
+        "avg_rank": 13.4,
+        "best_rank": 2,
         "worst_rank": 26,
-        "today_rank": 15,
-        "rank_change": -8,
+        "today_rank": 2,
+        "rank_change": 5,
         "trend": "rising",
         "streak": 5,
         "icon": "🔥"
@@ -118,14 +118,14 @@
     },
     {
       "ticker": "IWM",
-      "total_volume": 1869713,
-      "put_volume": 1052462,
-      "call_volume": 817251,
-      "cp_volume_ratio": 0.78,
-      "total_oi": 6176809,
-      "put_oi": 4418356,
-      "call_oi": 1758453,
-      "cp_oi_ratio": 0.4,
+      "total_volume": 1207197,
+      "put_volume": 718176,
+      "call_volume": 489021,
+      "cp_volume_ratio": 0.68,
+      "total_oi": 6650205,
+      "put_oi": 4612883,
+      "call_oi": 2037322,
+      "cp_oi_ratio": 0.44,
       "contracts_count": 2500,
       "top_3_contracts": [
         {
@@ -134,7 +134,7 @@
           "strike": 235,
           "expiry": "2025-11-21",
           "type": "put",
-          "percentage": 2.8
+          "percentage": 2.6
         },
         {
           "ticker": "O:IWM251121P00232000",
@@ -142,7 +142,7 @@
           "strike": 232,
           "expiry": "2025-11-21",
           "type": "put",
-          "percentage": 2.7
+          "percentage": 2.5
         },
         {
           "ticker": "O:IWM251121P00240000",
@@ -150,24 +150,24 @@
           "strike": 240,
           "expiry": "2025-11-21",
           "type": "put",
-          "percentage": 2.6
+          "percentage": 2.4
         }
       ],
       "strike_concentration": {
-        "range": "220-240",
-        "oi": 2101423,
-        "percentage": 34.0,
-        "dominant_strike": 235
+        "range": "240-260",
+        "oi": 1341796,
+        "percentage": 20.2,
+        "dominant_strike": 240
       },
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 15.7,
+        "avg_rank": 14.2,
         "best_rank": 2,
         "worst_rank": 28,
-        "today_rank": 18,
-        "rank_change": -6,
-        "trend": "falling",
+        "today_rank": 3,
+        "rank_change": 9,
+        "trend": "rising",
         "streak": 10,
         "icon": "🔥"
       }
@@ -218,11 +218,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 18.3,
+        "avg_rank": 16.5,
         "best_rank": 2,
         "worst_rank": 30,
-        "today_rank": 22,
-        "rank_change": -8,
+        "today_rank": 4,
+        "rank_change": 10,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -274,11 +274,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 13.3,
+        "avg_rank": 12.7,
         "best_rank": 1,
         "worst_rank": 27,
-        "today_rank": 11,
-        "rank_change": 4,
+        "today_rank": 5,
+        "rank_change": 10,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -330,11 +330,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 13.0,
+        "avg_rank": 12.8,
         "best_rank": 1,
         "worst_rank": 25,
-        "today_rank": 8,
-        "rank_change": 8,
+        "today_rank": 6,
+        "rank_change": 10,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -386,11 +386,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 11.2,
+        "avg_rank": 10.3,
         "best_rank": 1,
         "worst_rank": 21,
-        "today_rank": 16,
-        "rank_change": -7,
+        "today_rank": 7,
+        "rank_change": 2,
         "trend": "stable",
         "streak": 10,
         "icon": "🔥"
@@ -442,11 +442,11 @@
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
-        "avg_rank": 14.2,
+        "avg_rank": 12.8,
         "best_rank": 2,
         "worst_rank": 30,
-        "today_rank": 20,
-        "rank_change": -14,
+        "today_rank": 8,
+        "rank_change": -2,
         "trend": "rising",
         "streak": 3,
         "icon": "🌟"
@@ -498,11 +498,11 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 13.7,
+        "avg_rank": 14.0,
         "best_rank": 2,
         "worst_rank": 26,
-        "today_rank": 6,
-        "rank_change": 19,
+        "today_rank": 9,
+        "rank_change": 16,
         "trend": "falling",
         "streak": 8,
         "icon": "🔥"
@@ -552,15 +552,15 @@
         "dominant_strike": 800
       },
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 14.1,
+        "appearances": 10,
+        "appearance_rate": 100.0,
+        "avg_rank": 13.7,
         "best_rank": 2,
         "worst_rank": 25,
-        "today_rank": 17,
-        "rank_change": 0,
-        "trend": "falling",
-        "streak": 0,
+        "today_rank": 10,
+        "rank_change": 7,
+        "trend": "stable",
+        "streak": 10,
         "icon": "🔥"
       }
     },
@@ -610,11 +610,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 14.7,
+        "avg_rank": 13.4,
         "best_rank": 2,
         "worst_rank": 25,
-        "today_rank": 24,
-        "rank_change": -22,
+        "today_rank": 11,
+        "rank_change": -9,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -666,12 +666,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 14.6,
+        "avg_rank": 13.7,
         "best_rank": 4,
         "worst_rank": 22,
-        "today_rank": 21,
-        "rank_change": -10,
-        "trend": "falling",
+        "today_rank": 12,
+        "rank_change": -1,
+        "trend": "stable",
         "streak": 10,
         "icon": "🔥"
       }
@@ -722,12 +722,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 15.6,
+        "avg_rank": 15.0,
         "best_rank": 4,
         "worst_rank": 29,
-        "today_rank": 19,
-        "rank_change": -15,
-        "trend": "stable",
+        "today_rank": 13,
+        "rank_change": -9,
+        "trend": "rising",
         "streak": 10,
         "icon": "🔥"
       }
@@ -778,11 +778,11 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 19.4,
+        "avg_rank": 18.2,
         "best_rank": 8,
         "worst_rank": 30,
-        "today_rank": 25,
-        "rank_change": -5,
+        "today_rank": 14,
+        "rank_change": 6,
         "trend": "falling",
         "streak": 9,
         "icon": "🔥"
@@ -834,11 +834,11 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 12.6,
+        "avg_rank": 12.7,
         "best_rank": 2,
         "worst_rank": 25,
-        "today_rank": 14,
-        "rank_change": -11,
+        "today_rank": 15,
+        "rank_change": -12,
         "trend": "rising",
         "streak": 4,
         "icon": "🔥"
@@ -890,11 +890,11 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 15.8,
+        "avg_rank": 16.1,
         "best_rank": 1,
         "worst_rank": 22,
-        "today_rank": 13,
-        "rank_change": 6,
+        "today_rank": 16,
+        "rank_change": 3,
         "trend": "stable",
         "streak": 9,
         "icon": "🔥"
@@ -944,16 +944,16 @@
         "dominant_strike": 200
       },
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
-        "avg_rank": 12.9,
+        "appearances": 9,
+        "appearance_rate": 90.0,
+        "avg_rank": 13.3,
         "best_rank": 3,
         "worst_rank": 28,
-        "today_rank": 18,
-        "rank_change": -12,
+        "today_rank": 17,
+        "rank_change": 1,
         "trend": "stable",
-        "streak": 0,
-        "icon": "🌟"
+        "streak": 3,
+        "icon": "🔥"
       }
     },
     {
@@ -1002,11 +1002,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 11.6,
+        "avg_rank": 12.4,
         "best_rank": 1,
         "worst_rank": 27,
-        "today_rank": 10,
-        "rank_change": -5,
+        "today_rank": 18,
+        "rank_change": -13,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -1058,11 +1058,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 13.6,
+        "avg_rank": 13.8,
         "best_rank": 3,
         "worst_rank": 23,
-        "today_rank": 17,
-        "rank_change": -9,
+        "today_rank": 19,
+        "rank_change": -11,
         "trend": "falling",
         "streak": 10,
         "icon": "🔥"
@@ -1114,11 +1114,11 @@
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
-        "avg_rank": 22.2,
+        "avg_rank": 21.9,
         "best_rank": 9,
         "worst_rank": 29,
-        "today_rank": 23,
-        "rank_change": 3,
+        "today_rank": 20,
+        "rank_change": 6,
         "trend": "falling",
         "streak": 3,
         "icon": "🌟"
@@ -1168,15 +1168,15 @@
         "dominant_strike": 800
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 21.0,
+        "best_rank": 21,
+        "worst_rank": 21,
+        "today_rank": 21,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
@@ -1224,15 +1224,15 @@
         "dominant_strike": 90
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 22.0,
+        "best_rank": 22,
+        "worst_rank": 22,
+        "today_rank": 22,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
@@ -1280,15 +1280,15 @@
         "dominant_strike": 100
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 23.0,
+        "best_rank": 23,
+        "worst_rank": 23,
+        "today_rank": 23,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
@@ -1338,27 +1338,27 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 9.6,
-        "best_rank": 4,
-        "worst_rank": 23,
-        "today_rank": 4,
-        "rank_change": 7,
-        "trend": "rising",
+        "avg_rank": 11.8,
+        "best_rank": 6,
+        "worst_rank": 24,
+        "today_rank": 24,
+        "rank_change": -13,
+        "trend": "falling",
         "streak": 1,
         "icon": "🔥"
       }
     },
     {
       "ticker": "USO",
-      "total_volume": 30699,
-      "put_volume": 15980,
-      "call_volume": 14719,
-      "cp_volume_ratio": 0.92,
-      "total_oi": 415071,
-      "put_oi": 197420,
-      "call_oi": 217651,
-      "cp_oi_ratio": 1.1,
-      "contracts_count": 1116,
+      "total_volume": 23718,
+      "put_volume": 12041,
+      "call_volume": 11677,
+      "cp_volume_ratio": 0.97,
+      "total_oi": 397519,
+      "put_oi": 186585,
+      "call_oi": 210934,
+      "cp_oi_ratio": 1.13,
+      "contracts_count": 1070,
       "top_3_contracts": [
         {
           "ticker": "O:USO251121C00078000",
@@ -1366,7 +1366,7 @@
           "strike": 78,
           "expiry": "2025-11-21",
           "type": "call",
-          "percentage": 7.7
+          "percentage": 8.1
         },
         {
           "ticker": "O:USO251219P00071000",
@@ -1374,7 +1374,7 @@
           "strike": 71,
           "expiry": "2025-12-19",
           "type": "put",
-          "percentage": 5.0
+          "percentage": 5.2
         },
         {
           "ticker": "O:USO251219P00073000",
@@ -1382,25 +1382,25 @@
           "strike": 73,
           "expiry": "2025-12-19",
           "type": "put",
-          "percentage": 4.9
+          "percentage": 5.1
         }
       ],
       "strike_concentration": {
         "range": "70-80",
-        "oi": 216075,
-        "percentage": 52.1,
+        "oi": 202893,
+        "percentage": 51.0,
         "dominant_strike": 75
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 25.0,
+        "best_rank": 25,
+        "worst_rank": 25,
+        "today_rank": 25,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
@@ -1448,15 +1448,15 @@
         "dominant_strike": 120
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 26.0,
+        "best_rank": 26,
+        "worst_rank": 26,
+        "today_rank": 26,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
@@ -1504,29 +1504,29 @@
         "dominant_strike": 170
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 27.0,
+        "best_rank": 27,
+        "worst_rank": 27,
+        "today_rank": 27,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
     {
       "ticker": "VIX",
-      "total_volume": 541229,
-      "put_volume": 264516,
-      "call_volume": 276713,
-      "cp_volume_ratio": 1.05,
-      "total_oi": 12971039,
-      "put_oi": 4140123,
-      "call_oi": 8830916,
+      "total_volume": 522456,
+      "put_volume": 259558,
+      "call_volume": 262898,
+      "cp_volume_ratio": 1.01,
+      "total_oi": 12867337,
+      "put_oi": 4112077,
+      "call_oi": 8755260,
       "cp_oi_ratio": 2.13,
-      "contracts_count": 1400,
+      "contracts_count": 1300,
       "top_3_contracts": [
         {
           "ticker": "O:VIX251119C00035000",
@@ -1542,7 +1542,7 @@
           "strike": 60,
           "expiry": "2025-12-17",
           "type": "call",
-          "percentage": 2.2
+          "percentage": 2.3
         },
         {
           "ticker": "O:VIX251119C00047500",
@@ -1555,18 +1555,18 @@
       ],
       "strike_concentration": {
         "range": "60-70",
-        "oi": 925594,
-        "percentage": 7.1,
+        "oi": 925445,
+        "percentage": 7.2,
         "dominant_strike": 60
       },
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 9.8,
+        "avg_rank": 12.1,
         "best_rank": 4,
-        "worst_rank": 24,
-        "today_rank": 7,
-        "rank_change": 17,
+        "worst_rank": 28,
+        "today_rank": 28,
+        "rank_change": -4,
         "trend": "falling",
         "streak": 1,
         "icon": "🔥"
@@ -1616,15 +1616,15 @@
         "dominant_strike": 10
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 29.0,
+        "best_rank": 29,
+        "worst_rank": 29,
+        "today_rank": 29,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
@@ -1672,28 +1672,28 @@
         "dominant_strike": 38
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 30.0,
+        "best_rank": 30,
+        "worst_rank": 30,
+        "today_rank": 30,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "🆕"
       }
     },
     {
       "ticker": "GLD",
-      "total_volume": 806932,
-      "put_volume": 238036,
-      "call_volume": 568896,
-      "cp_volume_ratio": 2.39,
-      "total_oi": 2604575,
-      "put_oi": 876504,
-      "call_oi": 1728071,
-      "cp_oi_ratio": 1.97,
+      "total_volume": 594121,
+      "put_volume": 127090,
+      "call_volume": 467031,
+      "cp_volume_ratio": 3.67,
+      "total_oi": 2705151,
+      "put_oi": 837986,
+      "call_oi": 1867165,
+      "cp_oi_ratio": 2.23,
       "contracts_count": 2500,
       "top_3_contracts": [
         {
@@ -1702,7 +1702,7 @@
           "strike": 395,
           "expiry": "2025-10-31",
           "type": "call",
-          "percentage": 3.7
+          "percentage": 3.6
         },
         {
           "ticker": "O:GLD251107C00410000",
@@ -1710,7 +1710,7 @@
           "strike": 410,
           "expiry": "2025-11-07",
           "type": "call",
-          "percentage": 3.7
+          "percentage": 3.5
         },
         {
           "ticker": "O:GLD251107C00395000",
@@ -1718,13 +1718,13 @@
           "strike": 395,
           "expiry": "2025-11-07",
           "type": "call",
-          "percentage": 3.6
+          "percentage": 3.5
         }
       ],
       "strike_concentration": {
         "range": "380-400",
-        "oi": 763523,
-        "percentage": 29.3,
+        "oi": 762229,
+        "percentage": 28.2,
         "dominant_strike": 395
       },
       "history": {
@@ -1742,14 +1742,14 @@
     },
     {
       "ticker": "SLV",
-      "total_volume": 526966,
-      "put_volume": 162661,
-      "call_volume": 364305,
-      "cp_volume_ratio": 2.24,
-      "total_oi": 6038714,
-      "put_oi": 2457144,
-      "call_oi": 3581570,
-      "cp_oi_ratio": 1.46,
+      "total_volume": 478164,
+      "put_volume": 172070,
+      "call_volume": 306094,
+      "cp_volume_ratio": 1.78,
+      "total_oi": 6134197,
+      "put_oi": 2530370,
+      "call_oi": 3603827,
+      "cp_oi_ratio": 1.42,
       "contracts_count": 2500,
       "top_3_contracts": [
         {
@@ -1774,13 +1774,13 @@
           "strike": 47,
           "expiry": "2025-12-19",
           "type": "call",
-          "percentage": 1.6
+          "percentage": 1.5
         }
       ],
       "strike_concentration": {
         "range": "50-60",
-        "oi": 917055,
-        "percentage": 15.2,
+        "oi": 921428,
+        "percentage": 15.0,
         "dominant_strike": 50
       },
       "history": {
@@ -1798,15 +1798,15 @@
     },
     {
       "ticker": "TLT",
-      "total_volume": 784863,
-      "put_volume": 472099,
-      "call_volume": 312764,
-      "cp_volume_ratio": 0.66,
-      "total_oi": 6166228,
-      "put_oi": 2555507,
-      "call_oi": 3610721,
+      "total_volume": 604923,
+      "put_volume": 369663,
+      "call_volume": 235260,
+      "cp_volume_ratio": 0.64,
+      "total_oi": 6099655,
+      "put_oi": 2528556,
+      "call_oi": 3571099,
       "cp_oi_ratio": 1.41,
-      "contracts_count": 2258,
+      "contracts_count": 2176,
       "top_3_contracts": [
         {
           "ticker": "O:TLT260116C00150000",
@@ -1835,21 +1835,21 @@
       ],
       "strike_concentration": {
         "range": "90-100",
-        "oi": 2461364,
-        "percentage": 39.9,
-        "dominant_strike": 92
+        "oi": 2406487,
+        "percentage": 39.5,
+        "dominant_strike": 90
       },
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 13.9,
+        "appearances": 8,
+        "appearance_rate": 80.0,
+        "avg_rank": 15.0,
         "best_rank": 3,
         "worst_rank": 26,
-        "today_rank": 5,
-        "rank_change": 19,
+        "today_rank": 24,
+        "rank_change": 2,
         "trend": "falling",
-        "streak": 9,
-        "icon": "🔥"
+        "streak": 0,
+        "icon": "🌟"
       }
     },
     {
@@ -1952,15 +1952,15 @@
         "dominant_strike": 45
       },
       "history": {
-        "appearances": 7,
-        "appearance_rate": 70.0,
-        "avg_rank": 13.9,
-        "best_rank": 1,
+        "appearances": 6,
+        "appearance_rate": 60.0,
+        "avg_rank": 16.0,
+        "best_rank": 4,
         "worst_rank": 29,
-        "today_rank": 1,
-        "rank_change": 3,
-        "trend": "rising",
-        "streak": 1,
+        "today_rank": 4,
+        "rank_change": 9,
+        "trend": "stable",
+        "streak": 0,
         "icon": "🌟"
       }
     },
@@ -2008,15 +2008,15 @@
         "dominant_strike": 30
       },
       "history": {
-        "appearances": 10,
-        "appearance_rate": 100.0,
-        "avg_rank": 16.4,
+        "appearances": 9,
+        "appearance_rate": 90.0,
+        "avg_rank": 18.0,
         "best_rank": 2,
         "worst_rank": 29,
-        "today_rank": 2,
-        "rank_change": 21,
-        "trend": "stable",
-        "streak": 10,
+        "today_rank": 23,
+        "rank_change": 4,
+        "trend": "falling",
+        "streak": 0,
         "icon": "🔥"
       }
     },
@@ -2232,15 +2232,15 @@
         "dominant_strike": 110
       },
       "history": {
-        "appearances": 10,
-        "appearance_rate": 100.0,
-        "avg_rank": 15.1,
+        "appearances": 9,
+        "appearance_rate": 90.0,
+        "avg_rank": 15.4,
         "best_rank": 3,
         "worst_rank": 23,
-        "today_rank": 12,
-        "rank_change": 10,
+        "today_rank": 22,
+        "rank_change": -19,
         "trend": "rising",
-        "streak": 10,
+        "streak": 0,
         "icon": "🔥"
       }
     },
@@ -2456,16 +2456,16 @@
         "dominant_strike": 200
       },
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 11.4,
+        "appearances": 8,
+        "appearance_rate": 80.0,
+        "avg_rank": 11.8,
         "best_rank": 1,
         "worst_rank": 19,
-        "today_rank": 9,
-        "rank_change": -8,
-        "trend": "rising",
-        "streak": 4,
-        "icon": "🔥"
+        "today_rank": 1,
+        "rank_change": 18,
+        "trend": "stable",
+        "streak": 0,
+        "icon": "🌟"
       }
     },
     {
@@ -2512,16 +2512,16 @@
         "dominant_strike": 460
       },
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 13.6,
+        "appearances": 8,
+        "appearance_rate": 80.0,
+        "avg_rank": 14.9,
         "best_rank": 3,
         "worst_rank": 28,
-        "today_rank": 3,
-        "rank_change": 18,
+        "today_rank": 21,
+        "rank_change": 4,
         "trend": "falling",
-        "streak": 3,
-        "icon": "🔥"
+        "streak": 0,
+        "icon": "🌟"
       }
     },
     {
@@ -2695,30 +2695,13 @@
   ],
   "anomalies": [
     {
-      "ticker": "SPY",
-      "type": "HIGH_VOLUME",
-      "severity": "HIGH",
-      "description": "Extremely high trading volume (Z-score: 4.52)",
-      "value": 6222645,
-      "metric": "volume",
-      "z_score": 4.519761861125857
-    },
-    {
-      "ticker": "SPY",
-      "type": "VOLUME_SPIKE",
-      "severity": "HIGH",
-      "description": "Volume 35.0x above median",
-      "value": 6222645,
-      "metric": "volume"
-    },
-    {
       "ticker": "NVDA",
       "type": "HIGH_VOLUME",
       "severity": "HIGH",
-      "description": "Extremely high trading volume (Z-score: 3.85)",
+      "description": "Extremely high trading volume (Z-score: 5.54)",
       "value": 5394737,
       "metric": "volume",
-      "z_score": 3.85082348902175
+      "z_score": 5.538273065185827
     },
     {
       "ticker": "NVDA",
@@ -2729,28 +2712,28 @@
       "metric": "volume"
     },
     {
-      "ticker": "QQQ",
+      "ticker": "SPY",
       "type": "HIGH_VOLUME",
       "severity": "MEDIUM",
-      "description": "Extremely high trading volume (Z-score: 2.38)",
-      "value": 3578437,
+      "description": "Extremely high trading volume (Z-score: 2.45)",
+      "value": 2665117,
       "metric": "volume",
-      "z_score": 2.383277861666188
+      "z_score": 2.4508281739679445
     },
     {
-      "ticker": "QQQ",
+      "ticker": "SPY",
       "type": "VOLUME_SPIKE",
       "severity": "HIGH",
-      "description": "Volume 20.1x above median",
-      "value": 3578437,
+      "description": "Volume 15.0x above median",
+      "value": 2665117,
       "metric": "volume"
     },
     {
-      "ticker": "IWM",
+      "ticker": "QQQ",
       "type": "VOLUME_SPIKE",
       "severity": "HIGH",
-      "description": "Volume 10.5x above median",
-      "value": 1869713,
+      "description": "Volume 11.3x above median",
+      "value": 2003996,
       "metric": "volume"
     },
     {
@@ -2759,6 +2742,14 @@
       "severity": "HIGH",
       "description": "Volume 7.8x above median",
       "value": 1380537,
+      "metric": "volume"
+    },
+    {
+      "ticker": "IWM",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 6.8x above median",
+      "value": 1207197,
       "metric": "volume"
     },
     {
@@ -2773,16 +2764,24 @@
       "ticker": "SPY",
       "type": "DEFENSIVE_POSITIONING",
       "severity": "MEDIUM",
-      "description": "重度防御型持仓 (Call/Put 持仓量: 0.36)",
-      "value": 0.36,
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.35)",
+      "value": 0.35,
+      "metric": "cp_oi_ratio"
+    },
+    {
+      "ticker": "QQQ",
+      "type": "DEFENSIVE_POSITIONING",
+      "severity": "MEDIUM",
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.46)",
+      "value": 0.46,
       "metric": "cp_oi_ratio"
     },
     {
       "ticker": "IWM",
       "type": "DEFENSIVE_POSITIONING",
       "severity": "MEDIUM",
-      "description": "重度防御型持仓 (Call/Put 持仓量: 0.40)",
-      "value": 0.4,
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.44)",
+      "value": 0.44,
       "metric": "cp_oi_ratio"
     },
     {
@@ -2799,6 +2798,14 @@
       "severity": "HIGH",
       "description": "极度看涨情绪 (Call/Put 成交量: 2.88)",
       "value": 2.88,
+      "metric": "cp_volume_ratio"
+    },
+    {
+      "ticker": "GLD",
+      "type": "EXTREME_GREED",
+      "severity": "HIGH",
+      "description": "极度看涨情绪 (Call/Put 成交量: 3.67)",
+      "value": 3.67,
       "metric": "cp_volume_ratio"
     },
     {
@@ -2874,19 +2881,27 @@
       "metric": "cp_volume_ratio"
     },
     {
+      "ticker": "TLT",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.10), strong position holding",
+      "value": 0.09917331390054028,
+      "metric": "vol_oi_ratio"
+    },
+    {
       "ticker": "VIX",
       "type": "LOW_TURNOVER",
       "severity": "LOW",
       "description": "Low turnover (Volume/OI: 0.04), strong position holding",
-      "value": 0.041725955800456696,
+      "value": 0.04060327323361469,
       "metric": "vol_oi_ratio"
     },
     {
       "ticker": "SLV",
       "type": "LOW_TURNOVER",
       "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.09), strong position holding",
-      "value": 0.0872646063383694,
+      "description": "Low turnover (Volume/OI: 0.08), strong position holding",
+      "value": 0.07795054511617414,
       "metric": "vol_oi_ratio"
     },
     {
@@ -3002,14 +3017,6 @@
       "metric": "vol_oi_ratio"
     },
     {
-      "ticker": "USO",
-      "type": "LOW_TURNOVER",
-      "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.07), strong position holding",
-      "value": 0.07396084043452807,
-      "metric": "vol_oi_ratio"
-    },
-    {
       "ticker": "CVX",
       "type": "LOW_TURNOVER",
       "severity": "LOW",
@@ -3023,6 +3030,14 @@
       "severity": "LOW",
       "description": "Low turnover (Volume/OI: 0.07), strong position holding",
       "value": 0.06532163543606927,
+      "metric": "vol_oi_ratio"
+    },
+    {
+      "ticker": "USO",
+      "type": "LOW_TURNOVER",
+      "severity": "LOW",
+      "description": "Low turnover (Volume/OI: 0.06), strong position holding",
+      "value": 0.0596650726128814,
       "metric": "vol_oi_ratio"
     },
     {
@@ -3051,19 +3066,19 @@
     }
   ],
   "summary": {
-    "total": 44,
+    "total": 46,
     "by_severity": {
       "HIGH": 18,
-      "MEDIUM": 4,
-      "LOW": 22
+      "MEDIUM": 5,
+      "LOW": 23
     },
     "by_type": {
-      "HIGH_VOLUME": 3,
+      "HIGH_VOLUME": 2,
       "VOLUME_SPIKE": 6,
-      "DEFENSIVE_POSITIONING": 3,
-      "EXTREME_GREED": 8,
+      "DEFENSIVE_POSITIONING": 4,
+      "EXTREME_GREED": 9,
       "EXTREME_FEAR": 2,
-      "LOW_TURNOVER": 22
+      "LOW_TURNOVER": 23
     }
   }
 }
