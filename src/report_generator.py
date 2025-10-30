@@ -601,12 +601,72 @@ class HTMLReportGenerator:
             }}
         }}
 
+        // Helper: Format contract short form (e.g., 250131C600)
+        function formatContractShort(contract) {{
+            try {{
+                let expiry = contract.expiry || '';
+                if (expiry) {{
+                    // Extract YYMMDD from 2025-01-31
+                    expiry = expiry.replace(/-/g, '').slice(-6);
+                }}
+                const contractType = (contract.type || 'X')[0].toUpperCase();
+                const strike = Math.floor(contract.strike || 0);
+                return `${{expiry}}${{contractType}}${{strike}}`;
+            }} catch (e) {{
+                return 'N/A';
+            }}
+        }}
+
         // Render table with data
         function renderTable(data) {{
             const tbody = document.getElementById('volumeTableBody');
             tbody.innerHTML = '';
 
             data.forEach((item, idx) => {{
+                // Format Top 3 contracts
+                let top3Html = '';
+                const top3Contracts = item.top_3_contracts || [];
+                top3Contracts.slice(0, 3).forEach((contract, i) => {{
+                    const contractShort = formatContractShort(contract);
+                    const oiK = (contract.oi || 0) / 1000;
+                    const pct = contract.percentage || 0;
+                    top3Html += `<div class='contract-item'>① ${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                }});
+                if (!top3Html) {{
+                    top3Html = '<small>N/A</small>';
+                }}
+
+                // Format strike concentration
+                const strikeInfo = item.strike_concentration || {{}};
+                const strikeRange = strikeInfo.range || 'N/A';
+                const strikePct = strikeInfo.percentage || 0;
+                const dominant = strikeInfo.dominant_strike;
+                const strikeHtml = `
+                    <div><strong>${{strikeRange}}</strong> <span class='pct'>(${{strikePct.toFixed(1)}}%)</span></div>
+                    <div><small>核心: ${{dominant || 'N/A'}}</small></div>
+                `;
+
+                // Format history
+                const history = item.history || {{}};
+                const appearances = history.appearances || 0;
+                const icon = history.icon || '🆕';
+                const rankChange = history.rank_change;
+                const avgRank = history.avg_rank;
+
+                let rankSymbol = '↔️';
+                if (rankChange !== null && rankChange !== undefined && rankChange !== 0) {{
+                    if (rankChange > 0) {{
+                        rankSymbol = `↑${{rankChange}}`;
+                    }} else {{
+                        rankSymbol = `↓${{Math.abs(rankChange)}}`;
+                    }}
+                }}
+
+                const historyHtml = `
+                    <div><strong>${{appearances}}/10 ${{icon}}</strong> ${{rankSymbol}}</div>
+                    <div><small>平均排名: ${{avgRank || 'N/A'}}</small></div>
+                `;
+
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${{idx + 1}}</td>
@@ -615,8 +675,9 @@ class HTMLReportGenerator:
                     <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
                     <td>${{item.total_oi.toLocaleString()}}</td>
                     <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
-                    <td>${{item.put_volume.toLocaleString()}}</td>
-                    <td>${{item.call_volume.toLocaleString()}}</td>
+                    <td class="compact-cell">${{top3Html}}</td>
+                    <td class="compact-cell">${{strikeHtml}}</td>
+                    <td class="compact-cell">${{historyHtml}}</td>
                 `;
                 tbody.appendChild(row);
             }});
