@@ -144,7 +144,7 @@ jobs:
           retention-days: 90
 
       - name: 🤖 AI Analysis & Email Notification
-        if: ${{ secrets.OPENAI_API_KEY != '' || secrets.GMAIL_USER != '' }}
+        if: (secrets.OPENAI_API_KEY != '' || secrets.GMAIL_USER != '') && github.event_name != 'push'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
