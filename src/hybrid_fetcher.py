@@ -114,24 +114,52 @@ class HybridDataFetcher:
 
                 put_oi = 0
                 call_oi = 0
+                contracts_with_oi = []
+                strike_dict = {}
 
                 for contract in contracts:
-                    contract_type = contract.get('details', {}).get('contract_type')
+                    details = contract.get('details', {})
+                    contract_type = details.get('contract_type')
                     oi = contract.get('open_interest', 0) or 0
+                    strike = details.get('strike_price')
 
                     if contract_type == 'put':
                         put_oi += oi
                     elif contract_type == 'call':
                         call_oi += oi
 
+                    # 收集所有合约信息用于分析
+                    if oi > 0:
+                        contracts_with_oi.append({
+                            'ticker': details.get('ticker'),
+                            'oi': oi,
+                            'strike': strike,
+                            'expiry': details.get('expiration_date'),
+                            'type': contract_type
+                        })
+
+                        # 统计行权价分布
+                        if strike:
+                            strike_dict[strike] = strike_dict.get(strike, 0) + oi
+
                 total_oi = put_oi + call_oi
                 cp_oi_ratio = round(call_oi / put_oi, 2) if put_oi > 0 else 0
+
+                # 获取 Top 3 活跃合约
+                top_3 = sorted(contracts_with_oi, key=lambda x: x['oi'], reverse=True)[:3]
+                for contract in top_3:
+                    contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0
+
+                # 分析价格区间
+                strike_concentration = self._analyze_strike_concentration(strike_dict, total_oi)
 
                 # Update item
                 item['total_oi'] = total_oi
                 item['put_oi'] = put_oi
                 item['call_oi'] = call_oi
                 item['cp_oi_ratio'] = cp_oi_ratio
+                item['top_3_contracts'] = top_3
+                item['strike_concentration'] = strike_concentration
 
                 enriched_count += 1
                 print(f"✓ OI={total_oi:,}")
@@ -142,6 +170,53 @@ class HybridDataFetcher:
         print(f"{'='*80}\n")
 
         return data
+
+    def _analyze_strike_concentration(self, strike_dict: dict, total_oi: int) -> dict:
+        """
+        分析行权价分布，找到最集中的价格区间
+
+        Args:
+            strike_dict: Dict mapping strike price to total OI
+            total_oi: Total open interest
+
+        Returns:
+            Dict with strike concentration info
+        """
+        if not strike_dict or total_oi == 0:
+            return {
+                'range': 'N/A',
+                'oi': 0,
+                'percentage': 0.0,
+                'dominant_strike': None
+            }
+
+        # 找到持仓量最大的行权价
+        dominant_strike = max(strike_dict.items(), key=lambda x: x[1])[0]
+
+        # 定义价格区间宽度（根据价格水平自适应）
+        if dominant_strike < 50:
+            range_width = 5
+        elif dominant_strike < 200:
+            range_width = 10
+        elif dominant_strike < 500:
+            range_width = 20
+        else:
+            range_width = 50
+
+        # 计算以dominant_strike为中心的区间
+        range_start = int(dominant_strike / range_width) * range_width
+        range_end = range_start + range_width
+
+        # 计算该区间的总持仓量
+        range_oi = sum(oi for strike, oi in strike_dict.items()
+                      if range_start <= strike < range_end)
+
+        return {
+            'range': f'{range_start}-{range_end}',
+            'oi': range_oi,
+            'percentage': round(range_oi / total_oi * 100, 1) if total_oi > 0 else 0,
+            'dominant_strike': int(dominant_strike)
+        }
 
     def _fetch_via_api(self) -> List[Dict]:
         """

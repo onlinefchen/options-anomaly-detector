@@ -17,6 +17,7 @@ from hybrid_fetcher import HybridDataFetcher
 from anomaly_detector import OptionsAnomalyDetector
 from report_generator import HTMLReportGenerator
 from archive_index_generator import get_archived_reports, generate_archive_index
+from history_analyzer import HistoryAnalyzer
 from utils import print_banner, print_summary_table, print_anomalies_summary, print_progress
 
 
@@ -51,6 +52,12 @@ def main():
             return 1
 
         print_progress(f"✓ Successfully fetched data for {len(data)} tickers\n")
+
+        # Analyze historical activity
+        print_progress("📊 Analyzing historical activity (past 10 trading days)...")
+        analyzer = HistoryAnalyzer(output_dir='output', lookback_days=10)
+        data = analyzer.enrich_data_with_history(data)
+        print_progress("✓ Historical analysis complete\n")
 
         # Detect anomalies
         print_progress("🔍 Detecting anomalies...")

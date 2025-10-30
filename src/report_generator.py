@@ -87,10 +87,73 @@ class HTMLReportGenerator:
         shutil.copy2(output_file, index_file)
         print(f"✓ GitHub Pages index created: {index_file}")
 
+    def _format_contract_short(self, contract: Dict) -> str:
+        """
+        格式化合约为简短格式: 250131C600
+
+        Args:
+            contract: Contract dict with expiry, type, strike
+
+        Returns:
+            Formatted string
+        """
+        try:
+            expiry = contract.get('expiry', '')
+            if expiry:
+                # 从 2025-01-31 提取 250131
+                expiry = expiry.replace('-', '')[-6:]
+            contract_type = contract.get('type', '')[0].upper() if contract.get('type') else 'X'
+            strike = int(contract.get('strike', 0))
+            return f"{expiry}{contract_type}{strike}"
+        except:
+            return "N/A"
+
     def _generate_table_rows(self, data: List[Dict]) -> str:
         """Generate table rows HTML for volume rankings"""
         rows = []
         for idx, item in enumerate(data, 1):
+            # 格式化 Top 3 合约
+            top3_html = ''
+            for i, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
+                contract_short = self._format_contract_short(contract)
+                oi_k = contract.get('oi', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_html += f"<div class='contract-item'>① {contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
+
+            if not top3_html:
+                top3_html = '<small>N/A</small>'
+
+            # 格式化价格区间
+            strike_info = item.get('strike_concentration', {})
+            strike_range = strike_info.get('range', 'N/A')
+            strike_pct = strike_info.get('percentage', 0)
+            dominant = strike_info.get('dominant_strike')
+
+            strike_html = f"""
+                <div><strong>{strike_range}</strong> <span class='pct'>({strike_pct:.1f}%)</span></div>
+                <div><small>核心: {dominant if dominant else 'N/A'}</small></div>
+            """
+
+            # 格式化历史活跃度
+            history = item.get('history', {})
+            appearances = history.get('appearances', 0)
+            icon = history.get('icon', '🆕')
+            rank_change = history.get('rank_change')
+            avg_rank = history.get('avg_rank')
+
+            # 排名变化符号
+            if rank_change is None or rank_change == 0:
+                rank_symbol = '↔️'
+            elif rank_change > 0:
+                rank_symbol = f'↑{rank_change}'
+            else:
+                rank_symbol = f'↓{abs(rank_change)}'
+
+            history_html = f"""
+                <div><strong>{appearances}/10 {icon}</strong> {rank_symbol}</div>
+                <div><small>平均排名: {avg_rank if avg_rank else 'N/A'}</small></div>
+            """
+
             rows.append(f"""
                 <tr>
                     <td>{idx}</td>
@@ -99,8 +162,9 @@ class HTMLReportGenerator:
                     <td>{item['cp_volume_ratio']:.2f}</td>
                     <td>{item['total_oi']:,}</td>
                     <td>{item['cp_oi_ratio']:.2f}</td>
-                    <td>{item['put_volume']:,}</td>
-                    <td>{item['call_volume']:,}</td>
+                    <td class="compact-cell">{top3_html}</td>
+                    <td class="compact-cell">{strike_html}</td>
+                    <td class="compact-cell">{history_html}</td>
                 </tr>
             """)
         return ''.join(rows)
@@ -323,6 +387,44 @@ class HTMLReportGenerator:
             background: #f8f9fa;
         }}
 
+        /* 紧凑单元格样式 */
+        .compact-cell {{
+            font-size: 0.85em;
+            line-height: 1.6;
+            padding: 10px !important;
+        }}
+
+        .compact-cell div {{
+            margin: 3px 0;
+        }}
+
+        /* 合约项样式 */
+        .contract-item {{
+            white-space: nowrap;
+        }}
+
+        /* OI徽章样式 */
+        .oi-badge {{
+            background: #e3f2fd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #1976d2;
+            white-space: nowrap;
+        }}
+
+        /* 百分比样式 */
+        .pct {{
+            color: #666;
+            font-size: 0.9em;
+        }}
+
+        /* 小号文字 */
+        .compact-cell small {{
+            color: #888;
+            font-size: 0.85em;
+        }}
+
         .badge {{
             display: inline-block;
             padding: 5px 12px;
@@ -419,8 +521,9 @@ class HTMLReportGenerator:
                         <th class="sortable" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
                         <th class="sortable" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
                         <th class="sortable" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="put_volume" data-type="number">Put 成交量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="call_volume" data-type="number">Call 成交量 <span class="sort-icon">⇅</span></th>
+                        <th>Top 3 活跃合约</th>
+                        <th>主力价格区间</th>
+                        <th>10日活跃度</th>
                     </tr>
                 </thead>
                 <tbody id="volumeTableBody">
