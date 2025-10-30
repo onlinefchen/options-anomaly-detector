@@ -100,18 +100,18 @@ class AIAnalyzer:
 
             # 调用 GPT
             response = self.client.chat.completions.create(
-                model="gpt-4o-mini",  # 使用更经济的模型
+                model="gpt-4o",  # 使用更强大的模型以获得更好的市场洞察
                 messages=[
                     {
                         "role": "system",
-                        "content": "你是一位专业的期权市场分析师，擅长解读期权数据并提供清晰的市场洞察。"
+                        "content": "You are a senior options trading analyst with 15+ years of experience in institutional trading. You excel at interpreting options flow data, identifying institutional positioning, and providing actionable trade recommendations. You stay current on market news, global macro trends, and sector dynamics. Your analysis is concise, data-driven, and focused on risk-adjusted returns."
                     },
                     {
                         "role": "user",
                         "content": prompt
                     }
                 ],
-                max_tokens=max_tokens,
+                max_tokens=1500,  # 增加token以支持更详细的分析
                 temperature=0.7
             )
 
@@ -133,30 +133,43 @@ class AIAnalyzer:
         Returns:
             Prompt 字符串
         """
-        # 构建更详细的标的信息
+        # 构建更详细的标的信息（包含网页数据的所有字段）
         tickers_detail = []
         for i, item in enumerate(market_summary['top_15'], 1):
             strike_conc = item.get('strike_concentration', {})
             top_contracts = item.get('top_3_contracts', [])
 
-            # 构建合约详情
+            # 构建完整的合约详情（包含所有3个合约及其占比）
             contracts_str = ""
             if top_contracts:
-                contracts_str = " | 主力合约: " + ", ".join([
-                    f"{c.get('type', 'N/A').upper()} {c.get('strike', 'N/A')} "
-                    f"({c.get('expiry', 'N/A')}, OI {c.get('oi', 0):,})"
-                    for c in top_contracts[:2]  # 只显示前2个合约
-                ])
+                contracts_list = []
+                for c in top_contracts:  # 显示所有3个合约
+                    contract_detail = (
+                        f"{c.get('type', 'N/A').upper()} Strike ${c.get('strike', 'N/A')} "
+                        f"Exp {c.get('expiry', 'N/A')} "
+                        f"(OI {c.get('oi', 0):,}, {c.get('percentage', 0):.1f}% of total)"
+                    )
+                    contracts_list.append(contract_detail)
+                contracts_str = "\n     " + "\n     ".join(contracts_list)
+
+            # 完整的价格区间信息
+            strike_info = (
+                f"Range {strike_conc.get('range', 'N/A')}, "
+                f"Dominant Strike ${strike_conc.get('dominant_strike', 'N/A')}, "
+                f"Concentration {strike_conc.get('percentage', 0):.1f}% "
+                f"(OI {strike_conc.get('oi', 0):,})"
+            )
 
             detail = (
                 f"{i}. **{item['ticker']}**:\n"
-                f"   - 成交: Call {item['call_volume']:,} / Put {item['put_volume']:,} "
-                f"(C/P比 {item['cp_volume_ratio']:.2f})\n"
-                f"   - 持仓: Call {item['call_oi']:,} / Put {item['put_oi']:,} "
-                f"(C/P比 {item['cp_oi_ratio']:.2f})\n"
-                f"   - 合约数: {item['contracts_count']}, "
-                f"主力价格区间: {strike_conc.get('range', 'N/A')} "
-                f"(集中度 {strike_conc.get('percentage', 0):.1f}%){contracts_str}"
+                f"   - Total Volume: {item['total_volume']:,} | Total OI: {item['total_oi']:,}\n"
+                f"   - Volume: Call {item['call_volume']:,} / Put {item['put_volume']:,} "
+                f"(C/P Ratio {item['cp_volume_ratio']:.2f})\n"
+                f"   - OI: Call {item['call_oi']:,} / Put {item['put_oi']:,} "
+                f"(C/P Ratio {item['cp_oi_ratio']:.2f})\n"
+                f"   - Contracts: {item['contracts_count']}\n"
+                f"   - Strike Concentration: {strike_info}\n"
+                f"   - Top 3 Contracts:{contracts_str}"
             )
             tickers_detail.append(detail)
 
@@ -169,44 +182,59 @@ class AIAnalyzer:
                 for a in market_summary['key_anomalies']
             ])
 
-        prompt = f"""请分析以下美股期权市场数据，并提供专业的市场洞察：
+        prompt = f"""Analyze the following US options market data and provide professional market insights:
 
-# 市场概况
-- 分析标的总数: {market_summary['total_tickers']}
-- 检测到异常: {market_summary['anomalies_count']} 个 (高: {market_summary['high_severity']}, 中: {market_summary['medium_severity']}, 低: {market_summary['low_severity']})
+# Market Overview
+- Total Tickers Analyzed: {market_summary['total_tickers']}
+- Anomalies Detected: {market_summary['anomalies_count']} (High: {market_summary['high_severity']}, Medium: {market_summary['medium_severity']}, Low: {market_summary['low_severity']})
 
-# Top 15 活跃标的详细数据
+# Top 15 Active Tickers - Complete Data
 
 {tickers_str}
 {anomalies_str}
 
-请提供以下分析（用中文，Markdown 格式）：
+Please provide comprehensive analysis in ENGLISH (Markdown format):
 
-1. **市场整体趋势分析**
-   - 根据 Top 15 标的的 C/P 成交比和持仓比，综合判断市场情绪（看涨/看跌/中性）
-   - 分析 Call 和 Put 的成交量对比，判断资金流向
+## 1. Market Sentiment Analysis
+- Based on C/P ratios across Top 15 tickers, assess overall market sentiment (Bullish/Bearish/Neutral)
+- Analyze Call vs Put volume/OI to determine fund flow direction
+- Consider current global market context (equity indices, VIX, bond yields)
+- Factor in any recent market-moving news or events
 
-2. **热门标的深度解读**
-   - 分析前 5 个最活跃标的的特点、主力合约和可能的市场原因
-   - 结合价格区间和合约集中度，判断市场预期
+## 2. Deep Dive on Top 5 Tickers
+- Analyze characteristics of top 5 most active tickers
+- Examine dominant contracts (strikes, expiries) and what they imply
+- Assess strike concentration and market expectations
+- Consider sector rotation and institutional positioning
 
-3. **主力合约和价格区间分析**
-   - 解读主力价格区间和合约到期日反映的市场预期
-   - 识别重要的支撑/阻力位
+## 3. Key Contract Analysis
+- Interpret significance of dominant strikes and expiry dates
+- Identify critical support/resistance levels based on strike concentration
+- Analyze unusual contract activity (high OI with specific strikes/dates)
 
-4. **资金流向和市场情绪**
-   - 分析成交量和持仓量的变化趋势
-   - 识别可能的机构操作或市场共识
+## 4. Risk Factors & Market Catalysts
+- Highlight any anomalies requiring attention
+- Identify potential market volatility drivers
+- Note sector-specific or macro risks
 
-5. **异常和风险提醒**
-   - 如果有异常，指出需要特别关注的风险点
-   - 提示可能的市场波动因素
+## 5. TOP 5 ACTIONABLE TRADE RECOMMENDATIONS
+For each recommendation, specify:
+- **Ticker & Action**: Stock or Options (specify contract details if options)
+- **Direction**: Long/Short, Call/Put
+- **Rationale**: Why this trade based on the data
+- **Entry/Target**: Suggested levels
+- **Risk Level**: Low/Medium/High
+- **Time Horizon**: Short-term (1-2 weeks) / Medium-term (1-2 months)
 
-6. **交易策略建议**
-   - 基于数据提供 2-3 条具体的交易方向建议
-   - 标注风险等级和建议持仓周期
+Example format:
+**Trade #1: WMT Stock Long**
+- Action: Buy WMT stock
+- Rationale: Strong Call volume (3.05M) with C/P 1.54, dominant Call strike at $60 suggests bullish bias
+- Entry: Current levels, Target: $62-65
+- Risk: Medium, Stop below $57
+- Horizon: 1-2 weeks
 
-请保持分析专业且实用（400-600字），重点突出，适合早晨快速决策。
+Keep analysis concise (500-700 words), actionable, and suitable for morning decision-making.
 """
 
         return prompt
@@ -228,9 +256,9 @@ class AIAnalyzer:
         top_ticker = data[0]['ticker'] if data else 'N/A'
 
         if anomalies_count > 0:
-            return f"📊 期权市场日报 {date_str} - {top_ticker} 领涨 | ⚠️ {anomalies_count}个异常"
+            return f"Options Market Report {date_str} - {top_ticker} Leading | {anomalies_count} Anomalies"
         else:
-            return f"📊 期权市场日报 {date_str} - {top_ticker} 领涨"
+            return f"Options Market Report {date_str} - {top_ticker} Leading"
 
     def format_for_email(self, analysis: str, data: List[Dict], summary: Dict) -> str:
         """
@@ -250,10 +278,9 @@ class AIAnalyzer:
         # 转换 Markdown 到 HTML
         analysis_html = markdown.markdown(analysis)
 
-        # Top 5 表格
+        # Top 5 表格（简洁风格，无图标）
         top_5_rows = []
         for i, item in enumerate(data[:5], 1):
-            history = item.get('history', {})
             top_5_rows.append(f"""
                 <tr>
                     <td>{i}</td>
@@ -261,7 +288,6 @@ class AIAnalyzer:
                     <td>{item['total_volume']:,}</td>
                     <td>{item['cp_volume_ratio']:.2f}</td>
                     <td>{item['total_oi']:,}</td>
-                    <td>{history.get('appearances', 0)}/10 {history.get('icon', '')}</td>
                 </tr>
             """)
 
@@ -272,101 +298,133 @@ class AIAnalyzer:
     <meta charset="UTF-8">
     <style>
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.8;
+            color: #1d1d1f;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 40px 20px;
+            background-color: #ffffff;
         }}
         .container {{
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: #ffffff;
+            padding: 0;
         }}
         h1 {{
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }}
+        .date {{
+            font-size: 13px;
+            color: #86868b;
+            margin-bottom: 40px;
         }}
         h2 {{
-            color: #764ba2;
-            margin-top: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
         }}
         table {{
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 20px 0 40px 0;
+            font-size: 13px;
         }}
         th {{
-            background: #667eea;
-            color: white;
-            padding: 12px;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 12px 8px;
             text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid #d2d2d7;
         }}
         td {{
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }}
-        tr:hover {{
-            background: #f0f0f0;
+            padding: 12px 8px;
+            border-bottom: 1px solid #f5f5f7;
+            color: #1d1d1f;
         }}
         .summary {{
-            background: #e3f2fd;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
+            background: #f5f5f7;
+            padding: 20px;
+            margin: 30px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }}
+        .summary-item {{
+            margin: 8px 0;
         }}
         .ai-analysis {{
-            background: #f3e5f5;
-            padding: 20px;
-            border-radius: 5px;
-            border-left: 4px solid #764ba2;
-            margin: 20px 0;
+            margin: 40px 0;
+            padding: 0;
+            font-size: 14px;
+            line-height: 1.8;
+        }}
+        .ai-analysis h1,
+        .ai-analysis h2,
+        .ai-analysis h3 {{
+            font-size: 16px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }}
+        .ai-analysis p {{
+            margin: 12px 0;
+        }}
+        .ai-analysis ul, .ai-analysis ol {{
+            margin: 12px 0;
+            padding-left: 20px;
+        }}
+        .ai-analysis li {{
+            margin: 8px 0;
         }}
         .footer {{
-            margin-top: 30px;
+            margin-top: 60px;
             padding-top: 20px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid #d2d2d7;
             text-align: center;
-            color: #666;
-            font-size: 0.9em;
+            color: #86868b;
+            font-size: 11px;
+            line-height: 1.6;
         }}
         a {{
-            color: #667eea;
+            color: #06c;
             text-decoration: none;
         }}
         a:hover {{
             text-decoration: underline;
         }}
+        strong {{
+            font-weight: 600;
+        }}
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📊 期权市场日报</h1>
-        <p><strong>日期：</strong>{datetime.now().strftime('%Y年%m月%d日 %A')}</p>
+        <h1>Options Market Daily Report</h1>
+        <div class="date">{datetime.now().strftime('%Y-%m-%d %A')}</div>
 
         <div class="summary">
-            <h3>📈 市场摘要</h3>
-            <ul>
-                <li>分析标的总数: <strong>{len(data)}</strong></li>
-                <li>检测到异常: <strong>{summary.get('total', 0)}</strong> 个</li>
-                <li>Top 1 活跃: <strong>{data[0]['ticker']}</strong> (成交量 {data[0]['total_volume']:,})</li>
-            </ul>
+            <div class="summary-item">Tickers Analyzed: <strong>{len(data)}</strong></div>
+            <div class="summary-item">Anomalies Detected: <strong>{summary.get('total', 0)}</strong></div>
+            <div class="summary-item">Top Active: <strong>{data[0]['ticker']}</strong> (Volume {data[0]['total_volume']:,})</div>
         </div>
 
-        <h2>🔝 Top 5 活跃标的</h2>
+        <h2>Top 5 Active Tickers</h2>
         <table>
             <thead>
                 <tr>
-                    <th>排名</th>
-                    <th>标的</th>
-                    <th>总成交量</th>
-                    <th>C/P比</th>
-                    <th>持仓量</th>
-                    <th>10日活跃度</th>
+                    <th>Rank</th>
+                    <th>Ticker</th>
+                    <th>Volume</th>
+                    <th>C/P Ratio</th>
+                    <th>Open Interest</th>
                 </tr>
             </thead>
             <tbody>
@@ -374,17 +432,14 @@ class AIAnalyzer:
             </tbody>
         </table>
 
+        <h2>AI Market Analysis</h2>
         <div class="ai-analysis">
-            <h2>🤖 AI 市场分析</h2>
             {analysis_html}
         </div>
 
         <div class="footer">
-            <p>
-                📊 <a href="https://onlinefchen.github.io/options-anomaly-detector/">查看完整报告</a>
-                | 📚 <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub 项目</a>
-            </p>
-            <p>此邮件由自动化系统生成 | AI 分析仅供参考，不构成投资建议</p>
+            <div><a href="https://onlinefchen.github.io/options-anomaly-detector/">View Full Report</a> | <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub</a></div>
+            <div style="margin-top: 10px;">Automated Report - For Reference Only</div>
         </div>
     </div>
 </body>
