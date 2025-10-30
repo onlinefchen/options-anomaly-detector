@@ -1,6 +1,6 @@
 {
   "date": "2025-10-30",
-  "timestamp": "2025-10-30T00:57:13.860309",
+  "timestamp": "2025-10-30T01:39:17.246786",
   "tickers_count": 48,
   "anomalies_count": 44,
   "data": [
@@ -14,7 +14,13 @@
       "put_oi": 3475095,
       "call_oi": 1248151,
       "cp_oi_ratio": 0.36,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "QQQ",
@@ -26,7 +32,13 @@
       "put_oi": 1600507,
       "call_oi": 1209291,
       "cp_oi_ratio": 0.76,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "IWM",
@@ -38,7 +50,13 @@
       "put_oi": 4418356,
       "call_oi": 1758453,
       "cp_oi_ratio": 0.4,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "DIA",
@@ -50,7 +68,13 @@
       "put_oi": 263717,
       "call_oi": 140093,
       "cp_oi_ratio": 0.53,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "NVDA",
@@ -62,7 +86,13 @@
       "put_oi": 6434960,
       "call_oi": 7705678,
       "cp_oi_ratio": 1.2,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "TSLA",
@@ -74,7 +104,13 @@
       "put_oi": 2367356,
       "call_oi": 2361980,
       "cp_oi_ratio": 1.0,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "AAPL",
@@ -86,7 +122,13 @@
       "put_oi": 2248240,
       "call_oi": 3307527,
       "cp_oi_ratio": 1.47,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "MSFT",
@@ -98,7 +140,13 @@
       "put_oi": 876318,
       "call_oi": 1211579,
       "cp_oi_ratio": 1.38,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "GOOGL",
@@ -110,7 +158,13 @@
       "put_oi": 1398572,
       "call_oi": 1919342,
       "cp_oi_ratio": 1.37,
-      "contracts_count": 2466
+      "contracts_count": 2466,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "META",
@@ -122,7 +176,13 @@
       "put_oi": 568585,
       "call_oi": 699826,
       "cp_oi_ratio": 1.23,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "AMZN",
@@ -134,7 +194,13 @@
       "put_oi": 1961280,
       "call_oi": 2798414,
       "cp_oi_ratio": 1.43,
-      "contracts_count": 2090
+      "contracts_count": 2090,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "AMD",
@@ -146,7 +212,13 @@
       "put_oi": 1785184,
       "call_oi": 1915810,
       "cp_oi_ratio": 1.07,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "INTC",
@@ -158,7 +230,13 @@
       "put_oi": 2873453,
       "call_oi": 4137747,
       "cp_oi_ratio": 1.44,
-      "contracts_count": 1382
+      "contracts_count": 1382,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "NFLX",
@@ -170,7 +248,13 @@
       "put_oi": 125984,
       "call_oi": 212988,
       "cp_oi_ratio": 1.69,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "BABA",
@@ -182,7 +266,13 @@
       "put_oi": 901619,
       "call_oi": 1535396,
       "cp_oi_ratio": 1.7,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "NIO",
@@ -194,7 +284,13 @@
       "put_oi": 1776524,
       "call_oi": 2572364,
       "cp_oi_ratio": 1.45,
-      "contracts_count": 526
+      "contracts_count": 526,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "PLTR",
@@ -206,7 +302,13 @@
       "put_oi": 1598241,
       "call_oi": 1695473,
       "cp_oi_ratio": 1.06,
-      "contracts_count": 2378
+      "contracts_count": 2378,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "SOFI",
@@ -218,7 +320,13 @@
       "put_oi": 1777129,
       "call_oi": 2642274,
       "cp_oi_ratio": 1.49,
-      "contracts_count": 1168
+      "contracts_count": 1168,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "BAC",
@@ -230,7 +338,13 @@
       "put_oi": 1534179,
       "call_oi": 1354225,
       "cp_oi_ratio": 0.88,
-      "contracts_count": 1012
+      "contracts_count": 1012,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "JPM",
@@ -242,7 +356,13 @@
       "put_oi": 379669,
       "call_oi": 381352,
       "cp_oi_ratio": 1.0,
-      "contracts_count": 2168
+      "contracts_count": 2168,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "GS",
@@ -254,7 +374,13 @@
       "put_oi": 118310,
       "call_oi": 104150,
       "cp_oi_ratio": 0.88,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "WFC",
@@ -266,7 +392,13 @@
       "put_oi": 593884,
       "call_oi": 571682,
       "cp_oi_ratio": 0.96,
-      "contracts_count": 1240
+      "contracts_count": 1240,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "C",
@@ -278,7 +410,13 @@
       "put_oi": 830057,
       "call_oi": 812424,
       "cp_oi_ratio": 0.98,
-      "contracts_count": 1366
+      "contracts_count": 1366,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "XLE",
@@ -290,7 +428,13 @@
       "put_oi": 1465736,
       "call_oi": 760545,
       "cp_oi_ratio": 0.52,
-      "contracts_count": 1806
+      "contracts_count": 1806,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "USO",
@@ -302,7 +446,13 @@
       "put_oi": 197420,
       "call_oi": 217651,
       "cp_oi_ratio": 1.1,
-      "contracts_count": 1116
+      "contracts_count": 1116,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "XOM",
@@ -314,7 +464,13 @@
       "put_oi": 373732,
       "call_oi": 599211,
       "cp_oi_ratio": 1.6,
-      "contracts_count": 1308
+      "contracts_count": 1308,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "CVX",
@@ -326,7 +482,13 @@
       "put_oi": 222143,
       "call_oi": 335286,
       "cp_oi_ratio": 1.51,
-      "contracts_count": 1334
+      "contracts_count": 1334,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "VIX",
@@ -338,7 +500,13 @@
       "put_oi": 4140123,
       "call_oi": 8830916,
       "cp_oi_ratio": 2.13,
-      "contracts_count": 1400
+      "contracts_count": 1400,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "UVXY",
@@ -350,7 +518,13 @@
       "put_oi": 179831,
       "call_oi": 356207,
       "cp_oi_ratio": 1.98,
-      "contracts_count": 1188
+      "contracts_count": 1188,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "VIXY",
@@ -362,7 +536,13 @@
       "put_oi": 9530,
       "call_oi": 10372,
       "cp_oi_ratio": 1.09,
-      "contracts_count": 980
+      "contracts_count": 980,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "GLD",
@@ -374,7 +554,13 @@
       "put_oi": 876504,
       "call_oi": 1728071,
       "cp_oi_ratio": 1.97,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "SLV",
@@ -386,7 +572,13 @@
       "put_oi": 2457144,
       "call_oi": 3581570,
       "cp_oi_ratio": 1.46,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "TLT",
@@ -398,7 +590,13 @@
       "put_oi": 2555507,
       "call_oi": 3610721,
       "cp_oi_ratio": 1.41,
-      "contracts_count": 2258
+      "contracts_count": 2258,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "HYG",
@@ -410,7 +608,13 @@
       "put_oi": 7764587,
       "call_oi": 1736566,
       "cp_oi_ratio": 0.22,
-      "contracts_count": 1436
+      "contracts_count": 1436,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "EEM",
@@ -422,7 +626,13 @@
       "put_oi": 3997253,
       "call_oi": 2862455,
       "cp_oi_ratio": 0.72,
-      "contracts_count": 1436
+      "contracts_count": 1436,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "PFE",
@@ -434,7 +644,13 @@
       "put_oi": 1454918,
       "call_oi": 2182986,
       "cp_oi_ratio": 1.5,
-      "contracts_count": 788
+      "contracts_count": 788,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "JNJ",
@@ -446,7 +662,13 @@
       "put_oi": 171892,
       "call_oi": 239350,
       "cp_oi_ratio": 1.39,
-      "contracts_count": 1182
+      "contracts_count": 1182,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "UNH",
@@ -458,7 +680,13 @@
       "put_oi": 573204,
       "call_oi": 1170369,
       "cp_oi_ratio": 2.04,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "ABBV",
@@ -470,7 +698,13 @@
       "put_oi": 150711,
       "call_oi": 181487,
       "cp_oi_ratio": 1.2,
-      "contracts_count": 1400
+      "contracts_count": 1400,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "WMT",
@@ -482,7 +716,13 @@
       "put_oi": 475872,
       "call_oi": 559580,
       "cp_oi_ratio": 1.18,
-      "contracts_count": 1176
+      "contracts_count": 1176,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "HD",
@@ -494,7 +734,13 @@
       "put_oi": 105679,
       "call_oi": 145905,
       "cp_oi_ratio": 1.38,
-      "contracts_count": 1924
+      "contracts_count": 1924,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "MCD",
@@ -506,7 +752,13 @@
       "put_oi": 103907,
       "call_oi": 97569,
       "cp_oi_ratio": 0.94,
-      "contracts_count": 1612
+      "contracts_count": 1612,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "DIS",
@@ -518,7 +770,13 @@
       "put_oi": 332035,
       "call_oi": 406433,
       "cp_oi_ratio": 1.22,
-      "contracts_count": 1178
+      "contracts_count": 1178,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "BA",
@@ -530,7 +788,13 @@
       "put_oi": 554284,
       "call_oi": 596546,
       "cp_oi_ratio": 1.08,
-      "contracts_count": 1656
+      "contracts_count": 1656,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "CAT",
@@ -542,7 +806,13 @@
       "put_oi": 110156,
       "call_oi": 88940,
       "cp_oi_ratio": 0.81,
-      "contracts_count": 2500
+      "contracts_count": 2500,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "GE",
@@ -554,7 +824,13 @@
       "put_oi": 109897,
       "call_oi": 120945,
       "cp_oi_ratio": 1.1,
-      "contracts_count": 1552
+      "contracts_count": 1552,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "T",
@@ -566,7 +842,13 @@
       "put_oi": 475284,
       "call_oi": 737784,
       "cp_oi_ratio": 1.55,
-      "contracts_count": 748
+      "contracts_count": 748,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     },
     {
       "ticker": "VZ",
@@ -578,7 +860,13 @@
       "put_oi": 508667,
       "call_oi": 712056,
       "cp_oi_ratio": 1.4,
-      "contracts_count": 816
+      "contracts_count": 816,
+      "history": {
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "trend": "new",
+        "icon": "🆕"
+      }
     }
   ],
   "anomalies": [

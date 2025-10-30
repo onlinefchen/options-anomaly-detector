@@ -181,6 +181,44 @@
             background: #f8f9fa;
         }
 
+        /* 紧凑单元格样式 */
+        .compact-cell {
+            font-size: 0.85em;
+            line-height: 1.6;
+            padding: 10px !important;
+        }
+
+        .compact-cell div {
+            margin: 3px 0;
+        }
+
+        /* 合约项样式 */
+        .contract-item {
+            white-space: nowrap;
+        }
+
+        /* OI徽章样式 */
+        .oi-badge {
+            background: #e3f2fd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #1976d2;
+            white-space: nowrap;
+        }
+
+        /* 百分比样式 */
+        .pct {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* 小号文字 */
+        .compact-cell small {
+            color: #888;
+            font-size: 0.85em;
+        }
+
         .badge {
             display: inline-block;
             padding: 5px 12px;
@@ -215,7 +253,7 @@
     <div class="container">
         <div class="header">
             <h1>📊 期权市场异常分析报告</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-10-29 20:57:13 EDT | <strong>东八区时间:</strong> 2025-10-30 08:57:13 | <strong>交易时段:</strong> 休市 (Market Closed)</p>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-10-29 21:39:17 EDT | <strong>东八区时间:</strong> 2025-10-30 09:39:17 | <strong>交易时段:</strong> 休市 (Market Closed)</p>
         </div>
 
         <div class="nav">
@@ -417,8 +455,9 @@
                         <th class="sortable" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
                         <th class="sortable" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
                         <th class="sortable" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="put_volume" data-type="number">Put 成交量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="call_volume" data-type="number">Call 成交量 <span class="sort-icon">⇅</span></th>
+                        <th>Top 3 活跃合约</th>
+                        <th>主力价格区间</th>
+                        <th>10日活跃度</th>
                     </tr>
                 </thead>
                 <tbody id="volumeTableBody">
@@ -430,8 +469,15 @@
                     <td>0.90</td>
                     <td>4,723,246</td>
                     <td>0.36</td>
-                    <td>3,268,339</td>
-                    <td>2,954,306</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -441,8 +487,15 @@
                     <td>2.50</td>
                     <td>14,140,638</td>
                     <td>1.20</td>
-                    <td>1,540,060</td>
-                    <td>3,854,677</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -452,8 +505,15 @@
                     <td>0.88</td>
                     <td>2,809,798</td>
                     <td>0.76</td>
-                    <td>1,903,856</td>
-                    <td>1,674,581</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -463,8 +523,15 @@
                     <td>0.78</td>
                     <td>6,176,809</td>
                     <td>0.40</td>
-                    <td>1,052,462</td>
-                    <td>817,251</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -474,8 +541,15 @@
                     <td>1.46</td>
                     <td>4,729,336</td>
                     <td>1.00</td>
-                    <td>560,825</td>
-                    <td>819,712</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -485,8 +559,15 @@
                     <td>2.05</td>
                     <td>3,293,714</td>
                     <td>1.06</td>
-                    <td>341,017</td>
-                    <td>700,546</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -496,8 +577,15 @@
                     <td>2.39</td>
                     <td>2,604,575</td>
                     <td>1.97</td>
-                    <td>238,036</td>
-                    <td>568,896</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -507,8 +595,15 @@
                     <td>0.66</td>
                     <td>6,166,228</td>
                     <td>1.41</td>
-                    <td>472,099</td>
-                    <td>312,764</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -518,8 +613,15 @@
                     <td>1.77</td>
                     <td>3,317,914</td>
                     <td>1.37</td>
-                    <td>263,781</td>
-                    <td>467,909</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -529,8 +631,15 @@
                     <td>2.92</td>
                     <td>5,555,767</td>
                     <td>1.47</td>
-                    <td>171,011</td>
-                    <td>498,925</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -540,8 +649,15 @@
                     <td>2.88</td>
                     <td>4,759,694</td>
                     <td>1.43</td>
-                    <td>171,611</td>
-                    <td>494,168</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -551,8 +667,15 @@
                     <td>1.70</td>
                     <td>3,700,994</td>
                     <td>1.07</td>
-                    <td>225,833</td>
-                    <td>383,856</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -562,8 +685,15 @@
                     <td>2.65</td>
                     <td>4,419,403</td>
                     <td>1.49</td>
-                    <td>159,095</td>
-                    <td>422,246</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -573,8 +703,15 @@
                     <td>2.26</td>
                     <td>2,087,897</td>
                     <td>1.38</td>
-                    <td>174,894</td>
-                    <td>395,999</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -584,8 +721,15 @@
                     <td>1.05</td>
                     <td>12,971,039</td>
                     <td>2.13</td>
-                    <td>264,516</td>
-                    <td>276,713</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -595,8 +739,15 @@
                     <td>2.24</td>
                     <td>6,038,714</td>
                     <td>1.46</td>
-                    <td>162,661</td>
-                    <td>364,305</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -606,8 +757,15 @@
                     <td>1.81</td>
                     <td>1,268,411</td>
                     <td>1.23</td>
-                    <td>161,983</td>
-                    <td>293,625</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -617,8 +775,15 @@
                     <td>1.65</td>
                     <td>7,011,200</td>
                     <td>1.44</td>
-                    <td>171,533</td>
-                    <td>283,030</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -628,8 +793,15 @@
                     <td>0.16</td>
                     <td>9,501,153</td>
                     <td>0.22</td>
-                    <td>387,598</td>
-                    <td>60,171</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -639,8 +811,15 @@
                     <td>0.94</td>
                     <td>6,859,708</td>
                     <td>0.72</td>
-                    <td>173,341</td>
-                    <td>163,341</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -650,8 +829,15 @@
                     <td>2.60</td>
                     <td>1,150,830</td>
                     <td>1.08</td>
-                    <td>72,541</td>
-                    <td>188,519</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -661,8 +847,15 @@
                     <td>2.41</td>
                     <td>1,743,573</td>
                     <td>2.04</td>
-                    <td>66,565</td>
-                    <td>160,316</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -672,8 +865,15 @@
                     <td>0.80</td>
                     <td>3,637,904</td>
                     <td>1.50</td>
-                    <td>113,307</td>
-                    <td>91,205</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -683,8 +883,15 @@
                     <td>2.38</td>
                     <td>1,220,723</td>
                     <td>1.40</td>
-                    <td>53,775</td>
-                    <td>128,158</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -694,8 +901,15 @@
                     <td>2.71</td>
                     <td>2,437,015</td>
                     <td>1.70</td>
-                    <td>46,749</td>
-                    <td>126,544</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -705,8 +919,15 @@
                     <td>2.14</td>
                     <td>4,348,888</td>
                     <td>1.45</td>
-                    <td>48,026</td>
-                    <td>103,000</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -716,8 +937,15 @@
                     <td>0.81</td>
                     <td>2,888,404</td>
                     <td>0.88</td>
-                    <td>80,246</td>
-                    <td>64,859</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -727,8 +955,15 @@
                     <td>4.02</td>
                     <td>536,038</td>
                     <td>1.98</td>
-                    <td>23,555</td>
-                    <td>94,637</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -738,8 +973,15 @@
                     <td>3.21</td>
                     <td>1,213,068</td>
                     <td>1.55</td>
-                    <td>27,997</td>
-                    <td>89,818</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 <tr>
@@ -749,8 +991,15 @@
                     <td>1.36</td>
                     <td>1,035,452</td>
                     <td>1.18</td>
-                    <td>48,720</td>
-                    <td>66,133</td>
+                    <td class="compact-cell"><small>N/A</small></td>
+                    <td class="compact-cell">
+                <div><strong>N/A</strong> <span class='pct'>(0.0%)</span></div>
+                <div><small>核心: N/A</small></div>
+            </td>
+                    <td class="compact-cell">
+                <div><strong>0/10 🆕</strong> ↔️</div>
+                <div><small>平均排名: N/A</small></div>
+            </td>
                 </tr>
             
                 </tbody>
@@ -779,7 +1028,7 @@
 
     <script>
         // Store table data for sorting
-        const tableData = [{"ticker": "SPY", "total_volume": 6222645, "put_volume": 3268339, "call_volume": 2954306, "cp_volume_ratio": 0.9, "total_oi": 4723246, "put_oi": 3475095, "call_oi": 1248151, "cp_oi_ratio": 0.36, "contracts_count": 2500}, {"ticker": "NVDA", "total_volume": 5394737, "put_volume": 1540060, "call_volume": 3854677, "cp_volume_ratio": 2.5, "total_oi": 14140638, "put_oi": 6434960, "call_oi": 7705678, "cp_oi_ratio": 1.2, "contracts_count": 2500}, {"ticker": "QQQ", "total_volume": 3578437, "put_volume": 1903856, "call_volume": 1674581, "cp_volume_ratio": 0.88, "total_oi": 2809798, "put_oi": 1600507, "call_oi": 1209291, "cp_oi_ratio": 0.76, "contracts_count": 2500}, {"ticker": "IWM", "total_volume": 1869713, "put_volume": 1052462, "call_volume": 817251, "cp_volume_ratio": 0.78, "total_oi": 6176809, "put_oi": 4418356, "call_oi": 1758453, "cp_oi_ratio": 0.4, "contracts_count": 2500}, {"ticker": "TSLA", "total_volume": 1380537, "put_volume": 560825, "call_volume": 819712, "cp_volume_ratio": 1.46, "total_oi": 4729336, "put_oi": 2367356, "call_oi": 2361980, "cp_oi_ratio": 1.0, "contracts_count": 2500}, {"ticker": "PLTR", "total_volume": 1041563, "put_volume": 341017, "call_volume": 700546, "cp_volume_ratio": 2.05, "total_oi": 3293714, "put_oi": 1598241, "call_oi": 1695473, "cp_oi_ratio": 1.06, "contracts_count": 2378}, {"ticker": "GLD", "total_volume": 806932, "put_volume": 238036, "call_volume": 568896, "cp_volume_ratio": 2.39, "total_oi": 2604575, "put_oi": 876504, "call_oi": 1728071, "cp_oi_ratio": 1.97, "contracts_count": 2500}, {"ticker": "TLT", "total_volume": 784863, "put_volume": 472099, "call_volume": 312764, "cp_volume_ratio": 0.66, "total_oi": 6166228, "put_oi": 2555507, "call_oi": 3610721, "cp_oi_ratio": 1.41, "contracts_count": 2258}, {"ticker": "GOOGL", "total_volume": 731690, "put_volume": 263781, "call_volume": 467909, "cp_volume_ratio": 1.77, "total_oi": 3317914, "put_oi": 1398572, "call_oi": 1919342, "cp_oi_ratio": 1.37, "contracts_count": 2466}, {"ticker": "AAPL", "total_volume": 669936, "put_volume": 171011, "call_volume": 498925, "cp_volume_ratio": 2.92, "total_oi": 5555767, "put_oi": 2248240, "call_oi": 3307527, "cp_oi_ratio": 1.47, "contracts_count": 2500}, {"ticker": "AMZN", "total_volume": 665779, "put_volume": 171611, "call_volume": 494168, "cp_volume_ratio": 2.88, "total_oi": 4759694, "put_oi": 1961280, "call_oi": 2798414, "cp_oi_ratio": 1.43, "contracts_count": 2090}, {"ticker": "AMD", "total_volume": 609689, "put_volume": 225833, "call_volume": 383856, "cp_volume_ratio": 1.7, "total_oi": 3700994, "put_oi": 1785184, "call_oi": 1915810, "cp_oi_ratio": 1.07, "contracts_count": 2500}, {"ticker": "SOFI", "total_volume": 581341, "put_volume": 159095, "call_volume": 422246, "cp_volume_ratio": 2.65, "total_oi": 4419403, "put_oi": 1777129, "call_oi": 2642274, "cp_oi_ratio": 1.49, "contracts_count": 1168}, {"ticker": "MSFT", "total_volume": 570893, "put_volume": 174894, "call_volume": 395999, "cp_volume_ratio": 2.26, "total_oi": 2087897, "put_oi": 876318, "call_oi": 1211579, "cp_oi_ratio": 1.38, "contracts_count": 2500}, {"ticker": "VIX", "total_volume": 541229, "put_volume": 264516, "call_volume": 276713, "cp_volume_ratio": 1.05, "total_oi": 12971039, "put_oi": 4140123, "call_oi": 8830916, "cp_oi_ratio": 2.13, "contracts_count": 1400}, {"ticker": "SLV", "total_volume": 526966, "put_volume": 162661, "call_volume": 364305, "cp_volume_ratio": 2.24, "total_oi": 6038714, "put_oi": 2457144, "call_oi": 3581570, "cp_oi_ratio": 1.46, "contracts_count": 2500}, {"ticker": "META", "total_volume": 455608, "put_volume": 161983, "call_volume": 293625, "cp_volume_ratio": 1.81, "total_oi": 1268411, "put_oi": 568585, "call_oi": 699826, "cp_oi_ratio": 1.23, "contracts_count": 2500}, {"ticker": "INTC", "total_volume": 454563, "put_volume": 171533, "call_volume": 283030, "cp_volume_ratio": 1.65, "total_oi": 7011200, "put_oi": 2873453, "call_oi": 4137747, "cp_oi_ratio": 1.44, "contracts_count": 1382}, {"ticker": "HYG", "total_volume": 447769, "put_volume": 387598, "call_volume": 60171, "cp_volume_ratio": 0.16, "total_oi": 9501153, "put_oi": 7764587, "call_oi": 1736566, "cp_oi_ratio": 0.22, "contracts_count": 1436}, {"ticker": "EEM", "total_volume": 336682, "put_volume": 173341, "call_volume": 163341, "cp_volume_ratio": 0.94, "total_oi": 6859708, "put_oi": 3997253, "call_oi": 2862455, "cp_oi_ratio": 0.72, "contracts_count": 1436}, {"ticker": "BA", "total_volume": 261060, "put_volume": 72541, "call_volume": 188519, "cp_volume_ratio": 2.6, "total_oi": 1150830, "put_oi": 554284, "call_oi": 596546, "cp_oi_ratio": 1.08, "contracts_count": 1656}, {"ticker": "UNH", "total_volume": 226881, "put_volume": 66565, "call_volume": 160316, "cp_volume_ratio": 2.41, "total_oi": 1743573, "put_oi": 573204, "call_oi": 1170369, "cp_oi_ratio": 2.04, "contracts_count": 2500}, {"ticker": "PFE", "total_volume": 204512, "put_volume": 113307, "call_volume": 91205, "cp_volume_ratio": 0.8, "total_oi": 3637904, "put_oi": 1454918, "call_oi": 2182986, "cp_oi_ratio": 1.5, "contracts_count": 788}, {"ticker": "VZ", "total_volume": 181933, "put_volume": 53775, "call_volume": 128158, "cp_volume_ratio": 2.38, "total_oi": 1220723, "put_oi": 508667, "call_oi": 712056, "cp_oi_ratio": 1.4, "contracts_count": 816}, {"ticker": "BABA", "total_volume": 173293, "put_volume": 46749, "call_volume": 126544, "cp_volume_ratio": 2.71, "total_oi": 2437015, "put_oi": 901619, "call_oi": 1535396, "cp_oi_ratio": 1.7, "contracts_count": 2500}, {"ticker": "NIO", "total_volume": 151026, "put_volume": 48026, "call_volume": 103000, "cp_volume_ratio": 2.14, "total_oi": 4348888, "put_oi": 1776524, "call_oi": 2572364, "cp_oi_ratio": 1.45, "contracts_count": 526}, {"ticker": "BAC", "total_volume": 145105, "put_volume": 80246, "call_volume": 64859, "cp_volume_ratio": 0.81, "total_oi": 2888404, "put_oi": 1534179, "call_oi": 1354225, "cp_oi_ratio": 0.88, "contracts_count": 1012}, {"ticker": "UVXY", "total_volume": 118192, "put_volume": 23555, "call_volume": 94637, "cp_volume_ratio": 4.02, "total_oi": 536038, "put_oi": 179831, "call_oi": 356207, "cp_oi_ratio": 1.98, "contracts_count": 1188}, {"ticker": "T", "total_volume": 117815, "put_volume": 27997, "call_volume": 89818, "cp_volume_ratio": 3.21, "total_oi": 1213068, "put_oi": 475284, "call_oi": 737784, "cp_oi_ratio": 1.55, "contracts_count": 748}, {"ticker": "WMT", "total_volume": 114853, "put_volume": 48720, "call_volume": 66133, "cp_volume_ratio": 1.36, "total_oi": 1035452, "put_oi": 475872, "call_oi": 559580, "cp_oi_ratio": 1.18, "contracts_count": 1176}];
+        const tableData = [{"ticker": "SPY", "total_volume": 6222645, "put_volume": 3268339, "call_volume": 2954306, "cp_volume_ratio": 0.9, "total_oi": 4723246, "put_oi": 3475095, "call_oi": 1248151, "cp_oi_ratio": 0.36, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "NVDA", "total_volume": 5394737, "put_volume": 1540060, "call_volume": 3854677, "cp_volume_ratio": 2.5, "total_oi": 14140638, "put_oi": 6434960, "call_oi": 7705678, "cp_oi_ratio": 1.2, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "QQQ", "total_volume": 3578437, "put_volume": 1903856, "call_volume": 1674581, "cp_volume_ratio": 0.88, "total_oi": 2809798, "put_oi": 1600507, "call_oi": 1209291, "cp_oi_ratio": 0.76, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "IWM", "total_volume": 1869713, "put_volume": 1052462, "call_volume": 817251, "cp_volume_ratio": 0.78, "total_oi": 6176809, "put_oi": 4418356, "call_oi": 1758453, "cp_oi_ratio": 0.4, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "TSLA", "total_volume": 1380537, "put_volume": 560825, "call_volume": 819712, "cp_volume_ratio": 1.46, "total_oi": 4729336, "put_oi": 2367356, "call_oi": 2361980, "cp_oi_ratio": 1.0, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "PLTR", "total_volume": 1041563, "put_volume": 341017, "call_volume": 700546, "cp_volume_ratio": 2.05, "total_oi": 3293714, "put_oi": 1598241, "call_oi": 1695473, "cp_oi_ratio": 1.06, "contracts_count": 2378, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "GLD", "total_volume": 806932, "put_volume": 238036, "call_volume": 568896, "cp_volume_ratio": 2.39, "total_oi": 2604575, "put_oi": 876504, "call_oi": 1728071, "cp_oi_ratio": 1.97, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "TLT", "total_volume": 784863, "put_volume": 472099, "call_volume": 312764, "cp_volume_ratio": 0.66, "total_oi": 6166228, "put_oi": 2555507, "call_oi": 3610721, "cp_oi_ratio": 1.41, "contracts_count": 2258, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "GOOGL", "total_volume": 731690, "put_volume": 263781, "call_volume": 467909, "cp_volume_ratio": 1.77, "total_oi": 3317914, "put_oi": 1398572, "call_oi": 1919342, "cp_oi_ratio": 1.37, "contracts_count": 2466, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "AAPL", "total_volume": 669936, "put_volume": 171011, "call_volume": 498925, "cp_volume_ratio": 2.92, "total_oi": 5555767, "put_oi": 2248240, "call_oi": 3307527, "cp_oi_ratio": 1.47, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "AMZN", "total_volume": 665779, "put_volume": 171611, "call_volume": 494168, "cp_volume_ratio": 2.88, "total_oi": 4759694, "put_oi": 1961280, "call_oi": 2798414, "cp_oi_ratio": 1.43, "contracts_count": 2090, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "AMD", "total_volume": 609689, "put_volume": 225833, "call_volume": 383856, "cp_volume_ratio": 1.7, "total_oi": 3700994, "put_oi": 1785184, "call_oi": 1915810, "cp_oi_ratio": 1.07, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "SOFI", "total_volume": 581341, "put_volume": 159095, "call_volume": 422246, "cp_volume_ratio": 2.65, "total_oi": 4419403, "put_oi": 1777129, "call_oi": 2642274, "cp_oi_ratio": 1.49, "contracts_count": 1168, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "MSFT", "total_volume": 570893, "put_volume": 174894, "call_volume": 395999, "cp_volume_ratio": 2.26, "total_oi": 2087897, "put_oi": 876318, "call_oi": 1211579, "cp_oi_ratio": 1.38, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "VIX", "total_volume": 541229, "put_volume": 264516, "call_volume": 276713, "cp_volume_ratio": 1.05, "total_oi": 12971039, "put_oi": 4140123, "call_oi": 8830916, "cp_oi_ratio": 2.13, "contracts_count": 1400, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "SLV", "total_volume": 526966, "put_volume": 162661, "call_volume": 364305, "cp_volume_ratio": 2.24, "total_oi": 6038714, "put_oi": 2457144, "call_oi": 3581570, "cp_oi_ratio": 1.46, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "META", "total_volume": 455608, "put_volume": 161983, "call_volume": 293625, "cp_volume_ratio": 1.81, "total_oi": 1268411, "put_oi": 568585, "call_oi": 699826, "cp_oi_ratio": 1.23, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "INTC", "total_volume": 454563, "put_volume": 171533, "call_volume": 283030, "cp_volume_ratio": 1.65, "total_oi": 7011200, "put_oi": 2873453, "call_oi": 4137747, "cp_oi_ratio": 1.44, "contracts_count": 1382, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "HYG", "total_volume": 447769, "put_volume": 387598, "call_volume": 60171, "cp_volume_ratio": 0.16, "total_oi": 9501153, "put_oi": 7764587, "call_oi": 1736566, "cp_oi_ratio": 0.22, "contracts_count": 1436, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "EEM", "total_volume": 336682, "put_volume": 173341, "call_volume": 163341, "cp_volume_ratio": 0.94, "total_oi": 6859708, "put_oi": 3997253, "call_oi": 2862455, "cp_oi_ratio": 0.72, "contracts_count": 1436, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "BA", "total_volume": 261060, "put_volume": 72541, "call_volume": 188519, "cp_volume_ratio": 2.6, "total_oi": 1150830, "put_oi": 554284, "call_oi": 596546, "cp_oi_ratio": 1.08, "contracts_count": 1656, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "UNH", "total_volume": 226881, "put_volume": 66565, "call_volume": 160316, "cp_volume_ratio": 2.41, "total_oi": 1743573, "put_oi": 573204, "call_oi": 1170369, "cp_oi_ratio": 2.04, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "PFE", "total_volume": 204512, "put_volume": 113307, "call_volume": 91205, "cp_volume_ratio": 0.8, "total_oi": 3637904, "put_oi": 1454918, "call_oi": 2182986, "cp_oi_ratio": 1.5, "contracts_count": 788, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "VZ", "total_volume": 181933, "put_volume": 53775, "call_volume": 128158, "cp_volume_ratio": 2.38, "total_oi": 1220723, "put_oi": 508667, "call_oi": 712056, "cp_oi_ratio": 1.4, "contracts_count": 816, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "BABA", "total_volume": 173293, "put_volume": 46749, "call_volume": 126544, "cp_volume_ratio": 2.71, "total_oi": 2437015, "put_oi": 901619, "call_oi": 1535396, "cp_oi_ratio": 1.7, "contracts_count": 2500, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "NIO", "total_volume": 151026, "put_volume": 48026, "call_volume": 103000, "cp_volume_ratio": 2.14, "total_oi": 4348888, "put_oi": 1776524, "call_oi": 2572364, "cp_oi_ratio": 1.45, "contracts_count": 526, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "BAC", "total_volume": 145105, "put_volume": 80246, "call_volume": 64859, "cp_volume_ratio": 0.81, "total_oi": 2888404, "put_oi": 1534179, "call_oi": 1354225, "cp_oi_ratio": 0.88, "contracts_count": 1012, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "UVXY", "total_volume": 118192, "put_volume": 23555, "call_volume": 94637, "cp_volume_ratio": 4.02, "total_oi": 536038, "put_oi": 179831, "call_oi": 356207, "cp_oi_ratio": 1.98, "contracts_count": 1188, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "T", "total_volume": 117815, "put_volume": 27997, "call_volume": 89818, "cp_volume_ratio": 3.21, "total_oi": 1213068, "put_oi": 475284, "call_oi": 737784, "cp_oi_ratio": 1.55, "contracts_count": 748, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}, {"ticker": "WMT", "total_volume": 114853, "put_volume": 48720, "call_volume": 66133, "cp_volume_ratio": 1.36, "total_oi": 1035452, "put_oi": 475872, "call_oi": 559580, "cp_oi_ratio": 1.18, "contracts_count": 1176, "history": {"appearances": 0, "appearance_rate": 0.0, "trend": "new", "icon": "🆕"}}];
         let currentSortColumn = 'total_volume';
         let currentSortOrder = 'desc';
 
