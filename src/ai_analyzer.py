@@ -104,7 +104,7 @@ class AIAnalyzer:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are a senior options trading analyst with 15+ years of experience in institutional trading. You excel at interpreting options flow data, identifying institutional positioning, and providing actionable trade recommendations. You stay current on market news, global macro trends, and sector dynamics. Your analysis is concise, data-driven, and focused on risk-adjusted returns."
+                        "content": "你是一位拥有15年以上机构交易经验的资深期权交易分析师。你擅长解读期权流动数据，识别机构定位，并提供可操作的交易建议。你密切关注市场新闻、全球宏观趋势和板块动态。你的分析简洁、基于数据，并专注于风险调整后的回报。重要：在提供交易建议时，不要简单选择成交量最大的标的，而要深度分析后选择最有操作价值、风险收益比最优的机会。"
                     },
                     {
                         "role": "user",
@@ -182,59 +182,66 @@ class AIAnalyzer:
                 for a in market_summary['key_anomalies']
             ])
 
-        prompt = f"""Analyze the following US options market data and provide professional market insights:
+        prompt = f"""请分析以下美股期权市场数据，并提供专业的市场洞察：
 
-# Market Overview
-- Total Tickers Analyzed: {market_summary['total_tickers']}
-- Anomalies Detected: {market_summary['anomalies_count']} (High: {market_summary['high_severity']}, Medium: {market_summary['medium_severity']}, Low: {market_summary['low_severity']})
+# 市场概况
+- 分析标的总数: {market_summary['total_tickers']}
+- 检测到异常: {market_summary['anomalies_count']} 个 (高: {market_summary['high_severity']}, 中: {market_summary['medium_severity']}, 低: {market_summary['low_severity']})
 
-# Top 15 Active Tickers - Complete Data
+# Top 15 活跃标的完整数据
 
 {tickers_str}
 {anomalies_str}
 
-Please provide comprehensive analysis in ENGLISH (Markdown format):
+请提供全面的分析（中文，Markdown 格式）：
 
-## 1. Market Sentiment Analysis
-- Based on C/P ratios across Top 15 tickers, assess overall market sentiment (Bullish/Bearish/Neutral)
-- Analyze Call vs Put volume/OI to determine fund flow direction
-- Consider current global market context (equity indices, VIX, bond yields)
-- Factor in any recent market-moving news or events
+## 1. 市场整体情绪分析
+- 基于 Top 15 标的的 C/P 比率，综合判断市场整体情绪（看涨/看跌/中性）
+- 分析 Call 与 Put 成交量/持仓量对比，判断资金流向
+- 结合当前国际市场环境（股指、VIX、债券收益率）
+- 考虑近期市场重大新闻或事件的影响
 
-## 2. Deep Dive on Top 5 Tickers
-- Analyze characteristics of top 5 most active tickers
-- Examine dominant contracts (strikes, expiries) and what they imply
-- Assess strike concentration and market expectations
-- Consider sector rotation and institutional positioning
+## 2. 重点标的深度解读
+- 分析前 5 个最活跃标的的特点
+- 解读主力合约（执行价、到期日）的市场含义
+- 评估价格区间集中度和市场预期
+- 考虑板块轮动和机构定位
 
-## 3. Key Contract Analysis
-- Interpret significance of dominant strikes and expiry dates
-- Identify critical support/resistance levels based on strike concentration
-- Analyze unusual contract activity (high OI with specific strikes/dates)
+## 3. 关键合约分析
+- 解读主导执行价和到期日的意义
+- 基于价格集中度识别关键支撑/阻力位
+- 分析异常合约活动（特定执行价/日期的高持仓量）
 
-## 4. Risk Factors & Market Catalysts
-- Highlight any anomalies requiring attention
-- Identify potential market volatility drivers
-- Note sector-specific or macro risks
+## 4. 风险因素与市场催化剂
+- 强调需要关注的异常情况
+- 识别潜在的市场波动驱动因素
+- 注意板块特定或宏观风险
 
-## 5. TOP 5 ACTIONABLE TRADE RECOMMENDATIONS
-For each recommendation, specify:
-- **Ticker & Action**: Stock or Options (specify contract details if options)
-- **Direction**: Long/Short, Call/Put
-- **Rationale**: Why this trade based on the data
-- **Entry/Target**: Suggested levels
-- **Risk Level**: Low/Medium/High
-- **Time Horizon**: Short-term (1-2 weeks) / Medium-term (1-2 months)
+## 5. 5个最值得操作的交易建议
 
-Example format:
-**Trade #1: WMT Stock Long**
-- Action: Buy WMT stock
-- Rationale: Strong Call volume (3.05M) with C/P 1.54, dominant Call strike at $60 suggests bullish bias
-- Entry: Current levels, Target: $62-65
-- Risk: Medium, Stop below $57
-- Horizon: 1-2 weeks
+**重要提示**:
+- 不要简单选择成交量最大的5个标的
+- 要综合分析后，选择最有操作价值/机会的标的
+- 可以包括：异常标的、特殊机会、强烈信号的标的
+- 优先选择风险收益比最优的机会
 
-Keep analysis concise (500-700 words), actionable, and suitable for morning decision-making.
+每个建议需明确包含：
+- **标的 & 操作**: 正股或期权（如是期权，指定合约细节）
+- **方向**: 做多/做空, Call/Put
+- **理由**: 基于数据的详细分析（为什么这个标的最值得操作）
+- **入场/目标**: 建议价位
+- **风险等级**: 低/中/高
+- **持仓周期**: 短期(1-2周) / 中期(1-2个月)
+
+示例格式：
+**交易建议 #1: TSLA 看涨期权**
+- 操作: 买入 TSLA 2025-11-29 Call $410
+- 理由: Call持仓量(896K)远超Put(706K)，C/P比1.27显示强烈看涨情绪。主力合约集中在$405-410，表明机构预期突破当前阻力位。近期特斯拉新能源政策利好，技术面突破整理区间。
+- 入场: 当前价位，目标 $420-430
+- 风险: 中等，止损设在 $395
+- 周期: 2-3周
+
+分析保持简洁实用（500-700字），适合早晨快速决策。
 """
 
         return prompt
@@ -256,9 +263,9 @@ Keep analysis concise (500-700 words), actionable, and suitable for morning deci
         top_ticker = data[0]['ticker'] if data else 'N/A'
 
         if anomalies_count > 0:
-            return f"Options Market Report {date_str} - {top_ticker} Leading | {anomalies_count} Anomalies"
+            return f"期权市场日报 {date_str} - {top_ticker} 领涨 | {anomalies_count}个异常"
         else:
-            return f"Options Market Report {date_str} - {top_ticker} Leading"
+            return f"期权市场日报 {date_str} - {top_ticker} 领涨"
 
     def format_for_email(self, analysis: str, data: List[Dict], summary: Dict) -> str:
         """
@@ -407,24 +414,24 @@ Keep analysis concise (500-700 words), actionable, and suitable for morning deci
 </head>
 <body>
     <div class="container">
-        <h1>Options Market Daily Report</h1>
+        <h1>期权市场日报</h1>
         <div class="date">{datetime.now().strftime('%Y-%m-%d %A')}</div>
 
         <div class="summary">
-            <div class="summary-item">Tickers Analyzed: <strong>{len(data)}</strong></div>
-            <div class="summary-item">Anomalies Detected: <strong>{summary.get('total', 0)}</strong></div>
-            <div class="summary-item">Top Active: <strong>{data[0]['ticker']}</strong> (Volume {data[0]['total_volume']:,})</div>
+            <div class="summary-item">分析标的数: <strong>{len(data)}</strong></div>
+            <div class="summary-item">检测异常: <strong>{summary.get('total', 0)}</strong></div>
+            <div class="summary-item">最活跃: <strong>{data[0]['ticker']}</strong> (成交量 {data[0]['total_volume']:,})</div>
         </div>
 
-        <h2>Top 5 Active Tickers</h2>
+        <h2>Top 5 活跃标的</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Rank</th>
-                    <th>Ticker</th>
-                    <th>Volume</th>
-                    <th>C/P Ratio</th>
-                    <th>Open Interest</th>
+                    <th>排名</th>
+                    <th>标的</th>
+                    <th>成交量</th>
+                    <th>C/P比</th>
+                    <th>持仓量</th>
                 </tr>
             </thead>
             <tbody>
@@ -432,14 +439,14 @@ Keep analysis concise (500-700 words), actionable, and suitable for morning deci
             </tbody>
         </table>
 
-        <h2>AI Market Analysis</h2>
+        <h2>AI 市场分析</h2>
         <div class="ai-analysis">
             {analysis_html}
         </div>
 
         <div class="footer">
-            <div><a href="https://onlinefchen.github.io/options-anomaly-detector/">View Full Report</a> | <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub</a></div>
-            <div style="margin-top: 10px;">Automated Report - For Reference Only</div>
+            <div><a href="https://onlinefchen.github.io/options-anomaly-detector/">查看完整报告</a> | <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub</a></div>
+            <div style="margin-top: 10px;">自动化报告 - 仅供参考</div>
         </div>
     </div>
 </body>
