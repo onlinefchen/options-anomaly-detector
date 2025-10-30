@@ -1,0 +1,1338 @@
+{
+  "date": "2025-10-28",
+  "timestamp": "2025-10-28T22:00:00.000000",
+  "tickers_count": 30,
+  "anomalies_count": 0,
+  "data": [
+    {
+      "ticker": "SOFI",
+      "total_volume": 5153764,
+      "put_volume": 2457807,
+      "call_volume": 2695957,
+      "cp_volume_ratio": 1.1,
+      "total_oi": 1905828,
+      "put_oi": 1141747,
+      "call_oi": 764081,
+      "cp_oi_ratio": 0.67,
+      "contracts_count": 521,
+      "top_3_contracts": [
+        {
+          "ticker": "O:SOFI20251111C00000605",
+          "oi": 115064,
+          "strike": 605.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 6.0
+        },
+        {
+          "ticker": "O:SOFI20251227C00000600",
+          "oi": 113877,
+          "strike": 600.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 6.0
+        },
+        {
+          "ticker": "O:SOFI20251111C00000610",
+          "oi": 113268,
+          "strike": 610.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 5.9
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 488079,
+        "percentage": 25.6,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "BABA",
+      "total_volume": 5060621,
+      "put_volume": 1867955,
+      "call_volume": 3192666,
+      "cp_volume_ratio": 1.71,
+      "total_oi": 1734617,
+      "put_oi": 745085,
+      "call_oi": 989532,
+      "cp_oi_ratio": 1.33,
+      "contracts_count": 484,
+      "top_3_contracts": [
+        {
+          "ticker": "O:BABA20251111C00000410",
+          "oi": 206844,
+          "strike": 410.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 11.9
+        },
+        {
+          "ticker": "O:BABA20251104C00000400",
+          "oi": 133607,
+          "strike": 400.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 7.7
+        },
+        {
+          "ticker": "O:BABA20251111P00000405",
+          "oi": 105094,
+          "strike": 405.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 6.1
+        }
+      ],
+      "strike_concentration": {
+        "range": "400-420",
+        "oi": 454546,
+        "percentage": 26.2,
+        "dominant_strike": 400
+      }
+    },
+    {
+      "ticker": "WMT",
+      "total_volume": 4980211,
+      "put_volume": 2133424,
+      "call_volume": 2846787,
+      "cp_volume_ratio": 1.33,
+      "total_oi": 1726336,
+      "put_oi": 858966,
+      "call_oi": 867370,
+      "cp_oi_ratio": 1.01,
+      "contracts_count": 533,
+      "top_3_contracts": [
+        {
+          "ticker": "O:WMT20251227C00000400",
+          "oi": 166944,
+          "strike": 400.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 9.7
+        },
+        {
+          "ticker": "O:WMT20251227C00000405",
+          "oi": 98118,
+          "strike": 405.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 5.7
+        },
+        {
+          "ticker": "O:WMT20251111P00000410",
+          "oi": 94028,
+          "strike": 410.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 5.4
+        }
+      ],
+      "strike_concentration": {
+        "range": "400-420",
+        "oi": 507590,
+        "percentage": 29.4,
+        "dominant_strike": 400
+      }
+    },
+    {
+      "ticker": "EEM",
+      "total_volume": 4531867,
+      "put_volume": 2831262,
+      "call_volume": 1700605,
+      "cp_volume_ratio": 0.6,
+      "total_oi": 1501921,
+      "put_oi": 529850,
+      "call_oi": 972071,
+      "cp_oi_ratio": 1.83,
+      "contracts_count": 517,
+      "top_3_contracts": [
+        {
+          "ticker": "O:EEM20251104P00000055",
+          "oi": 166460,
+          "strike": 55.0,
+          "expiry": "2025-11-04",
+          "type": "put",
+          "percentage": 11.1
+        },
+        {
+          "ticker": "O:EEM20251111P00000050",
+          "oi": 133804,
+          "strike": 50.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 8.9
+        },
+        {
+          "ticker": "O:EEM20251104C00000060",
+          "oi": 133062,
+          "strike": 60.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 8.9
+        }
+      ],
+      "strike_concentration": {
+        "range": "50-60",
+        "oi": 313924,
+        "percentage": 20.9,
+        "dominant_strike": 50
+      }
+    },
+    {
+      "ticker": "SPY",
+      "total_volume": 4441125,
+      "put_volume": 2885533,
+      "call_volume": 1555592,
+      "cp_volume_ratio": 0.54,
+      "total_oi": 1491518,
+      "put_oi": 887628,
+      "call_oi": 603890,
+      "cp_oi_ratio": 0.68,
+      "contracts_count": 463,
+      "top_3_contracts": [
+        {
+          "ticker": "O:SPY20251104C00000610",
+          "oi": 145672,
+          "strike": 610.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 9.8
+        },
+        {
+          "ticker": "O:SPY20251227P00000605",
+          "oi": 109728,
+          "strike": 605.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 7.4
+        },
+        {
+          "ticker": "O:SPY20251227C00000600",
+          "oi": 92805,
+          "strike": 600.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 6.2
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 418298,
+        "percentage": 28.0,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "PLTR",
+      "total_volume": 4410200,
+      "put_volume": 2805403,
+      "call_volume": 1604797,
+      "cp_volume_ratio": 0.57,
+      "total_oi": 1235344,
+      "put_oi": 745399,
+      "call_oi": 489945,
+      "cp_oi_ratio": 0.66,
+      "contracts_count": 418,
+      "top_3_contracts": [
+        {
+          "ticker": "O:PLTR20251227C00000400",
+          "oi": 107636,
+          "strike": 400.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 8.7
+        },
+        {
+          "ticker": "O:PLTR20251104C00000405",
+          "oi": 76788,
+          "strike": 405.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 6.2
+        },
+        {
+          "ticker": "O:PLTR20251111C00000410",
+          "oi": 62650,
+          "strike": 410.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 5.1
+        }
+      ],
+      "strike_concentration": {
+        "range": "400-420",
+        "oi": 277828,
+        "percentage": 22.5,
+        "dominant_strike": 400
+      }
+    },
+    {
+      "ticker": "AMZN",
+      "total_volume": 4248630,
+      "put_volume": 2052734,
+      "call_volume": 2195896,
+      "cp_volume_ratio": 1.07,
+      "total_oi": 1619387,
+      "put_oi": 1025713,
+      "call_oi": 593674,
+      "cp_oi_ratio": 0.58,
+      "contracts_count": 331,
+      "top_3_contracts": [
+        {
+          "ticker": "O:AMZN20251104P00000060",
+          "oi": 191044,
+          "strike": 60.0,
+          "expiry": "2025-11-04",
+          "type": "put",
+          "percentage": 11.8
+        },
+        {
+          "ticker": "O:AMZN20251227C00000050",
+          "oi": 157022,
+          "strike": 50.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 9.7
+        },
+        {
+          "ticker": "O:AMZN20251127P00000055",
+          "oi": 91817,
+          "strike": 55.0,
+          "expiry": "2025-11-27",
+          "type": "put",
+          "percentage": 5.7
+        }
+      ],
+      "strike_concentration": {
+        "range": "50-60",
+        "oi": 472677,
+        "percentage": 29.2,
+        "dominant_strike": 50
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "total_volume": 4037361,
+      "put_volume": 2235021,
+      "call_volume": 1802340,
+      "cp_volume_ratio": 0.81,
+      "total_oi": 1241459,
+      "put_oi": 453877,
+      "call_oi": 787582,
+      "cp_oi_ratio": 1.74,
+      "contracts_count": 521,
+      "top_3_contracts": [
+        {
+          "ticker": "O:NVDA20251104C00000610",
+          "oi": 118487,
+          "strike": 610.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 9.5
+        },
+        {
+          "ticker": "O:NVDA20251127C00000605",
+          "oi": 116484,
+          "strike": 605.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 9.4
+        },
+        {
+          "ticker": "O:NVDA20251227P00000600",
+          "oi": 108572,
+          "strike": 600.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 8.7
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 296860,
+        "percentage": 23.9,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "TSLA",
+      "total_volume": 4012664,
+      "put_volume": 2274559,
+      "call_volume": 1738105,
+      "cp_volume_ratio": 0.76,
+      "total_oi": 1336974,
+      "put_oi": 768369,
+      "call_oi": 568605,
+      "cp_oi_ratio": 0.74,
+      "contracts_count": 361,
+      "top_3_contracts": [
+        {
+          "ticker": "O:TSLA20251104P00000100",
+          "oi": 137814,
+          "strike": 100.0,
+          "expiry": "2025-11-04",
+          "type": "put",
+          "percentage": 10.3
+        },
+        {
+          "ticker": "O:TSLA20251227P00000105",
+          "oi": 128985,
+          "strike": 105.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 9.6
+        },
+        {
+          "ticker": "O:TSLA20251227P00000110",
+          "oi": 92832,
+          "strike": 110.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 6.9
+        }
+      ],
+      "strike_concentration": {
+        "range": "100-110",
+        "oi": 234089,
+        "percentage": 17.5,
+        "dominant_strike": 100
+      }
+    },
+    {
+      "ticker": "MSFT",
+      "total_volume": 3802331,
+      "put_volume": 1453575,
+      "call_volume": 2348756,
+      "cp_volume_ratio": 1.62,
+      "total_oi": 1212225,
+      "put_oi": 708089,
+      "call_oi": 504136,
+      "cp_oi_ratio": 0.71,
+      "contracts_count": 559,
+      "top_3_contracts": [
+        {
+          "ticker": "O:MSFT20251127C00000400",
+          "oi": 105269,
+          "strike": 400.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 8.7
+        },
+        {
+          "ticker": "O:MSFT20251127C00000405",
+          "oi": 74514,
+          "strike": 405.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 6.1
+        },
+        {
+          "ticker": "O:MSFT20251104C00000410",
+          "oi": 61039,
+          "strike": 410.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 5.0
+        }
+      ],
+      "strike_concentration": {
+        "range": "400-420",
+        "oi": 289946,
+        "percentage": 23.9,
+        "dominant_strike": 400
+      }
+    },
+    {
+      "ticker": "XLE",
+      "total_volume": 3780542,
+      "put_volume": 1932733,
+      "call_volume": 1847809,
+      "cp_volume_ratio": 0.96,
+      "total_oi": 1109239,
+      "put_oi": 621849,
+      "call_oi": 487390,
+      "cp_oi_ratio": 0.78,
+      "contracts_count": 351,
+      "top_3_contracts": [
+        {
+          "ticker": "O:XLE20251127C00000610",
+          "oi": 115508,
+          "strike": 610.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 10.4
+        },
+        {
+          "ticker": "O:XLE20251127P00000605",
+          "oi": 110180,
+          "strike": 605.0,
+          "expiry": "2025-11-27",
+          "type": "put",
+          "percentage": 9.9
+        },
+        {
+          "ticker": "O:XLE20251104C00000600",
+          "oi": 57836,
+          "strike": 600.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 5.2
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 269411,
+        "percentage": 24.3,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "AAPL",
+      "total_volume": 3403075,
+      "put_volume": 2142582,
+      "call_volume": 1260493,
+      "cp_volume_ratio": 0.59,
+      "total_oi": 967693,
+      "put_oi": 516706,
+      "call_oi": 450987,
+      "cp_oi_ratio": 0.87,
+      "contracts_count": 322,
+      "top_3_contracts": [
+        {
+          "ticker": "O:AAPL20251127C00000610",
+          "oi": 60819,
+          "strike": 610.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 6.3
+        },
+        {
+          "ticker": "O:AAPL20251227P00000600",
+          "oi": 56787,
+          "strike": 600.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 5.9
+        },
+        {
+          "ticker": "O:AAPL20251127P00000605",
+          "oi": 51500,
+          "strike": 605.0,
+          "expiry": "2025-11-27",
+          "type": "put",
+          "percentage": 5.3
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 257008,
+        "percentage": 26.6,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "DIA",
+      "total_volume": 3121858,
+      "put_volume": 1932534,
+      "call_volume": 1189324,
+      "cp_volume_ratio": 0.62,
+      "total_oi": 1133350,
+      "put_oi": 432389,
+      "call_oi": 700961,
+      "cp_oi_ratio": 1.62,
+      "contracts_count": 336,
+      "top_3_contracts": [
+        {
+          "ticker": "O:DIA20251111P00000400",
+          "oi": 115678,
+          "strike": 400.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 10.2
+        },
+        {
+          "ticker": "O:DIA20251111P00000410",
+          "oi": 94806,
+          "strike": 410.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 8.4
+        },
+        {
+          "ticker": "O:DIA20251127C00000405",
+          "oi": 82862,
+          "strike": 405.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 7.3
+        }
+      ],
+      "strike_concentration": {
+        "range": "400-420",
+        "oi": 221206,
+        "percentage": 19.5,
+        "dominant_strike": 400
+      }
+    },
+    {
+      "ticker": "NIO",
+      "total_volume": 2849545,
+      "put_volume": 1761089,
+      "call_volume": 1088456,
+      "cp_volume_ratio": 0.62,
+      "total_oi": 905721,
+      "put_oi": 460961,
+      "call_oi": 444760,
+      "cp_oi_ratio": 0.96,
+      "contracts_count": 458,
+      "top_3_contracts": [
+        {
+          "ticker": "O:NIO20251104P00000110",
+          "oi": 73308,
+          "strike": 110.0,
+          "expiry": "2025-11-04",
+          "type": "put",
+          "percentage": 8.1
+        },
+        {
+          "ticker": "O:NIO20251227P00000100",
+          "oi": 60874,
+          "strike": 100.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 6.7
+        },
+        {
+          "ticker": "O:NIO20251127C00000105",
+          "oi": 48705,
+          "strike": 105.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 5.4
+        }
+      ],
+      "strike_concentration": {
+        "range": "100-110",
+        "oi": 240884,
+        "percentage": 26.6,
+        "dominant_strike": 100
+      }
+    },
+    {
+      "ticker": "GOOGL",
+      "total_volume": 2815091,
+      "put_volume": 1396998,
+      "call_volume": 1418093,
+      "cp_volume_ratio": 1.02,
+      "total_oi": 987553,
+      "put_oi": 565219,
+      "call_oi": 422334,
+      "cp_oi_ratio": 0.75,
+      "contracts_count": 543,
+      "top_3_contracts": [
+        {
+          "ticker": "O:GOOGL20251111P00000410",
+          "oi": 104114,
+          "strike": 410.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 10.5
+        },
+        {
+          "ticker": "O:GOOGL20251127C00000400",
+          "oi": 71836,
+          "strike": 400.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 7.3
+        },
+        {
+          "ticker": "O:GOOGL20251111P00000405",
+          "oi": 57215,
+          "strike": 405.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 5.8
+        }
+      ],
+      "strike_concentration": {
+        "range": "400-420",
+        "oi": 169437,
+        "percentage": 17.2,
+        "dominant_strike": 400
+      }
+    },
+    {
+      "ticker": "QQQ",
+      "total_volume": 2698576,
+      "put_volume": 1191653,
+      "call_volume": 1506923,
+      "cp_volume_ratio": 1.26,
+      "total_oi": 647137,
+      "put_oi": 267663,
+      "call_oi": 379474,
+      "cp_oi_ratio": 1.42,
+      "contracts_count": 595,
+      "top_3_contracts": [
+        {
+          "ticker": "O:QQQ20251111C00000055",
+          "oi": 71501,
+          "strike": 55.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 11.0
+        },
+        {
+          "ticker": "O:QQQ20251111P00000060",
+          "oi": 54293,
+          "strike": 60.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 8.4
+        },
+        {
+          "ticker": "O:QQQ20251127C00000050",
+          "oi": 37635,
+          "strike": 50.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 5.8
+        }
+      ],
+      "strike_concentration": {
+        "range": "50-60",
+        "oi": 117035,
+        "percentage": 18.1,
+        "dominant_strike": 50
+      }
+    },
+    {
+      "ticker": "META",
+      "total_volume": 2695071,
+      "put_volume": 1324061,
+      "call_volume": 1371010,
+      "cp_volume_ratio": 1.04,
+      "total_oi": 395304,
+      "put_oi": 153384,
+      "call_oi": 241920,
+      "cp_oi_ratio": 1.58,
+      "contracts_count": 326,
+      "top_3_contracts": [
+        {
+          "ticker": "O:META20251104P00000400",
+          "oi": 40742,
+          "strike": 400.0,
+          "expiry": "2025-11-04",
+          "type": "put",
+          "percentage": 10.3
+        },
+        {
+          "ticker": "O:META20251127C00000410",
+          "oi": 30281,
+          "strike": 410.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 7.7
+        },
+        {
+          "ticker": "O:META20251104C00000405",
+          "oi": 23980,
+          "strike": 405.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 6.1
+        }
+      ],
+      "strike_concentration": {
+        "range": "400-420",
+        "oi": 75788,
+        "percentage": 19.2,
+        "dominant_strike": 400
+      }
+    },
+    {
+      "ticker": "AMD",
+      "total_volume": 2298440,
+      "put_volume": 1264950,
+      "call_volume": 1033490,
+      "cp_volume_ratio": 0.82,
+      "total_oi": 861713,
+      "put_oi": 391078,
+      "call_oi": 470635,
+      "cp_oi_ratio": 1.2,
+      "contracts_count": 548,
+      "top_3_contracts": [
+        {
+          "ticker": "O:AMD20251111P00000055",
+          "oi": 100247,
+          "strike": 55.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 11.6
+        },
+        {
+          "ticker": "O:AMD20251127C00000050",
+          "oi": 87590,
+          "strike": 50.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 10.2
+        },
+        {
+          "ticker": "O:AMD20251227P00000060",
+          "oi": 67333,
+          "strike": 60.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 7.8
+        }
+      ],
+      "strike_concentration": {
+        "range": "50-60",
+        "oi": 198048,
+        "percentage": 23.0,
+        "dominant_strike": 50
+      }
+    },
+    {
+      "ticker": "BA",
+      "total_volume": 2274257,
+      "put_volume": 1438300,
+      "call_volume": 835957,
+      "cp_volume_ratio": 0.58,
+      "total_oi": 509221,
+      "put_oi": 290673,
+      "call_oi": 218548,
+      "cp_oi_ratio": 0.75,
+      "contracts_count": 320,
+      "top_3_contracts": [
+        {
+          "ticker": "O:BA20251111C00000205",
+          "oi": 58999,
+          "strike": 205.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 11.6
+        },
+        {
+          "ticker": "O:BA20251104C00000200",
+          "oi": 35048,
+          "strike": 200.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 6.9
+        },
+        {
+          "ticker": "O:BA20251104C00000210",
+          "oi": 33407,
+          "strike": 210.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 6.6
+        }
+      ],
+      "strike_concentration": {
+        "range": "200-220",
+        "oi": 151825,
+        "percentage": 29.8,
+        "dominant_strike": 200
+      }
+    },
+    {
+      "ticker": "SLV",
+      "total_volume": 2220043,
+      "put_volume": 906148,
+      "call_volume": 1313895,
+      "cp_volume_ratio": 1.45,
+      "total_oi": 398182,
+      "put_oi": 152210,
+      "call_oi": 245972,
+      "cp_oi_ratio": 1.62,
+      "contracts_count": 330,
+      "top_3_contracts": [
+        {
+          "ticker": "O:SLV20251227P00000200",
+          "oi": 42814,
+          "strike": 200.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 10.8
+        },
+        {
+          "ticker": "O:SLV20251227P00000205",
+          "oi": 39614,
+          "strike": 205.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 9.9
+        },
+        {
+          "ticker": "O:SLV20251127C00000210",
+          "oi": 23783,
+          "strike": 210.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 6.0
+        }
+      ],
+      "strike_concentration": {
+        "range": "200-220",
+        "oi": 75278,
+        "percentage": 18.9,
+        "dominant_strike": 200
+      }
+    },
+    {
+      "ticker": "BAC",
+      "total_volume": 2044972,
+      "put_volume": 861552,
+      "call_volume": 1183420,
+      "cp_volume_ratio": 1.37,
+      "total_oi": 446904,
+      "put_oi": 228595,
+      "call_oi": 218309,
+      "cp_oi_ratio": 0.96,
+      "contracts_count": 332,
+      "top_3_contracts": [
+        {
+          "ticker": "O:BAC20251127P00000600",
+          "oi": 49861,
+          "strike": 600.0,
+          "expiry": "2025-11-27",
+          "type": "put",
+          "percentage": 11.2
+        },
+        {
+          "ticker": "O:BAC20251104P00000610",
+          "oi": 48234,
+          "strike": 610.0,
+          "expiry": "2025-11-04",
+          "type": "put",
+          "percentage": 10.8
+        },
+        {
+          "ticker": "O:BAC20251227C00000605",
+          "oi": 38081,
+          "strike": 605.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 8.5
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 73274,
+        "percentage": 16.4,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "IWM",
+      "total_volume": 1691077,
+      "put_volume": 671595,
+      "call_volume": 1019482,
+      "cp_volume_ratio": 1.52,
+      "total_oi": 408062,
+      "put_oi": 171470,
+      "call_oi": 236592,
+      "cp_oi_ratio": 1.38,
+      "contracts_count": 585,
+      "top_3_contracts": [
+        {
+          "ticker": "O:IWM20251227P00000105",
+          "oi": 41247,
+          "strike": 105.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 10.1
+        },
+        {
+          "ticker": "O:IWM20251104C00000100",
+          "oi": 33087,
+          "strike": 100.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 8.1
+        },
+        {
+          "ticker": "O:IWM20251127P00000110",
+          "oi": 32930,
+          "strike": 110.0,
+          "expiry": "2025-11-27",
+          "type": "put",
+          "percentage": 8.1
+        }
+      ],
+      "strike_concentration": {
+        "range": "100-110",
+        "oi": 65728,
+        "percentage": 16.1,
+        "dominant_strike": 100
+      }
+    },
+    {
+      "ticker": "INTC",
+      "total_volume": 1592790,
+      "put_volume": 789723,
+      "call_volume": 803067,
+      "cp_volume_ratio": 1.02,
+      "total_oi": 100000,
+      "put_oi": 45830,
+      "call_oi": 54170,
+      "cp_oi_ratio": 1.18,
+      "contracts_count": 360,
+      "top_3_contracts": [
+        {
+          "ticker": "O:INTC20251111C00000060",
+          "oi": 9333,
+          "strike": 60.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 9.3
+        },
+        {
+          "ticker": "O:INTC20251104P00000050",
+          "oi": 8659,
+          "strike": 50.0,
+          "expiry": "2025-11-04",
+          "type": "put",
+          "percentage": 8.7
+        },
+        {
+          "ticker": "O:INTC20251227P00000055",
+          "oi": 6441,
+          "strike": 55.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 6.4
+        }
+      ],
+      "strike_concentration": {
+        "range": "50-60",
+        "oi": 25513,
+        "percentage": 25.5,
+        "dominant_strike": 50
+      }
+    },
+    {
+      "ticker": "VIX",
+      "total_volume": 1571841,
+      "put_volume": 570195,
+      "call_volume": 1001646,
+      "cp_volume_ratio": 1.76,
+      "total_oi": 100000,
+      "put_oi": 60001,
+      "call_oi": 39999,
+      "cp_oi_ratio": 0.67,
+      "contracts_count": 499,
+      "top_3_contracts": [
+        {
+          "ticker": "O:VIX20251104C00000610",
+          "oi": 9399,
+          "strike": 610.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 9.4
+        },
+        {
+          "ticker": "O:VIX20251111P00000600",
+          "oi": 8137,
+          "strike": 600.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 8.1
+        },
+        {
+          "ticker": "O:VIX20251111P00000605",
+          "oi": 5255,
+          "strike": 605.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 5.3
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 18756,
+        "percentage": 18.8,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "CAT",
+      "total_volume": 1570639,
+      "put_volume": 733762,
+      "call_volume": 836877,
+      "cp_volume_ratio": 1.14,
+      "total_oi": 100000,
+      "put_oi": 49449,
+      "call_oi": 50551,
+      "cp_oi_ratio": 1.02,
+      "contracts_count": 330,
+      "top_3_contracts": [
+        {
+          "ticker": "O:CAT20251104C00000105",
+          "oi": 10883,
+          "strike": 105.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 10.9
+        },
+        {
+          "ticker": "O:CAT20251127P00000100",
+          "oi": 9600,
+          "strike": 100.0,
+          "expiry": "2025-11-27",
+          "type": "put",
+          "percentage": 9.6
+        },
+        {
+          "ticker": "O:CAT20251111C00000110",
+          "oi": 6971,
+          "strike": 110.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 7.0
+        }
+      ],
+      "strike_concentration": {
+        "range": "100-110",
+        "oi": 20631,
+        "percentage": 20.6,
+        "dominant_strike": 100
+      }
+    },
+    {
+      "ticker": "TLT",
+      "total_volume": 1380856,
+      "put_volume": 679314,
+      "call_volume": 701542,
+      "cp_volume_ratio": 1.03,
+      "total_oi": 100000,
+      "put_oi": 50217,
+      "call_oi": 49783,
+      "cp_oi_ratio": 0.99,
+      "contracts_count": 586,
+      "top_3_contracts": [
+        {
+          "ticker": "O:TLT20251104C00000600",
+          "oi": 11700,
+          "strike": 600.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 11.7
+        },
+        {
+          "ticker": "O:TLT20251127C00000605",
+          "oi": 10617,
+          "strike": 605.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 10.6
+        },
+        {
+          "ticker": "O:TLT20251227C00000610",
+          "oi": 10221,
+          "strike": 610.0,
+          "expiry": "2025-12-27",
+          "type": "call",
+          "percentage": 10.2
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 24750,
+        "percentage": 24.8,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "PFE",
+      "total_volume": 1258193,
+      "put_volume": 766358,
+      "call_volume": 491835,
+      "cp_volume_ratio": 0.64,
+      "total_oi": 100000,
+      "put_oi": 57741,
+      "call_oi": 42259,
+      "cp_oi_ratio": 0.73,
+      "contracts_count": 352,
+      "top_3_contracts": [
+        {
+          "ticker": "O:PFE20251227P00000210",
+          "oi": 8593,
+          "strike": 210.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 8.6
+        },
+        {
+          "ticker": "O:PFE20251127C00000200",
+          "oi": 7626,
+          "strike": 200.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 7.6
+        },
+        {
+          "ticker": "O:PFE20251227P00000205",
+          "oi": 7126,
+          "strike": 205.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 7.1
+        }
+      ],
+      "strike_concentration": {
+        "range": "200-220",
+        "oi": 27188,
+        "percentage": 27.2,
+        "dominant_strike": 200
+      }
+    },
+    {
+      "ticker": "GLD",
+      "total_volume": 1235285,
+      "put_volume": 649728,
+      "call_volume": 585557,
+      "cp_volume_ratio": 0.9,
+      "total_oi": 100000,
+      "put_oi": 41449,
+      "call_oi": 58551,
+      "cp_oi_ratio": 1.41,
+      "contracts_count": 515,
+      "top_3_contracts": [
+        {
+          "ticker": "O:GLD20251111P00000060",
+          "oi": 7163,
+          "strike": 60.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 7.2
+        },
+        {
+          "ticker": "O:GLD20251227P00000055",
+          "oi": 6030,
+          "strike": 55.0,
+          "expiry": "2025-12-27",
+          "type": "put",
+          "percentage": 6.0
+        },
+        {
+          "ticker": "O:GLD20251104C00000050",
+          "oi": 5736,
+          "strike": 50.0,
+          "expiry": "2025-11-04",
+          "type": "call",
+          "percentage": 5.7
+        }
+      ],
+      "strike_concentration": {
+        "range": "50-60",
+        "oi": 20661,
+        "percentage": 20.7,
+        "dominant_strike": 50
+      }
+    },
+    {
+      "ticker": "JPM",
+      "total_volume": 1059285,
+      "put_volume": 571666,
+      "call_volume": 487619,
+      "cp_volume_ratio": 0.85,
+      "total_oi": 100000,
+      "put_oi": 37883,
+      "call_oi": 62117,
+      "cp_oi_ratio": 1.64,
+      "contracts_count": 420,
+      "top_3_contracts": [
+        {
+          "ticker": "O:JPM20251111P00000605",
+          "oi": 11674,
+          "strike": 605.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 11.7
+        },
+        {
+          "ticker": "O:JPM20251127P00000600",
+          "oi": 9113,
+          "strike": 600.0,
+          "expiry": "2025-11-27",
+          "type": "put",
+          "percentage": 9.1
+        },
+        {
+          "ticker": "O:JPM20251111C00000610",
+          "oi": 7320,
+          "strike": 610.0,
+          "expiry": "2025-11-11",
+          "type": "call",
+          "percentage": 7.3
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 23460,
+        "percentage": 23.5,
+        "dominant_strike": 600
+      }
+    },
+    {
+      "ticker": "NFLX",
+      "total_volume": 904070,
+      "put_volume": 546777,
+      "call_volume": 357293,
+      "cp_volume_ratio": 0.65,
+      "total_oi": 100000,
+      "put_oi": 35527,
+      "call_oi": 64473,
+      "cp_oi_ratio": 1.81,
+      "contracts_count": 398,
+      "top_3_contracts": [
+        {
+          "ticker": "O:NFLX20251111P00000610",
+          "oi": 10483,
+          "strike": 610.0,
+          "expiry": "2025-11-11",
+          "type": "put",
+          "percentage": 10.5
+        },
+        {
+          "ticker": "O:NFLX20251127C00000600",
+          "oi": 9152,
+          "strike": 600.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 9.2
+        },
+        {
+          "ticker": "O:NFLX20251127C00000605",
+          "oi": 5040,
+          "strike": 605.0,
+          "expiry": "2025-11-27",
+          "type": "call",
+          "percentage": 5.0
+        }
+      ],
+      "strike_concentration": {
+        "range": "600-650",
+        "oi": 28817,
+        "percentage": 28.8,
+        "dominant_strike": 600
+      }
+    }
+  ],
+  "anomalies": [],
+  "summary": {
+    "total": 0,
+    "by_severity": {
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    }
+  },
+  "note": "此数据为历史模拟数据，仅用于测试10日活跃度功能"
+}
