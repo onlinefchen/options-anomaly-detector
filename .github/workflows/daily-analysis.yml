@@ -17,48 +17,116 @@ on:
       - '.github/workflows/**'
 
 jobs:
-  analyze:
+  # Job 1: 数据下载与分析
+  fetch-and-analyze:
+    name: 📊 Data Fetching & Analysis
+    runs-on: ubuntu-latest
+
+    outputs:
+      analysis-date: ${{ steps.get-date.outputs.date }}
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for historical analysis
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 📅 Get current date
+        id: get-date
+        run: echo "date=$(TZ='Asia/Shanghai' date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: 📂 Restore historical data
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-data
+        continue-on-error: true
+
+      - name: 💾 Copy historical JSON files
+        run: |
+          mkdir -p output
+          if [ -d "gh-pages-data" ]; then
+            echo "📊 Copying historical JSON files for 10-day analysis..."
+            find gh-pages-data -name "*.json" -type f -exec cp {} output/ \; || true
+            echo "✓ Historical data restored: $(ls output/*.json 2>/dev/null | wc -l) files"
+          else
+            echo "⚠️  No historical data found (first run?)"
+          fi
+
+      - name: 📡 Fetch options data
+        env:
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+        run: |
+          echo "=================================================="
+          echo "📡 STEP 1: DATA FETCHING"
+          echo "=================================================="
+          echo "Date: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S %Z')"
+          echo "Market Session: Will be detected by script"
+          echo ""
+
+      - name: 🔍 Run anomaly detection
+        env:
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+        run: |
+          echo "=================================================="
+          echo "🔍 STEP 2: ANOMALY DETECTION & ANALYSIS"
+          echo "=================================================="
+          python main.py
+
+      - name: 📊 Upload analysis results
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-results-${{ steps.get-date.outputs.date }}
+          path: |
+            output/
+            !output/.gitkeep
+          retention-days: 90
+
+  # Job 2: 网页部署
+  deploy:
+    name: 🚀 Deploy to GitHub Pages
+    needs: fetch-and-analyze
     runs-on: ubuntu-latest
 
     permissions:
       contents: write  # Needed for pushing to gh-pages
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: 📥 Download analysis results
+        uses: actions/download-artifact@v4
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          name: analysis-results-${{ needs.fetch-and-analyze.outputs.analysis-date }}
+          path: output
 
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run anomaly detection
-        env:
-          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
-        run: |
-          python main.py
-
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output
           publish_branch: gh-pages
           keep_files: true  # Keep historical data files
-          commit_message: 'Update report - ${{ github.run_id }}'
+          commit_message: '📊 Update report - ${{ needs.fetch-and-analyze.outputs.analysis-date }}'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           enable_jekyll: false
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: analysis-report
-          path: output/anomaly_report.html
-          retention-days: 30
+      - name: ✅ Deployment summary
+        run: |
+          echo "=================================================="
+          echo "✅ DEPLOYMENT COMPLETE"
+          echo "=================================================="
+          echo "📅 Analysis Date: ${{ needs.fetch-and-analyze.outputs.analysis-date }}"
+          echo "🔗 Report URL: https://onlinefchen.github.io/options-anomaly-detector/"
+          echo "📦 Files deployed: $(ls output | wc -l)"
+          echo "=================================================="
