@@ -66,12 +66,47 @@ class PolygonCSVHandler:
         year, month, day = date.split('-')
         return f"{self.base_url}/flatfiles/us_options_opra/day_aggs_v1/{year}/{month}/{date}.csv.gz"
 
-    def download_csv(self, date: Optional[str] = None) -> Optional[bytes]:
+    def _get_local_csv_path(self, date: str) -> str:
+        """
+        Get local file path for CSV file
+
+        Args:
+            date: Date in YYYY-MM-DD format
+
+        Returns:
+            Local file path
+        """
+        # Ensure data directory exists
+        data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+        os.makedirs(data_dir, exist_ok=True)
+
+        return os.path.join(data_dir, f"{date}_options_day_aggs.csv.gz")
+
+    def _save_csv_to_disk(self, date: str, data: bytes) -> None:
+        """
+        Save CSV data to local disk
+
+        Args:
+            date: Date in YYYY-MM-DD format
+            data: Compressed CSV data
+        """
+        local_file = self._get_local_csv_path(date)
+
+        try:
+            with open(local_file, 'wb') as f:
+                f.write(data)
+            size_mb = len(data) / 1024 / 1024
+            print(f"  💾 Saved to disk: {local_file} ({size_mb:.1f} MB)")
+        except Exception as e:
+            print(f"  ⚠️  Failed to save to disk: {e}")
+
+    def download_csv(self, date: Optional[str] = None, save_to_disk: bool = True) -> Optional[bytes]:
         """
         Download options day aggregates CSV file
 
         Args:
             date: Date in YYYY-MM-DD format (defaults to yesterday)
+            save_to_disk: If True, save the downloaded file to data/ directory
 
         Returns:
             Compressed CSV data as bytes, or None if failed
@@ -79,6 +114,20 @@ class PolygonCSVHandler:
         if date is None:
             # Default to yesterday (data available next day ~11 AM ET)
             date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+        # Check if file already exists locally
+        if save_to_disk:
+            local_file = self._get_local_csv_path(date)
+            if os.path.exists(local_file):
+                print(f"  📂 Loading from local cache: {local_file}")
+                try:
+                    with open(local_file, 'rb') as f:
+                        data = f.read()
+                    size_mb = len(data) / 1024 / 1024
+                    print(f"  ✓ Loaded {size_mb:.1f} MB from cache")
+                    return data
+                except Exception as e:
+                    print(f"  ⚠️  Cache read failed: {e}, downloading from server...")
 
         url = self._get_csv_url(date)
 
@@ -97,6 +146,11 @@ class PolygonCSVHandler:
                 data = response.content
                 size_mb = len(data) / 1024 / 1024
                 print(f"  ✓ Downloaded {size_mb:.1f} MB")
+
+                # Save to disk if requested
+                if save_to_disk:
+                    self._save_csv_to_disk(date, data)
+
                 return data
             elif response.status_code == 403:
                 print(f"  ✗ Access denied (403) - Flat Files not available in your plan")

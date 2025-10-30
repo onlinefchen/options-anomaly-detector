@@ -6,6 +6,7 @@ Generates HTML reports with charts and tables
 from datetime import datetime
 from typing import List, Dict
 import json
+from utils import get_market_times, format_market_time_html
 
 
 class HTMLReportGenerator:
@@ -51,9 +52,13 @@ class HTMLReportGenerator:
             reverse=True
         )[:20]  # Top 20 anomalies
 
+        # Get market time information with timezones
+        time_info = get_market_times()
+        time_display = format_market_time_html(time_info)
+
         # Generate HTML
         html = self.template.format(
-            report_date=datetime.now().strftime('%Y-%m-%d %H:%M:%S ET'),
+            report_date=time_display,
             total_tickers=len(data),
             total_anomalies=summary.get('total', 0),
             high_severity=summary.get('by_severity', {}).get('HIGH', 0),

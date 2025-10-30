@@ -3,6 +3,7 @@
 Utility Functions
 """
 from datetime import datetime
+import pytz
 
 
 def print_banner():
@@ -18,7 +19,12 @@ def print_banner():
     ╚═══════════════════════════════════════════════════════╝
     """
     print(banner)
-    print(f"    🕐 Analysis Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S ET')}")
+
+    # Get market times with timezone info
+    time_info = get_market_times()
+    print(f"    {time_info['session_emoji']} 美东时间: {time_info['et_str']}")
+    print(f"    🌏 东八区时间: {time_info['utc8_str']}")
+    print(f"    📊 交易时段: {time_info['session_cn']} ({time_info['session_en']})")
     print(f"    {'='*55}\n")
 
 
@@ -102,3 +108,119 @@ def print_progress(message, end='\n'):
         end: Line ending
     """
     print(f"  {message}", end=end, flush=True)
+
+
+def get_market_session(et_time):
+    """
+    Determine market session based on ET time
+
+    Args:
+        et_time: datetime object in ET timezone
+
+    Returns:
+        str: 'pre-market', 'market-hours', 'after-hours', or 'closed'
+    """
+    hour = et_time.hour
+    minute = et_time.minute
+    time_in_minutes = hour * 60 + minute
+
+    # Market hours in minutes from midnight
+    pre_market_start = 4 * 60  # 4:00 AM
+    market_open = 9 * 60 + 30  # 9:30 AM
+    market_close = 16 * 60     # 4:00 PM
+    after_hours_end = 20 * 60  # 8:00 PM
+
+    # Check day of week (0=Monday, 6=Sunday)
+    weekday = et_time.weekday()
+    if weekday >= 5:  # Saturday or Sunday
+        return 'closed'
+
+    if pre_market_start <= time_in_minutes < market_open:
+        return 'pre-market'
+    elif market_open <= time_in_minutes < market_close:
+        return 'market-hours'
+    elif market_close <= time_in_minutes < after_hours_end:
+        return 'after-hours'
+    else:
+        return 'closed'
+
+
+def get_market_session_display(session):
+    """
+    Get display text for market session
+
+    Args:
+        session: Market session string
+
+    Returns:
+        tuple: (Chinese text, English text, emoji)
+    """
+    session_map = {
+        'pre-market': ('盘前', 'Pre-Market', '🌅'),
+        'market-hours': ('盘中', 'Market Hours', '📈'),
+        'after-hours': ('盘后', 'After Hours', '🌙'),
+        'closed': ('休市', 'Market Closed', '🔒')
+    }
+    return session_map.get(session, ('未知', 'Unknown', '❓'))
+
+
+def get_market_times():
+    """
+    Get current time in multiple timezones and market session
+
+    Returns:
+        dict with time information:
+        {
+            'et_time': datetime object in ET,
+            'et_str': formatted ET time string,
+            'utc8_time': datetime object in UTC+8,
+            'utc8_str': formatted UTC+8 time string,
+            'session': market session identifier,
+            'session_cn': Chinese session name,
+            'session_en': English session name,
+            'session_emoji': session emoji
+        }
+    """
+    # Get current UTC time
+    utc_now = datetime.now(pytz.utc)
+
+    # Convert to ET (US/Eastern handles DST automatically)
+    et_tz = pytz.timezone('US/Eastern')
+    et_time = utc_now.astimezone(et_tz)
+
+    # Convert to UTC+8 (Asia/Shanghai)
+    utc8_tz = pytz.timezone('Asia/Shanghai')
+    utc8_time = utc_now.astimezone(utc8_tz)
+
+    # Get market session
+    session = get_market_session(et_time)
+    session_cn, session_en, session_emoji = get_market_session_display(session)
+
+    return {
+        'et_time': et_time,
+        'et_str': et_time.strftime('%Y-%m-%d %H:%M:%S %Z'),
+        'utc8_time': utc8_time,
+        'utc8_str': utc8_time.strftime('%Y-%m-%d %H:%M:%S'),
+        'session': session,
+        'session_cn': session_cn,
+        'session_en': session_en,
+        'session_emoji': session_emoji
+    }
+
+
+def format_market_time_html(time_info):
+    """
+    Format market time information for HTML display
+
+    Args:
+        time_info: dict from get_market_times()
+
+    Returns:
+        str: HTML formatted time string
+    """
+    return (
+        f"{time_info['session_emoji']} "
+        f"<strong>美东时间:</strong> {time_info['et_str']} | "
+        f"<strong>东八区时间:</strong> {time_info['utc8_str']} | "
+        f"<strong>交易时段:</strong> {time_info['session_cn']} ({time_info['session_en']})"
+    )
