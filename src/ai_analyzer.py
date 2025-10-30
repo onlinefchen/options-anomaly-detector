@@ -62,26 +62,31 @@ class AIAnalyzer:
             return None
 
         try:
-            # 准备精简的数据供 GPT 分析
-            top_10 = data[:10]
+            # 准备更完整的数据供 GPT 分析（增加到 Top 15）
+            top_15 = data[:15]
             market_summary = {
                 'total_tickers': len(data),
-                'top_10': [
+                'top_15': [
                     {
                         'ticker': item['ticker'],
-                        'volume': item['total_volume'],
-                        'oi': item['total_oi'],
+                        'total_volume': item['total_volume'],
+                        'put_volume': item.get('put_volume', 0),
+                        'call_volume': item.get('call_volume', 0),
                         'cp_volume_ratio': item['cp_volume_ratio'],
+                        'total_oi': item['total_oi'],
+                        'put_oi': item.get('put_oi', 0),
+                        'call_oi': item.get('call_oi', 0),
                         'cp_oi_ratio': item['cp_oi_ratio'],
+                        'contracts_count': item.get('contracts_count', 0),
                         'top_3_contracts': item.get('top_3_contracts', [])[:3],
-                        'strike_range': item.get('strike_concentration', {}).get('range', 'N/A'),
+                        'strike_concentration': item.get('strike_concentration', {}),
                         'history': {
                             'appearances': item.get('history', {}).get('appearances', 0),
                             'icon': item.get('history', {}).get('icon', ''),
                             'trend': item.get('history', {}).get('trend', 'N/A')
                         }
                     }
-                    for item in top_10
+                    for item in top_15
                 ],
                 'anomalies_count': summary.get('total', 0),
                 'high_severity': summary.get('by_severity', {}).get('HIGH', 0),
@@ -128,20 +133,39 @@ class AIAnalyzer:
         Returns:
             Prompt 字符串
         """
-        top_10_str = "\n".join([
-            f"{i+1}. {item['ticker']}: "
-            f"成交量 {item['volume']:,}, "
-            f"持仓量 {item['oi']:,}, "
-            f"C/P成交比 {item['cp_volume_ratio']:.2f}, "
-            f"历史活跃度 {item['history']['appearances']}/10 {item['history']['icon']}, "
-            f"价格区间 {item['strike_range']}"
-            for i, item in enumerate(market_summary['top_10'])
-        ])
+        # 构建更详细的标的信息
+        tickers_detail = []
+        for i, item in enumerate(market_summary['top_15'], 1):
+            strike_conc = item.get('strike_concentration', {})
+            top_contracts = item.get('top_3_contracts', [])
+
+            # 构建合约详情
+            contracts_str = ""
+            if top_contracts:
+                contracts_str = " | 主力合约: " + ", ".join([
+                    f"{c.get('type', 'N/A').upper()} {c.get('strike', 'N/A')} "
+                    f"({c.get('expiry', 'N/A')}, OI {c.get('oi', 0):,})"
+                    for c in top_contracts[:2]  # 只显示前2个合约
+                ])
+
+            detail = (
+                f"{i}. **{item['ticker']}**:\n"
+                f"   - 成交: Call {item['call_volume']:,} / Put {item['put_volume']:,} "
+                f"(C/P比 {item['cp_volume_ratio']:.2f})\n"
+                f"   - 持仓: Call {item['call_oi']:,} / Put {item['put_oi']:,} "
+                f"(C/P比 {item['cp_oi_ratio']:.2f})\n"
+                f"   - 合约数: {item['contracts_count']}, "
+                f"主力价格区间: {strike_conc.get('range', 'N/A')} "
+                f"(集中度 {strike_conc.get('percentage', 0):.1f}%){contracts_str}"
+            )
+            tickers_detail.append(detail)
+
+        tickers_str = "\n\n".join(tickers_detail)
 
         anomalies_str = ""
         if market_summary['key_anomalies']:
-            anomalies_str = "\n主要异常:\n" + "\n".join([
-                f"- {a['ticker']}: {a['description']} (严重程度: {a['severity']})"
+            anomalies_str = "\n\n# 主要异常\n" + "\n".join([
+                f"- **{a['ticker']}**: {a['description']} (严重程度: {a['severity']})"
                 for a in market_summary['key_anomalies']
             ])
 
@@ -149,26 +173,40 @@ class AIAnalyzer:
 
 # 市场概况
 - 分析标的总数: {market_summary['total_tickers']}
-- 检测到异常: {market_summary['anomalies_count']} 个
-  * 高严重度: {market_summary['high_severity']}
-  * 中严重度: {market_summary['medium_severity']}
-  * 低严重度: {market_summary['low_severity']}
+- 检测到异常: {market_summary['anomalies_count']} 个 (高: {market_summary['high_severity']}, 中: {market_summary['medium_severity']}, 低: {market_summary['low_severity']})
 
-# Top 10 活跃标的
-{top_10_str}
+# Top 15 活跃标的详细数据
 
+{tickers_str}
 {anomalies_str}
 
 请提供以下分析（用中文，Markdown 格式）：
 
-1. **市场整体趋势** - 根据 Top 10 标的的 C/P 比率，判断市场情绪（看涨/看跌/中性）
-2. **热门标的解读** - 分析前 3-5 个最活跃标的的特点和可能原因
-3. **历史活跃度洞察** - 识别"常驻嘉宾"（🔥）和"新上榜"（🆕）标的，分析市场热点变化
-4. **价格区间分析** - 解读主力价格区间反映的市场预期
-5. **异常提醒** - 如果有异常，指出需要关注的风险点
-6. **交易建议** - 基于数据提供1-2条简短的交易方向建议（仅供参考）
+1. **市场整体趋势分析**
+   - 根据 Top 15 标的的 C/P 成交比和持仓比，综合判断市场情绪（看涨/看跌/中性）
+   - 分析 Call 和 Put 的成交量对比，判断资金流向
 
-请保持分析简洁（300-500字），重点突出，适合早晨快速阅读。
+2. **热门标的深度解读**
+   - 分析前 5 个最活跃标的的特点、主力合约和可能的市场原因
+   - 结合价格区间和合约集中度，判断市场预期
+
+3. **主力合约和价格区间分析**
+   - 解读主力价格区间和合约到期日反映的市场预期
+   - 识别重要的支撑/阻力位
+
+4. **资金流向和市场情绪**
+   - 分析成交量和持仓量的变化趋势
+   - 识别可能的机构操作或市场共识
+
+5. **异常和风险提醒**
+   - 如果有异常，指出需要特别关注的风险点
+   - 提示可能的市场波动因素
+
+6. **交易策略建议**
+   - 基于数据提供 2-3 条具体的交易方向建议
+   - 标注风险等级和建议持仓周期
+
+请保持分析专业且实用（400-600字），重点突出，适合早晨快速决策。
 """
 
         return prompt
