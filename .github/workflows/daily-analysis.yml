@@ -1,9 +1,9 @@
 name: Daily Options Analysis
 
 on:
-  # Run daily at 6:00 AM Beijing Time (with AI analysis and email notification)
+  # Run daily at 5:00 PM Beijing Time (with AI analysis and email notification)
   schedule:
-    - cron: '0 22 * * 0-4'  # 22:00 UTC = 6:00 AM Beijing Time next day (Sun-Thu UTC = Mon-Fri Beijing)
+    - cron: '0 9 * * 1-5'  # 09:00 UTC = 5:00 PM Beijing Time (Mon-Fri)
 
   # Allow manual trigger
   workflow_dispatch:

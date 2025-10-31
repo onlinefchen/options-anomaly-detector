@@ -43,6 +43,18 @@ def main():
     with open(json_file, 'r') as f:
         result = json.load(f)
 
+    # 检查数据来源
+    data_source = result.get('data_source', 'Unknown')
+    print(f'📊 Data source: {data_source}')
+
+    # 只有当数据来自CSV时才执行AI分析和邮件发送
+    if data_source not in ['CSV', 'CSV+API']:
+        print(f'⊘ Data is from API only, skipping AI analysis and email')
+        print(f'   (AI and email are only sent for CSV data)')
+        sys.exit(0)
+
+    print(f'✓ Data is from CSV, proceeding with AI analysis and email')
+
     data = result.get('data', [])
     anomalies = result.get('anomalies', [])
     summary = result.get('summary', {})

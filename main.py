@@ -45,13 +45,14 @@ def main():
         print_progress(f"   • Recommended strategy: {strategy_info['recommended_strategy'].upper()}\n")
 
         # Fetch options data using hybrid strategy
-        data = fetcher.fetch_data(strategy='auto', top_n_for_oi=30)
+        data, metadata = fetcher.fetch_data(strategy='auto', top_n_for_oi=30)
 
         if not data:
             print("\n❌ Error: No data fetched. Check your API key and network connection.")
             return 1
 
-        print_progress(f"✓ Successfully fetched data for {len(data)} tickers\n")
+        print_progress(f"✓ Successfully fetched data for {len(data)} tickers")
+        print_progress(f"   • Data source: {metadata.get('data_source', 'Unknown')}\n")
 
         # Analyze historical activity
         print_progress("📊 Analyzing historical activity (past 10 trading days)...")
@@ -75,7 +76,7 @@ def main():
         # Generate HTML report
         print_progress("📄 Generating HTML report...")
         os.makedirs('output', exist_ok=True)
-        reporter.generate(data, anomalies, summary)
+        reporter.generate(data, anomalies, summary, metadata=metadata)
 
         # Archive historical data
         print_progress("💾 Archiving historical data...")
@@ -86,6 +87,7 @@ def main():
             'timestamp': datetime.now().isoformat(),
             'tickers_count': len(data),
             'anomalies_count': summary['total'],
+            'data_source': metadata.get('data_source', 'Unknown'),
             'data': data,
             'anomalies': anomalies,
             'summary': summary

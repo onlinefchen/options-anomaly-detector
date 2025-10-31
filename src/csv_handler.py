@@ -380,7 +380,7 @@ class PolygonCSVHandler:
         self,
         date: Optional[str] = None,
         max_retries: int = 2
-    ) -> Tuple[bool, List[Dict]]:
+    ) -> Tuple[bool, List[Dict], Optional[str]]:
         """
         Try to download and parse CSV data with retries
 
@@ -389,8 +389,10 @@ class PolygonCSVHandler:
             max_retries: Number of retry attempts
 
         Returns:
-            Tuple of (success, data)
+            Tuple of (success, data, date_used)
         """
+        used_date = date or (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
         for attempt in range(max_retries):
             if attempt > 0:
                 print(f"  🔄 Retry attempt {attempt + 1}/{max_retries}")
@@ -399,10 +401,11 @@ class PolygonCSVHandler:
                 if date is None:
                     retry_date = (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')
                     print(f"  💡 Trying previous day: {retry_date}")
+                    used_date = retry_date
                     date = retry_date
 
             # Download
-            csv_data = self.download_csv(date)
+            csv_data = self.download_csv(used_date if date is None else date)
             if csv_data is None:
                 continue
 
@@ -414,6 +417,6 @@ class PolygonCSVHandler:
             # Aggregate
             results = self.aggregate_by_underlying(df)
             if results:
-                return True, results
+                return True, results, used_date
 
-        return False, []
+        return False, [], None

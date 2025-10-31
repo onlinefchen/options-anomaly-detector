@@ -21,6 +21,7 @@ class HTMLReportGenerator:
         data: List[Dict],
         anomalies: List[Dict],
         summary: Dict,
+        metadata: Dict = None,
         output_file: str = "output/anomaly_report.html"
     ):
         """
@@ -30,8 +31,11 @@ class HTMLReportGenerator:
             data: Aggregated options data
             anomalies: Detected anomalies
             summary: Anomaly summary statistics
+            metadata: Metadata including data source
             output_file: Output file path
         """
+        if metadata is None:
+            metadata = {}
         import os
         import shutil
         # Sort data by volume
@@ -55,6 +59,14 @@ class HTMLReportGenerator:
         # Get market time information with timezones
         time_info = get_market_times()
         time_display = format_market_time_html(time_info)
+
+        # Add data source info to time display
+        data_source = metadata.get('data_source', 'Unknown')
+        if data_source in ['CSV', 'CSV+API']:
+            csv_date = metadata.get('csv_date', 'Unknown')
+            time_display += f' | <strong>数据来源:</strong> CSV文件 ({csv_date}.csv.gz)'
+        else:
+            time_display += f' | <strong>数据来源:</strong> API'
 
         # Generate HTML
         html = self.template.format(

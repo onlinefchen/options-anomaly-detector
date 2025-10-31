@@ -39,7 +39,7 @@ class HybridDataFetcher:
         self,
         strategy: str = 'auto',
         top_n_for_oi: int = 30
-    ) -> List[Dict]:
+    ):
         """
         Fetch options data using optimal strategy
 
@@ -48,7 +48,9 @@ class HybridDataFetcher:
             top_n_for_oi: Number of top tickers to fetch OI for
 
         Returns:
-            List of aggregated data dicts
+            Tuple of (data, metadata) where:
+            - data: List of aggregated data dicts
+            - metadata: Dict with 'data_source' key ('CSV', 'API', or 'CSV+API')
         """
         print(f"\n{'='*80}")
         print(f"📡 DATA FETCHING STRATEGY")
@@ -56,22 +58,24 @@ class HybridDataFetcher:
 
         if strategy == 'api':
             print(f"  Strategy: Pure API (forced)\n")
-            return self._fetch_via_api()
+            data = self._fetch_via_api()
+            return data, {'data_source': 'API'}
 
         if strategy == 'csv':
             print(f"  Strategy: CSV only (forced)\n")
-            success, data = self.csv_handler.try_download_and_parse()
+            success, data, csv_date = self.csv_handler.try_download_and_parse()
             if success:
-                return data
+                return data, {'data_source': 'CSV', 'csv_date': csv_date}
             else:
                 print(f"\n  ⚠️  CSV fetch failed, falling back to API\n")
-                return self._fetch_via_api()
+                data = self._fetch_via_api()
+                return data, {'data_source': 'API'}
 
         # Auto strategy: try CSV first
         print(f"  Strategy: AUTO (CSV → API → fallback)\n")
         return self._fetch_auto(top_n_for_oi)
 
-    def _fetch_auto(self, top_n_for_oi: int) -> List[Dict]:
+    def _fetch_auto(self, top_n_for_oi: int):
         """
         Auto strategy: intelligently choose best method
 
@@ -79,18 +83,19 @@ class HybridDataFetcher:
             top_n_for_oi: Number of top tickers to enrich with OI
 
         Returns:
-            List of aggregated data
+            Tuple of (data, metadata)
         """
         # Step 1: Try CSV for volume data
         print(f"📦 STEP 1: Attempting CSV download for volume data")
         print(f"{'-'*80}")
 
-        success, data = self.csv_handler.try_download_and_parse()
+        success, data, csv_date = self.csv_handler.try_download_and_parse()
 
         if not success or not data:
             print(f"\n❌ CSV method failed or no data")
             print(f"📱 Falling back to pure API method...\n")
-            return self._fetch_via_api()
+            data = self._fetch_via_api()
+            return data, {'data_source': 'API'}
 
         print(f"\n✅ CSV method successful!")
         print(f"   • Total tickers: {len(data)}")
@@ -173,7 +178,7 @@ class HybridDataFetcher:
         print(f"\n✅ Enrichment complete: {enriched_count}/{top_n_for_oi} tickers")
         print(f"{'='*80}\n")
 
-        return data
+        return data, {'data_source': 'CSV+API', 'csv_date': csv_date}
 
     def _analyze_strike_concentration(self, strike_dict: dict, total_oi: int) -> dict:
         """
