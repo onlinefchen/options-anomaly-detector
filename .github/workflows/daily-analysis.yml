@@ -184,7 +184,7 @@ jobs:
 
           # 运行 AI 分析和邮件发送
           echo "Running AI analysis and email sender..."
-          ANALYSIS_DATE="${{ steps.get-date.outputs.date }}" python scripts/run_ai_email.py
+          python scripts/run_ai_email.py
 
           echo ""
           echo "=================================================="

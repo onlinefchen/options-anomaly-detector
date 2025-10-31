@@ -15,13 +15,26 @@ from email_sender import EmailSender
 
 
 def main():
-    # 读取最新的分析结果
-    date_str = os.getenv('ANALYSIS_DATE', '')
-    if not date_str:
-        print('❌ ANALYSIS_DATE environment variable not set')
-        sys.exit(1)
+    # 查找最新的分析结果文件
+    output_dir = 'output'
+    if not os.path.exists(output_dir):
+        print(f'⚠️  Output directory not found: {output_dir}')
+        sys.exit(0)
 
-    json_file = f'output/{date_str}.json'
+    # 获取所有JSON文件，按修改时间排序
+    json_files = [
+        os.path.join(output_dir, f)
+        for f in os.listdir(output_dir)
+        if f.endswith('.json')
+    ]
+
+    if not json_files:
+        print(f'⚠️  No data files found in {output_dir}')
+        sys.exit(0)
+
+    # 使用最新的文件
+    json_file = max(json_files, key=os.path.getmtime)
+    print(f'📂 Using latest data file: {json_file}')
 
     if not os.path.exists(json_file):
         print(f'⚠️  Data file not found: {json_file}')
