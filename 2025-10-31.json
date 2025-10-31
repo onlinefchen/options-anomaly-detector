@@ -1,19 +1,19 @@
 {
   "date": "2025-10-31",
-  "timestamp": "2025-10-31T01:29:11.469672",
+  "timestamp": "2025-10-31T06:50:03.324722",
   "tickers_count": 48,
-  "anomalies_count": 47,
+  "anomalies_count": 48,
   "data": [
     {
       "ticker": "SPY",
-      "total_volume": 7581218,
-      "put_volume": 4162171,
-      "call_volume": 3419047,
-      "cp_volume_ratio": 0.82,
-      "total_oi": 4768948,
-      "put_oi": 3509583,
-      "call_oi": 1259365,
-      "cp_oi_ratio": 0.36,
+      "total_volume": 2923954,
+      "put_volume": 1578067,
+      "call_volume": 1345887,
+      "cp_volume_ratio": 0.85,
+      "total_oi": 4339959,
+      "put_oi": 3247885,
+      "call_oi": 1092074,
+      "cp_oi_ratio": 0.34,
       "contracts_count": 2500,
       "top_3_contracts": [
         {
@@ -22,7 +22,7 @@
           "strike": 530,
           "expiry": "2025-11-07",
           "type": "put",
-          "percentage": 4.4
+          "percentage": 4.9
         },
         {
           "ticker": "O:SPY251031P00480000",
@@ -30,7 +30,7 @@
           "strike": 480,
           "expiry": "2025-10-31",
           "type": "put",
-          "percentage": 4.4
+          "percentage": 4.8
         },
         {
           "ticker": "O:SPY251031P00510000",
@@ -38,13 +38,13 @@
           "strike": 510,
           "expiry": "2025-10-31",
           "type": "put",
-          "percentage": 4.2
+          "percentage": 4.7
         }
       ],
       "strike_concentration": {
         "range": "500-550",
-        "oi": 622272,
-        "percentage": 13.0,
+        "oi": 617430,
+        "percentage": 14.2,
         "dominant_strike": 530
       },
       "history": {
@@ -62,14 +62,14 @@
     },
     {
       "ticker": "QQQ",
-      "total_volume": 4012267,
-      "put_volume": 2223762,
-      "call_volume": 1788505,
-      "cp_volume_ratio": 0.8,
-      "total_oi": 2291830,
-      "put_oi": 1514873,
-      "call_oi": 776957,
-      "cp_oi_ratio": 0.51,
+      "total_volume": 1928152,
+      "put_volume": 1105751,
+      "call_volume": 822401,
+      "cp_volume_ratio": 0.74,
+      "total_oi": 2196967,
+      "put_oi": 1501330,
+      "call_oi": 695637,
+      "cp_oi_ratio": 0.46,
       "contracts_count": 2500,
       "top_3_contracts": [
         {
@@ -78,7 +78,7 @@
           "strike": 600,
           "expiry": "2025-10-31",
           "type": "put",
-          "percentage": 1.9
+          "percentage": 2.0
         },
         {
           "ticker": "O:QQQ251031P00580000",
@@ -86,7 +86,7 @@
           "strike": 580,
           "expiry": "2025-10-31",
           "type": "put",
-          "percentage": 1.8
+          "percentage": 1.9
         },
         {
           "ticker": "O:QQQ251031P00590000",
@@ -99,8 +99,8 @@
       ],
       "strike_concentration": {
         "range": "600-650",
-        "oi": 1221535,
-        "percentage": 53.3,
+        "oi": 1078006,
+        "percentage": 49.1,
         "dominant_strike": 630
       },
       "history": {
@@ -118,14 +118,14 @@
     },
     {
       "ticker": "IWM",
-      "total_volume": 1308963,
-      "put_volume": 812262,
-      "call_volume": 496701,
-      "cp_volume_ratio": 0.61,
-      "total_oi": 3349127,
-      "put_oi": 2555251,
-      "call_oi": 793876,
-      "cp_oi_ratio": 0.31,
+      "total_volume": 773032,
+      "put_volume": 510945,
+      "call_volume": 262087,
+      "cp_volume_ratio": 0.51,
+      "total_oi": 3954828,
+      "put_oi": 2506384,
+      "call_oi": 1448444,
+      "cp_oi_ratio": 0.58,
       "contracts_count": 2500,
       "top_3_contracts": [
         {
@@ -134,7 +134,7 @@
           "strike": 235,
           "expiry": "2025-11-21",
           "type": "put",
-          "percentage": 6.7
+          "percentage": 5.7
         },
         {
           "ticker": "O:IWM251121P00232000",
@@ -142,7 +142,7 @@
           "strike": 232,
           "expiry": "2025-11-21",
           "type": "put",
-          "percentage": 5.0
+          "percentage": 4.2
         },
         {
           "ticker": "O:IWM251121P00240000",
@@ -150,13 +150,13 @@
           "strike": 240,
           "expiry": "2025-11-21",
           "type": "put",
-          "percentage": 4.8
+          "percentage": 4.1
         }
       ],
       "strike_concentration": {
         "range": "220-240",
-        "oi": 1590731,
-        "percentage": 47.5,
+        "oi": 1751086,
+        "percentage": 44.3,
         "dominant_strike": 235
       },
       "history": {
@@ -2695,38 +2695,13 @@
   ],
   "anomalies": [
     {
-      "ticker": "SPY",
+      "ticker": "NVDA",
       "type": "HIGH_VOLUME",
       "severity": "HIGH",
-      "description": "Extremely high trading volume (Z-score: 5.34)",
-      "value": 7581218,
+      "description": "Extremely high trading volume (Z-score: 3.60)",
+      "value": 3195009,
       "metric": "volume",
-      "z_score": 5.343639401713465
-    },
-    {
-      "ticker": "SPY",
-      "type": "VOLUME_SPIKE",
-      "severity": "HIGH",
-      "description": "Volume 45.0x above median",
-      "value": 7581218,
-      "metric": "volume"
-    },
-    {
-      "ticker": "QQQ",
-      "type": "HIGH_VOLUME",
-      "severity": "MEDIUM",
-      "description": "Extremely high trading volume (Z-score: 2.58)",
-      "value": 4012267,
-      "metric": "volume",
-      "z_score": 2.5825751965993606
-    },
-    {
-      "ticker": "QQQ",
-      "type": "VOLUME_SPIKE",
-      "severity": "HIGH",
-      "description": "Volume 23.8x above median",
-      "value": 4012267,
-      "metric": "volume"
+      "z_score": 3.597974921515002
     },
     {
       "ticker": "NVDA",
@@ -2735,6 +2710,32 @@
       "description": "Volume 19.0x above median",
       "value": 3195009,
       "metric": "volume"
+    },
+    {
+      "ticker": "SPY",
+      "type": "HIGH_VOLUME",
+      "severity": "HIGH",
+      "description": "Extremely high trading volume (Z-score: 3.23)",
+      "value": 2923954,
+      "metric": "volume",
+      "z_score": 3.2330668956359743
+    },
+    {
+      "ticker": "SPY",
+      "type": "VOLUME_SPIKE",
+      "severity": "HIGH",
+      "description": "Volume 17.4x above median",
+      "value": 2923954,
+      "metric": "volume"
+    },
+    {
+      "ticker": "META",
+      "type": "HIGH_VOLUME",
+      "severity": "MEDIUM",
+      "description": "Extremely high trading volume (Z-score: 2.07)",
+      "value": 2062492,
+      "metric": "volume",
+      "z_score": 2.0733229403877806
     },
     {
       "ticker": "META",
@@ -2753,11 +2754,11 @@
       "metric": "volume"
     },
     {
-      "ticker": "IWM",
+      "ticker": "QQQ",
       "type": "VOLUME_SPIKE",
       "severity": "HIGH",
-      "description": "Volume 7.8x above median",
-      "value": 1308963,
+      "description": "Volume 11.4x above median",
+      "value": 1928152,
       "metric": "volume"
     },
     {
@@ -2804,17 +2805,25 @@
       "ticker": "SPY",
       "type": "DEFENSIVE_POSITIONING",
       "severity": "MEDIUM",
-      "description": "重度防御型持仓 (Call/Put 持仓量: 0.36)",
-      "value": 0.36,
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.34)",
+      "value": 0.34,
+      "metric": "cp_oi_ratio"
+    },
+    {
+      "ticker": "QQQ",
+      "type": "DEFENSIVE_POSITIONING",
+      "severity": "MEDIUM",
+      "description": "重度防御型持仓 (Call/Put 持仓量: 0.46)",
+      "value": 0.46,
       "metric": "cp_oi_ratio"
     },
     {
       "ticker": "IWM",
-      "type": "DEFENSIVE_POSITIONING",
-      "severity": "MEDIUM",
-      "description": "重度防御型持仓 (Call/Put 持仓量: 0.31)",
-      "value": 0.31,
-      "metric": "cp_oi_ratio"
+      "type": "EXTREME_FEAR",
+      "severity": "HIGH",
+      "description": "极度看跌情绪 (Call/Put 成交量: 0.51)",
+      "value": 0.51,
+      "metric": "cp_volume_ratio"
     },
     {
       "ticker": "HYG",
@@ -3074,17 +3083,17 @@
     }
   ],
   "summary": {
-    "total": 47,
+    "total": 48,
     "by_severity": {
-      "HIGH": 20,
+      "HIGH": 21,
       "MEDIUM": 4,
       "LOW": 23
     },
     "by_type": {
-      "HIGH_VOLUME": 2,
-      "VOLUME_SPIKE": 11,
+      "HIGH_VOLUME": 3,
+      "VOLUME_SPIKE": 10,
       "DEFENSIVE_POSITIONING": 3,
-      "EXTREME_FEAR": 2,
+      "EXTREME_FEAR": 3,
       "EXTREME_GREED": 6,
       "LOW_TURNOVER": 23
     }
