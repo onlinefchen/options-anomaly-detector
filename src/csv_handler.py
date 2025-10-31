@@ -11,22 +11,46 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import requests
+import boto3
+from botocore.client import Config
 from utils import get_market_times
 
 
 class PolygonCSVHandler:
     """Handle CSV flat files from Polygon.io"""
 
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str, s3_access_key: str = None, s3_secret_key: str = None):
         """
         Initialize CSV handler
 
         Args:
-            api_key: Polygon.io API key (may also serve as S3 access key)
+            api_key: Polygon.io API key
+            s3_access_key: S3 Access Key ID (for Flat Files)
+            s3_secret_key: S3 Secret Access Key (for Flat Files)
         """
         self.api_key = api_key
         self.base_url = "https://files.polygon.io"
         self.has_flat_files_access = None  # Will be detected
+
+        # S3 credentials for Flat Files
+        self.s3_access_key = s3_access_key or os.getenv('POLYGON_S3_ACCESS_KEY')
+        self.s3_secret_key = s3_secret_key or os.getenv('POLYGON_S3_SECRET_KEY')
+        self.s3_endpoint = "https://files.massive.com"
+        self.s3_bucket = "flatfiles"
+
+        # Initialize S3 client if credentials available
+        self.s3_client = None
+        if self.s3_access_key and self.s3_secret_key:
+            try:
+                self.s3_client = boto3.client(
+                    's3',
+                    endpoint_url=self.s3_endpoint,
+                    aws_access_key_id=self.s3_access_key,
+                    aws_secret_access_key=self.s3_secret_key,
+                    config=Config(signature_version='s3v4')
+                )
+            except Exception as e:
+                print(f"⚠️  Failed to initialize S3 client: {e}")
 
     def check_flat_files_access(self) -> bool:
         """
@@ -38,7 +62,18 @@ class PolygonCSVHandler:
         if self.has_flat_files_access is not None:
             return self.has_flat_files_access
 
-        # Try to access a recent file
+        # Prioritize S3 access if credentials available
+        if self.s3_client:
+            try:
+                yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+                s3_key = self._get_s3_key(yesterday)
+                self.s3_client.head_object(Bucket=self.s3_bucket, Key=s3_key)
+                self.has_flat_files_access = True
+                return True
+            except Exception:
+                pass
+
+        # Fallback to HTTP access
         yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
         test_url = self._get_csv_url(yesterday)
 
@@ -53,6 +88,19 @@ class PolygonCSVHandler:
         except Exception:
             self.has_flat_files_access = False
             return False
+
+    def _get_s3_key(self, date: str) -> str:
+        """
+        Get S3 key for a specific date
+
+        Args:
+            date: Date in YYYY-MM-DD format
+
+        Returns:
+            S3 key path
+        """
+        year, month, _ = date.split('-')
+        return f"us_options_opra/day_aggs_v1/{year}/{month}/{date}.csv.gz"
 
     def _get_csv_url(self, date: str) -> str:
         """
@@ -145,9 +193,36 @@ class PolygonCSVHandler:
                     except Exception as e:
                         print(f"  ⚠️  缓存读取失败: {e}, 重新下载...")
 
+        # Try S3 download first if credentials available
+        if self.s3_client:
+            s3_key = self._get_s3_key(date)
+            print(f"  📥 Downloading via S3 for {date}...")
+            print(f"     Bucket: {self.s3_bucket}")
+            print(f"     Key: {s3_key}")
+
+            try:
+                response = self.s3_client.get_object(Bucket=self.s3_bucket, Key=s3_key)
+                data = response['Body'].read()
+                size_mb = len(data) / 1024 / 1024
+                print(f"  ✓ Downloaded {size_mb:.1f} MB via S3")
+
+                # Save to disk if requested
+                if save_to_disk:
+                    self._save_csv_to_disk(date, data)
+
+                return data
+
+            except self.s3_client.exceptions.NoSuchKey:
+                print(f"  ✗ File not found in S3 - Data may not be ready yet")
+                return None
+            except Exception as e:
+                print(f"  ✗ S3 download failed: {e}")
+                print(f"  🔄 Falling back to HTTP download...")
+
+        # Fallback to HTTP download
         url = self._get_csv_url(date)
 
-        print(f"  📥 Downloading CSV for {date}...")
+        print(f"  📥 Downloading via HTTP for {date}...")
         print(f"     URL: {url}")
 
         try:

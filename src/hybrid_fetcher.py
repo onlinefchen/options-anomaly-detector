@@ -28,8 +28,12 @@ class HybridDataFetcher:
         if not self.api_key or self.api_key == 'YOUR_API_KEY_HERE':
             raise ValueError("POLYGON_API_KEY not set")
 
+        # Get S3 credentials for Flat Files
+        s3_access_key = os.getenv('POLYGON_S3_ACCESS_KEY')
+        s3_secret_key = os.getenv('POLYGON_S3_SECRET_KEY')
+
         self.api_fetcher = PolygonDataFetcher(self.api_key)
-        self.csv_handler = PolygonCSVHandler(self.api_key)
+        self.csv_handler = PolygonCSVHandler(self.api_key, s3_access_key, s3_secret_key)
 
     def fetch_data(
         self,
