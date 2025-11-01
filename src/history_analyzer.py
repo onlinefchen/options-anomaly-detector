@@ -120,7 +120,7 @@ class HistoryAnalyzer:
                 'rank_change': None,
                 'trend': 'new',
                 'streak': 0,
-                'icon': '🆕'
+                'icon': '[NEW]'
             }
 
         appear_count = len(appearances)
@@ -190,7 +190,7 @@ class HistoryAnalyzer:
 
     def _get_icon(self, appearances: int, total_days: int) -> str:
         """
-        根据出现次数选择图标
+        Select icon based on appearance frequency
 
         Args:
             appearances: Number of appearances
@@ -202,13 +202,13 @@ class HistoryAnalyzer:
         rate = appearances / total_days if total_days > 0 else 0
 
         if rate >= 0.9:
-            return '🔥'  # 常驻榜单
+            return '[HOT]'  # Frequent
         elif rate >= 0.6:
-            return '🌟'  # 活跃标的
+            return '[ACT]'  # Active
         elif rate >= 0.3:
-            return '⚡'  # 偶尔出现
+            return '[OCC]'  # Occasional
         else:
-            return '🆕'  # 新上榜
+            return '[NEW]'  # New
 
     def enrich_data_with_history(self, current_data: List[Dict]) -> List[Dict]:
         """
@@ -225,13 +225,13 @@ class HistoryAnalyzer:
 
         if not trading_days:
             print("  ⚠️  No historical data found")
-            # 所有标的标记为新上榜
+            # Mark all tickers as new
             for item in current_data:
                 item['history'] = {
                     'appearances': 0,
                     'appearance_rate': 0.0,
                     'trend': 'new',
-                    'icon': '🆕'
+                    'icon': '[NEW]'
                 }
             return current_data
 

@@ -165,18 +165,18 @@ class HTMLReportGenerator:
         """Generate table rows HTML for volume rankings"""
         rows = []
         for idx, item in enumerate(data, 1):
-            # 格式化 Top 3 合约
+            # Format Top 3 contracts
             top3_html = ''
             for i, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
                 contract_short = self._format_contract_short(contract)
                 oi_k = contract.get('oi', 0) / 1000
                 pct = contract.get('percentage', 0)
-                top3_html += f"<div class='contract-item'>① {contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
+                top3_html += f"<div class='contract-item'>{i}. {contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
 
             if not top3_html:
                 top3_html = '<small>N/A</small>'
 
-            # 格式化价格区间
+            # Format strike range
             strike_info = item.get('strike_concentration', {})
             strike_range = strike_info.get('range', 'N/A')
             strike_pct = strike_info.get('percentage', 0)
@@ -184,27 +184,27 @@ class HTMLReportGenerator:
 
             strike_html = f"""
                 <div><strong>{strike_range}</strong> <span class='pct'>({strike_pct:.1f}%)</span></div>
-                <div><small>核心: {dominant if dominant else 'N/A'}</small></div>
+                <div><small>Key: {dominant if dominant else 'N/A'}</small></div>
             """
 
-            # 格式化历史活跃度
+            # Format history activity
             history = item.get('history', {})
             appearances = history.get('appearances', 0)
-            icon = history.get('icon', '🆕')
+            icon = history.get('icon', '[NEW]')
             rank_change = history.get('rank_change')
             avg_rank = history.get('avg_rank')
 
-            # 排名变化符号
+            # Rank change symbol
             if rank_change is None or rank_change == 0:
-                rank_symbol = '↔️'
+                rank_symbol = '-'
             elif rank_change > 0:
-                rank_symbol = f'↑{rank_change}'
+                rank_symbol = f'+{rank_change}'
             else:
-                rank_symbol = f'↓{abs(rank_change)}'
+                rank_symbol = f'-{abs(rank_change)}'
 
             history_html = f"""
                 <div><strong>{appearances}/10 {icon}</strong> {rank_symbol}</div>
-                <div><small>平均排名: {avg_rank if avg_rank else 'N/A'}</small></div>
+                <div><small>Avg Rank: {avg_rank if avg_rank else 'N/A'}</small></div>
             """
 
             rows.append(f"""
@@ -225,18 +225,18 @@ class HTMLReportGenerator:
     def _generate_anomaly_rows(self, anomalies: List[Dict]) -> str:
         """Generate anomaly rows HTML"""
         if not anomalies:
-            return '<tr><td colspan="4" style="text-align:center;">未检测到异常</td></tr>'
+            return '<tr><td colspan="4" style="text-align:center;">No anomalies detected</td></tr>'
 
         severity_colors = {
-            'HIGH': '#dc3545',
-            'MEDIUM': '#ffc107',
-            'LOW': '#17a2b8'
+            'HIGH': '#000',
+            'MEDIUM': '#000',
+            'LOW': '#000'
         }
 
         severity_names = {
-            'HIGH': '高',
-            'MEDIUM': '中',
-            'LOW': '低'
+            'HIGH': 'HIGH',
+            'MEDIUM': 'MED',
+            'LOW': 'LOW'
         }
 
         rows = []
@@ -272,10 +272,11 @@ class HTMLReportGenerator:
         }}
 
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            color: #333;
+            font-family: "Courier New", Courier, monospace;
+            background: #f5f5f7;
+            padding: 40px 20px;
+            color: #1d1d1f;
+            line-height: 1.5;
         }}
 
         .container {{
@@ -284,214 +285,203 @@ class HTMLReportGenerator:
         }}
 
         .header {{
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: #fff;
+            padding: 40px;
+            border: 1px solid #d2d2d7;
+            margin-bottom: 20px;
             text-align: center;
         }}
 
         .header h1 {{
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
         }}
 
         .header .date {{
-            color: #666;
-            font-size: 1.1em;
+            color: #6e6e73;
+            font-size: 14px;
         }}
 
         .stats {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 1px;
+            margin-bottom: 20px;
+            background: #d2d2d7;
+            border: 1px solid #d2d2d7;
         }}
 
         .stat-card {{
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #fff;
+            padding: 24px;
             text-align: center;
         }}
 
         .stat-card .number {{
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 10px 0;
+            font-size: 36px;
+            font-weight: 600;
+            margin: 8px 0;
+            color: #1d1d1f;
         }}
 
         .stat-card .label {{
-            color: #666;
-            font-size: 0.9em;
+            color: #6e6e73;
+            font-size: 12px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }}
 
-        .stat-card.high .number {{ color: #dc3545; }}
-        .stat-card.medium .number {{ color: #ffc107; }}
-        .stat-card.low .number {{ color: #17a2b8; }}
-        .stat-card.total .number {{ color: #667eea; }}
+        .stat-card.high .number {{ color: #1d1d1f; }}
+        .stat-card.medium .number {{ color: #1d1d1f; }}
+        .stat-card.low .number {{ color: #1d1d1f; }}
+        .stat-card.total .number {{ color: #1d1d1f; }}
 
         .nav {{
-            background: white;
-            padding: 15px 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: #fff;
+            padding: 16px 24px;
+            border: 1px solid #d2d2d7;
+            margin-bottom: 20px;
             text-align: center;
         }}
 
         .nav a {{
             display: inline-block;
-            padding: 10px 25px;
-            margin: 0 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 8px 16px;
+            margin: 0 4px;
+            background: #000;
+            color: #fff;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: transform 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
         }}
 
         .nav a:hover {{
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: #333;
         }}
 
         .section {{
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: #fff;
+            padding: 32px;
+            border: 1px solid #d2d2d7;
+            margin-bottom: 20px;
         }}
 
         .section h2 {{
-            margin-bottom: 20px;
-            color: #333;
-            border-left: 5px solid #667eea;
-            padding-left: 15px;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
         }}
 
         .chart-container {{
             position: relative;
             height: 400px;
-            margin: 30px 0;
+            margin: 24px 0;
         }}
 
         table {{
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 16px;
+            border: 1px solid #d2d2d7;
         }}
 
         table th {{
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 600;
+            font-size: 13px;
+            border-bottom: 1px solid #d2d2d7;
         }}
 
         table th.sortable {{
             cursor: pointer;
             user-select: none;
             position: relative;
-            transition: background 0.2s;
         }}
 
         table th.sortable:hover {{
-            background: linear-gradient(135deg, #7688f0 0%, #8655b0 100%);
-        }}
-
-        table th.sortable.sorted-asc .sort-icon {{
-            color: #ffd700;
+            background: #e8e8ed;
         }}
 
         table th.sortable.sorted-asc .sort-icon::after {{
-            content: ' ▲';
-        }}
-
-        table th.sortable.sorted-desc .sort-icon {{
-            color: #ffd700;
+            content: ' ^';
         }}
 
         table th.sortable.sorted-desc .sort-icon::after {{
-            content: ' ▼';
+            content: ' v';
         }}
 
         .sort-icon {{
-            font-size: 0.8em;
-            opacity: 0.6;
-            margin-left: 5px;
+            font-size: 12px;
+            opacity: 0.5;
+            margin-left: 4px;
         }}
 
         table td {{
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
+            padding: 12px 16px;
+            border-bottom: 1px solid #d2d2d7;
+            font-size: 13px;
         }}
 
         table tr:hover {{
-            background: #f8f9fa;
+            background: #f5f5f7;
         }}
 
-        /* 紧凑单元格样式 */
         .compact-cell {{
-            font-size: 0.85em;
-            line-height: 1.6;
-            padding: 10px !important;
+            font-size: 12px;
+            line-height: 1.5;
+            padding: 10px 16px !important;
         }}
 
         .compact-cell div {{
-            margin: 3px 0;
+            margin: 2px 0;
         }}
 
-        /* 合约项样式 */
         .contract-item {{
             white-space: nowrap;
         }}
 
-        /* OI徽章样式 */
         .oi-badge {{
-            background: #e3f2fd;
+            background: #f5f5f7;
             padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.9em;
-            color: #1976d2;
+            font-size: 11px;
+            color: #1d1d1f;
             white-space: nowrap;
         }}
 
-        /* 百分比样式 */
         .pct {{
-            color: #666;
-            font-size: 0.9em;
+            color: #6e6e73;
+            font-size: 12px;
         }}
 
-        /* 小号文字 */
         .compact-cell small {{
-            color: #888;
-            font-size: 0.85em;
+            color: #86868b;
+            font-size: 11px;
         }}
 
         .badge {{
             display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            color: white;
-            font-size: 0.85em;
-            font-weight: bold;
+            padding: 4px 10px;
+            color: #fff;
+            background: #000;
+            font-size: 12px;
+            font-weight: 500;
         }}
 
         .footer {{
             text-align: center;
-            color: white;
-            margin-top: 30px;
+            color: #6e6e73;
+            margin-top: 40px;
             padding: 20px;
+            font-size: 12px;
         }}
 
         @media (max-width: 768px) {{
@@ -499,11 +489,11 @@ class HTMLReportGenerator:
                 grid-template-columns: 1fr;
             }}
             .header h1 {{
-                font-size: 1.8em;
+                font-size: 24px;
             }}
             .nav a {{
                 display: block;
-                margin: 10px 0;
+                margin: 8px 0;
             }}
         }}
     </style>
@@ -511,13 +501,13 @@ class HTMLReportGenerator:
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 期权市场异常分析报告</h1>
+            <h1>Options Market Anomaly Analysis</h1>
             <p class="date">{report_date}</p>
         </div>
 
         <div class="nav">
-            <a href="index.html">📊 最新报告</a>
-            <a href="archive.html">📚 历史报告</a>
+            <a href="index.html">Latest Report</a>
+            <a href="archive.html">Archive</a>
         </div>
 
         <div class="stats">
@@ -544,14 +534,14 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>🚨 检测到的异常</h2>
+            <h2>Detected Anomalies</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>股票代码</th>
-                        <th>严重程度</th>
-                        <th>类型</th>
-                        <th>描述</th>
+                        <th>Ticker</th>
+                        <th>Severity</th>
+                        <th>Type</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -561,26 +551,26 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>📊 市场总览 - Top 30 成交量</h2>
+            <h2>Market Overview - Top 30 by Volume</h2>
             <div class="chart-container">
                 <canvas id="volumeChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>📊 指数&ETF期权 Top 30 ({index_count} 个)</h2>
+            <h2>Index & ETF Options - Top 30 ({index_count})</h2>
             <table id="indexTable">
                 <thead>
                     <tr>
-                        <th>排名</th>
-                        <th class="sortable" data-table="index" data-column="ticker" data-type="string">代码 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="index" data-column="total_volume" data-type="number">总成交量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="index" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
-                        <th>Top 3 活跃合约</th>
-                        <th>主力价格区间</th>
-                        <th>10日活跃度</th>
+                        <th>Rank</th>
+                        <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
+                        <th>Top 3 Contracts</th>
+                        <th>Strike Range</th>
+                        <th>10-Day Activity</th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -590,19 +580,19 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>📈 个股期权 Top 30 ({stock_count} 个)</h2>
+            <h2>Stock Options - Top 30 ({stock_count})</h2>
             <table id="stockTable">
                 <thead>
                     <tr>
-                        <th>排名</th>
-                        <th class="sortable" data-table="stock" data-column="ticker" data-type="string">股票代码 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">总成交量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
-                        <th>Top 3 活跃合约</th>
-                        <th>主力价格区间</th>
-                        <th>10日活跃度</th>
+                        <th>Rank</th>
+                        <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
+                        <th>Top 3 Contracts</th>
+                        <th>Strike Range</th>
+                        <th>10-Day Activity</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">
@@ -612,22 +602,22 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>📊 Call/Put 比例分析</h2>
+            <h2>Call/Put Ratio Analysis</h2>
             <div class="chart-container">
                 <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>💼 持仓量分布</h2>
+            <h2>Open Interest Distribution</h2>
             <div class="chart-container">
                 <canvas id="oiChart"></canvas>
             </div>
         </div>
 
         <div class="footer">
-            <p>期权异常检测系统 | 数据来源: Polygon.io</p>
-            <p>⚠️ 本报告仅供参考，不构成投资建议</p>
+            <p>Options Anomaly Detection System | Data: Polygon.io</p>
+            <p>For reference only. Not investment advice.</p>
         </div>
     </div>
 
@@ -727,7 +717,7 @@ class HTMLReportGenerator:
                     const contractShort = formatContractShort(contract);
                     const oiK = (contract.oi || 0) / 1000;
                     const pct = contract.percentage || 0;
-                    top3Html += `<div class='contract-item'>① ${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                    top3Html += `<div class='contract-item'>${{i + 1}}. ${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
                 }});
                 if (!top3Html) {{
                     top3Html = '<small>N/A</small>';
@@ -740,28 +730,28 @@ class HTMLReportGenerator:
                 const dominant = strikeInfo.dominant_strike;
                 const strikeHtml = `
                     <div><strong>${{strikeRange}}</strong> <span class='pct'>(${{strikePct.toFixed(1)}}%)</span></div>
-                    <div><small>核心: ${{dominant || 'N/A'}}</small></div>
+                    <div><small>Key: ${{dominant || 'N/A'}}</small></div>
                 `;
 
                 // Format history
                 const history = item.history || {{}};
                 const appearances = history.appearances || 0;
-                const icon = history.icon || '🆕';
+                const icon = history.icon || '[NEW]';
                 const rankChange = history.rank_change;
                 const avgRank = history.avg_rank;
 
-                let rankSymbol = '↔️';
+                let rankSymbol = '-';
                 if (rankChange !== null && rankChange !== undefined && rankChange !== 0) {{
                     if (rankChange > 0) {{
-                        rankSymbol = `↑${{rankChange}}`;
+                        rankSymbol = `+${{rankChange}}`;
                     }} else {{
-                        rankSymbol = `↓${{Math.abs(rankChange)}}`;
+                        rankSymbol = `-${{Math.abs(rankChange)}}`;
                     }}
                 }}
 
                 const historyHtml = `
                     <div><strong>${{appearances}}/10 ${{icon}}</strong> ${{rankSymbol}}</div>
-                    <div><small>平均排名: ${{avgRank || 'N/A'}}</small></div>
+                    <div><small>Avg Rank: ${{avgRank || 'N/A'}}</small></div>
                 `;
 
                 const row = document.createElement('tr');
