@@ -267,7 +267,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 09:32:45 EDT | <strong>东八区时间:</strong> 2025-11-01 21:32:45 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 09:40:50 EDT | <strong>东八区时间:</strong> 2025-11-01 21:40:50 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -303,27 +303,27 @@
             <div class="macro-content">
                 <strong>Market Sentiment &amp; Positioning</strong>
 
-<ul><li>The C/P Volume Ratios for SPY (0.78), QQQ (0.75), and IWM (0.60) suggest a moderately bearish sentiment, with a notable skew towards puts, indicating hedging against downside risks rather than aggressive bearish bets. However, the significantly lower C/P Open Interest Ratios (SPY: 0.33, QQQ: 0.50, IWM: 0.36) imply that existing positions are heavily skewed towards puts, reflecting a protective stance by institutional investors.</li>
+<ul><li><strong>C/P Ratio Insights</strong>: The Call/Put (C/P) volume and open interest (OI) ratios across SPY, QQQ, and IWM indicate a bearish sentiment among institutional investors. The C/P OI ratios are notably low (SPY: 0.33, QQQ: 0.50, IWM: 0.36), suggesting a strong preference for puts, typically used for hedging against downside risks.</li>
 
-<li>Smart money appears to be positioning defensively, as evidenced by the concentration of open interest in longer-dated put options, particularly in the SPY and QQQ. The top contracts are concentrated in far-out-of-the-money puts with expirations in 2025, suggesting a strategic hedge against potential long-term downside risks rather than immediate bearish expectations.</li>
+<li><strong>Smart Money Positioning</strong>: The concentration of open interest in out-of-the-money (OTM) put contracts, particularly with long-dated expirations in 2025, suggests that smart money is preparing for potential downside risks in the equity markets. The high OI in SPY at strikes like $500 and $530, and similar patterns in QQQ and IWM, indicate significant defensive positioning.</li>
 
-<li>Unusual patterns include the high concentration of open interest in specific strike ranges (e.g., SPY's 500-550, QQQ's 600-650), indicating significant protective hedging around these levels, likely due to concerns about potential macroeconomic or geopolitical shocks.</li>
+<li><strong>Unusual Patterns</strong>: The substantial open interest in deep OTM puts with expiration dates well into 2025 suggests that investors are hedging against long-term systemic risks. This could imply concerns about prolonged economic uncertainty or a significant market correction.</li>
 
 <strong>Macro Outlook</strong>
 
-<li>The current macro environment is characterized by a cautious Federal Reserve, balancing between maintaining restrictive monetary policy to combat persistent inflation and concerns over slowing economic growth. The yield curve remains inverted, signaling recession risks, while geopolitical tensions and supply chain disruptions continue to pose uncertainties.</li>
+<li><strong>Current Macro Environment</strong>: The macro landscape is characterized by heightened uncertainty, with the Federal Reserve maintaining a cautious stance amidst persistent inflationary pressures. Growth prospects remain tepid, with geopolitical tensions and supply chain disruptions adding further complexity.</li>
 
-<li>Key risks include potential escalations in geopolitical conflicts, further supply chain disruptions, and the Fed's policy missteps that could trigger sharper-than-expected economic downturns. Opportunities lie in sectors resilient to interest rate hikes or those benefiting from structural shifts, such as energy and technology.</li>
+<li><strong>Key Risks and Opportunities</strong>: Key risks include potential for further monetary tightening if inflation remains stubborn, geopolitical escalations, and potential energy market volatility. Opportunities may arise from any signs of inflation stabilization or dovish policy pivots, which could provide relief to risk assets.</li>
 
-<li>Investors should watch for changes in Fed communication, inflation data, and geopolitical developments, as these could significantly shift market dynamics and investor sentiment.</li></ul>
+<li><strong>Investor Watchlist</strong>: Investors should closely monitor Fed communications for any shifts in policy tone, inflation data for signals of easing, and geopolitical developments that could impact global supply chains or energy markets.</li>
 
 <strong>Key Takeaways</strong>
 
-<p>1. Institutional investors are heavily hedged against downside risks, indicating cautious sentiment amid macro uncertainties.
-2. The concentration of long-term put options suggests persistent concerns about potential macroeconomic shocks or prolonged market downturns.
-3. The macro environment remains challenging, with the Fed's policy path, inflation persistence, and geopolitical risks being primary concerns.
-4. Investors should remain vigilant to shifts in Fed policy and macroeconomic indicators, as they will likely drive market sentiment and positioning changes.
-5. Opportunities exist in resilient sectors and through strategic hedging to navigate the current macro uncertainties effectively.</p>
+<li>Institutional investors exhibit a bearish bias with significant hedging through long-dated put options, signaling concerns over potential downside risks.</li>
+  
+<li>The macro environment is fraught with uncertainties, particularly regarding inflation and Fed policy, necessitating vigilance for any shifts that could impact market dynamics.</li>
+
+<li>Key opportunities could be found in monitoring inflation trends and Fed policy adjustments, which may present tactical trading opportunities amid broader market volatility.</li></ul>
             </div>
         </div>
 
@@ -1210,17 +1210,17 @@
             }
         });
 
-        // Volume Chart with C/P ratio in tooltip (shows all top 30 including indices)
+        // Volume Chart with C/P ratio in tooltip (stocks & ETFs only, excludes Market Indices)
         const volumeCtx = document.getElementById('volumeChart').getContext('2d');
-        const volumeChartCPRatios = [0.78, 0.75, 2.26, 1.8, 1.45, 0.6, 1.89, 1.87, 2.09, 2.84, 2.33, 1.48, 0.7, 1.86, 1.23, 1.94, 1.18, 1.31, 2.29, 7.22, 8.73, 0.79, 1.57, 2.66, 1.49, 0.46, 1.49, 2.73, 1.2, 7.44];
+        const cpRatiosForVolume = [2.26, 1.8, 1.45, 1.89, 1.87, 2.09, 2.84, 2.33, 1.48, 0.7, 1.86, 1.23, 1.94, 1.18, 1.31, 2.29, 7.22, 8.73, 0.79, 1.57, 2.66, 1.49, 0.46, 1.49, 2.73, 1.2, 7.44, 0.77, 3.03, 3.89];
 
         new Chart(volumeCtx, {
             type: 'bar',
             data: {
-                labels: ["SPY", "QQQ", "NVDA", "META", "TSLA", "IWM", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB"],
+                labels: ["NVDA", "META", "TSLA", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB", "QUBT", "OPEN", "MRNA"],
                 datasets: [{
                     label: '总成交量',
-                    data: [8450612, 4401356, 3023124, 2236172, 2004310, 1558805, 1274103, 1208271, 985687, 862500, 822257, 765147, 675079, 653901, 642236, 607845, 576718, 561763, 512093, 511892, 491899, 467255, 455858, 427014, 414606, 396552, 375809, 370355, 355308, 329140],
+                    data: [3023124, 2236172, 2004310, 1274103, 1208271, 985687, 862500, 822257, 765147, 675079, 653901, 642236, 607845, 576718, 561763, 512093, 511892, 491899, 467255, 455858, 427014, 414606, 396552, 375809, 370355, 355308, 329140, 328631, 324796, 291101],
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1
@@ -1241,7 +1241,7 @@
                         callbacks: {
                             afterLabel: function(context) {
                                 const index = context.dataIndex;
-                                const cpRatio = volumeChartCPRatios[index];
+                                const cpRatio = cpRatiosForVolume[index];
                                 return 'C/P Ratio: ' + cpRatio.toFixed(2);
                             }
                         }
