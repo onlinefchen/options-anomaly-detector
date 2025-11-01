@@ -232,9 +232,13 @@ class HTMLReportGenerator:
             strike_range = strike_info.get('range', 'N/A')
             strike_pct = strike_info.get('percentage', 0)
             dominant = strike_info.get('dominant_strike')
+            current_price = item.get('current_price')
+
+            price_line = f"<div><small>Current: ${current_price:.2f}</small></div>" if current_price else ""
 
             strike_html = f"""
                 <div><strong>{strike_range}</strong> <span class='pct'>({strike_pct:.1f}%)</span></div>
+                {price_line}
                 <div><small>Key: {dominant if dominant else 'N/A'}</small></div>
             """
 
@@ -817,8 +821,13 @@ class HTMLReportGenerator:
                 const strikeRange = strikeInfo.range || 'N/A';
                 const strikePct = strikeInfo.percentage || 0;
                 const dominant = strikeInfo.dominant_strike;
+                const currentPrice = item.current_price;
+
+                const priceLine = currentPrice ? `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>` : '';
+
                 const strikeHtml = `
                     <div><strong>${{strikeRange}}</strong> <span class='pct'>(${{strikePct.toFixed(1)}}%)</span></div>
+                    ${{priceLine}}
                     <div><small>Key: ${{dominant || 'N/A'}}</small></div>
                 `;
 
