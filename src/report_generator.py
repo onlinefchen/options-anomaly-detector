@@ -12,9 +12,33 @@ from utils import get_market_times, format_market_time_html
 class HTMLReportGenerator:
     """Generate HTML reports for options anomaly analysis"""
 
+    # 指数和ETF列表（这些通常有巨大的期权交易量）
+    INDEX_ETFS = {
+        # 主要指数
+        'SPY', 'QQQ', 'IWM', 'DIA',
+        # 行业ETF
+        'XLE', 'XLF', 'XLI', 'XLK', 'XLV', 'XLY', 'XLP', 'XLU', 'XLB', 'XLRE', 'XLC',
+        # 其他常见ETF
+        'EEM', 'GLD', 'SLV', 'TLT', 'HYG', 'EWZ', 'FXI',
+        # 波动率相关
+        'VXX', 'UVXY', 'VIXY', 'SVXY'
+    }
+
     def __init__(self):
         """Initialize the report generator"""
         self.template = self._get_template()
+
+    def _classify_ticker(self, ticker: str) -> str:
+        """
+        Classify ticker as 'index' or 'stock'
+
+        Args:
+            ticker: Stock ticker symbol
+
+        Returns:
+            'index' or 'stock'
+        """
+        return 'index' if ticker in self.INDEX_ETFS else 'stock'
 
     def generate(
         self,
@@ -38,7 +62,16 @@ class HTMLReportGenerator:
             metadata = {}
         import os
         import shutil
-        # Sort data by volume
+
+        # 将数据分成指数ETF和个股两组
+        index_data = [d for d in data if self._classify_ticker(d['ticker']) == 'index']
+        stock_data = [d for d in data if self._classify_ticker(d['ticker']) == 'stock']
+
+        # 分别排序并取Top 30
+        sorted_index_data = sorted(index_data, key=lambda x: x['total_volume'], reverse=True)[:30]
+        sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:30]
+
+        # 用于整体图表的数据（包含所有数据的Top 30）
         sorted_data = sorted(data, key=lambda x: x['total_volume'], reverse=True)[:30]
 
         # Prepare data for charts
@@ -81,10 +114,18 @@ class HTMLReportGenerator:
             cp_volume_ratios_json=json.dumps(cp_volume_ratios),
             cp_oi_ratios_json=json.dumps(cp_oi_ratios),
             open_interests_json=json.dumps(open_interests),
+            # 指数ETF表格
+            index_table_rows=self._generate_table_rows(sorted_index_data),
+            index_data_json=json.dumps(sorted_index_data, ensure_ascii=False),
+            index_count=len(sorted_index_data),
+            # 个股表格
+            stock_table_rows=self._generate_table_rows(sorted_stock_data),
+            stock_data_json=json.dumps(sorted_stock_data, ensure_ascii=False),
+            stock_count=len(sorted_stock_data),
+            # 保留原有的（用于兼容）
             volume_table_rows=self._generate_table_rows(sorted_data),
-            anomaly_rows=self._generate_anomaly_rows(sorted_anomalies),
-            # Add complete data for client-side sorting
-            table_data_json=json.dumps(sorted_data, ensure_ascii=False)
+            table_data_json=json.dumps(sorted_data, ensure_ascii=False),
+            anomaly_rows=self._generate_anomaly_rows(sorted_anomalies)
         )
 
         # Write to file
@@ -520,26 +561,52 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>📈 期权成交量Top 30排行</h2>
+            <h2>📊 市场总览 - Top 30 成交量</h2>
             <div class="chart-container">
                 <canvas id="volumeChart"></canvas>
             </div>
-            <table id="volumeTable">
+        </div>
+
+        <div class="section">
+            <h2>📊 指数&ETF期权 Top 30 ({index_count} 个)</h2>
+            <table id="indexTable">
                 <thead>
                     <tr>
                         <th>排名</th>
-                        <th class="sortable" data-column="ticker" data-type="string">股票代码 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="total_volume" data-type="number">总成交量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="index" data-column="ticker" data-type="string">代码 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="index" data-column="total_volume" data-type="number">总成交量 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="index" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
                         <th>Top 3 活跃合约</th>
                         <th>主力价格区间</th>
                         <th>10日活跃度</th>
                     </tr>
                 </thead>
-                <tbody id="volumeTableBody">
-                    {volume_table_rows}
+                <tbody id="indexTableBody">
+                    {index_table_rows}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📈 个股期权 Top 30 ({stock_count} 个)</h2>
+            <table id="stockTable">
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th class="sortable" data-table="stock" data-column="ticker" data-type="string">股票代码 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">总成交量 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
+                        <th>Top 3 活跃合约</th>
+                        <th>主力价格区间</th>
+                        <th>10日活跃度</th>
+                    </tr>
+                </thead>
+                <tbody id="stockTableBody">
+                    {stock_table_rows}
                 </tbody>
             </table>
         </div>
@@ -566,18 +633,34 @@ class HTMLReportGenerator:
 
     <script>
         // Store table data for sorting
-        const tableData = {table_data_json};
-        let currentSortColumn = 'total_volume';
-        let currentSortOrder = 'desc';
+        const indexData = {index_data_json};
+        const stockData = {stock_data_json};
+
+        let indexSortColumn = 'total_volume';
+        let indexSortOrder = 'desc';
+        let stockSortColumn = 'total_volume';
+        let stockSortOrder = 'desc';
 
         // Table sorting function
-        function sortTable(column, type) {{
+        function sortTable(tableType, column, type) {{
+            const tableData = tableType === 'index' ? indexData : stockData;
+            const currentSortColumn = tableType === 'index' ? indexSortColumn : stockSortColumn;
+            const currentSortOrder = tableType === 'index' ? indexSortOrder : stockSortOrder;
             // Toggle sort order if clicking same column
+            let newSortOrder;
             if (currentSortColumn === column) {{
-                currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+                newSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
             }} else {{
-                currentSortColumn = column;
-                currentSortOrder = 'desc'; // Default to descending
+                newSortOrder = 'desc'; // Default to descending
+            }}
+
+            // Update state
+            if (tableType === 'index') {{
+                indexSortColumn = column;
+                indexSortOrder = newSortOrder;
+            }} else {{
+                stockSortColumn = column;
+                stockSortOrder = newSortOrder;
             }}
 
             // Sort data
@@ -589,7 +672,7 @@ class HTMLReportGenerator:
                 if (type === 'string') {{
                     valA = String(valA).toLowerCase();
                     valB = String(valB).toLowerCase();
-                    return currentSortOrder === 'asc'
+                    return newSortOrder === 'asc'
                         ? valA.localeCompare(valB)
                         : valB.localeCompare(valA);
                 }}
@@ -597,19 +680,20 @@ class HTMLReportGenerator:
                 // Handle number comparison
                 valA = Number(valA) || 0;
                 valB = Number(valB) || 0;
-                return currentSortOrder === 'asc' ? valA - valB : valB - valA;
+                return newSortOrder === 'asc' ? valA - valB : valB - valA;
             }});
 
             // Update table
-            renderTable(sortedData);
+            renderTable(tableType, sortedData);
 
-            // Update sort indicators
-            document.querySelectorAll('th.sortable').forEach(th => {{
+            // Update sort indicators (only for this table)
+            const tableSelector = tableType === 'index' ? '#indexTable' : '#stockTable';
+            document.querySelectorAll(`${{tableSelector}} th.sortable`).forEach(th => {{
                 th.classList.remove('sorted-asc', 'sorted-desc');
             }});
-            const activeHeader = document.querySelector(`th[data-column="${{column}}"]`);
+            const activeHeader = document.querySelector(`${{tableSelector}} th[data-column="${{column}}"]`);
             if (activeHeader) {{
-                activeHeader.classList.add(`sorted-${{currentSortOrder}}`);
+                activeHeader.classList.add(`sorted-${{newSortOrder}}`);
             }}
         }}
 
@@ -630,8 +714,9 @@ class HTMLReportGenerator:
         }}
 
         // Render table with data
-        function renderTable(data) {{
-            const tbody = document.getElementById('volumeTableBody');
+        function renderTable(tableType, data) {{
+            const tbodyId = tableType === 'index' ? 'indexTableBody' : 'stockTableBody';
+            const tbody = document.getElementById(tbodyId);
             tbody.innerHTML = '';
 
             data.forEach((item, idx) => {{
@@ -697,18 +782,32 @@ class HTMLReportGenerator:
 
         // Add click handlers to sortable headers
         document.addEventListener('DOMContentLoaded', () => {{
-            document.querySelectorAll('th.sortable').forEach(th => {{
+            // Setup sorting for index table
+            document.querySelectorAll('#indexTable th.sortable').forEach(th => {{
                 th.addEventListener('click', () => {{
                     const column = th.dataset.column;
                     const type = th.dataset.type;
-                    sortTable(column, type);
+                    sortTable('index', column, type);
                 }});
             }});
 
-            // Set initial sort indicator
-            const initialHeader = document.querySelector('th[data-column="total_volume"]');
-            if (initialHeader) {{
-                initialHeader.classList.add('sorted-desc');
+            // Setup sorting for stock table
+            document.querySelectorAll('#stockTable th.sortable').forEach(th => {{
+                th.addEventListener('click', () => {{
+                    const column = th.dataset.column;
+                    const type = th.dataset.type;
+                    sortTable('stock', column, type);
+                }});
+            }});
+
+            // Set initial sort indicators for both tables
+            const indexHeader = document.querySelector('#indexTable th[data-column="total_volume"]');
+            if (indexHeader) {{
+                indexHeader.classList.add('sorted-desc');
+            }}
+            const stockHeader = document.querySelector('#stockTable th[data-column="total_volume"]');
+            if (stockHeader) {{
+                stockHeader.classList.add('sorted-desc');
             }}
         }});
 
