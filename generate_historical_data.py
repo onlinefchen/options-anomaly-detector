@@ -263,7 +263,7 @@ def main():
     if success_count > 0:
         print("📚 生成归档索引...")
         reports = get_archived_reports(args.output)
-        generate_archive_index(reports, args.output)
+        generate_archive_index(reports, os.path.join(args.output, 'archive.html'))
         print(f"✓ 归档索引更新完成 ({len(reports)} 个报告)")
         print()
 
