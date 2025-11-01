@@ -97,9 +97,18 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         summary = detector.get_summary()
         print(f'   ✅ 异常检测完成')
         print(f'      - 检测到 {summary["total"]} 个异常信号')
-        print(f'      - 极端看涨: {summary.get("extreme_bullish", 0)}')
-        print(f'      - 极端看跌: {summary.get("extreme_bearish", 0)}')
-        print(f'      - 成交量激增: {summary.get("volume_surge", 0)}')
+
+        # Show by type breakdown if available
+        if summary.get('by_type'):
+            print(f'      - 按类型分布:')
+            for atype, count in sorted(summary['by_type'].items(), key=lambda x: x[1], reverse=True):
+                print(f'        • {atype}: {count}')
+
+        # Show by severity breakdown if available
+        if summary.get('by_severity'):
+            print(f'      - 按严重程度:')
+            for severity, count in sorted(summary['by_severity'].items(), key=lambda x: x[1], reverse=True):
+                print(f'        • {severity}: {count}')
         print()
 
         metadata = {
