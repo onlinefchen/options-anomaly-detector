@@ -65,8 +65,8 @@ class HTMLReportGenerator:
 
         # 大盘指数：显示所有找到的（最多3个：SPY, QQQ, IWM）
         sorted_index_data = sorted(index_data, key=lambda x: x['total_volume'], reverse=True)
-        # 个股和ETF：取Top 30
-        sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:30]
+        # 个股和ETF：取Top 25
+        sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:25]
 
         # 用于整体图表的数据（包含所有过滤后数据的Top 30）
         sorted_data = sorted(filtered_data, key=lambda x: x['total_volume'], reverse=True)[:30]
@@ -679,7 +679,7 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Stocks & ETFs - Top 30 ({stock_date})</h2>
+            <h2>Stocks & ETFs - Top 25 ({stock_date})</h2>
             <table id="stockTable">
                 <thead>
                     <tr>

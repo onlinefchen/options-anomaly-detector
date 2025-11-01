@@ -401,9 +401,9 @@ class AIAnalyzer:
         # 转换 Markdown 到 HTML（如果有内容）
         analysis_html = markdown.markdown(analysis) if analysis and analysis.strip() else ""
 
-        # Top 30 详细表格
-        top_30_rows = []
-        for i, item in enumerate(data[:30], 1):
+        # Top 25 详细表格
+        top_25_rows = []
+        for i, item in enumerate(data[:25], 1):
             # Top 3 Contracts
             top3_text = ""
             for j, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
@@ -447,7 +447,7 @@ class AIAnalyzer:
 
             history_text = f"{appearances}/10 {icon} {rank_symbol}"
 
-            top_30_rows.append(f"""
+            top_25_rows.append(f"""
                 <tr>
                     <td style="text-align: center;">{i}</td>
                     <td><strong>{item['ticker']}</strong></td>
@@ -586,7 +586,7 @@ class AIAnalyzer:
             <div class="summary-item">最活跃: <strong>{data[0]['ticker']}</strong> (成交量 {data[0]['total_volume']:,})</div>
         </div>
 
-        <h2>Stocks & ETFs - Top 30</h2>
+        <h2>Stocks & ETFs - Top 25</h2>
         <table>
             <thead>
                 <tr>
@@ -602,7 +602,7 @@ class AIAnalyzer:
                 </tr>
             </thead>
             <tbody>
-                {''.join(top_30_rows)}
+                {''.join(top_25_rows)}
             </tbody>
         </table>
 
