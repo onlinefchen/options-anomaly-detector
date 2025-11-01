@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Price Fetcher Module
-Fetches current stock prices from Finnhub API
+Fetches current stock prices from Polygon.io API
 """
 import os
 import time
@@ -10,27 +10,26 @@ from typing import Dict, List, Optional
 
 
 class PriceFetcher:
-    """Fetch current stock prices from Finnhub API"""
+    """Fetch current stock prices from Polygon.io API"""
 
     def __init__(self, api_key: Optional[str] = None):
         """
         Initialize price fetcher
 
         Args:
-            api_key: Finnhub API key (defaults to environment variable)
+            api_key: Polygon.io API key (defaults to environment variable)
         """
-        self.api_key = api_key or os.getenv('FINNHUB_API_KEY')
-        self.base_url = "https://finnhub.io/api/v1"
+        self.api_key = api_key or os.getenv('POLYGON_API_KEY')
+        self.base_url = "https://api.polygon.io"
         self.session = requests.Session()
-        self.session.headers.update({'X-Finnhub-Token': self.api_key})
 
     def is_available(self) -> bool:
-        """Check if Finnhub API is configured"""
+        """Check if Polygon API is configured"""
         return self.api_key is not None and len(self.api_key) > 0
 
     def get_quote(self, symbol: str) -> Optional[float]:
         """
-        Get current price for a single symbol
+        Get current price for a single symbol using Polygon snapshot API
 
         Args:
             symbol: Stock ticker symbol
@@ -42,14 +41,24 @@ class PriceFetcher:
             return None
 
         try:
-            url = f"{self.base_url}/quote"
-            params = {'symbol': symbol}
+            # Use Polygon snapshot API for real-time quote
+            url = f"{self.base_url}/v2/snapshot/locale/us/markets/stocks/tickers/{symbol}"
+            params = {'apiKey': self.api_key}
             response = self.session.get(url, params=params, timeout=10)
 
             if response.status_code == 200:
                 data = response.json()
-                # 'c' is current price in Finnhub response
-                return data.get('c')
+                ticker_data = data.get('ticker', {})
+                # Get last trade price
+                last_trade = ticker_data.get('lastTrade', {})
+                price = last_trade.get('p')
+
+                # Fallback to previous close if no last trade
+                if price is None:
+                    prev_day = ticker_data.get('prevDay', {})
+                    price = prev_day.get('c')
+
+                return price
             else:
                 return None
 
@@ -69,7 +78,7 @@ class PriceFetcher:
             Dict mapping symbol to current price
         """
         if not self.is_available():
-            print("  ⚠️  Finnhub API key not configured, skipping price fetch")
+            print("  ⚠️  Polygon API key not configured, skipping price fetch")
             return {}
 
         prices = {}
@@ -104,7 +113,7 @@ class PriceFetcher:
             Data enriched with current_price field
         """
         if not self.is_available():
-            print("  ⚠️  Finnhub API not configured, skipping price enrichment")
+            print("  ⚠️  Polygon API not configured, skipping price enrichment")
             for item in data:
                 item['current_price'] = None
             return data
