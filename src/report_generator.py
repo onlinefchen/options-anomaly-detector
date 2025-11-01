@@ -94,9 +94,13 @@ class HTMLReportGenerator:
             if not price_fetcher.is_available():
                 print("  ⚠️  Polygon API not configured, skipping price fetch")
 
-        # Prepare data for charts - only use Stocks & ETFs Top 30 (exclude Market Indices)
+        # Prepare data for Volume Chart - use overall top 30 (includes indices + stocks)
+        volume_chart_tickers = [d['ticker'] for d in sorted_data]
+        volume_chart_volumes = [d['total_volume'] for d in sorted_data]
+        volume_chart_cp_ratios = [d['cp_volume_ratio'] for d in sorted_data]
+
+        # Prepare data for C/P and OI charts - only use Stocks & ETFs Top 30 (exclude Market Indices)
         tickers = [d['ticker'] for d in sorted_stock_data]
-        volumes = [d['total_volume'] for d in sorted_stock_data]
         cp_volume_ratios = [d['cp_volume_ratio'] for d in sorted_stock_data]
         cp_oi_ratios = [d['cp_oi_ratio'] for d in sorted_stock_data]
         open_interests = [d['total_oi'] for d in sorted_stock_data]
@@ -148,8 +152,12 @@ class HTMLReportGenerator:
             high_severity=summary.get('by_severity', {}).get('HIGH', 0),
             medium_severity=summary.get('by_severity', {}).get('MEDIUM', 0),
             low_severity=summary.get('by_severity', {}).get('LOW', 0),
+            # Volume chart data (all top 30)
+            volume_chart_tickers_json=json.dumps(volume_chart_tickers),
+            volume_chart_volumes_json=json.dumps(volume_chart_volumes),
+            volume_chart_cp_ratios_json=json.dumps(volume_chart_cp_ratios),
+            # C/P and OI charts data (stocks/ETFs only)
             tickers_json=json.dumps(tickers),
-            volumes_json=json.dumps(volumes),
             cp_volume_ratios_json=json.dumps(cp_volume_ratios),
             cp_oi_ratios_json=json.dumps(cp_oi_ratios),
             open_interests_json=json.dumps(open_interests),
@@ -289,10 +297,7 @@ class HTMLReportGenerator:
                 <tr>
                     <td>{idx}</td>
                     <td><strong>{item['ticker']}</strong></td>
-                    <td class="volume-cell">
-                        <span class="volume-value">{item['total_volume']:,}</span>
-                        <span class="cp-ratio-value">C/P: {item['cp_volume_ratio']:.2f}</span>
-                    </td>
+                    <td>{item['total_volume']:,}</td>
                     <td>{item['cp_volume_ratio']:.2f}</td>
                     <td>{item['total_oi']:,}</td>
                     <td>{item['cp_oi_ratio']:.2f}</td>
@@ -516,27 +521,6 @@ class HTMLReportGenerator:
             background: #f5f5f7;
         }}
 
-        /* Volume cell with hover effect to show C/P ratio */
-        .volume-cell {{
-            position: relative;
-        }}
-
-        .volume-cell .volume-value {{
-            display: inline;
-        }}
-
-        .volume-cell .cp-ratio-value {{
-            display: none;
-        }}
-
-        table tr:hover .volume-cell .volume-value {{
-            display: none;
-        }}
-
-        table tr:hover .volume-cell .cp-ratio-value {{
-            display: inline;
-            color: #0066cc;
-        }}
 
         .compact-cell {{
             font-size: 12px;
@@ -879,10 +863,7 @@ class HTMLReportGenerator:
                 row.innerHTML = `
                     <td>${{idx + 1}}</td>
                     <td><strong>${{item.ticker}}</strong></td>
-                    <td class="volume-cell">
-                        <span class="volume-value">${{item.total_volume.toLocaleString()}}</span>
-                        <span class="cp-ratio-value">C/P: ${{item.cp_volume_ratio.toFixed(2)}}</span>
-                    </td>
+                    <td>${{item.total_volume.toLocaleString()}}</td>
                     <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
                     <td>${{item.total_oi.toLocaleString()}}</td>
                     <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
@@ -925,15 +906,17 @@ class HTMLReportGenerator:
             }}
         }});
 
-        // Volume Chart
+        // Volume Chart with C/P ratio in tooltip (shows all top 30 including indices)
         const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+        const volumeChartCPRatios = {volume_chart_cp_ratios_json};
+
         new Chart(volumeCtx, {{
             type: 'bar',
             data: {{
-                labels: {tickers_json},
+                labels: {volume_chart_tickers_json},
                 datasets: [{{
                     label: '总成交量',
-                    data: {volumes_json},
+                    data: {volume_chart_volumes_json},
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1
@@ -949,6 +932,15 @@ class HTMLReportGenerator:
                     title: {{
                         display: true,
                         text: '期权成交量'
+                    }},
+                    tooltip: {{
+                        callbacks: {{
+                            afterLabel: function(context) {{
+                                const index = context.dataIndex;
+                                const cpRatio = volumeChartCPRatios[index];
+                                return 'C/P Ratio: ' + cpRatio.toFixed(2);
+                            }}
+                        }}
                     }}
                 }},
                 scales: {{
