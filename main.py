@@ -31,6 +31,64 @@ def main():
     print_banner()
 
     try:
+        # Generate date stamp
+        date_str = datetime.now().strftime('%Y-%m-%d')
+        json_file = f'output/{date_str}.json'
+
+        # Check if today's data already exists (restored from gh-pages)
+        if os.path.exists(json_file):
+            print_progress(f"📦 Found existing data for {date_str}")
+            print_progress(f"   • Loading from: {json_file}")
+            print_progress("   • Skipping data fetch to save API quota\n")
+
+            # Load existing data
+            with open(json_file, 'r', encoding='utf-8') as f:
+                historical_data = json.load(f)
+
+            data = historical_data.get('data', [])
+            anomalies = historical_data.get('anomalies', [])
+            summary = historical_data.get('summary', {})
+            metadata = {
+                'data_source': historical_data.get('data_source', 'CSV'),
+                'csv_date': historical_data.get('date', date_str)
+            }
+
+            print_progress(f"✓ Loaded {len(data)} tickers from existing data\n")
+
+            # Generate HTML report from existing data
+            print_progress("📄 Generating HTML report from existing data...")
+            os.makedirs('output', exist_ok=True)
+            reporter = HTMLReportGenerator()
+            reporter.generate(data, anomalies, summary, metadata=metadata)
+
+            # Copy current report to dated version
+            import shutil
+            dated_report = f'output/{date_str}.html'
+            shutil.copy2('output/anomaly_report.html', dated_report)
+            print_progress(f"✓ HTML report saved: {dated_report}")
+
+            # Generate archive index page
+            print_progress("📚 Generating archive index...")
+            reports = get_archived_reports()
+            generate_archive_index(reports)
+            print_progress(f"✓ Archive index updated ({len(reports)} reports)\n")
+
+            # Success message
+            print("\n" + "="*80)
+            print("✅ Report Generated from Existing Data!")
+            print("="*80)
+            print(f"\n📊 Results:")
+            print(f"   • Tickers: {len(data)}")
+            print(f"   • Anomalies: {summary.get('total', 0)}")
+            print(f"   • Report: output/index.html")
+            print(f"   • Data source: {metadata.get('data_source', 'Unknown')}")
+            print("="*80 + "\n")
+
+            return 0
+
+        # If no existing data, proceed with full analysis
+        print_progress(f"🆕 No existing data for {date_str}, proceeding with full analysis\n")
+
         # Initialize components
         print_progress("🔧 Initializing components...")
         fetcher = HybridDataFetcher()
@@ -71,9 +129,6 @@ def main():
         print_summary_table(data)
         print_anomalies_summary(anomalies, summary)
 
-        # Generate date stamp
-        date_str = datetime.now().strftime('%Y-%m-%d')
-
         # Generate HTML report
         print_progress("📄 Generating HTML report...")
         os.makedirs('output', exist_ok=True)
@@ -82,22 +137,27 @@ def main():
         # Archive historical data
         print_progress("💾 Archiving historical data...")
 
-        # Save raw data as JSON
-        historical_data = {
-            'date': date_str,
-            'timestamp': datetime.now().isoformat(),
-            'tickers_count': len(data),
-            'anomalies_count': summary['total'],
-            'data_source': metadata.get('data_source', 'Unknown'),
-            'data': data,
-            'anomalies': anomalies,
-            'summary': summary
-        }
+        # Only save JSON file if data is from CSV (not API-only)
+        data_source = metadata.get('data_source', 'Unknown')
+        if data_source in ['CSV', 'CSV+API']:
+            # Save raw data as JSON
+            historical_data = {
+                'date': date_str,
+                'timestamp': datetime.now().isoformat(),
+                'tickers_count': len(data),
+                'anomalies_count': summary['total'],
+                'data_source': data_source,
+                'data': data,
+                'anomalies': anomalies,
+                'summary': summary
+            }
 
-        json_file = f'output/{date_str}.json'
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(historical_data, f, ensure_ascii=False, indent=2)
-        print_progress(f"✓ Raw data saved: {json_file}")
+            json_file = f'output/{date_str}.json'
+            with open(json_file, 'w', encoding='utf-8') as f:
+                json.dump(historical_data, f, ensure_ascii=False, indent=2)
+            print_progress(f"✓ Raw data saved: {json_file}")
+        else:
+            print_progress(f"⊘ Skipping JSON save (data source: {data_source}, CSV required)")
 
         # Copy current report to dated version
         import shutil
