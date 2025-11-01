@@ -118,12 +118,13 @@ class HTMLReportGenerator:
         if data_source in ['CSV', 'CSV+API']:
             csv_date = metadata.get('csv_date', 'Unknown')
             time_display += f' | <strong>数据来源:</strong> CSV文件 ({csv_date}.csv.gz)'
+            # Use CSV date for table header (the date of the data)
+            data_date = csv_date
         else:
             time_display += f' | <strong>数据来源:</strong> API'
-
-        # Get current date for table header
-        from datetime import datetime
-        current_date = datetime.now().strftime('%Y-%m-%d')
+            # Use current date for table header when using API
+            from datetime import datetime
+            data_date = datetime.now().strftime('%Y-%m-%d')
 
         # Generate macro outlook analysis using AI
         macro_analysis = ''
@@ -165,7 +166,7 @@ class HTMLReportGenerator:
             # 个股表格
             stock_table_rows=self._generate_table_rows(sorted_stock_data),
             stock_data_json=json.dumps(sorted_stock_data, ensure_ascii=False),
-            stock_date=current_date,
+            stock_date=data_date,
             # 保留原有的（用于兼容）
             volume_table_rows=self._generate_table_rows(sorted_data),
             table_data_json=json.dumps(sorted_data, ensure_ascii=False),
