@@ -121,6 +121,10 @@ class HTMLReportGenerator:
         else:
             time_display += f' | <strong>数据来源:</strong> API'
 
+        # Get current date for table header
+        from datetime import datetime
+        current_date = datetime.now().strftime('%Y-%m-%d')
+
         # Generate macro outlook analysis using AI
         macro_analysis = ''
         if sorted_index_data:
@@ -161,7 +165,7 @@ class HTMLReportGenerator:
             # 个股表格
             stock_table_rows=self._generate_table_rows(sorted_stock_data),
             stock_data_json=json.dumps(sorted_stock_data, ensure_ascii=False),
-            stock_count=len(sorted_stock_data),
+            stock_date=current_date,
             # 保留原有的（用于兼容）
             volume_table_rows=self._generate_table_rows(sorted_data),
             table_data_json=json.dumps(sorted_data, ensure_ascii=False),
@@ -673,7 +677,7 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Stocks & ETFs - Top 30 ({stock_count})</h2>
+            <h2>Stocks & ETFs - Top 30 ({stock_date})</h2>
             <table id="stockTable">
                 <thead>
                     <tr>
