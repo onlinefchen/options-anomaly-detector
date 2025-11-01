@@ -61,23 +61,12 @@ def main():
 
     print(f'\n📊 Loaded data: {len(data)} tickers, {summary.get("total", 0)} anomalies\n')
 
-    # AI 分析
+    # 初始化组件
     ai_analyzer = AIAnalyzer()
     email_sender = EmailSender()
 
-    analysis_text = None
-
-    if ai_analyzer.is_available():
-        print('🤖 Running AI analysis...')
-        analysis_text = ai_analyzer.analyze_market_data(data, anomalies, summary)
-        if analysis_text:
-            print('✓ AI analysis completed')
-            print(f'\nAI Analysis Preview:\n{analysis_text[:200]}...\n')
-        else:
-            print('⚠️  AI analysis failed')
-    else:
-        print('⊘ AI analysis not available (no API key)')
-        analysis_text = '**AI 分析未配置**\n\n请配置 OPENAI_API_KEY 以启用 AI 智能分析功能。'
+    # 跳过AI分析，直接发送表格数据
+    print('📧 Preparing email with table data (AI analysis disabled)...')
 
     # 发送邮件
     if email_sender.is_available():
@@ -87,7 +76,8 @@ def main():
             print(f'\n📧 Sending email to {recipient}...')
 
             subject = ai_analyzer.generate_email_subject(data, summary.get('total', 0))
-            html_content = ai_analyzer.format_for_email(analysis_text, data, summary)
+            # Pass empty string for analysis since we're skipping AI analysis
+            html_content = ai_analyzer.format_for_email('', data, summary)
 
             success = email_sender.send_report(recipient, subject, html_content)
 

@@ -398,19 +398,66 @@ class AIAnalyzer:
         from datetime import datetime
         import markdown
 
-        # 转换 Markdown 到 HTML
-        analysis_html = markdown.markdown(analysis)
+        # 转换 Markdown 到 HTML（如果有内容）
+        analysis_html = markdown.markdown(analysis) if analysis and analysis.strip() else ""
 
-        # Top 20 表格（简洁风格，无图标）
-        top_20_rows = []
-        for i, item in enumerate(data[:20], 1):
-            top_20_rows.append(f"""
+        # Top 30 详细表格
+        top_30_rows = []
+        for i, item in enumerate(data[:30], 1):
+            # Top 3 Contracts
+            top3_text = ""
+            for j, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
+                expiry = contract.get('expiry', '')
+                if expiry:
+                    expiry = expiry.replace('-', '')[-6:]  # YYMMDD
+                contract_type = contract.get('type', '')[0].upper() if contract.get('type') else 'X'
+                strike = int(contract.get('strike', 0))
+                oi_k = contract.get('oi', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_text += f"{j}. {expiry}{contract_type}{strike} {oi_k:.0f}K ({pct:.1f}%)<br>"
+
+            if not top3_text:
+                top3_text = "N/A"
+
+            # Strike Range
+            strike_info = item.get('strike_concentration', {})
+            strike_range = strike_info.get('range', 'N/A')
+            strike_pct = strike_info.get('percentage', 0)
+            dominant = strike_info.get('dominant_strike')
+            current_price = item.get('current_price')
+
+            strike_text = f"{strike_range} ({strike_pct:.1f}%)"
+            if current_price:
+                strike_text += f"<br>Current: ${current_price:.2f}"
+            if dominant:
+                strike_text += f"<br>Key: {dominant}"
+
+            # History
+            history = item.get('history', {})
+            appearances = history.get('appearances', 0)
+            icon = history.get('icon', '[NEW]')
+            rank_change = history.get('rank_change')
+
+            if rank_change is None or rank_change == 0:
+                rank_symbol = '-'
+            elif rank_change > 0:
+                rank_symbol = f'+{rank_change}'
+            else:
+                rank_symbol = f'{rank_change}'
+
+            history_text = f"{appearances}/10 {icon} {rank_symbol}"
+
+            top_30_rows.append(f"""
                 <tr>
-                    <td>{i}</td>
+                    <td style="text-align: center;">{i}</td>
                     <td><strong>{item['ticker']}</strong></td>
-                    <td>{item['total_volume']:,}</td>
-                    <td>{item['cp_volume_ratio']:.2f}</td>
-                    <td>{item['total_oi']:,}</td>
+                    <td style="text-align: right;">{item['total_volume']:,}</td>
+                    <td style="text-align: center;">{item['cp_volume_ratio']:.2f}</td>
+                    <td style="text-align: right;">{item['total_oi']:,}</td>
+                    <td style="text-align: center;">{item.get('cp_oi_ratio', 0):.2f}</td>
+                    <td style="font-size: 11px; line-height: 1.4;">{top3_text}</td>
+                    <td style="font-size: 11px; line-height: 1.4;">{strike_text}</td>
+                    <td style="text-align: center; font-size: 11px;">{history_text}</td>
                 </tr>
             """)
 
@@ -539,26 +586,25 @@ class AIAnalyzer:
             <div class="summary-item">最活跃: <strong>{data[0]['ticker']}</strong> (成交量 {data[0]['total_volume']:,})</div>
         </div>
 
-        <h2>Top 20 活跃标的</h2>
+        <h2>Stocks & ETFs - Top 30</h2>
         <table>
             <thead>
                 <tr>
-                    <th>排名</th>
+                    <th style="text-align: center;">排名</th>
                     <th>标的</th>
-                    <th>成交量</th>
-                    <th>C/P比</th>
-                    <th>持仓量</th>
+                    <th style="text-align: right;">成交量</th>
+                    <th style="text-align: center;">C/P Volume</th>
+                    <th style="text-align: right;">持仓量</th>
+                    <th style="text-align: center;">C/P OI</th>
+                    <th>Top 3 Contracts</th>
+                    <th>Strike Range</th>
+                    <th style="text-align: center;">10-Day</th>
                 </tr>
             </thead>
             <tbody>
-                {''.join(top_20_rows)}
+                {''.join(top_30_rows)}
             </tbody>
         </table>
-
-        <h2>AI 市场分析</h2>
-        <div class="ai-analysis">
-            {analysis_html}
-        </div>
 
         <div class="footer">
             <div><a href="https://onlinefchen.github.io/options-anomaly-detector/">查看完整报告</a> | <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub</a></div>
