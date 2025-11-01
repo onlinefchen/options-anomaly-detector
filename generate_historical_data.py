@@ -62,39 +62,57 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         None 如果CSV不存在（跳过该日期）
     """
     try:
+        print(f'📥 STEP 1/4: 下载 CSV 文件')
+        print(f'   目标日期: {date}')
+
         # Initialize fetcher to get CSV handler
         fetcher = HybridDataFetcher()
 
         # Try to download and parse CSV for the specified date
+        print(f'   ⏳ 正在尝试下载 {date}.csv.gz ...')
         success, data, csv_date = fetcher.csv_handler.try_download_and_parse(date=date, max_retries=1)
 
         if not success or not data:
-            print(f'  ⊘ No CSV available for {date}, skipping...')
+            print(f'   ❌ CSV下载失败 - 文件不存在或无法访问')
+            print(f'   ⊘ 跳过 {date}，不生成任何文件')
             return None
 
-        print(f'  ✓ Downloaded CSV data: {len(data)} tickers')
-        print(f'     CSV date: {csv_date}')
+        print(f'   ✅ CSV下载成功！')
+        print(f'      - 文件: {csv_date}.csv.gz')
+        print(f'      - 数据: {len(data)} 个标的')
+        print(f'      - 总成交量: {sum(d["total_volume"] for d in data):,}')
+        print()
 
-        # Analyze historical activity
+        print(f'📊 STEP 2/4: 分析历史活跃度')
+        print(f'   ⏳ 正在分析 {date} 的历史数据...')
         analyzer = HistoryAnalyzer(output_dir=output_dir, lookback_days=10)
         data = analyzer.enrich_data_with_history(data)
-        print(f'  ✓ Historical analysis complete')
+        print(f'   ✅ 历史分析完成')
+        print()
 
-        # Detect anomalies
+        print(f'🔍 STEP 3/4: 检测异常信号')
+        print(f'   ⏳ 正在检测 {date} 的市场异常...')
         detector = OptionsAnomalyDetector()
         anomalies = detector.detect_all_anomalies(data)
         summary = detector.get_summary()
-        print(f'  ✓ Detected {summary["total"]} anomalies')
+        print(f'   ✅ 异常检测完成')
+        print(f'      - 检测到 {summary["total"]} 个异常信号')
+        print(f'      - 极端看涨: {summary.get("extreme_bullish", 0)}')
+        print(f'      - 极端看跌: {summary.get("extreme_bearish", 0)}')
+        print(f'      - 成交量激增: {summary.get("volume_surge", 0)}')
+        print()
 
         metadata = {
             'data_source': 'CSV',
             'csv_date': csv_date
         }
 
+        print(f'✅ {date} 数据准备完成，等待保存...')
         return data, anomalies, summary, metadata
 
     except Exception as e:
-        print(f'  ❌ Error processing {date}: {e}')
+        print(f'   ❌ 处理 {date} 时发生错误: {e}')
+        print(f'   ⊘ 跳过 {date}，不生成任何文件')
         import traceback
         traceback.print_exc()
         return None
@@ -113,6 +131,7 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
         metadata: 元数据（包含data_source等）
         output_dir: 输出目录
     """
+    print(f'💾 STEP 4/4: 保存数据文件')
     os.makedirs(output_dir, exist_ok=True)
 
     # 保存 JSON
@@ -129,14 +148,16 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
     }
 
     json_file = os.path.join(output_dir, f'{date}.json')
+    print(f'   ⏳ 正在保存 JSON: {date}.json ...')
     with open(json_file, 'w', encoding='utf-8') as f:
         json.dump(historical_data, f, ensure_ascii=False, indent=2)
-
-    print(f'  ✓ JSON saved: {json_file}')
+    file_size = os.path.getsize(json_file) / 1024
+    print(f'   ✅ JSON 已保存: {json_file} ({file_size:.1f} KB)')
 
     # 生成 HTML 报告
-    reporter = HTMLReportGenerator()
     html_file = os.path.join(output_dir, f'{date}.html')
+    print(f'   ⏳ 正在生成 HTML: {date}.html ...')
+    reporter = HTMLReportGenerator()
     reporter.generate(
         data=data,
         anomalies=anomalies,
@@ -144,8 +165,9 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
         metadata=metadata,
         output_file=html_file
     )
-
-    print(f'  ✓ HTML saved: {html_file}')
+    file_size = os.path.getsize(html_file) / 1024
+    print(f'   ✅ HTML 已保存: {html_file} ({file_size:.1f} KB)')
+    print()
 
 
 def main():
@@ -228,24 +250,34 @@ def main():
     today = datetime.now()
     success_count = 0
     skip_count = 0
+    total_days = len(dates)
 
-    for date in dates:
+    for idx, date in enumerate(dates, 1):
         date_obj = datetime.strptime(date, '%Y-%m-%d')
         days_ago = (today - date_obj).days
 
-        print(f"处理 {date} (距今 {days_ago} 天)...")
+        print("━" * 70)
+        print(f"📅 [{idx}/{total_days}] 处理日期: {date} (距今 {days_ago} 天)")
+        print(f"   进度: {idx}/{total_days} ({idx*100//total_days}%) | 成功: {success_count} | 跳过: {skip_count}")
+        print("━" * 70)
 
         result = generate_data_for_date(date, args.output)
 
         if result is None:
             skip_count += 1
-            print(f'  ⊘ 跳过 {date}')
+            print(f'━' * 70)
+            print(f'❌ {date} 处理失败 - CSV文件不可用，已跳过')
+            print(f'━' * 70)
         else:
             data, anomalies, summary, metadata = result
             save_historical_data(date, data, anomalies, summary, metadata, args.output)
             success_count += 1
-            print(f'  ✓ 完成 {date}')
+            print(f'━' * 70)
+            print(f'✅ {date} 处理完成！')
+            print(f'━' * 70)
 
+        print(f'📊 汇总统计: 已完成 {idx}/{total_days} | 成功 {success_count} | 跳过 {skip_count} | 剩余 {total_days - idx}')
+        print()
         print()
 
     print("=" * 70)
