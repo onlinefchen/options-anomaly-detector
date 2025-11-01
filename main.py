@@ -137,7 +137,7 @@ def main():
         # Archive historical data
         print_progress("💾 Archiving historical data...")
 
-        # Only save JSON file if data is from CSV (not API-only)
+        # Only save JSON and dated HTML if data is from CSV (not API-only)
         data_source = metadata.get('data_source', 'Unknown')
         if data_source in ['CSV', 'CSV+API']:
             # Save raw data as JSON
@@ -156,14 +156,14 @@ def main():
             with open(json_file, 'w', encoding='utf-8') as f:
                 json.dump(historical_data, f, ensure_ascii=False, indent=2)
             print_progress(f"✓ Raw data saved: {json_file}")
-        else:
-            print_progress(f"⊘ Skipping JSON save (data source: {data_source}, CSV required)")
 
-        # Copy current report to dated version
-        import shutil
-        dated_report = f'output/{date_str}.html'
-        shutil.copy2('output/anomaly_report.html', dated_report)
-        print_progress(f"✓ Historical report saved: {dated_report}")
+            # Copy current report to dated version (only for CSV data)
+            import shutil
+            dated_report = f'output/{date_str}.html'
+            shutil.copy2('output/anomaly_report.html', dated_report)
+            print_progress(f"✓ Historical report saved: {dated_report}")
+        else:
+            print_progress(f"⊘ Skipping JSON/HTML save (data source: {data_source}, CSV required)")
 
         # Generate archive index page
         print_progress("📚 Generating archive index...")
