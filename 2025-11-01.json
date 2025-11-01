@@ -1,8 +1,8 @@
 {
   "date": "2025-11-01",
-  "timestamp": "2025-11-01T15:30:50.328206",
+  "timestamp": "2025-11-01T15:34:25.200172",
   "tickers_count": 4355,
-  "anomalies_count": 3466,
+  "anomalies_count": 3465,
   "data_source": "CSV+API",
   "data": [
     {
@@ -1759,42 +1759,10 @@
       "contracts_count": 1503,
       "put_contracts": 666,
       "call_contracts": 837,
-      "total_oi": 1392523,
-      "put_oi": 645765,
-      "call_oi": 746758,
-      "cp_oi_ratio": 1.16,
-      "top_3_contracts": [
-        {
-          "ticker": "O:ORCL251219C00280000",
-          "oi": 24343,
-          "strike": 280,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.7
-        },
-        {
-          "ticker": "O:ORCL260618C00165000",
-          "oi": 10985,
-          "strike": 165,
-          "expiry": "2026-06-18",
-          "type": "call",
-          "percentage": 0.8
-        },
-        {
-          "ticker": "O:ORCL251121P00250000",
-          "oi": 10355,
-          "strike": 250,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 0.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "300-320",
-        "oi": 126625,
-        "percentage": 9.1,
-        "dominant_strike": 300
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -1807,7 +1775,7 @@
         "streak": 0,
         "icon": "[NEW]"
       },
-      "current_price": 262.34
+      "current_price": null
     },
     {
       "ticker": "KWEB",
@@ -1818,42 +1786,10 @@
       "contracts_count": 341,
       "put_contracts": 139,
       "call_contracts": 202,
-      "total_oi": 3379083,
-      "put_oi": 1273449,
-      "call_oi": 2105634,
-      "cp_oi_ratio": 1.65,
-      "top_3_contracts": [
-        {
-          "ticker": "O:KWEB260116P00038000",
-          "oi": 186383,
-          "strike": 38,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 5.5
-        },
-        {
-          "ticker": "O:KWEB260116P00031000",
-          "oi": 156258,
-          "strike": 31,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 4.6
-        },
-        {
-          "ticker": "O:KWEB251219C00050000",
-          "oi": 106420,
-          "strike": 50,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 3.1
-        }
-      ],
-      "strike_concentration": {
-        "range": "35-40",
-        "oi": 804467,
-        "percentage": 23.8,
-        "dominant_strike": 38
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -1866,7 +1802,7 @@
         "streak": 0,
         "icon": "[NEW]"
       },
-      "current_price": 39.95
+      "current_price": null
     },
     {
       "ticker": "QUBT",
@@ -1877,42 +1813,10 @@
       "contracts_count": 438,
       "put_contracts": 177,
       "call_contracts": 261,
-      "total_oi": 604215,
-      "put_oi": 298961,
-      "call_oi": 305254,
-      "cp_oi_ratio": 1.02,
-      "top_3_contracts": [
-        {
-          "ticker": "O:QUBT251107C00016000",
-          "oi": 58303,
-          "strike": 16,
-          "expiry": "2025-11-07",
-          "type": "call",
-          "percentage": 9.6
-        },
-        {
-          "ticker": "O:QUBT251107P00014000",
-          "oi": 58189,
-          "strike": 14,
-          "expiry": "2025-11-07",
-          "type": "put",
-          "percentage": 9.6
-        },
-        {
-          "ticker": "O:QUBT260116P00005000",
-          "oi": 22459,
-          "strike": 5,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 3.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "15-20",
-        "oi": 179713,
-        "percentage": 29.7,
-        "dominant_strike": 16
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -1925,7 +1829,7 @@
         "streak": 0,
         "icon": "[NEW]"
       },
-      "current_price": 16.64
+      "current_price": null
     },
     {
       "ticker": "OPEN",
@@ -1936,42 +1840,10 @@
       "contracts_count": 454,
       "put_contracts": 185,
       "call_contracts": 269,
-      "total_oi": 2438430,
-      "put_oi": 680874,
-      "call_oi": 1757556,
-      "cp_oi_ratio": 2.58,
-      "top_3_contracts": [
-        {
-          "ticker": "O:OPEN251121C00010000",
-          "oi": 71721,
-          "strike": 10,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 2.9
-        },
-        {
-          "ticker": "O:OPEN270115C00001000",
-          "oi": 67199,
-          "strike": 1,
-          "expiry": "2027-01-15",
-          "type": "call",
-          "percentage": 2.8
-        },
-        {
-          "ticker": "O:OPEN260116C00010000",
-          "oi": 65434,
-          "strike": 10,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 2.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "10-15",
-        "oi": 483191,
-        "percentage": 19.8,
-        "dominant_strike": 10
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -1984,7 +1856,7 @@
         "streak": 0,
         "icon": "[NEW]"
       },
-      "current_price": 7.78
+      "current_price": null
     },
     {
       "ticker": "MRNA",
@@ -1995,42 +1867,10 @@
       "contracts_count": 607,
       "put_contracts": 235,
       "call_contracts": 372,
-      "total_oi": 918599,
-      "put_oi": 431080,
-      "call_oi": 487519,
-      "cp_oi_ratio": 1.13,
-      "top_3_contracts": [
-        {
-          "ticker": "O:MRNA251121C00025000",
-          "oi": 37980,
-          "strike": 25,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 4.1
-        },
-        {
-          "ticker": "O:MRNA260116C00035000",
-          "oi": 21945,
-          "strike": 35,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 2.4
-        },
-        {
-          "ticker": "O:MRNA251121P00020000",
-          "oi": 19404,
-          "strike": 20,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.1
-        }
-      ],
-      "strike_concentration": {
-        "range": "25-30",
-        "oi": 232650,
-        "percentage": 25.3,
-        "dominant_strike": 25
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -2043,7 +1883,7 @@
         "streak": 0,
         "icon": "[NEW]"
       },
-      "current_price": 27.17
+      "current_price": null
     },
     {
       "ticker": "ASST",
@@ -146436,22 +146276,14 @@
       "description": "Low turnover (Volume/OI: 0.06), strong position holding",
       "value": 0.05611345815765324,
       "metric": "vol_oi_ratio"
-    },
-    {
-      "ticker": "KWEB",
-      "type": "LOW_TURNOVER",
-      "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.10), strong position holding",
-      "value": 0.09740512440801247,
-      "metric": "vol_oi_ratio"
     }
   ],
   "summary": {
-    "total": 3466,
+    "total": 3465,
     "by_severity": {
       "HIGH": 3447,
       "MEDIUM": 14,
-      "LOW": 5
+      "LOW": 4
     },
     "by_type": {
       "HIGH_VOLUME": 30,
@@ -146460,7 +146292,7 @@
       "EXTREME_GREED": 1533,
       "AGGRESSIVE_POSITIONING": 1,
       "EXTREME_FEAR": 517,
-      "LOW_TURNOVER": 5
+      "LOW_TURNOVER": 4
     }
   }
 }
