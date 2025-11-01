@@ -62,24 +62,18 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         None 如果CSV不存在（跳过该日期）
     """
     try:
-        # Initialize fetcher
+        # Initialize fetcher to get CSV handler
         fetcher = HybridDataFetcher()
 
-        # Try to fetch data for the specified date using CSV strategy
-        data, metadata = fetcher.fetch_data_for_date(date, strategy='csv', top_n_for_oi=30)
+        # Try to download and parse CSV for the specified date
+        success, data, csv_date = fetcher.csv_handler.try_download_and_parse(date=date, max_retries=1)
 
-        # Check if we got CSV data
-        data_source = metadata.get('data_source', 'Unknown')
-        if data_source not in ['CSV', 'CSV+API']:
-            print(f'  ⊘ No CSV available for {date} (data source: {data_source}), skipping...')
-            return None
-
-        if not data:
-            print(f'  ⊘ No data available for {date}, skipping...')
+        if not success or not data:
+            print(f'  ⊘ No CSV available for {date}, skipping...')
             return None
 
         print(f'  ✓ Downloaded CSV data: {len(data)} tickers')
-        print(f'     Data source: {data_source}')
+        print(f'     CSV date: {csv_date}')
 
         # Analyze historical activity
         analyzer = HistoryAnalyzer(output_dir=output_dir, lookback_days=10)
@@ -91,6 +85,11 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         anomalies = detector.detect_all_anomalies(data)
         summary = detector.get_summary()
         print(f'  ✓ Detected {summary["total"]} anomalies')
+
+        metadata = {
+            'data_source': 'CSV',
+            'csv_date': csv_date
+        }
 
         return data, anomalies, summary, metadata
 
