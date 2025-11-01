@@ -1,18 +1,26 @@
 #!/usr/bin/env python3
 """
 历史数据生成工具
-用于生成指定日期或日期区间的模拟历史数据
+用于生成指定日期或日期区间的历史数据（从真实CSV文件）
 """
 import os
 import sys
 import json
 import argparse
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
 
 # Add src to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
+from hybrid_fetcher import HybridDataFetcher
+from anomaly_detector import OptionsAnomalyDetector
 from report_generator import HTMLReportGenerator
+from history_analyzer import HistoryAnalyzer
+from archive_index_generator import get_archived_reports, generate_archive_index
+
+# Load environment variables
+load_dotenv()
 
 
 def get_trading_days_in_range(start_date: str, end_date: str) -> list:
@@ -41,152 +49,84 @@ def get_trading_days_in_range(start_date: str, end_date: str) -> list:
     return trading_days
 
 
-def generate_mock_data_for_date(date: str, days_ago: int) -> dict:
+def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
     """
-    为指定日期生成模拟数据
+    为指定日期生成数据（从真实CSV文件）
 
     Args:
         date: 日期字符串 YYYY-MM-DD
-        days_ago: 距离今天的天数（用于生成不同的数据）
+        output_dir: 输出目录
 
     Returns:
-        模拟的数据字典
+        (data, anomalies, summary, metadata) 如果成功下载CSV
+        None 如果CSV不存在（跳过该日期）
     """
-    # 常见活跃标的
-    base_tickers = [
-        'SPY', 'QQQ', 'NVDA', 'TSLA', 'AAPL', 'MSFT', 'AMZN',
-        'META', 'GOOGL', 'AMD', 'INTC', 'IWM', 'DIA', 'VIX',
-        'NFLX', 'BABA', 'NIO', 'PLTR', 'SOFI', 'BAC',
-        'JPM', 'XLE', 'GLD', 'SLV', 'TLT', 'EEM',
-        'PFE', 'WMT', 'BA', 'CAT'
-    ]
+    try:
+        # Initialize fetcher
+        fetcher = HybridDataFetcher()
 
-    # 根据距离今天的天数调整数据，模拟市场变化
-    # 让一些标的偶尔不出现在 Top 30
-    import random
-    random.seed(hash(date))  # 使用日期作为种子，保证同一天生成的数据相同
+        # Try to fetch data for the specified date using CSV strategy
+        data, metadata = fetcher.fetch_data_for_date(date, strategy='csv', top_n_for_oi=30)
 
-    # 随机选择 25-30 个标的
-    num_tickers = random.randint(25, 30)
-    selected_tickers = random.sample(base_tickers, min(num_tickers, len(base_tickers)))
+        # Check if we got CSV data
+        data_source = metadata.get('data_source', 'Unknown')
+        if data_source not in ['CSV', 'CSV+API']:
+            print(f'  ⊘ No CSV available for {date} (data source: {data_source}), skipping...')
+            return None
 
-    # 某些标的更容易出现（常驻嘉宾）
-    常驻嘉宾 = ['SPY', 'QQQ', 'NVDA', 'TSLA', 'AAPL']
-    for ticker in 常驻嘉宾:
-        if ticker not in selected_tickers and random.random() > 0.1:  # 90% 概率出现
-            selected_tickers.append(ticker)
+        if not data:
+            print(f'  ⊘ No data available for {date}, skipping...')
+            return None
 
-    data = []
+        print(f'  ✓ Downloaded CSV data: {len(data)} tickers')
+        print(f'     Data source: {data_source}')
 
-    for rank, ticker in enumerate(selected_tickers[:30], 1):
-        # 基础数据随日期变化
-        base_volume = 5000000 - rank * 150000 + days_ago * 80000 + random.randint(-500000, 500000)
-        base_oi = 2000000 - rank * 80000 + random.randint(-200000, 200000)
+        # Analyze historical activity
+        analyzer = HistoryAnalyzer(output_dir=output_dir, lookback_days=10)
+        data = analyzer.enrich_data_with_history(data)
+        print(f'  ✓ Historical analysis complete')
 
-        # 确保数据为正
-        base_volume = max(base_volume, 500000)
-        base_oi = max(base_oi, 100000)
+        # Detect anomalies
+        detector = OptionsAnomalyDetector()
+        anomalies = detector.detect_all_anomalies(data)
+        summary = detector.get_summary()
+        print(f'  ✓ Detected {summary["total"]} anomalies')
 
-        put_volume = int(base_volume * random.uniform(0.35, 0.65))
-        call_volume = base_volume - put_volume
+        return data, anomalies, summary, metadata
 
-        put_oi = int(base_oi * random.uniform(0.35, 0.65))
-        call_oi = base_oi - put_oi
-
-        # 生成 Top 3 合约（模拟）
-        strike_base = random.choice([50, 100, 200, 400, 600])
-        top_3_contracts = []
-
-        for i in range(3):
-            contract_oi = int(base_oi * random.uniform(0.05, 0.12))
-            strike = strike_base + i * 5
-            contract_type = random.choice(['call', 'put'])
-            expiry_days = random.choice([7, 14, 30, 60])
-            expiry = (datetime.strptime(date, '%Y-%m-%d') + timedelta(days=expiry_days)).strftime('%Y-%m-%d')
-
-            top_3_contracts.append({
-                'ticker': f'O:{ticker}{expiry.replace("-", "")}{"C" if contract_type == "call" else "P"}{strike:08d}',
-                'oi': contract_oi,
-                'strike': float(strike),
-                'expiry': expiry,
-                'type': contract_type,
-                'percentage': round(contract_oi / base_oi * 100, 1)
-            })
-
-        # 按持仓量排序
-        top_3_contracts.sort(key=lambda x: x['oi'], reverse=True)
-
-        # 重新计算百分比
-        for contract in top_3_contracts:
-            contract['percentage'] = round(contract['oi'] / base_oi * 100, 1)
-
-        # 生成价格区间
-        if strike_base < 50:
-            range_width = 5
-        elif strike_base < 200:
-            range_width = 10
-        elif strike_base < 500:
-            range_width = 20
-        else:
-            range_width = 50
-
-        range_start = int(strike_base / range_width) * range_width
-        range_end = range_start + range_width
-        range_oi = int(base_oi * random.uniform(0.15, 0.30))
-
-        item = {
-            'ticker': ticker,
-            'total_volume': base_volume,
-            'put_volume': put_volume,
-            'call_volume': call_volume,
-            'cp_volume_ratio': round(call_volume / put_volume, 2) if put_volume > 0 else 0,
-            'total_oi': base_oi,
-            'put_oi': put_oi,
-            'call_oi': call_oi,
-            'cp_oi_ratio': round(call_oi / put_oi, 2) if put_oi > 0 else 0,
-            'contracts_count': random.randint(300, 600),
-            'top_3_contracts': top_3_contracts,
-            'strike_concentration': {
-                'range': f'{range_start}-{range_end}',
-                'oi': range_oi,
-                'percentage': round(range_oi / base_oi * 100, 1),
-                'dominant_strike': strike_base
-            }
-        }
-
-        data.append(item)
-
-    # 按成交量排序
-    data.sort(key=lambda x: x['total_volume'], reverse=True)
-
-    return data
+    except Exception as e:
+        print(f'  ❌ Error processing {date}: {e}')
+        import traceback
+        traceback.print_exc()
+        return None
 
 
-def save_historical_data(date: str, data: list, output_dir: str = 'output'):
+def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
+                         metadata: dict, output_dir: str = 'output'):
     """
     保存历史数据到文件
 
     Args:
         date: 日期字符串
         data: 数据列表
+        anomalies: 异常列表
+        summary: 统计摘要
+        metadata: 元数据（包含data_source等）
         output_dir: 输出目录
     """
     os.makedirs(output_dir, exist_ok=True)
 
-    # 生成假的异常数据（空列表）
-    anomalies = []
-    summary = {'total': 0, 'by_severity': {'HIGH': 0, 'MEDIUM': 0, 'LOW': 0}}
-
     # 保存 JSON
+    data_source = metadata.get('data_source', 'Unknown')
     historical_data = {
         'date': date,
-        'timestamp': f'{date}T22:00:00.000000',  # 假设是晚上10点生成的
+        'timestamp': datetime.now().isoformat(),
         'tickers_count': len(data),
-        'anomalies_count': 0,
+        'anomalies_count': summary.get('total', 0),
+        'data_source': data_source,
         'data': data,
         'anomalies': anomalies,
-        'summary': summary,
-        'note': '此数据为历史模拟数据，仅用于测试10日活跃度功能'
+        'summary': summary
     }
 
     json_file = os.path.join(output_dir, f'{date}.json')
@@ -202,6 +142,7 @@ def save_historical_data(date: str, data: list, output_dir: str = 'output'):
         data=data,
         anomalies=anomalies,
         summary=summary,
+        metadata=metadata,
         output_file=html_file
     )
 
@@ -210,7 +151,7 @@ def save_historical_data(date: str, data: list, output_dir: str = 'output'):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='生成指定日期或日期区间的历史数据',
+        description='生成指定日期或日期区间的历史数据（从真实CSV文件）',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
@@ -222,6 +163,11 @@ def main():
 
   # 生成过去10个交易日的数据
   python generate_historical_data.py --days 10
+
+注意:
+  - 需要配置 POLYGON_S3_ACCESS_KEY 和 POLYGON_S3_SECRET_KEY
+  - 只会下载存在CSV文件的日期，不存在的日期会自动跳过
+  - 周末和节假日通常没有CSV文件
         """
     )
 
@@ -236,7 +182,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 70)
-    print("历史数据生成工具")
+    print("历史数据生成工具 (从真实CSV文件)")
     print("=" * 70)
     print()
 
@@ -275,32 +221,53 @@ def main():
 
     print()
     print("=" * 70)
-    print(f"开始生成 {len(dates)} 天的数据...")
+    print(f"开始下载 {len(dates)} 天的CSV数据...")
     print("=" * 70)
     print()
 
     # 生成数据
     today = datetime.now()
+    success_count = 0
+    skip_count = 0
 
     for date in dates:
         date_obj = datetime.strptime(date, '%Y-%m-%d')
         days_ago = (today - date_obj).days
 
-        print(f"生成 {date} 的数据 (距今 {days_ago} 天)...")
+        print(f"处理 {date} (距今 {days_ago} 天)...")
 
-        data = generate_mock_data_for_date(date, days_ago)
-        save_historical_data(date, data, args.output)
+        result = generate_data_for_date(date, args.output)
+
+        if result is None:
+            skip_count += 1
+            print(f'  ⊘ 跳过 {date}')
+        else:
+            data, anomalies, summary, metadata = result
+            save_historical_data(date, data, anomalies, summary, metadata, args.output)
+            success_count += 1
+            print(f'  ✓ 完成 {date}')
 
         print()
 
     print("=" * 70)
-    print(f"✅ 完成！共生成 {len(dates)} 天的数据")
+    print(f"✅ 完成！")
     print("=" * 70)
+    print(f"  • 成功: {success_count} 天")
+    print(f"  • 跳过: {skip_count} 天（无CSV）")
     print()
     print("生成的文件:")
     print(f"  - {args.output}/*.json  (原始数据)")
     print(f"  - {args.output}/*.html  (HTML报告)")
     print()
+
+    # Generate archive index if we have any reports
+    if success_count > 0:
+        print("📚 生成归档索引...")
+        reports = get_archived_reports(args.output)
+        generate_archive_index(reports, args.output)
+        print(f"✓ 归档索引更新完成 ({len(reports)} 个报告)")
+        print()
+
     print("下一步:")
     print("  1. 运行 main.py 进行一次完整分析")
     print("  2. 查看报告中的 '10日活跃度' 列")
