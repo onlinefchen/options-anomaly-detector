@@ -401,10 +401,10 @@ class AIAnalyzer:
         # 转换 Markdown 到 HTML
         analysis_html = markdown.markdown(analysis)
 
-        # Top 5 表格（简洁风格，无图标）
-        top_5_rows = []
-        for i, item in enumerate(data[:5], 1):
-            top_5_rows.append(f"""
+        # Top 20 表格（简洁风格，无图标）
+        top_20_rows = []
+        for i, item in enumerate(data[:20], 1):
+            top_20_rows.append(f"""
                 <tr>
                     <td>{i}</td>
                     <td><strong>{item['ticker']}</strong></td>
@@ -539,7 +539,7 @@ class AIAnalyzer:
             <div class="summary-item">最活跃: <strong>{data[0]['ticker']}</strong> (成交量 {data[0]['total_volume']:,})</div>
         </div>
 
-        <h2>Top 5 活跃标的</h2>
+        <h2>Top 20 活跃标的</h2>
         <table>
             <thead>
                 <tr>
@@ -551,7 +551,7 @@ class AIAnalyzer:
                 </tr>
             </thead>
             <tbody>
-                {''.join(top_5_rows)}
+                {''.join(top_20_rows)}
             </tbody>
         </table>
 
