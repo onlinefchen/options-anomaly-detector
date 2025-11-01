@@ -13,10 +13,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            color: #333;
+            font-family: "Courier New", Courier, monospace;
+            background: #f5f5f7;
+            padding: 40px 20px;
+            color: #1d1d1f;
+            line-height: 1.4;
         }
 
         .container {
@@ -25,214 +26,227 @@
         }
 
         .header {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: #fff;
+            padding: 40px;
+            border: 1px solid #d2d2d7;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
         }
 
         .header .date {
-            color: #666;
-            font-size: 1.1em;
+            color: #6e6e73;
+            font-size: 14px;
         }
 
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 1px;
+            margin-bottom: 20px;
+            background: #d2d2d7;
+            border: 1px solid #d2d2d7;
         }
 
         .stat-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #fff;
+            padding: 24px;
             text-align: center;
         }
 
         .stat-card .number {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 10px 0;
+            font-size: 36px;
+            font-weight: 600;
+            margin: 8px 0;
+            color: #1d1d1f;
         }
 
         .stat-card .label {
-            color: #666;
-            font-size: 0.9em;
+            color: #6e6e73;
+            font-size: 12px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .stat-card.high .number { color: #dc3545; }
-        .stat-card.medium .number { color: #ffc107; }
-        .stat-card.low .number { color: #17a2b8; }
-        .stat-card.total .number { color: #667eea; }
+        .stat-card.high .number { color: #1d1d1f; }
+        .stat-card.medium .number { color: #1d1d1f; }
+        .stat-card.low .number { color: #1d1d1f; }
+        .stat-card.total .number { color: #1d1d1f; }
 
         .nav {
-            background: white;
-            padding: 15px 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: #fff;
+            padding: 16px 24px;
+            border: 1px solid #d2d2d7;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .nav a {
             display: inline-block;
-            padding: 10px 25px;
-            margin: 0 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 8px 16px;
+            margin: 0 4px;
+            background: #000;
+            color: #fff;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: transform 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
         }
 
         .nav a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: #333;
         }
 
         .section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: #fff;
+            padding: 32px;
+            border: 1px solid #d2d2d7;
+            margin-bottom: 20px;
         }
 
         .section h2 {
-            margin-bottom: 20px;
-            color: #333;
-            border-left: 5px solid #667eea;
-            padding-left: 15px;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
         }
 
         .chart-container {
             position: relative;
             height: 400px;
-            margin: 30px 0;
+            margin: 24px 0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 16px;
+            border: 1px solid #d2d2d7;
         }
 
         table th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 8px 12px;
             text-align: left;
             font-weight: 600;
+            font-size: 13px;
+            border-bottom: 1px solid #d2d2d7;
         }
 
         table th.sortable {
             cursor: pointer;
             user-select: none;
             position: relative;
-            transition: background 0.2s;
         }
 
         table th.sortable:hover {
-            background: linear-gradient(135deg, #7688f0 0%, #8655b0 100%);
-        }
-
-        table th.sortable.sorted-asc .sort-icon {
-            color: #ffd700;
+            background: #e8e8ed;
         }
 
         table th.sortable.sorted-asc .sort-icon::after {
-            content: ' ▲';
-        }
-
-        table th.sortable.sorted-desc .sort-icon {
-            color: #ffd700;
+            content: ' ^';
         }
 
         table th.sortable.sorted-desc .sort-icon::after {
-            content: ' ▼';
+            content: ' v';
         }
 
         .sort-icon {
-            font-size: 0.8em;
-            opacity: 0.6;
-            margin-left: 5px;
+            font-size: 12px;
+            opacity: 0.5;
+            margin-left: 4px;
         }
 
         table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
+            padding: 8px 12px;
+            border-bottom: 1px solid #d2d2d7;
+            font-size: 13px;
         }
 
         table tr:hover {
-            background: #f8f9fa;
+            background: #f5f5f7;
         }
 
-        /* 紧凑单元格样式 */
+
         .compact-cell {
-            font-size: 0.85em;
-            line-height: 1.6;
-            padding: 10px !important;
+            font-size: 12px;
+            line-height: 1.4;
+            padding: 6px 10px !important;
         }
 
         .compact-cell div {
-            margin: 3px 0;
+            margin: 2px 0;
         }
 
-        /* 合约项样式 */
         .contract-item {
             white-space: nowrap;
         }
 
-        /* OI徽章样式 */
         .oi-badge {
-            background: #e3f2fd;
+            background: #f5f5f7;
             padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.9em;
-            color: #1976d2;
+            font-size: 11px;
+            color: #1d1d1f;
             white-space: nowrap;
         }
 
-        /* 百分比样式 */
         .pct {
-            color: #666;
-            font-size: 0.9em;
+            color: #6e6e73;
+            font-size: 12px;
         }
 
-        /* 小号文字 */
         .compact-cell small {
-            color: #888;
-            font-size: 0.85em;
+            color: #86868b;
+            font-size: 11px;
         }
 
         .badge {
             display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            color: white;
-            font-size: 0.85em;
-            font-weight: bold;
+            padding: 4px 10px;
+            color: #fff;
+            background: #000;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .macro-content {
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .macro-content p {
+            margin: 16px 0;
+        }
+
+        .macro-content strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .macro-content ul {
+            margin: 12px 0;
+            padding-left: 24px;
+        }
+
+        .macro-content li {
+            margin: 8px 0;
         }
 
         .footer {
             text-align: center;
-            color: white;
-            margin-top: 30px;
+            color: #6e6e73;
+            margin-top: 40px;
             padding: 20px;
+            font-size: 12px;
         }
 
         @media (max-width: 768px) {
@@ -240,11 +254,11 @@
                 grid-template-columns: 1fr;
             }
             .header h1 {
-                font-size: 1.8em;
+                font-size: 24px;
             }
             .nav a {
                 display: block;
-                margin: 10px 0;
+                margin: 8px 0;
             }
         }
     </style>
@@ -252,19 +266,19 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 期权市场异常分析报告</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-10-29 23:30:31 EDT | <strong>东八区时间:</strong> 2025-10-30 11:30:31 | <strong>交易时段:</strong> 休市 (Market Closed)</p>
+            <h1>Options Market Anomaly Analysis</h1>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 12:02:24 EDT | <strong>东八区时间:</strong> 2025-11-02 00:02:24 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> API</p>
         </div>
 
         <div class="nav">
-            <a href="index.html">📊 最新报告</a>
-            <a href="archive.html">📚 历史报告</a>
+            <a href="index.html">Latest Report</a>
+            <a href="archive.html">Archive</a>
         </div>
 
         <div class="stats">
             <div class="stat-card total">
                 <div class="label">分析股票数</div>
-                <div class="number">29</div>
+                <div class="number">28</div>
             </div>
             <div class="stat-card total">
                 <div class="label">异常总数</div>
@@ -285,563 +299,477 @@
         </div>
 
         <div class="section">
-            <h2>🚨 检测到的异常</h2>
-            <table>
+            <h2>Macro Market Outlook</h2>
+            <div class="macro-content">
+                <p>AI analysis not configured (OPENAI_API_KEY required)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Market Overview - Top 30 by Volume</h2>
+            <div class="chart-container">
+                <canvas id="volumeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Market Indices (3)</h2>
+            <table id="indexTable">
                 <thead>
                     <tr>
-                        <th>股票代码</th>
-                        <th>严重程度</th>
-                        <th>类型</th>
-                        <th>描述</th>
+                        <th>Rank</th>
+                        <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
+                        <th>Top 3 Contracts</th>
+                        <th>10-Day Activity</th>
+                        <th>Streak</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr><td colspan="4" style="text-align:center;">未检测到异常</td></tr>
+                <tbody id="indexTableBody">
+                    
+                <tr>
+                    <td>1</td>
+                    <td><strong>QQQ</strong></td>
+                    <td>519.53W</td>
+                    <td>1.54</td>
+                    <td>152.69W</td>
+                    <td>1.46</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122P100 <span class='oi-badge'>167K (10.9%)</span></div><div class='contract-item'>2. 251030P110 <span class='oi-badge'>120K (7.8%)</span></div><div class='contract-item'>3. 251122C105 <span class='oi-badge'>79K (5.2%)</span></div></td>
+                    <td class="compact-cell">
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
+            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
+                </tr>
+            
+                <tr>
+                    <td>2</td>
+                    <td><strong>IWM</strong></td>
+                    <td>270.00W</td>
+                    <td>1.32</td>
+                    <td>67.42W</td>
+                    <td>0.75</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222P60 <span class='oi-badge'>63K (9.4%)</span></div><div class='contract-item'>2. 251106P55 <span class='oi-badge'>61K (9.0%)</span></div><div class='contract-item'>3. 251106C50 <span class='oi-badge'>43K (6.4%)</span></div></td>
+                    <td class="compact-cell">
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
+            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
+                </tr>
+            
+                <tr>
+                    <td>3</td>
+                    <td><strong>SPY</strong></td>
+                    <td>120.72W</td>
+                    <td>1.31</td>
+                    <td>10.00W</td>
+                    <td>1.13</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122P405 <span class='oi-badge'>10K (9.7%)</span></div><div class='contract-item'>2. 251030P400 <span class='oi-badge'>9K (9.2%)</span></div><div class='contract-item'>3. 251030P410 <span class='oi-badge'>6K (6.0%)</span></div></td>
+                    <td class="compact-cell">
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
+            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
+                </tr>
+            
                 </tbody>
             </table>
         </div>
 
         <div class="section">
-            <h2>📈 期权成交量Top 30排行</h2>
-            <div class="chart-container">
-                <canvas id="volumeChart"></canvas>
-            </div>
-            <table id="volumeTable">
+            <h2>Stocks & ETFs - Top 25 (2025-11-01 from API)</h2>
+            <table id="stockTable">
                 <thead>
                     <tr>
-                        <th>排名</th>
-                        <th class="sortable" data-column="ticker" data-type="string">股票代码 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="total_volume" data-type="number">总成交量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="cp_volume_ratio" data-type="number">C/P 成交比 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="total_oi" data-type="number">持仓量 <span class="sort-icon">⇅</span></th>
-                        <th class="sortable" data-column="cp_oi_ratio" data-type="number">C/P 持仓比 <span class="sort-icon">⇅</span></th>
-                        <th>Top 3 活跃合约</th>
-                        <th>主力价格区间</th>
-                        <th>10日活跃度</th>
+                        <th>Rank</th>
+                        <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
+                        <th>Top 3 Contracts</th>
+                        <th>10-Day Activity</th>
+                        <th>Streak</th>
                     </tr>
                 </thead>
-                <tbody id="volumeTableBody">
+                <tbody id="stockTableBody">
                     
                 <tr>
                     <td>1</td>
-                    <td><strong>SLV</strong></td>
-                    <td>5,374,728</td>
-                    <td>0.76</td>
-                    <td>2,070,273</td>
-                    <td>0.94</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106P110 <span class='oi-badge'>244K (11.8%)</span></div><div class='contract-item'>① 251030P105 <span class='oi-badge'>209K (10.1%)</span></div><div class='contract-item'>① 251222P100 <span class='oi-badge'>105K (5.1%)</span></div></td>
+                    <td><strong>DIA</strong></td>
+                    <td>562.54W</td>
+                    <td>1.58</td>
+                    <td>188.87W</td>
+                    <td>1.66</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251106P600 <span class='oi-badge'>222K (11.7%)</span></div><div class='contract-item'>2. 251030C605 <span class='oi-badge'>195K (10.3%)</span></div><div class='contract-item'>3. 251122P610 <span class='oi-badge'>162K (8.6%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>100-110</strong> <span class='pct'>(24.6%)</span></div>
-                <div><small>核心: 100</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>2</td>
-                    <td><strong>PFE</strong></td>
-                    <td>5,265,712</td>
-                    <td>0.73</td>
-                    <td>1,966,108</td>
-                    <td>1.02</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251030P100 <span class='oi-badge'>209K (10.6%)</span></div><div class='contract-item'>① 251106C105 <span class='oi-badge'>193K (9.8%)</span></div><div class='contract-item'>① 251122P110 <span class='oi-badge'>105K (5.3%)</span></div></td>
+                    <td><strong>MSFT</strong></td>
+                    <td>552.54W</td>
+                    <td>1.13</td>
+                    <td>194.19W</td>
+                    <td>1.01</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222P205 <span class='oi-badge'>210K (10.8%)</span></div><div class='contract-item'>2. 251222C210 <span class='oi-badge'>170K (8.8%)</span></div><div class='contract-item'>3. 251122P200 <span class='oi-badge'>151K (7.8%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>100-110</strong> <span class='pct'>(25.3%)</span></div>
-                <div><small>核心: 100</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>3</td>
-                    <td><strong>AMZN</strong></td>
-                    <td>5,029,129</td>
-                    <td>1.03</td>
-                    <td>1,807,716</td>
-                    <td>1.05</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106P210 <span class='oi-badge'>175K (9.7%)</span></div><div class='contract-item'>① 251106C205 <span class='oi-badge'>169K (9.4%)</span></div><div class='contract-item'>① 251030P200 <span class='oi-badge'>162K (9.0%)</span></div></td>
+                    <td><strong>BAC</strong></td>
+                    <td>517.36W</td>
+                    <td>0.55</td>
+                    <td>165.69W</td>
+                    <td>0.87</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122C405 <span class='oi-badge'>193K (11.6%)</span></div><div class='contract-item'>2. 251030C410 <span class='oi-badge'>171K (10.3%)</span></div><div class='contract-item'>3. 251122C400 <span class='oi-badge'>120K (7.2%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>200-220</strong> <span class='pct'>(24.8%)</span></div>
-                <div><small>核心: 200</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>4</td>
                     <td><strong>NVDA</strong></td>
-                    <td>4,996,081</td>
-                    <td>0.63</td>
-                    <td>1,488,244</td>
-                    <td>0.65</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106P50 <span class='oi-badge'>154K (10.4%)</span></div><div class='contract-item'>① 251122P60 <span class='oi-badge'>140K (9.4%)</span></div><div class='contract-item'>① 251030P55 <span class='oi-badge'>119K (8.0%)</span></div></td>
+                    <td>481.63W</td>
+                    <td>0.71</td>
+                    <td>141.43W</td>
+                    <td>0.66</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222C110 <span class='oi-badge'>160K (11.3%)</span></div><div class='contract-item'>2. 251106P105 <span class='oi-badge'>143K (10.1%)</span></div><div class='contract-item'>3. 251106C100 <span class='oi-badge'>89K (6.3%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>50-60</strong> <span class='pct'>(29.2%)</span></div>
-                <div><small>核心: 50</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>5</td>
-                    <td><strong>META</strong></td>
-                    <td>4,645,464</td>
-                    <td>1.36</td>
-                    <td>1,685,606</td>
-                    <td>0.81</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251122P60 <span class='oi-badge'>192K (11.4%)</span></div><div class='contract-item'>① 251030C55 <span class='oi-badge'>156K (9.3%)</span></div><div class='contract-item'>① 251106C50 <span class='oi-badge'>133K (7.9%)</span></div></td>
+                    <td><strong>TSLA</strong></td>
+                    <td>463.41W</td>
+                    <td>1.20</td>
+                    <td>156.99W</td>
+                    <td>0.93</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122P110 <span class='oi-badge'>147K (9.3%)</span></div><div class='contract-item'>2. 251106P105 <span class='oi-badge'>134K (8.6%)</span></div><div class='contract-item'>3. 251222P100 <span class='oi-badge'>111K (7.1%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>50-60</strong> <span class='pct'>(26.3%)</span></div>
-                <div><small>核心: 50</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>6</td>
-                    <td><strong>IWM</strong></td>
-                    <td>4,485,002</td>
-                    <td>1.36</td>
-                    <td>1,714,245</td>
-                    <td>1.71</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251122P400 <span class='oi-badge'>201K (11.7%)</span></div><div class='contract-item'>① 251222P405 <span class='oi-badge'>151K (8.8%)</span></div><div class='contract-item'>① 251030C410 <span class='oi-badge'>104K (6.1%)</span></div></td>
+                    <td><strong>BA</strong></td>
+                    <td>448.59W</td>
+                    <td>0.78</td>
+                    <td>174.50W</td>
+                    <td>0.78</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122C105 <span class='oi-badge'>199K (11.4%)</span></div><div class='contract-item'>2. 251030P100 <span class='oi-badge'>183K (10.5%)</span></div><div class='contract-item'>3. 251106C110 <span class='oi-badge'>107K (6.2%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>400-420</strong> <span class='pct'>(20.0%)</span></div>
-                <div><small>核心: 400</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>7</td>
-                    <td><strong>VIX</strong></td>
-                    <td>4,455,363</td>
-                    <td>1.01</td>
-                    <td>1,514,492</td>
-                    <td>0.73</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222P205 <span class='oi-badge'>170K (11.2%)</span></div><div class='contract-item'>① 251030P200 <span class='oi-badge'>152K (10.0%)</span></div><div class='contract-item'>① 251222C210 <span class='oi-badge'>143K (9.4%)</span></div></td>
+                    <td><strong>PFE</strong></td>
+                    <td>413.72W</td>
+                    <td>0.63</td>
+                    <td>128.61W</td>
+                    <td>1.29</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251106P605 <span class='oi-badge'>144K (11.2%)</span></div><div class='contract-item'>2. 251222C600 <span class='oi-badge'>136K (10.6%)</span></div><div class='contract-item'>3. 251222P610 <span class='oi-badge'>125K (9.7%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>200-220</strong> <span class='pct'>(18.0%)</span></div>
-                <div><small>核心: 200</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>8</td>
-                    <td><strong>BAC</strong></td>
-                    <td>4,443,726</td>
-                    <td>1.83</td>
-                    <td>1,352,000</td>
-                    <td>0.75</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251030P200 <span class='oi-badge'>160K (11.8%)</span></div><div class='contract-item'>① 251106P210 <span class='oi-badge'>91K (6.7%)</span></div><div class='contract-item'>① 251106P205 <span class='oi-badge'>84K (6.2%)</span></div></td>
+                    <td><strong>AMZN</strong></td>
+                    <td>389.82W</td>
+                    <td>0.74</td>
+                    <td>122.72W</td>
+                    <td>0.76</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251106C405 <span class='oi-badge'>147K (12.0%)</span></div><div class='contract-item'>2. 251106P410 <span class='oi-badge'>108K (8.8%)</span></div><div class='contract-item'>3. 251122C400 <span class='oi-badge'>69K (5.7%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>200-220</strong> <span class='pct'>(23.0%)</span></div>
-                <div><small>核心: 200</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>9</td>
-                    <td><strong>JPM</strong></td>
-                    <td>4,267,762</td>
-                    <td>0.60</td>
-                    <td>1,276,589</td>
-                    <td>1.37</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251030P55 <span class='oi-badge'>153K (12.0%)</span></div><div class='contract-item'>① 251030P50 <span class='oi-badge'>139K (10.9%)</span></div><div class='contract-item'>① 251030C60 <span class='oi-badge'>89K (7.0%)</span></div></td>
+                    <td><strong>XLE</strong></td>
+                    <td>387.40W</td>
+                    <td>0.58</td>
+                    <td>142.99W</td>
+                    <td>0.87</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251106C210 <span class='oi-badge'>167K (11.6%)</span></div><div class='contract-item'>2. 251106C200 <span class='oi-badge'>146K (10.2%)</span></div><div class='contract-item'>3. 251222P205 <span class='oi-badge'>116K (8.1%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>50-60</strong> <span class='pct'>(21.3%)</span></div>
-                <div><small>核心: 50</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>10</td>
-                    <td><strong>GOOGL</strong></td>
-                    <td>4,190,217</td>
-                    <td>1.40</td>
-                    <td>1,297,234</td>
-                    <td>0.63</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222P600 <span class='oi-badge'>153K (11.8%)</span></div><div class='contract-item'>① 251106C610 <span class='oi-badge'>77K (5.9%)</span></div><div class='contract-item'>① 251122P605 <span class='oi-badge'>75K (5.8%)</span></div></td>
+                    <td><strong>INTC</strong></td>
+                    <td>377.49W</td>
+                    <td>0.94</td>
+                    <td>105.95W</td>
+                    <td>1.12</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251106C405 <span class='oi-badge'>113K (10.7%)</span></div><div class='contract-item'>2. 251222C410 <span class='oi-badge'>113K (10.6%)</span></div><div class='contract-item'>3. 251222P400 <span class='oi-badge'>68K (6.4%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>600-650</strong> <span class='pct'>(24.5%)</span></div>
-                <div><small>核心: 600</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>11</td>
-                    <td><strong>MSFT</strong></td>
-                    <td>4,175,646</td>
-                    <td>1.31</td>
-                    <td>1,135,664</td>
-                    <td>0.58</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222C600 <span class='oi-badge'>123K (10.8%)</span></div><div class='contract-item'>① 251222C605 <span class='oi-badge'>109K (9.6%)</span></div><div class='contract-item'>① 251122C610 <span class='oi-badge'>60K (5.3%)</span></div></td>
+                    <td><strong>PLTR</strong></td>
+                    <td>371.67W</td>
+                    <td>0.77</td>
+                    <td>94.51W</td>
+                    <td>1.51</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251030P50 <span class='oi-badge'>104K (11.0%)</span></div><div class='contract-item'>2. 251030C60 <span class='oi-badge'>80K (8.5%)</span></div><div class='contract-item'>3. 251122P55 <span class='oi-badge'>47K (5.0%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>600-650</strong> <span class='pct'>(15.6%)</span></div>
-                <div><small>核心: 600</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>12</td>
-                    <td><strong>GLD</strong></td>
-                    <td>4,081,445</td>
-                    <td>1.61</td>
-                    <td>1,105,310</td>
-                    <td>0.99</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251122C210 <span class='oi-badge'>112K (10.2%)</span></div><div class='contract-item'>① 251106P200 <span class='oi-badge'>89K (8.0%)</span></div><div class='contract-item'>① 251030P205 <span class='oi-badge'>60K (5.4%)</span></div></td>
+                    <td><strong>SLV</strong></td>
+                    <td>363.59W</td>
+                    <td>0.54</td>
+                    <td>60.67W</td>
+                    <td>1.67</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122C600 <span class='oi-badge'>53K (8.8%)</span></div><div class='contract-item'>2. 251122C605 <span class='oi-badge'>46K (7.6%)</span></div><div class='contract-item'>3. 251106P610 <span class='oi-badge'>32K (5.3%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>200-220</strong> <span class='pct'>(25.1%)</span></div>
-                <div><small>核心: 200</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>13</td>
-                    <td><strong>EEM</strong></td>
-                    <td>3,736,623</td>
-                    <td>0.90</td>
-                    <td>1,144,207</td>
-                    <td>1.27</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251122P405 <span class='oi-badge'>119K (10.4%)</span></div><div class='contract-item'>① 251030P410 <span class='oi-badge'>80K (7.0%)</span></div><div class='contract-item'>① 251122P400 <span class='oi-badge'>77K (6.7%)</span></div></td>
+                    <td><strong>BABA</strong></td>
+                    <td>355.38W</td>
+                    <td>1.35</td>
+                    <td>91.27W</td>
+                    <td>1.08</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222P50 <span class='oi-badge'>69K (7.6%)</span></div><div class='contract-item'>2. 251122C55 <span class='oi-badge'>62K (6.7%)</span></div><div class='contract-item'>3. 251222C60 <span class='oi-badge'>59K (6.4%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>400-420</strong> <span class='pct'>(21.6%)</span></div>
-                <div><small>核心: 400</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>14</td>
-                    <td><strong>BA</strong></td>
-                    <td>3,401,608</td>
-                    <td>0.56</td>
-                    <td>927,827</td>
-                    <td>0.94</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106C205 <span class='oi-badge'>99K (10.6%)</span></div><div class='contract-item'>① 251122C200 <span class='oi-badge'>68K (7.3%)</span></div><div class='contract-item'>① 251222P210 <span class='oi-badge'>57K (6.1%)</span></div></td>
+                    <td><strong>GLD</strong></td>
+                    <td>353.17W</td>
+                    <td>1.25</td>
+                    <td>89.30W</td>
+                    <td>1.13</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222P205 <span class='oi-badge'>75K (8.3%)</span></div><div class='contract-item'>2. 251030C210 <span class='oi-badge'>71K (7.9%)</span></div><div class='contract-item'>3. 251222P200 <span class='oi-badge'>66K (7.4%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>200-220</strong> <span class='pct'>(22.6%)</span></div>
-                <div><small>核心: 200</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>15</td>
-                    <td><strong>TSLA</strong></td>
-                    <td>3,194,724</td>
-                    <td>1.61</td>
-                    <td>431,528</td>
-                    <td>0.60</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251030P105 <span class='oi-badge'>49K (11.5%)</span></div><div class='contract-item'>① 251122P110 <span class='oi-badge'>48K (11.2%)</span></div><div class='contract-item'>① 251030P100 <span class='oi-badge'>22K (5.2%)</span></div></td>
+                    <td><strong>JPM</strong></td>
+                    <td>344.68W</td>
+                    <td>1.06</td>
+                    <td>119.77W</td>
+                    <td>1.59</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251030C60 <span class='oi-badge'>132K (11.0%)</span></div><div class='contract-item'>2. 251222P55 <span class='oi-badge'>104K (8.7%)</span></div><div class='contract-item'>3. 251106P50 <span class='oi-badge'>103K (8.6%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>100-110</strong> <span class='pct'>(21.2%)</span></div>
-                <div><small>核心: 100</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>16</td>
-                    <td><strong>WMT</strong></td>
-                    <td>3,167,871</td>
-                    <td>0.72</td>
-                    <td>702,347</td>
-                    <td>1.37</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251030C400 <span class='oi-badge'>84K (12.0%)</span></div><div class='contract-item'>① 251030P405 <span class='oi-badge'>69K (9.9%)</span></div><div class='contract-item'>① 251222C410 <span class='oi-badge'>47K (6.7%)</span></div></td>
+                    <td><strong>TLT</strong></td>
+                    <td>265.40W</td>
+                    <td>0.93</td>
+                    <td>10.00W</td>
+                    <td>0.73</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251030C210 <span class='oi-badge'>12K (11.9%)</span></div><div class='contract-item'>2. 251122P200 <span class='oi-badge'>11K (10.6%)</span></div><div class='contract-item'>3. 251030C205 <span class='oi-badge'>7K (7.2%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>400-420</strong> <span class='pct'>(21.9%)</span></div>
-                <div><small>核心: 400</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>17</td>
-                    <td><strong>CAT</strong></td>
-                    <td>3,111,939</td>
-                    <td>1.19</td>
-                    <td>613,342</td>
-                    <td>1.17</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106P410 <span class='oi-badge'>66K (10.7%)</span></div><div class='contract-item'>① 251030C400 <span class='oi-badge'>53K (8.7%)</span></div><div class='contract-item'>① 251122P405 <span class='oi-badge'>47K (7.6%)</span></div></td>
+                    <td><strong>META</strong></td>
+                    <td>259.31W</td>
+                    <td>0.78</td>
+                    <td>39.92W</td>
+                    <td>1.07</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222C600 <span class='oi-badge'>47K (11.9%)</span></div><div class='contract-item'>2. 251030P610 <span class='oi-badge'>43K (10.9%)</span></div><div class='contract-item'>3. 251122C605 <span class='oi-badge'>41K (10.3%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>400-420</strong> <span class='pct'>(26.9%)</span></div>
-                <div><small>核心: 400</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>18</td>
-                    <td><strong>TLT</strong></td>
-                    <td>2,998,224</td>
-                    <td>0.83</td>
-                    <td>704,797</td>
-                    <td>0.64</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222P100 <span class='oi-badge'>79K (11.2%)</span></div><div class='contract-item'>① 251122C110 <span class='oi-badge'>77K (10.9%)</span></div><div class='contract-item'>① 251106P105 <span class='oi-badge'>46K (6.6%)</span></div></td>
+                    <td><strong>SOFI</strong></td>
+                    <td>251.38W</td>
+                    <td>1.83</td>
+                    <td>51.32W</td>
+                    <td>1.33</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222C200 <span class='oi-badge'>56K (11.0%)</span></div><div class='contract-item'>2. 251222P210 <span class='oi-badge'>49K (9.6%)</span></div><div class='contract-item'>3. 251030P205 <span class='oi-badge'>35K (6.8%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>100-110</strong> <span class='pct'>(21.2%)</span></div>
-                <div><small>核心: 100</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>19</td>
-                    <td><strong>SPY</strong></td>
-                    <td>2,902,290</td>
-                    <td>0.73</td>
-                    <td>992,299</td>
-                    <td>1.21</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222C600 <span class='oi-badge'>71K (7.2%)</span></div><div class='contract-item'>① 251030C610 <span class='oi-badge'>62K (6.2%)</span></div><div class='contract-item'>① 251222P605 <span class='oi-badge'>51K (5.1%)</span></div></td>
+                    <td><strong>GOOGL</strong></td>
+                    <td>251.25W</td>
+                    <td>0.83</td>
+                    <td>16.43W</td>
+                    <td>0.79</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122P200 <span class='oi-badge'>20K (11.9%)</span></div><div class='contract-item'>2. 251030C210 <span class='oi-badge'>16K (9.5%)</span></div><div class='contract-item'>3. 251106C205 <span class='oi-badge'>10K (6.3%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>600-650</strong> <span class='pct'>(24.9%)</span></div>
-                <div><small>核心: 600</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>20</td>
-                    <td><strong>AMD</strong></td>
-                    <td>2,636,714</td>
-                    <td>0.68</td>
-                    <td>212,520</td>
-                    <td>0.54</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106P60 <span class='oi-badge'>25K (11.9%)</span></div><div class='contract-item'>① 251122P50 <span class='oi-badge'>23K (10.6%)</span></div><div class='contract-item'>① 251122C55 <span class='oi-badge'>16K (7.6%)</span></div></td>
+                    <td><strong>CAT</strong></td>
+                    <td>226.27W</td>
+                    <td>1.18</td>
+                    <td>21.93W</td>
+                    <td>0.65</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251106P610 <span class='oi-badge'>26K (11.9%)</span></div><div class='contract-item'>2. 251122C605 <span class='oi-badge'>15K (6.8%)</span></div><div class='contract-item'>3. 251122C600 <span class='oi-badge'>13K (6.0%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>50-60</strong> <span class='pct'>(16.9%)</span></div>
-                <div><small>核心: 50</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>21</td>
-                    <td><strong>AAPL</strong></td>
-                    <td>2,592,343</td>
-                    <td>1.58</td>
-                    <td>100,000</td>
-                    <td>0.59</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106C50 <span class='oi-badge'>8K (8.0%)</span></div><div class='contract-item'>① 251222C55 <span class='oi-badge'>8K (7.6%)</span></div><div class='contract-item'>① 251122P60 <span class='oi-badge'>7K (6.6%)</span></div></td>
+                    <td><strong>NIO</strong></td>
+                    <td>226.05W</td>
+                    <td>0.63</td>
+                    <td>10.00W</td>
+                    <td>1.39</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222P205 <span class='oi-badge'>8K (8.5%)</span></div><div class='contract-item'>2. 251030P200 <span class='oi-badge'>7K (6.5%)</span></div><div class='contract-item'>3. 251030P210 <span class='oi-badge'>5K (5.4%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>50-60</strong> <span class='pct'>(16.8%)</span></div>
-                <div><small>核心: 50</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>22</td>
-                    <td><strong>NIO</strong></td>
-                    <td>2,502,397</td>
-                    <td>1.10</td>
-                    <td>169,827</td>
-                    <td>0.81</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251106P55 <span class='oi-badge'>15K (9.0%)</span></div><div class='contract-item'>① 251122P60 <span class='oi-badge'>13K (7.5%)</span></div><div class='contract-item'>① 251222C50 <span class='oi-badge'>9K (5.3%)</span></div></td>
+                    <td><strong>NFLX</strong></td>
+                    <td>223.55W</td>
+                    <td>1.12</td>
+                    <td>10.00W</td>
+                    <td>0.77</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251030C210 <span class='oi-badge'>9K (9.2%)</span></div><div class='contract-item'>2. 251030C205 <span class='oi-badge'>8K (7.9%)</span></div><div class='contract-item'>3. 251222C200 <span class='oi-badge'>8K (7.6%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>50-60</strong> <span class='pct'>(26.1%)</span></div>
-                <div><small>核心: 50</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>23</td>
-                    <td><strong>XLE</strong></td>
-                    <td>2,443,954</td>
-                    <td>0.99</td>
-                    <td>143,670</td>
-                    <td>1.47</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251030C210 <span class='oi-badge'>14K (10.1%)</span></div><div class='contract-item'>① 251122P200 <span class='oi-badge'>14K (9.9%)</span></div><div class='contract-item'>① 251122C205 <span class='oi-badge'>8K (5.3%)</span></div></td>
+                    <td><strong>WMT</strong></td>
+                    <td>162.28W</td>
+                    <td>1.21</td>
+                    <td>10.00W</td>
+                    <td>1.79</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251222C50 <span class='oi-badge'>9K (9.3%)</span></div><div class='contract-item'>2. 251222P55 <span class='oi-badge'>7K (6.5%)</span></div><div class='contract-item'>3. 251106P60 <span class='oi-badge'>6K (6.4%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>200-220</strong> <span class='pct'>(20.1%)</span></div>
-                <div><small>核心: 200</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>24</td>
-                    <td><strong>INTC</strong></td>
-                    <td>2,380,863</td>
-                    <td>0.98</td>
-                    <td>162,500</td>
-                    <td>1.01</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251122P610 <span class='oi-badge'>16K (9.9%)</span></div><div class='contract-item'>① 251122P600 <span class='oi-badge'>11K (7.0%)</span></div><div class='contract-item'>① 251030P605 <span class='oi-badge'>8K (5.1%)</span></div></td>
+                    <td><strong>AAPL</strong></td>
+                    <td>126.79W</td>
+                    <td>1.16</td>
+                    <td>10.00W</td>
+                    <td>1.67</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251106C405 <span class='oi-badge'>9K (8.7%)</span></div><div class='contract-item'>2. 251030P400 <span class='oi-badge'>9K (8.6%)</span></div><div class='contract-item'>3. 251222C410 <span class='oi-badge'>6K (5.8%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>600-650</strong> <span class='pct'>(18.8%)</span></div>
-                <div><small>核心: 600</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 <tr>
                     <td>25</td>
-                    <td><strong>BABA</strong></td>
-                    <td>2,005,215</td>
-                    <td>1.08</td>
-                    <td>100,000</td>
-                    <td>1.65</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222P410 <span class='oi-badge'>8K (7.9%)</span></div><div class='contract-item'>① 251222P405 <span class='oi-badge'>7K (7.1%)</span></div><div class='contract-item'>① 251030C400 <span class='oi-badge'>7K (6.8%)</span></div></td>
+                    <td><strong>AMD</strong></td>
+                    <td>123.18W</td>
+                    <td>0.90</td>
+                    <td>10.00W</td>
+                    <td>0.90</td>
+                    <td class="compact-cell"><div class='contract-item'>1. 251122C205 <span class='oi-badge'>12K (11.8%)</span></div><div class='contract-item'>2. 251122C200 <span class='oi-badge'>9K (9.4%)</span></div><div class='contract-item'>3. 251030P210 <span class='oi-badge'>8K (7.8%)</span></div></td>
                     <td class="compact-cell">
-                <div><strong>400-420</strong> <span class='pct'>(28.0%)</span></div>
-                <div><small>核心: 400</small></div>
+                <div><strong>0/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: N/A</small></div>
             </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
-                </tr>
-            
-                <tr>
-                    <td>26</td>
-                    <td><strong>DIA</strong></td>
-                    <td>1,857,869</td>
-                    <td>0.83</td>
-                    <td>168,334</td>
-                    <td>0.55</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222C600 <span class='oi-badge'>17K (10.4%)</span></div><div class='contract-item'>① 251122P605 <span class='oi-badge'>15K (9.0%)</span></div><div class='contract-item'>① 251030P610 <span class='oi-badge'>12K (7.4%)</span></div></td>
-                    <td class="compact-cell">
-                <div><strong>600-650</strong> <span class='pct'>(19.9%)</span></div>
-                <div><small>核心: 600</small></div>
-            </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
-                </tr>
-            
-                <tr>
-                    <td>27</td>
-                    <td><strong>SOFI</strong></td>
-                    <td>1,795,298</td>
-                    <td>1.27</td>
-                    <td>100,000</td>
-                    <td>0.78</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251222P600 <span class='oi-badge'>8K (7.7%)</span></div><div class='contract-item'>① 251222C605 <span class='oi-badge'>7K (7.3%)</span></div><div class='contract-item'>① 251222C610 <span class='oi-badge'>6K (6.3%)</span></div></td>
-                    <td class="compact-cell">
-                <div><strong>600-650</strong> <span class='pct'>(17.9%)</span></div>
-                <div><small>核心: 600</small></div>
-            </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
-                </tr>
-            
-                <tr>
-                    <td>28</td>
-                    <td><strong>PLTR</strong></td>
-                    <td>1,620,213</td>
-                    <td>0.62</td>
-                    <td>100,000</td>
-                    <td>1.33</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251122C405 <span class='oi-badge'>12K (11.7%)</span></div><div class='contract-item'>① 251030C410 <span class='oi-badge'>8K (7.7%)</span></div><div class='contract-item'>① 251222C400 <span class='oi-badge'>5K (5.4%)</span></div></td>
-                    <td class="compact-cell">
-                <div><strong>400-420</strong> <span class='pct'>(21.5%)</span></div>
-                <div><small>核心: 400</small></div>
-            </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
-                </tr>
-            
-                <tr>
-                    <td>29</td>
-                    <td><strong>NFLX</strong></td>
-                    <td>1,484,038</td>
-                    <td>1.12</td>
-                    <td>100,000</td>
-                    <td>1.07</td>
-                    <td class="compact-cell"><div class='contract-item'>① 251122P55 <span class='oi-badge'>11K (10.6%)</span></div><div class='contract-item'>① 251106P60 <span class='oi-badge'>7K (7.1%)</span></div><div class='contract-item'>① 251030P50 <span class='oi-badge'>7K (6.7%)</span></div></td>
-                    <td class="compact-cell">
-                <div><strong>50-60</strong> <span class='pct'>(29.4%)</span></div>
-                <div><small>核心: 50</small></div>
-            </td>
-                    <td class="compact-cell">
-                <div><strong>0/10 🆕</strong> ↔️</div>
-                <div><small>平均排名: N/A</small></div>
-            </td>
+                    <td class="compact-cell" style="text-align: center;">-</td>
                 </tr>
             
                 </tbody>
@@ -849,39 +777,55 @@
         </div>
 
         <div class="section">
-            <h2>📊 Call/Put 比例分析</h2>
+            <h2>Call/Put Ratio Analysis</h2>
             <div class="chart-container">
                 <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>💼 持仓量分布</h2>
+            <h2>Open Interest Distribution</h2>
             <div class="chart-container">
                 <canvas id="oiChart"></canvas>
             </div>
         </div>
 
         <div class="footer">
-            <p>期权异常检测系统 | 数据来源: Polygon.io</p>
-            <p>⚠️ 本报告仅供参考，不构成投资建议</p>
+            <p>Options Anomaly Detection System | Data: Polygon.io</p>
+            <p>For reference only. Not investment advice.</p>
         </div>
     </div>
 
     <script>
         // Store table data for sorting
-        const tableData = [{"ticker": "SLV", "total_volume": 5374728, "put_volume": 3060322, "call_volume": 2314406, "cp_volume_ratio": 0.76, "total_oi": 2070273, "put_oi": 1067845, "call_oi": 1002428, "cp_oi_ratio": 0.94, "contracts_count": 463, "top_3_contracts": [{"ticker": "O:SLV20251106P00000110", "oi": 244083, "strike": 110.0, "expiry": "2025-11-06", "type": "put", "percentage": 11.8}, {"ticker": "O:SLV20251030P00000105", "oi": 208897, "strike": 105.0, "expiry": "2025-10-30", "type": "put", "percentage": 10.1}, {"ticker": "O:SLV20251222P00000100", "oi": 104788, "strike": 100.0, "expiry": "2025-12-22", "type": "put", "percentage": 5.1}], "strike_concentration": {"range": "100-110", "oi": 508397, "percentage": 24.6, "dominant_strike": 100}}, {"ticker": "PFE", "total_volume": 5265712, "put_volume": 3046293, "call_volume": 2219419, "cp_volume_ratio": 0.73, "total_oi": 1966108, "put_oi": 974431, "call_oi": 991677, "cp_oi_ratio": 1.02, "contracts_count": 326, "top_3_contracts": [{"ticker": "O:PFE20251030P00000100", "oi": 209365, "strike": 100.0, "expiry": "2025-10-30", "type": "put", "percentage": 10.6}, {"ticker": "O:PFE20251106C00000105", "oi": 193223, "strike": 105.0, "expiry": "2025-11-06", "type": "call", "percentage": 9.8}, {"ticker": "O:PFE20251122P00000110", "oi": 104723, "strike": 110.0, "expiry": "2025-11-22", "type": "put", "percentage": 5.3}], "strike_concentration": {"range": "100-110", "oi": 497683, "percentage": 25.3, "dominant_strike": 100}}, {"ticker": "AMZN", "total_volume": 5029129, "put_volume": 2476626, "call_volume": 2552503, "cp_volume_ratio": 1.03, "total_oi": 1807716, "put_oi": 880753, "call_oi": 926963, "cp_oi_ratio": 1.05, "contracts_count": 458, "top_3_contracts": [{"ticker": "O:AMZN20251106P00000210", "oi": 174628, "strike": 210.0, "expiry": "2025-11-06", "type": "put", "percentage": 9.7}, {"ticker": "O:AMZN20251106C00000205", "oi": 169234, "strike": 205.0, "expiry": "2025-11-06", "type": "call", "percentage": 9.4}, {"ticker": "O:AMZN20251030P00000200", "oi": 161927, "strike": 200.0, "expiry": "2025-10-30", "type": "put", "percentage": 9.0}], "strike_concentration": {"range": "200-220", "oi": 447771, "percentage": 24.8, "dominant_strike": 200}}, {"ticker": "NVDA", "total_volume": 4996081, "put_volume": 3070173, "call_volume": 1925908, "cp_volume_ratio": 0.63, "total_oi": 1488244, "put_oi": 903913, "call_oi": 584331, "cp_oi_ratio": 0.65, "contracts_count": 493, "top_3_contracts": [{"ticker": "O:NVDA20251106P00000050", "oi": 154251, "strike": 50.0, "expiry": "2025-11-06", "type": "put", "percentage": 10.4}, {"ticker": "O:NVDA20251122P00000060", "oi": 140420, "strike": 60.0, "expiry": "2025-11-22", "type": "put", "percentage": 9.4}, {"ticker": "O:NVDA20251030P00000055", "oi": 119116, "strike": 55.0, "expiry": "2025-10-30", "type": "put", "percentage": 8.0}], "strike_concentration": {"range": "50-60", "oi": 434428, "percentage": 29.2, "dominant_strike": 50}}, {"ticker": "META", "total_volume": 4645464, "put_volume": 1971276, "call_volume": 2674188, "cp_volume_ratio": 1.36, "total_oi": 1685606, "put_oi": 931042, "call_oi": 754564, "cp_oi_ratio": 0.81, "contracts_count": 577, "top_3_contracts": [{"ticker": "O:META20251122P00000060", "oi": 192156, "strike": 60.0, "expiry": "2025-11-22", "type": "put", "percentage": 11.4}, {"ticker": "O:META20251030C00000055", "oi": 156299, "strike": 55.0, "expiry": "2025-10-30", "type": "call", "percentage": 9.3}, {"ticker": "O:META20251106C00000050", "oi": 133363, "strike": 50.0, "expiry": "2025-11-06", "type": "call", "percentage": 7.9}], "strike_concentration": {"range": "50-60", "oi": 442628, "percentage": 26.3, "dominant_strike": 50}}, {"ticker": "IWM", "total_volume": 4485002, "put_volume": 1898083, "call_volume": 2586919, "cp_volume_ratio": 1.36, "total_oi": 1714245, "put_oi": 632625, "call_oi": 1081620, "cp_oi_ratio": 1.71, "contracts_count": 506, "top_3_contracts": [{"ticker": "O:IWM20251122P00000400", "oi": 200896, "strike": 400.0, "expiry": "2025-11-22", "type": "put", "percentage": 11.7}, {"ticker": "O:IWM20251222P00000405", "oi": 151306, "strike": 405.0, "expiry": "2025-12-22", "type": "put", "percentage": 8.8}, {"ticker": "O:IWM20251030C00000410", "oi": 103764, "strike": 410.0, "expiry": "2025-10-30", "type": "call", "percentage": 6.1}], "strike_concentration": {"range": "400-420", "oi": 342371, "percentage": 20.0, "dominant_strike": 400}}, {"ticker": "VIX", "total_volume": 4455363, "put_volume": 2211710, "call_volume": 2243653, "cp_volume_ratio": 1.01, "total_oi": 1514492, "put_oi": 876375, "call_oi": 638117, "cp_oi_ratio": 0.73, "contracts_count": 336, "top_3_contracts": [{"ticker": "O:VIX20251222P00000205", "oi": 169882, "strike": 205.0, "expiry": "2025-12-22", "type": "put", "percentage": 11.2}, {"ticker": "O:VIX20251030P00000200", "oi": 151817, "strike": 200.0, "expiry": "2025-10-30", "type": "put", "percentage": 10.0}, {"ticker": "O:VIX20251222C00000210", "oi": 143048, "strike": 210.0, "expiry": "2025-12-22", "type": "call", "percentage": 9.4}], "strike_concentration": {"range": "200-220", "oi": 272318, "percentage": 18.0, "dominant_strike": 200}}, {"ticker": "BAC", "total_volume": 4443726, "put_volume": 1569586, "call_volume": 2874140, "cp_volume_ratio": 1.83, "total_oi": 1352000, "put_oi": 772369, "call_oi": 579631, "cp_oi_ratio": 0.75, "contracts_count": 415, "top_3_contracts": [{"ticker": "O:BAC20251030P00000200", "oi": 160207, "strike": 200.0, "expiry": "2025-10-30", "type": "put", "percentage": 11.8}, {"ticker": "O:BAC20251106P00000210", "oi": 90772, "strike": 210.0, "expiry": "2025-11-06", "type": "put", "percentage": 6.7}, {"ticker": "O:BAC20251106P00000205", "oi": 83606, "strike": 205.0, "expiry": "2025-11-06", "type": "put", "percentage": 6.2}], "strike_concentration": {"range": "200-220", "oi": 310891, "percentage": 23.0, "dominant_strike": 200}}, {"ticker": "JPM", "total_volume": 4267762, "put_volume": 2672212, "call_volume": 1595550, "cp_volume_ratio": 0.6, "total_oi": 1276589, "put_oi": 539653, "call_oi": 736936, "cp_oi_ratio": 1.37, "contracts_count": 586, "top_3_contracts": [{"ticker": "O:JPM20251030P00000055", "oi": 152566, "strike": 55.0, "expiry": "2025-10-30", "type": "put", "percentage": 12.0}, {"ticker": "O:JPM20251030P00000050", "oi": 139408, "strike": 50.0, "expiry": "2025-10-30", "type": "put", "percentage": 10.9}, {"ticker": "O:JPM20251030C00000060", "oi": 89056, "strike": 60.0, "expiry": "2025-10-30", "type": "call", "percentage": 7.0}], "strike_concentration": {"range": "50-60", "oi": 272525, "percentage": 21.3, "dominant_strike": 50}}, {"ticker": "GOOGL", "total_volume": 4190217, "put_volume": 1743483, "call_volume": 2446734, "cp_volume_ratio": 1.4, "total_oi": 1297234, "put_oi": 794211, "call_oi": 503023, "cp_oi_ratio": 0.63, "contracts_count": 361, "top_3_contracts": [{"ticker": "O:GOOGL20251222P00000600", "oi": 153493, "strike": 600.0, "expiry": "2025-12-22", "type": "put", "percentage": 11.8}, {"ticker": "O:GOOGL20251106C00000610", "oi": 76564, "strike": 610.0, "expiry": "2025-11-06", "type": "call", "percentage": 5.9}, {"ticker": "O:GOOGL20251122P00000605", "oi": 75298, "strike": 605.0, "expiry": "2025-11-22", "type": "put", "percentage": 5.8}], "strike_concentration": {"range": "600-650", "oi": 318252, "percentage": 24.5, "dominant_strike": 600}}, {"ticker": "MSFT", "total_volume": 4175646, "put_volume": 1809811, "call_volume": 2365835, "cp_volume_ratio": 1.31, "total_oi": 1135664, "put_oi": 719141, "call_oi": 416523, "cp_oi_ratio": 0.58, "contracts_count": 480, "top_3_contracts": [{"ticker": "O:MSFT20251222C00000600", "oi": 122666, "strike": 600.0, "expiry": "2025-12-22", "type": "call", "percentage": 10.8}, {"ticker": "O:MSFT20251222C00000605", "oi": 108863, "strike": 605.0, "expiry": "2025-12-22", "type": "call", "percentage": 9.6}, {"ticker": "O:MSFT20251122C00000610", "oi": 60181, "strike": 610.0, "expiry": "2025-11-22", "type": "call", "percentage": 5.3}], "strike_concentration": {"range": "600-650", "oi": 176902, "percentage": 15.6, "dominant_strike": 600}}, {"ticker": "GLD", "total_volume": 4081445, "put_volume": 1563306, "call_volume": 2518139, "cp_volume_ratio": 1.61, "total_oi": 1105310, "put_oi": 555057, "call_oi": 550253, "cp_oi_ratio": 0.99, "contracts_count": 441, "top_3_contracts": [{"ticker": "O:GLD20251122C00000210", "oi": 112463, "strike": 210.0, "expiry": "2025-11-22", "type": "call", "percentage": 10.2}, {"ticker": "O:GLD20251106P00000200", "oi": 88757, "strike": 200.0, "expiry": "2025-11-06", "type": "put", "percentage": 8.0}, {"ticker": "O:GLD20251030P00000205", "oi": 59966, "strike": 205.0, "expiry": "2025-10-30", "type": "put", "percentage": 5.4}], "strike_concentration": {"range": "200-220", "oi": 277668, "percentage": 25.1, "dominant_strike": 200}}, {"ticker": "EEM", "total_volume": 3736623, "put_volume": 1969290, "call_volume": 1767333, "cp_volume_ratio": 0.9, "total_oi": 1144207, "put_oi": 503651, "call_oi": 640556, "cp_oi_ratio": 1.27, "contracts_count": 534, "top_3_contracts": [{"ticker": "O:EEM20251122P00000405", "oi": 118603, "strike": 405.0, "expiry": "2025-11-22", "type": "put", "percentage": 10.4}, {"ticker": "O:EEM20251030P00000410", "oi": 80187, "strike": 410.0, "expiry": "2025-10-30", "type": "put", "percentage": 7.0}, {"ticker": "O:EEM20251122P00000400", "oi": 77205, "strike": 400.0, "expiry": "2025-11-22", "type": "put", "percentage": 6.7}], "strike_concentration": {"range": "400-420", "oi": 247266, "percentage": 21.6, "dominant_strike": 400}}, {"ticker": "BA", "total_volume": 3401608, "put_volume": 2177498, "call_volume": 1224110, "cp_volume_ratio": 0.56, "total_oi": 927827, "put_oi": 478097, "call_oi": 449730, "cp_oi_ratio": 0.94, "contracts_count": 312, "top_3_contracts": [{"ticker": "O:BA20251106C00000205", "oi": 98543, "strike": 205.0, "expiry": "2025-11-06", "type": "call", "percentage": 10.6}, {"ticker": "O:BA20251122C00000200", "oi": 67659, "strike": 200.0, "expiry": "2025-11-22", "type": "call", "percentage": 7.3}, {"ticker": "O:BA20251222P00000210", "oi": 56833, "strike": 210.0, "expiry": "2025-12-22", "type": "put", "percentage": 6.1}], "strike_concentration": {"range": "200-220", "oi": 209424, "percentage": 22.6, "dominant_strike": 200}}, {"ticker": "TSLA", "total_volume": 3194724, "put_volume": 1223509, "call_volume": 1971215, "cp_volume_ratio": 1.61, "total_oi": 431528, "put_oi": 270079, "call_oi": 161449, "cp_oi_ratio": 0.6, "contracts_count": 378, "top_3_contracts": [{"ticker": "O:TSLA20251030P00000105", "oi": 49472, "strike": 105.0, "expiry": "2025-10-30", "type": "put", "percentage": 11.5}, {"ticker": "O:TSLA20251122P00000110", "oi": 48240, "strike": 110.0, "expiry": "2025-11-22", "type": "put", "percentage": 11.2}, {"ticker": "O:TSLA20251030P00000100", "oi": 22311, "strike": 100.0, "expiry": "2025-10-30", "type": "put", "percentage": 5.2}], "strike_concentration": {"range": "100-110", "oi": 91548, "percentage": 21.2, "dominant_strike": 100}}, {"ticker": "WMT", "total_volume": 3167871, "put_volume": 1842229, "call_volume": 1325642, "cp_volume_ratio": 0.72, "total_oi": 702347, "put_oi": 296841, "call_oi": 405506, "cp_oi_ratio": 1.37, "contracts_count": 432, "top_3_contracts": [{"ticker": "O:WMT20251030C00000400", "oi": 83973, "strike": 400.0, "expiry": "2025-10-30", "type": "call", "percentage": 12.0}, {"ticker": "O:WMT20251030P00000405", "oi": 69412, "strike": 405.0, "expiry": "2025-10-30", "type": "put", "percentage": 9.9}, {"ticker": "O:WMT20251222C00000410", "oi": 47244, "strike": 410.0, "expiry": "2025-12-22", "type": "call", "percentage": 6.7}], "strike_concentration": {"range": "400-420", "oi": 154105, "percentage": 21.9, "dominant_strike": 400}}, {"ticker": "CAT", "total_volume": 3111939, "put_volume": 1419289, "call_volume": 1692650, "cp_volume_ratio": 1.19, "total_oi": 613342, "put_oi": 282487, "call_oi": 330855, "cp_oi_ratio": 1.17, "contracts_count": 320, "top_3_contracts": [{"ticker": "O:CAT20251106P00000410", "oi": 65521, "strike": 410.0, "expiry": "2025-11-06", "type": "put", "percentage": 10.7}, {"ticker": "O:CAT20251030C00000400", "oi": 53495, "strike": 400.0, "expiry": "2025-10-30", "type": "call", "percentage": 8.7}, {"ticker": "O:CAT20251122P00000405", "oi": 46847, "strike": 405.0, "expiry": "2025-11-22", "type": "put", "percentage": 7.6}], "strike_concentration": {"range": "400-420", "oi": 164764, "percentage": 26.9, "dominant_strike": 400}}, {"ticker": "TLT", "total_volume": 2998224, "put_volume": 1639432, "call_volume": 1358792, "cp_volume_ratio": 0.83, "total_oi": 704797, "put_oi": 430207, "call_oi": 274590, "cp_oi_ratio": 0.64, "contracts_count": 559, "top_3_contracts": [{"ticker": "O:TLT20251222P00000100", "oi": 78852, "strike": 100.0, "expiry": "2025-12-22", "type": "put", "percentage": 11.2}, {"ticker": "O:TLT20251122C00000110", "oi": 76685, "strike": 110.0, "expiry": "2025-11-22", "type": "call", "percentage": 10.9}, {"ticker": "O:TLT20251106P00000105", "oi": 46404, "strike": 105.0, "expiry": "2025-11-06", "type": "put", "percentage": 6.6}], "strike_concentration": {"range": "100-110", "oi": 149358, "percentage": 21.2, "dominant_strike": 100}}, {"ticker": "SPY", "total_volume": 2902290, "put_volume": 1677094, "call_volume": 1225196, "cp_volume_ratio": 0.73, "total_oi": 992299, "put_oi": 449979, "call_oi": 542320, "cp_oi_ratio": 1.21, "contracts_count": 395, "top_3_contracts": [{"ticker": "O:SPY20251222C00000600", "oi": 71407, "strike": 600.0, "expiry": "2025-12-22", "type": "call", "percentage": 7.2}, {"ticker": "O:SPY20251030C00000610", "oi": 61865, "strike": 610.0, "expiry": "2025-10-30", "type": "call", "percentage": 6.2}, {"ticker": "O:SPY20251222P00000605", "oi": 51036, "strike": 605.0, "expiry": "2025-12-22", "type": "put", "percentage": 5.1}], "strike_concentration": {"range": "600-650", "oi": 247479, "percentage": 24.9, "dominant_strike": 600}}, {"ticker": "AMD", "total_volume": 2636714, "put_volume": 1572436, "call_volume": 1064278, "cp_volume_ratio": 0.68, "total_oi": 212520, "put_oi": 137851, "call_oi": 74669, "cp_oi_ratio": 0.54, "contracts_count": 526, "top_3_contracts": [{"ticker": "O:AMD20251106P00000060", "oi": 25222, "strike": 60.0, "expiry": "2025-11-06", "type": "put", "percentage": 11.9}, {"ticker": "O:AMD20251122P00000050", "oi": 22512, "strike": 50.0, "expiry": "2025-11-22", "type": "put", "percentage": 10.6}, {"ticker": "O:AMD20251122C00000055", "oi": 16109, "strike": 55.0, "expiry": "2025-11-22", "type": "call", "percentage": 7.6}], "strike_concentration": {"range": "50-60", "oi": 35885, "percentage": 16.9, "dominant_strike": 50}}, {"ticker": "AAPL", "total_volume": 2592343, "put_volume": 1005037, "call_volume": 1587306, "cp_volume_ratio": 1.58, "total_oi": 100000, "put_oi": 63081, "call_oi": 36919, "cp_oi_ratio": 0.59, "contracts_count": 534, "top_3_contracts": [{"ticker": "O:AAPL20251106C00000050", "oi": 7962, "strike": 50.0, "expiry": "2025-11-06", "type": "call", "percentage": 8.0}, {"ticker": "O:AAPL20251222C00000055", "oi": 7578, "strike": 55.0, "expiry": "2025-12-22", "type": "call", "percentage": 7.6}, {"ticker": "O:AAPL20251122P00000060", "oi": 6595, "strike": 60.0, "expiry": "2025-11-22", "type": "put", "percentage": 6.6}], "strike_concentration": {"range": "50-60", "oi": 16751, "percentage": 16.8, "dominant_strike": 50}}, {"ticker": "NIO", "total_volume": 2502397, "put_volume": 1192997, "call_volume": 1309400, "cp_volume_ratio": 1.1, "total_oi": 169827, "put_oi": 94004, "call_oi": 75823, "cp_oi_ratio": 0.81, "contracts_count": 464, "top_3_contracts": [{"ticker": "O:NIO20251106P00000055", "oi": 15254, "strike": 55.0, "expiry": "2025-11-06", "type": "put", "percentage": 9.0}, {"ticker": "O:NIO20251122P00000060", "oi": 12682, "strike": 60.0, "expiry": "2025-11-22", "type": "put", "percentage": 7.5}, {"ticker": "O:NIO20251222C00000050", "oi": 8929, "strike": 50.0, "expiry": "2025-12-22", "type": "call", "percentage": 5.3}], "strike_concentration": {"range": "50-60", "oi": 44352, "percentage": 26.1, "dominant_strike": 50}}, {"ticker": "XLE", "total_volume": 2443954, "put_volume": 1225128, "call_volume": 1218826, "cp_volume_ratio": 0.99, "total_oi": 143670, "put_oi": 58173, "call_oi": 85497, "cp_oi_ratio": 1.47, "contracts_count": 342, "top_3_contracts": [{"ticker": "O:XLE20251030C00000210", "oi": 14489, "strike": 210.0, "expiry": "2025-10-30", "type": "call", "percentage": 10.1}, {"ticker": "O:XLE20251122P00000200", "oi": 14287, "strike": 200.0, "expiry": "2025-11-22", "type": "put", "percentage": 9.9}, {"ticker": "O:XLE20251122C00000205", "oi": 7588, "strike": 205.0, "expiry": "2025-11-22", "type": "call", "percentage": 5.3}], "strike_concentration": {"range": "200-220", "oi": 28848, "percentage": 20.1, "dominant_strike": 200}}, {"ticker": "INTC", "total_volume": 2380863, "put_volume": 1204678, "call_volume": 1176185, "cp_volume_ratio": 0.98, "total_oi": 162500, "put_oi": 80655, "call_oi": 81845, "cp_oi_ratio": 1.01, "contracts_count": 475, "top_3_contracts": [{"ticker": "O:INTC20251122P00000610", "oi": 16068, "strike": 610.0, "expiry": "2025-11-22", "type": "put", "percentage": 9.9}, {"ticker": "O:INTC20251122P00000600", "oi": 11406, "strike": 600.0, "expiry": "2025-11-22", "type": "put", "percentage": 7.0}, {"ticker": "O:INTC20251030P00000605", "oi": 8314, "strike": 605.0, "expiry": "2025-10-30", "type": "put", "percentage": 5.1}], "strike_concentration": {"range": "600-650", "oi": 30623, "percentage": 18.8, "dominant_strike": 600}}, {"ticker": "BABA", "total_volume": 2005215, "put_volume": 965047, "call_volume": 1040168, "cp_volume_ratio": 1.08, "total_oi": 100000, "put_oi": 37711, "call_oi": 62289, "cp_oi_ratio": 1.65, "contracts_count": 374, "top_3_contracts": [{"ticker": "O:BABA20251222P00000410", "oi": 7892, "strike": 410.0, "expiry": "2025-12-22", "type": "put", "percentage": 7.9}, {"ticker": "O:BABA20251222P00000405", "oi": 7062, "strike": 405.0, "expiry": "2025-12-22", "type": "put", "percentage": 7.1}, {"ticker": "O:BABA20251030C00000400", "oi": 6792, "strike": 400.0, "expiry": "2025-10-30", "type": "call", "percentage": 6.8}], "strike_concentration": {"range": "400-420", "oi": 27991, "percentage": 28.0, "dominant_strike": 400}}, {"ticker": "DIA", "total_volume": 1857869, "put_volume": 1017191, "call_volume": 840678, "cp_volume_ratio": 0.83, "total_oi": 168334, "put_oi": 108691, "call_oi": 59643, "cp_oi_ratio": 0.55, "contracts_count": 312, "top_3_contracts": [{"ticker": "O:DIA20251222C00000600", "oi": 17423, "strike": 600.0, "expiry": "2025-12-22", "type": "call", "percentage": 10.4}, {"ticker": "O:DIA20251122P00000605", "oi": 15106, "strike": 605.0, "expiry": "2025-11-22", "type": "put", "percentage": 9.0}, {"ticker": "O:DIA20251030P00000610", "oi": 12375, "strike": 610.0, "expiry": "2025-10-30", "type": "put", "percentage": 7.4}], "strike_concentration": {"range": "600-650", "oi": 33543, "percentage": 19.9, "dominant_strike": 600}}, {"ticker": "SOFI", "total_volume": 1795298, "put_volume": 792525, "call_volume": 1002773, "cp_volume_ratio": 1.27, "total_oi": 100000, "put_oi": 56120, "call_oi": 43880, "cp_oi_ratio": 0.78, "contracts_count": 401, "top_3_contracts": [{"ticker": "O:SOFI20251222P00000600", "oi": 7687, "strike": 600.0, "expiry": "2025-12-22", "type": "put", "percentage": 7.7}, {"ticker": "O:SOFI20251222C00000605", "oi": 7333, "strike": 605.0, "expiry": "2025-12-22", "type": "call", "percentage": 7.3}, {"ticker": "O:SOFI20251222C00000610", "oi": 6279, "strike": 610.0, "expiry": "2025-12-22", "type": "call", "percentage": 6.3}], "strike_concentration": {"range": "600-650", "oi": 17864, "percentage": 17.9, "dominant_strike": 600}}, {"ticker": "PLTR", "total_volume": 1620213, "put_volume": 998363, "call_volume": 621850, "cp_volume_ratio": 0.62, "total_oi": 100000, "put_oi": 42966, "call_oi": 57034, "cp_oi_ratio": 1.33, "contracts_count": 399, "top_3_contracts": [{"ticker": "O:PLTR20251122C00000405", "oi": 11697, "strike": 405.0, "expiry": "2025-11-22", "type": "call", "percentage": 11.7}, {"ticker": "O:PLTR20251030C00000410", "oi": 7688, "strike": 410.0, "expiry": "2025-10-30", "type": "call", "percentage": 7.7}, {"ticker": "O:PLTR20251222C00000400", "oi": 5378, "strike": 400.0, "expiry": "2025-12-22", "type": "call", "percentage": 5.4}], "strike_concentration": {"range": "400-420", "oi": 21455, "percentage": 21.5, "dominant_strike": 400}}, {"ticker": "NFLX", "total_volume": 1484038, "put_volume": 700506, "call_volume": 783532, "cp_volume_ratio": 1.12, "total_oi": 100000, "put_oi": 48344, "call_oi": 51656, "cp_oi_ratio": 1.07, "contracts_count": 568, "top_3_contracts": [{"ticker": "O:NFLX20251122P00000055", "oi": 10612, "strike": 55.0, "expiry": "2025-11-22", "type": "put", "percentage": 10.6}, {"ticker": "O:NFLX20251106P00000060", "oi": 7135, "strike": 60.0, "expiry": "2025-11-06", "type": "put", "percentage": 7.1}, {"ticker": "O:NFLX20251030P00000050", "oi": 6658, "strike": 50.0, "expiry": "2025-10-30", "type": "put", "percentage": 6.7}], "strike_concentration": {"range": "50-60", "oi": 29424, "percentage": 29.4, "dominant_strike": 50}}];
-        let currentSortColumn = 'total_volume';
-        let currentSortOrder = 'desc';
+        const indexData = [{"ticker": "QQQ", "total_volume": 5195343, "put_volume": 2045366, "call_volume": 3149977, "cp_volume_ratio": 1.54, "total_oi": 1526867, "put_oi": 620155, "call_oi": 906712, "cp_oi_ratio": 1.46, "contracts_count": 306, "top_3_contracts": [{"ticker": "O:QQQ20251122P00000100", "oi": 167117, "strike": 100.0, "expiry": "2025-11-22", "type": "put", "percentage": 10.9}, {"ticker": "O:QQQ20251030P00000110", "oi": 119818, "strike": 110.0, "expiry": "2025-10-30", "type": "put", "percentage": 7.8}, {"ticker": "O:QQQ20251122C00000105", "oi": 78919, "strike": 105.0, "expiry": "2025-11-22", "type": "call", "percentage": 5.2}], "strike_concentration": {"range": "100-110", "oi": 360611, "percentage": 23.6, "dominant_strike": 100}, "current_price": null}, {"ticker": "IWM", "total_volume": 2700009, "put_volume": 1165287, "call_volume": 1534722, "cp_volume_ratio": 1.32, "total_oi": 674167, "put_oi": 386097, "call_oi": 288070, "cp_oi_ratio": 0.75, "contracts_count": 473, "top_3_contracts": [{"ticker": "O:IWM20251222P00000060", "oi": 63304, "strike": 60.0, "expiry": "2025-12-22", "type": "put", "percentage": 9.4}, {"ticker": "O:IWM20251106P00000055", "oi": 60533, "strike": 55.0, "expiry": "2025-11-06", "type": "put", "percentage": 9.0}, {"ticker": "O:IWM20251106C00000050", "oi": 43280, "strike": 50.0, "expiry": "2025-11-06", "type": "call", "percentage": 6.4}], "strike_concentration": {"range": "50-60", "oi": 168101, "percentage": 24.9, "dominant_strike": 50}, "current_price": null}, {"ticker": "SPY", "total_volume": 1207176, "put_volume": 523561, "call_volume": 683615, "cp_volume_ratio": 1.31, "total_oi": 100000, "put_oi": 46996, "call_oi": 53004, "cp_oi_ratio": 1.13, "contracts_count": 331, "top_3_contracts": [{"ticker": "O:SPY20251122P00000405", "oi": 9684, "strike": 405.0, "expiry": "2025-11-22", "type": "put", "percentage": 9.7}, {"ticker": "O:SPY20251030P00000400", "oi": 9227, "strike": 400.0, "expiry": "2025-10-30", "type": "put", "percentage": 9.2}, {"ticker": "O:SPY20251030P00000410", "oi": 6010, "strike": 410.0, "expiry": "2025-10-30", "type": "put", "percentage": 6.0}], "strike_concentration": {"range": "400-420", "oi": 23430, "percentage": 23.4, "dominant_strike": 400}, "current_price": null}];
+        const stockData = [{"ticker": "DIA", "total_volume": 5625446, "put_volume": 2180748, "call_volume": 3444698, "cp_volume_ratio": 1.58, "total_oi": 1888716, "put_oi": 711162, "call_oi": 1177554, "cp_oi_ratio": 1.66, "contracts_count": 338, "top_3_contracts": [{"ticker": "O:DIA20251106P00000600", "oi": 221792, "strike": 600.0, "expiry": "2025-11-06", "type": "put", "percentage": 11.7}, {"ticker": "O:DIA20251030C00000605", "oi": 194567, "strike": 605.0, "expiry": "2025-10-30", "type": "call", "percentage": 10.3}, {"ticker": "O:DIA20251122P00000610", "oi": 162000, "strike": 610.0, "expiry": "2025-11-22", "type": "put", "percentage": 8.6}], "strike_concentration": {"range": "600-650", "oi": 491737, "percentage": 26.0, "dominant_strike": 600}, "current_price": null}, {"ticker": "MSFT", "total_volume": 5525380, "put_volume": 2588855, "call_volume": 2936525, "cp_volume_ratio": 1.13, "total_oi": 1941919, "put_oi": 968399, "call_oi": 973520, "cp_oi_ratio": 1.01, "contracts_count": 460, "top_3_contracts": [{"ticker": "O:MSFT20251222P00000205", "oi": 210080, "strike": 205.0, "expiry": "2025-12-22", "type": "put", "percentage": 10.8}, {"ticker": "O:MSFT20251222C00000210", "oi": 170286, "strike": 210.0, "expiry": "2025-12-22", "type": "call", "percentage": 8.8}, {"ticker": "O:MSFT20251122P00000200", "oi": 151126, "strike": 200.0, "expiry": "2025-11-22", "type": "put", "percentage": 7.8}], "strike_concentration": {"range": "200-220", "oi": 450489, "percentage": 23.2, "dominant_strike": 200}, "current_price": null}, {"ticker": "BAC", "total_volume": 5173605, "put_volume": 3348473, "call_volume": 1825132, "cp_volume_ratio": 0.55, "total_oi": 1656870, "put_oi": 883911, "call_oi": 772959, "cp_oi_ratio": 0.87, "contracts_count": 574, "top_3_contracts": [{"ticker": "O:BAC20251122C00000405", "oi": 192729, "strike": 405.0, "expiry": "2025-11-22", "type": "call", "percentage": 11.6}, {"ticker": "O:BAC20251030C00000410", "oi": 170950, "strike": 410.0, "expiry": "2025-10-30", "type": "call", "percentage": 10.3}, {"ticker": "O:BAC20251122C00000400", "oi": 119629, "strike": 400.0, "expiry": "2025-11-22", "type": "call", "percentage": 7.2}], "strike_concentration": {"range": "400-420", "oi": 341684, "percentage": 20.6, "dominant_strike": 400}, "current_price": null}, {"ticker": "NVDA", "total_volume": 4816270, "put_volume": 2816120, "call_volume": 2000150, "cp_volume_ratio": 0.71, "total_oi": 1414282, "put_oi": 851497, "call_oi": 562785, "cp_oi_ratio": 0.66, "contracts_count": 319, "top_3_contracts": [{"ticker": "O:NVDA20251222C00000110", "oi": 160131, "strike": 110.0, "expiry": "2025-12-22", "type": "call", "percentage": 11.3}, {"ticker": "O:NVDA20251106P00000105", "oi": 143151, "strike": 105.0, "expiry": "2025-11-06", "type": "put", "percentage": 10.1}, {"ticker": "O:NVDA20251106C00000100", "oi": 89114, "strike": 100.0, "expiry": "2025-11-06", "type": "call", "percentage": 6.3}], "strike_concentration": {"range": "100-110", "oi": 402909, "percentage": 28.5, "dominant_strike": 100}, "current_price": null}, {"ticker": "TSLA", "total_volume": 4634091, "put_volume": 2105437, "call_volume": 2528654, "cp_volume_ratio": 1.2, "total_oi": 1569896, "put_oi": 812565, "call_oi": 757331, "cp_oi_ratio": 0.93, "contracts_count": 371, "top_3_contracts": [{"ticker": "O:TSLA20251122P00000110", "oi": 146502, "strike": 110.0, "expiry": "2025-11-22", "type": "put", "percentage": 9.3}, {"ticker": "O:TSLA20251106P00000105", "oi": 134426, "strike": 105.0, "expiry": "2025-11-06", "type": "put", "percentage": 8.6}, {"ticker": "O:TSLA20251222P00000100", "oi": 110974, "strike": 100.0, "expiry": "2025-12-22", "type": "put", "percentage": 7.1}], "strike_concentration": {"range": "100-110", "oi": 466314, "percentage": 29.7, "dominant_strike": 100}, "current_price": null}, {"ticker": "BA", "total_volume": 4485878, "put_volume": 2516663, "call_volume": 1969215, "cp_volume_ratio": 0.78, "total_oi": 1744954, "put_oi": 982505, "call_oi": 762449, "cp_oi_ratio": 0.78, "contracts_count": 426, "top_3_contracts": [{"ticker": "O:BA20251122C00000105", "oi": 198959, "strike": 105.0, "expiry": "2025-11-22", "type": "call", "percentage": 11.4}, {"ticker": "O:BA20251030P00000100", "oi": 182557, "strike": 100.0, "expiry": "2025-10-30", "type": "put", "percentage": 10.5}, {"ticker": "O:BA20251106C00000110", "oi": 107372, "strike": 110.0, "expiry": "2025-11-06", "type": "call", "percentage": 6.2}], "strike_concentration": {"range": "100-110", "oi": 389421, "percentage": 22.3, "dominant_strike": 100}, "current_price": null}, {"ticker": "PFE", "total_volume": 4137187, "put_volume": 2540150, "call_volume": 1597037, "cp_volume_ratio": 0.63, "total_oi": 1286091, "put_oi": 562593, "call_oi": 723498, "cp_oi_ratio": 1.29, "contracts_count": 546, "top_3_contracts": [{"ticker": "O:PFE20251106P00000605", "oi": 143537, "strike": 605.0, "expiry": "2025-11-06", "type": "put", "percentage": 11.2}, {"ticker": "O:PFE20251222C00000600", "oi": 136373, "strike": 600.0, "expiry": "2025-12-22", "type": "call", "percentage": 10.6}, {"ticker": "O:PFE20251222P00000610", "oi": 125221, "strike": 610.0, "expiry": "2025-12-22", "type": "put", "percentage": 9.7}], "strike_concentration": {"range": "600-650", "oi": 199345, "percentage": 15.5, "dominant_strike": 600}, "current_price": null}, {"ticker": "AMZN", "total_volume": 3898191, "put_volume": 2241201, "call_volume": 1656990, "cp_volume_ratio": 0.74, "total_oi": 1227159, "put_oi": 695686, "call_oi": 531473, "cp_oi_ratio": 0.76, "contracts_count": 423, "top_3_contracts": [{"ticker": "O:AMZN20251106C00000405", "oi": 147050, "strike": 405.0, "expiry": "2025-11-06", "type": "call", "percentage": 12.0}, {"ticker": "O:AMZN20251106P00000410", "oi": 107526, "strike": 410.0, "expiry": "2025-11-06", "type": "put", "percentage": 8.8}, {"ticker": "O:AMZN20251122C00000400", "oi": 69490, "strike": 400.0, "expiry": "2025-11-22", "type": "call", "percentage": 5.7}], "strike_concentration": {"range": "400-420", "oi": 189137, "percentage": 15.4, "dominant_strike": 400}, "current_price": null}, {"ticker": "XLE", "total_volume": 3873997, "put_volume": 2457197, "call_volume": 1416800, "cp_volume_ratio": 0.58, "total_oi": 1429908, "put_oi": 764606, "call_oi": 665302, "cp_oi_ratio": 0.87, "contracts_count": 465, "top_3_contracts": [{"ticker": "O:XLE20251106C00000210", "oi": 166564, "strike": 210.0, "expiry": "2025-11-06", "type": "call", "percentage": 11.6}, {"ticker": "O:XLE20251106C00000200", "oi": 145859, "strike": 200.0, "expiry": "2025-11-06", "type": "call", "percentage": 10.2}, {"ticker": "O:XLE20251222P00000205", "oi": 115747, "strike": 205.0, "expiry": "2025-12-22", "type": "put", "percentage": 8.1}], "strike_concentration": {"range": "200-220", "oi": 427068, "percentage": 29.9, "dominant_strike": 200}, "current_price": null}, {"ticker": "INTC", "total_volume": 3774871, "put_volume": 1946803, "call_volume": 1828068, "cp_volume_ratio": 0.94, "total_oi": 1059503, "put_oi": 499438, "call_oi": 560065, "cp_oi_ratio": 1.12, "contracts_count": 329, "top_3_contracts": [{"ticker": "O:INTC20251106C00000405", "oi": 113008, "strike": 405.0, "expiry": "2025-11-06", "type": "call", "percentage": 10.7}, {"ticker": "O:INTC20251222C00000410", "oi": 112706, "strike": 410.0, "expiry": "2025-12-22", "type": "call", "percentage": 10.6}, {"ticker": "O:INTC20251222P00000400", "oi": 68240, "strike": 400.0, "expiry": "2025-12-22", "type": "put", "percentage": 6.4}], "strike_concentration": {"range": "400-420", "oi": 221261, "percentage": 20.9, "dominant_strike": 400}, "current_price": null}, {"ticker": "PLTR", "total_volume": 3716716, "put_volume": 2105320, "call_volume": 1611396, "cp_volume_ratio": 0.77, "total_oi": 945102, "put_oi": 376064, "call_oi": 569038, "cp_oi_ratio": 1.51, "contracts_count": 545, "top_3_contracts": [{"ticker": "O:PLTR20251030P00000050", "oi": 103721, "strike": 50.0, "expiry": "2025-10-30", "type": "put", "percentage": 11.0}, {"ticker": "O:PLTR20251030C00000060", "oi": 80491, "strike": 60.0, "expiry": "2025-10-30", "type": "call", "percentage": 8.5}, {"ticker": "O:PLTR20251122P00000055", "oi": 47387, "strike": 55.0, "expiry": "2025-11-22", "type": "put", "percentage": 5.0}], "strike_concentration": {"range": "50-60", "oi": 196693, "percentage": 20.8, "dominant_strike": 50}, "current_price": null}, {"ticker": "SLV", "total_volume": 3635876, "put_volume": 2360604, "call_volume": 1275272, "cp_volume_ratio": 0.54, "total_oi": 606672, "put_oi": 227142, "call_oi": 379530, "cp_oi_ratio": 1.67, "contracts_count": 550, "top_3_contracts": [{"ticker": "O:SLV20251122C00000600", "oi": 53188, "strike": 600.0, "expiry": "2025-11-22", "type": "call", "percentage": 8.8}, {"ticker": "O:SLV20251122C00000605", "oi": 45819, "strike": 605.0, "expiry": "2025-11-22", "type": "call", "percentage": 7.6}, {"ticker": "O:SLV20251106P00000610", "oi": 32434, "strike": 610.0, "expiry": "2025-11-06", "type": "put", "percentage": 5.3}], "strike_concentration": {"range": "600-650", "oi": 151359, "percentage": 24.9, "dominant_strike": 600}, "current_price": null}, {"ticker": "BABA", "total_volume": 3553841, "put_volume": 1509763, "call_volume": 2044078, "cp_volume_ratio": 1.35, "total_oi": 912734, "put_oi": 438857, "call_oi": 473877, "cp_oi_ratio": 1.08, "contracts_count": 582, "top_3_contracts": [{"ticker": "O:BABA20251222P00000050", "oi": 68973, "strike": 50.0, "expiry": "2025-12-22", "type": "put", "percentage": 7.6}, {"ticker": "O:BABA20251122C00000055", "oi": 61588, "strike": 55.0, "expiry": "2025-11-22", "type": "call", "percentage": 6.7}, {"ticker": "O:BABA20251222C00000060", "oi": 58673, "strike": 60.0, "expiry": "2025-12-22", "type": "call", "percentage": 6.4}], "strike_concentration": {"range": "50-60", "oi": 251519, "percentage": 27.6, "dominant_strike": 50}, "current_price": null}, {"ticker": "GLD", "total_volume": 3531651, "put_volume": 1569677, "call_volume": 1961974, "cp_volume_ratio": 1.25, "total_oi": 893023, "put_oi": 420194, "call_oi": 472829, "cp_oi_ratio": 1.13, "contracts_count": 556, "top_3_contracts": [{"ticker": "O:GLD20251222P00000205", "oi": 74506, "strike": 205.0, "expiry": "2025-12-22", "type": "put", "percentage": 8.3}, {"ticker": "O:GLD20251030C00000210", "oi": 70838, "strike": 210.0, "expiry": "2025-10-30", "type": "call", "percentage": 7.9}, {"ticker": "O:GLD20251222P00000200", "oi": 65778, "strike": 200.0, "expiry": "2025-12-22", "type": "put", "percentage": 7.4}], "strike_concentration": {"range": "200-220", "oi": 137849, "percentage": 15.4, "dominant_strike": 200}, "current_price": null}, {"ticker": "JPM", "total_volume": 3446778, "put_volume": 1674200, "call_volume": 1772578, "cp_volume_ratio": 1.06, "total_oi": 1197732, "put_oi": 462578, "call_oi": 735154, "cp_oi_ratio": 1.59, "contracts_count": 316, "top_3_contracts": [{"ticker": "O:JPM20251030C00000060", "oi": 131676, "strike": 60.0, "expiry": "2025-10-30", "type": "call", "percentage": 11.0}, {"ticker": "O:JPM20251222P00000055", "oi": 104342, "strike": 55.0, "expiry": "2025-12-22", "type": "put", "percentage": 8.7}, {"ticker": "O:JPM20251106P00000050", "oi": 103463, "strike": 50.0, "expiry": "2025-11-06", "type": "put", "percentage": 8.6}], "strike_concentration": {"range": "50-60", "oi": 189326, "percentage": 15.8, "dominant_strike": 50}, "current_price": null}, {"ticker": "TLT", "total_volume": 2653993, "put_volume": 1376395, "call_volume": 1277598, "cp_volume_ratio": 0.93, "total_oi": 100000, "put_oi": 57926, "call_oi": 42074, "cp_oi_ratio": 0.73, "contracts_count": 575, "top_3_contracts": [{"ticker": "O:TLT20251030C00000210", "oi": 11875, "strike": 210.0, "expiry": "2025-10-30", "type": "call", "percentage": 11.9}, {"ticker": "O:TLT20251122P00000200", "oi": 10634, "strike": 200.0, "expiry": "2025-11-22", "type": "put", "percentage": 10.6}, {"ticker": "O:TLT20251030C00000205", "oi": 7195, "strike": 205.0, "expiry": "2025-10-30", "type": "call", "percentage": 7.2}], "strike_concentration": {"range": "200-220", "oi": 22833, "percentage": 22.8, "dominant_strike": 200}, "current_price": null}, {"ticker": "META", "total_volume": 2593093, "put_volume": 1453908, "call_volume": 1139185, "cp_volume_ratio": 0.78, "total_oi": 399184, "put_oi": 192387, "call_oi": 206797, "cp_oi_ratio": 1.07, "contracts_count": 537, "top_3_contracts": [{"ticker": "O:META20251222C00000600", "oi": 47463, "strike": 600.0, "expiry": "2025-12-22", "type": "call", "percentage": 11.9}, {"ticker": "O:META20251030P00000610", "oi": 43438, "strike": 610.0, "expiry": "2025-10-30", "type": "put", "percentage": 10.9}, {"ticker": "O:META20251122C00000605", "oi": 41152, "strike": 605.0, "expiry": "2025-11-22", "type": "call", "percentage": 10.3}], "strike_concentration": {"range": "600-650", "oi": 97459, "percentage": 24.4, "dominant_strike": 600}, "current_price": null}, {"ticker": "SOFI", "total_volume": 2513837, "put_volume": 889697, "call_volume": 1624140, "cp_volume_ratio": 1.83, "total_oi": 513193, "put_oi": 219975, "call_oi": 293218, "cp_oi_ratio": 1.33, "contracts_count": 545, "top_3_contracts": [{"ticker": "O:SOFI20251222C00000200", "oi": 56422, "strike": 200.0, "expiry": "2025-12-22", "type": "call", "percentage": 11.0}, {"ticker": "O:SOFI20251222P00000210", "oi": 49290, "strike": 210.0, "expiry": "2025-12-22", "type": "put", "percentage": 9.6}, {"ticker": "O:SOFI20251030P00000205", "oi": 34725, "strike": 205.0, "expiry": "2025-10-30", "type": "put", "percentage": 6.8}], "strike_concentration": {"range": "200-220", "oi": 130144, "percentage": 25.4, "dominant_strike": 200}, "current_price": null}, {"ticker": "GOOGL", "total_volume": 2512491, "put_volume": 1369950, "call_volume": 1142541, "cp_volume_ratio": 0.83, "total_oi": 164269, "put_oi": 91520, "call_oi": 72749, "cp_oi_ratio": 0.79, "contracts_count": 415, "top_3_contracts": [{"ticker": "O:GOOGL20251122P00000200", "oi": 19534, "strike": 200.0, "expiry": "2025-11-22", "type": "put", "percentage": 11.9}, {"ticker": "O:GOOGL20251030C00000210", "oi": 15647, "strike": 210.0, "expiry": "2025-10-30", "type": "call", "percentage": 9.5}, {"ticker": "O:GOOGL20251106C00000205", "oi": 10388, "strike": 205.0, "expiry": "2025-11-06", "type": "call", "percentage": 6.3}], "strike_concentration": {"range": "200-220", "oi": 33405, "percentage": 20.3, "dominant_strike": 200}, "current_price": null}, {"ticker": "CAT", "total_volume": 2262732, "put_volume": 1037957, "call_volume": 1224775, "cp_volume_ratio": 1.18, "total_oi": 219331, "put_oi": 132727, "call_oi": 86604, "cp_oi_ratio": 0.65, "contracts_count": 506, "top_3_contracts": [{"ticker": "O:CAT20251106P00000610", "oi": 26138, "strike": 610.0, "expiry": "2025-11-06", "type": "put", "percentage": 11.9}, {"ticker": "O:CAT20251122C00000605", "oi": 14937, "strike": 605.0, "expiry": "2025-11-22", "type": "call", "percentage": 6.8}, {"ticker": "O:CAT20251122C00000600", "oi": 13137, "strike": 600.0, "expiry": "2025-11-22", "type": "call", "percentage": 6.0}], "strike_concentration": {"range": "600-650", "oi": 47478, "percentage": 21.6, "dominant_strike": 600}, "current_price": null}, {"ticker": "NIO", "total_volume": 2260504, "put_volume": 1385270, "call_volume": 875234, "cp_volume_ratio": 0.63, "total_oi": 100000, "put_oi": 41884, "call_oi": 58116, "cp_oi_ratio": 1.39, "contracts_count": 587, "top_3_contracts": [{"ticker": "O:NIO20251222P00000205", "oi": 8451, "strike": 205.0, "expiry": "2025-12-22", "type": "put", "percentage": 8.5}, {"ticker": "O:NIO20251030P00000200", "oi": 6539, "strike": 200.0, "expiry": "2025-10-30", "type": "put", "percentage": 6.5}, {"ticker": "O:NIO20251030P00000210", "oi": 5387, "strike": 210.0, "expiry": "2025-10-30", "type": "put", "percentage": 5.4}], "strike_concentration": {"range": "200-220", "oi": 23403, "percentage": 23.4, "dominant_strike": 200}, "current_price": null}, {"ticker": "NFLX", "total_volume": 2235466, "put_volume": 1053168, "call_volume": 1182298, "cp_volume_ratio": 1.12, "total_oi": 100000, "put_oi": 56440, "call_oi": 43560, "cp_oi_ratio": 0.77, "contracts_count": 500, "top_3_contracts": [{"ticker": "O:NFLX20251030C00000210", "oi": 9196, "strike": 210.0, "expiry": "2025-10-30", "type": "call", "percentage": 9.2}, {"ticker": "O:NFLX20251030C00000205", "oi": 7853, "strike": 205.0, "expiry": "2025-10-30", "type": "call", "percentage": 7.9}, {"ticker": "O:NFLX20251222C00000200", "oi": 7626, "strike": 200.0, "expiry": "2025-12-22", "type": "call", "percentage": 7.6}], "strike_concentration": {"range": "200-220", "oi": 22574, "percentage": 22.6, "dominant_strike": 200}, "current_price": null}, {"ticker": "WMT", "total_volume": 1622790, "put_volume": 735544, "call_volume": 887246, "cp_volume_ratio": 1.21, "total_oi": 100000, "put_oi": 35873, "call_oi": 64127, "cp_oi_ratio": 1.79, "contracts_count": 344, "top_3_contracts": [{"ticker": "O:WMT20251222C00000050", "oi": 9290, "strike": 50.0, "expiry": "2025-12-22", "type": "call", "percentage": 9.3}, {"ticker": "O:WMT20251222P00000055", "oi": 6506, "strike": 55.0, "expiry": "2025-12-22", "type": "put", "percentage": 6.5}, {"ticker": "O:WMT20251106P00000060", "oi": 6351, "strike": 60.0, "expiry": "2025-11-06", "type": "put", "percentage": 6.4}], "strike_concentration": {"range": "50-60", "oi": 17348, "percentage": 17.3, "dominant_strike": 50}, "current_price": null}, {"ticker": "AAPL", "total_volume": 1267949, "put_volume": 588194, "call_volume": 679755, "cp_volume_ratio": 1.16, "total_oi": 100000, "put_oi": 37518, "call_oi": 62482, "cp_oi_ratio": 1.67, "contracts_count": 562, "top_3_contracts": [{"ticker": "O:AAPL20251106C00000405", "oi": 8684, "strike": 405.0, "expiry": "2025-11-06", "type": "call", "percentage": 8.7}, {"ticker": "O:AAPL20251030P00000400", "oi": 8559, "strike": 400.0, "expiry": "2025-10-30", "type": "put", "percentage": 8.6}, {"ticker": "O:AAPL20251222C00000410", "oi": 5793, "strike": 410.0, "expiry": "2025-12-22", "type": "call", "percentage": 5.8}], "strike_concentration": {"range": "400-420", "oi": 18527, "percentage": 18.5, "dominant_strike": 400}, "current_price": null}, {"ticker": "AMD", "total_volume": 1231836, "put_volume": 646865, "call_volume": 584971, "cp_volume_ratio": 0.9, "total_oi": 100000, "put_oi": 52672, "call_oi": 47328, "cp_oi_ratio": 0.9, "contracts_count": 424, "top_3_contracts": [{"ticker": "O:AMD20251122C00000205", "oi": 11775, "strike": 205.0, "expiry": "2025-11-22", "type": "call", "percentage": 11.8}, {"ticker": "O:AMD20251122C00000200", "oi": 9441, "strike": 200.0, "expiry": "2025-11-22", "type": "call", "percentage": 9.4}, {"ticker": "O:AMD20251030P00000210", "oi": 7783, "strike": 210.0, "expiry": "2025-10-30", "type": "put", "percentage": 7.8}], "strike_concentration": {"range": "200-220", "oi": 16870, "percentage": 16.9, "dominant_strike": 200}, "current_price": null}];
+
+        let indexSortColumn = 'total_volume';
+        let indexSortOrder = 'desc';
+        let stockSortColumn = 'total_volume';
+        let stockSortOrder = 'desc';
 
         // Table sorting function
-        function sortTable(column, type) {
+        function sortTable(tableType, column, type) {
+            const tableData = tableType === 'index' ? indexData : stockData;
+            const currentSortColumn = tableType === 'index' ? indexSortColumn : stockSortColumn;
+            const currentSortOrder = tableType === 'index' ? indexSortOrder : stockSortOrder;
             // Toggle sort order if clicking same column
+            let newSortOrder;
             if (currentSortColumn === column) {
-                currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+                newSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
             } else {
-                currentSortColumn = column;
-                currentSortOrder = 'desc'; // Default to descending
+                newSortOrder = 'desc'; // Default to descending
+            }
+
+            // Update state
+            if (tableType === 'index') {
+                indexSortColumn = column;
+                indexSortOrder = newSortOrder;
+            } else {
+                stockSortColumn = column;
+                stockSortOrder = newSortOrder;
             }
 
             // Sort data
@@ -893,7 +837,7 @@
                 if (type === 'string') {
                     valA = String(valA).toLowerCase();
                     valB = String(valB).toLowerCase();
-                    return currentSortOrder === 'asc'
+                    return newSortOrder === 'asc'
                         ? valA.localeCompare(valB)
                         : valB.localeCompare(valA);
                 }
@@ -901,19 +845,20 @@
                 // Handle number comparison
                 valA = Number(valA) || 0;
                 valB = Number(valB) || 0;
-                return currentSortOrder === 'asc' ? valA - valB : valB - valA;
+                return newSortOrder === 'asc' ? valA - valB : valB - valA;
             });
 
             // Update table
-            renderTable(sortedData);
+            renderTable(tableType, sortedData);
 
-            // Update sort indicators
-            document.querySelectorAll('th.sortable').forEach(th => {
+            // Update sort indicators (only for this table)
+            const tableSelector = tableType === 'index' ? '#indexTable' : '#stockTable';
+            document.querySelectorAll(`${tableSelector} th.sortable`).forEach(th => {
                 th.classList.remove('sorted-asc', 'sorted-desc');
             });
-            const activeHeader = document.querySelector(`th[data-column="${column}"]`);
+            const activeHeader = document.querySelector(`${tableSelector} th[data-column="${column}"]`);
             if (activeHeader) {
-                activeHeader.classList.add(`sorted-${currentSortOrder}`);
+                activeHeader.classList.add(`sorted-${newSortOrder}`);
             }
         }
 
@@ -934,66 +879,70 @@
         }
 
         // Render table with data
-        function renderTable(data) {
-            const tbody = document.getElementById('volumeTableBody');
+        function renderTable(tableType, data) {
+            const tbodyId = tableType === 'index' ? 'indexTableBody' : 'stockTableBody';
+            const tbody = document.getElementById(tbodyId);
             tbody.innerHTML = '';
 
             data.forEach((item, idx) => {
-                // Format Top 3 contracts
+                // Format volume and OI in 万 (W) with 2 decimal places
+                const volumeW = (item.total_volume / 10000).toFixed(2) + 'W';
+                const oiW = (item.total_oi / 10000).toFixed(2) + 'W';
+
+                // Format Top 3 contracts with Current Price at the beginning
                 let top3Html = '';
+                const currentPrice = item.current_price;
+                if (currentPrice) {
+                    top3Html += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
+                }
+
                 const top3Contracts = item.top_3_contracts || [];
                 top3Contracts.slice(0, 3).forEach((contract, i) => {
                     const contractShort = formatContractShort(contract);
                     const oiK = (contract.oi || 0) / 1000;
                     const pct = contract.percentage || 0;
-                    top3Html += `<div class='contract-item'>① ${contractShort} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
+                    top3Html += `<div class='contract-item'>${i + 1}. ${contractShort} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
                 });
                 if (!top3Html) {
                     top3Html = '<small>N/A</small>';
                 }
 
-                // Format strike concentration
-                const strikeInfo = item.strike_concentration || {};
-                const strikeRange = strikeInfo.range || 'N/A';
-                const strikePct = strikeInfo.percentage || 0;
-                const dominant = strikeInfo.dominant_strike;
-                const strikeHtml = `
-                    <div><strong>${strikeRange}</strong> <span class='pct'>(${strikePct.toFixed(1)}%)</span></div>
-                    <div><small>核心: ${dominant || 'N/A'}</small></div>
-                `;
-
                 // Format history
                 const history = item.history || {};
                 const appearances = history.appearances || 0;
-                const icon = history.icon || '🆕';
+                const icon = history.icon || '[NEW]';
                 const rankChange = history.rank_change;
                 const avgRank = history.avg_rank;
 
-                let rankSymbol = '↔️';
+                let rankSymbol = '-';
                 if (rankChange !== null && rankChange !== undefined && rankChange !== 0) {
                     if (rankChange > 0) {
-                        rankSymbol = `↑${rankChange}`;
+                        rankSymbol = `+${rankChange}`;
                     } else {
-                        rankSymbol = `↓${Math.abs(rankChange)}`;
+                        rankSymbol = `-${Math.abs(rankChange)}`;
                     }
                 }
 
                 const historyHtml = `
                     <div><strong>${appearances}/10 ${icon}</strong> ${rankSymbol}</div>
-                    <div><small>平均排名: ${avgRank || 'N/A'}</small></div>
+                    <div><small>Avg Rank: ${avgRank || 'N/A'}</small></div>
                 `;
+
+                // Streak (consecutive days)
+                const streak = history.streak || 0;
+                const streakHtml = streak > 0 ? `<strong>${streak}</strong>` : '-';
 
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${idx + 1}</td>
                     <td><strong>${item.ticker}</strong></td>
-                    <td>${item.total_volume.toLocaleString()}</td>
+                    <td>${volumeW}</td>
                     <td>${item.cp_volume_ratio.toFixed(2)}</td>
-                    <td>${item.total_oi.toLocaleString()}</td>
+                    <td>${oiW}</td>
                     <td>${item.cp_oi_ratio.toFixed(2)}</td>
                     <td class="compact-cell">${top3Html}</td>
-                    <td class="compact-cell">${strikeHtml}</td>
                     <td class="compact-cell">${historyHtml}</td>
+                    <td class="compact-cell" style="text-align: center;">${streakHtml}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -1001,30 +950,46 @@
 
         // Add click handlers to sortable headers
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('th.sortable').forEach(th => {
+            // Setup sorting for index table
+            document.querySelectorAll('#indexTable th.sortable').forEach(th => {
                 th.addEventListener('click', () => {
                     const column = th.dataset.column;
                     const type = th.dataset.type;
-                    sortTable(column, type);
+                    sortTable('index', column, type);
                 });
             });
 
-            // Set initial sort indicator
-            const initialHeader = document.querySelector('th[data-column="total_volume"]');
-            if (initialHeader) {
-                initialHeader.classList.add('sorted-desc');
+            // Setup sorting for stock table
+            document.querySelectorAll('#stockTable th.sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const column = th.dataset.column;
+                    const type = th.dataset.type;
+                    sortTable('stock', column, type);
+                });
+            });
+
+            // Set initial sort indicators for both tables
+            const indexHeader = document.querySelector('#indexTable th[data-column="total_volume"]');
+            if (indexHeader) {
+                indexHeader.classList.add('sorted-desc');
+            }
+            const stockHeader = document.querySelector('#stockTable th[data-column="total_volume"]');
+            if (stockHeader) {
+                stockHeader.classList.add('sorted-desc');
             }
         });
 
-        // Volume Chart
+        // Volume Chart with C/P ratio in tooltip (stocks & ETFs only, excludes Market Indices)
         const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+        const cpRatiosForVolume = [1.58, 1.13, 0.55, 0.71, 1.2, 0.78, 0.63, 0.74, 0.58, 0.94, 0.77, 0.54, 1.35, 1.25, 1.06, 0.93, 0.78, 1.83, 0.83, 1.18, 0.63, 1.12, 1.21, 1.16, 0.9];
+
         new Chart(volumeCtx, {
             type: 'bar',
             data: {
-                labels: ["SLV", "PFE", "AMZN", "NVDA", "META", "IWM", "VIX", "BAC", "JPM", "GOOGL", "MSFT", "GLD", "EEM", "BA", "TSLA", "WMT", "CAT", "TLT", "SPY", "AMD", "AAPL", "NIO", "XLE", "INTC", "BABA", "DIA", "SOFI", "PLTR", "NFLX"],
+                labels: ["DIA", "MSFT", "BAC", "NVDA", "TSLA", "BA", "PFE", "AMZN", "XLE", "INTC", "PLTR", "SLV", "BABA", "GLD", "JPM", "TLT", "META", "SOFI", "GOOGL", "CAT", "NIO", "NFLX", "WMT", "AAPL", "AMD"],
                 datasets: [{
                     label: '总成交量',
-                    data: [5374728, 5265712, 5029129, 4996081, 4645464, 4485002, 4455363, 4443726, 4267762, 4190217, 4175646, 4081445, 3736623, 3401608, 3194724, 3167871, 3111939, 2998224, 2902290, 2636714, 2592343, 2502397, 2443954, 2380863, 2005215, 1857869, 1795298, 1620213, 1484038],
+                    data: [5625446, 5525380, 5173605, 4816270, 4634091, 4485878, 4137187, 3898191, 3873997, 3774871, 3716716, 3635876, 3553841, 3531651, 3446778, 2653993, 2593093, 2513837, 2512491, 2262732, 2260504, 2235466, 1622790, 1267949, 1231836],
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1
@@ -1040,6 +1005,15 @@
                     title: {
                         display: true,
                         text: '期权成交量'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: function(context) {
+                                const index = context.dataIndex;
+                                const cpRatio = cpRatiosForVolume[index];
+                                return 'C/P Ratio: ' + cpRatio.toFixed(2);
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -1055,18 +1029,18 @@
         new Chart(cpCtx, {
             type: 'bar',
             data: {
-                labels: ["SLV", "PFE", "AMZN", "NVDA", "META", "IWM", "VIX", "BAC", "JPM", "GOOGL", "MSFT", "GLD", "EEM", "BA", "TSLA", "WMT", "CAT", "TLT", "SPY", "AMD", "AAPL", "NIO", "XLE", "INTC", "BABA", "DIA", "SOFI", "PLTR", "NFLX"],
+                labels: ["DIA", "MSFT", "BAC", "NVDA", "TSLA", "BA", "PFE", "AMZN", "XLE", "INTC", "PLTR", "SLV", "BABA", "GLD", "JPM", "TLT", "META", "SOFI", "GOOGL", "CAT", "NIO", "NFLX", "WMT", "AAPL", "AMD"],
                 datasets: [
                     {
                         label: 'C/P 成交比',
-                        data: [0.76, 0.73, 1.03, 0.63, 1.36, 1.36, 1.01, 1.83, 0.6, 1.4, 1.31, 1.61, 0.9, 0.56, 1.61, 0.72, 1.19, 0.83, 0.73, 0.68, 1.58, 1.1, 0.99, 0.98, 1.08, 0.83, 1.27, 0.62, 1.12],
+                        data: [1.58, 1.13, 0.55, 0.71, 1.2, 0.78, 0.63, 0.74, 0.58, 0.94, 0.77, 0.54, 1.35, 1.25, 1.06, 0.93, 0.78, 1.83, 0.83, 1.18, 0.63, 1.12, 1.21, 1.16, 0.9],
                         backgroundColor: 'rgba(255, 99, 132, 0.6)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'C/P 持仓比',
-                        data: [0.94, 1.02, 1.05, 0.65, 0.81, 1.71, 0.73, 0.75, 1.37, 0.63, 0.58, 0.99, 1.27, 0.94, 0.6, 1.37, 1.17, 0.64, 1.21, 0.54, 0.59, 0.81, 1.47, 1.01, 1.65, 0.55, 0.78, 1.33, 1.07],
+                        data: [1.66, 1.01, 0.87, 0.66, 0.93, 0.78, 1.29, 0.76, 0.87, 1.12, 1.51, 1.67, 1.08, 1.13, 1.59, 0.73, 1.07, 1.33, 0.79, 0.65, 1.39, 0.77, 1.79, 1.67, 0.9],
                         backgroundColor: 'rgba(54, 162, 235, 0.6)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -1095,10 +1069,10 @@
         new Chart(oiCtx, {
             type: 'bar',
             data: {
-                labels: ["SLV", "PFE", "AMZN", "NVDA", "META", "IWM", "VIX", "BAC", "JPM", "GOOGL", "MSFT", "GLD", "EEM", "BA", "TSLA", "WMT", "CAT", "TLT", "SPY", "AMD", "AAPL", "NIO", "XLE", "INTC", "BABA", "DIA", "SOFI", "PLTR", "NFLX"],
+                labels: ["DIA", "MSFT", "BAC", "NVDA", "TSLA", "BA", "PFE", "AMZN", "XLE", "INTC", "PLTR", "SLV", "BABA", "GLD", "JPM", "TLT", "META", "SOFI", "GOOGL", "CAT", "NIO", "NFLX", "WMT", "AAPL", "AMD"],
                 datasets: [{
                     label: '持仓量',
-                    data: [2070273, 1966108, 1807716, 1488244, 1685606, 1714245, 1514492, 1352000, 1276589, 1297234, 1135664, 1105310, 1144207, 927827, 431528, 702347, 613342, 704797, 992299, 212520, 100000, 169827, 143670, 162500, 100000, 168334, 100000, 100000, 100000],
+                    data: [1888716, 1941919, 1656870, 1414282, 1569896, 1744954, 1286091, 1227159, 1429908, 1059503, 945102, 606672, 912734, 893023, 1197732, 100000, 399184, 513193, 164269, 219331, 100000, 100000, 100000, 100000, 100000],
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
