@@ -176,6 +176,28 @@
             background: #f5f5f7;
         }
 
+        /* Volume cell with hover effect to show C/P ratio */
+        .volume-cell {
+            position: relative;
+        }
+
+        .volume-cell .volume-value {
+            display: inline;
+        }
+
+        .volume-cell .cp-ratio-value {
+            display: none;
+        }
+
+        table tr:hover .volume-cell .volume-value {
+            display: none;
+        }
+
+        table tr:hover .volume-cell .cp-ratio-value {
+            display: inline;
+            color: #0066cc;
+        }
+
         .compact-cell {
             font-size: 12px;
             line-height: 1.5;
@@ -266,7 +288,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 08:20:17 EDT | <strong>东八区时间:</strong> 2025-11-01 20:20:17 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 08:31:20 EDT | <strong>东八区时间:</strong> 2025-11-01 20:31:20 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -302,27 +324,27 @@
             <div class="macro-content">
                 <strong>Market Sentiment &amp; Positioning</strong>
 
-<ul><li><strong>C/P Ratio Insights</strong>: The Call/Put Volume and Open Interest Ratios for SPY, QQQ, and IWM are below 1, indicating a cautious sentiment among market participants. The markedly high Put Open Interest in SPY (C/P OI Ratio of 0.33) and IWM (C/P OI Ratio of 0.36) suggests a defensive posture, with a significant skew towards protective positioning, likely driven by concerns over potential downside risks.</li>
+<ul><li><strong>C/P Ratio Insights:</strong> The call/put (C/P) ratios across SPY, QQQ, and IWM are all below 1, indicating a bearish sentiment among institutional investors. Specifically, SPY's C/P OI ratio of 0.33 and QQQ's C/P ratio of 0.50 suggest stronger bearish positioning compared to IWM.</li>
+  
+<li><strong>Institutional Positioning:</strong> The open interest (OI) data shows a significant concentration in put options, particularly deep out-of-the-money puts with long expiration dates. For SPY, there is a notable focus on strikes around $500-$550, and for QQQ, $600-$650, indicating a strong interest in hedging against downside risks.</li>
 
-<li><strong>Smart Money Positioning</strong>: The concentration of Open Interest in deep out-of-the-money Puts (e.g., SPY $500, QQQ $540, IWM $235) points to substantial hedging activity. The top contracts with expiration dates in late 2025 suggest a longer-term view of risk management, possibly tied to macroeconomic uncertainties and volatility expectations.</li>
-
-<li><strong>Unusual Patterns</strong>: The preference for longer-dated Puts highlights a strategic focus on protecting against longer-term market corrections, rather than short-term turbulence, indicating that institutional investors foresee potential economic disruptions or market corrections over the coming years.</li>
+<li><strong>Unusual Patterns:</strong> The high concentration of deep out-of-the-money put options across these indices suggests that smart money is actively hedging against significant downside risks, possibly due to concerns over macroeconomic volatility.</li>
 
 <strong>Macro Outlook</strong>
 
-<li><strong>Current Macro Environment</strong>: The Federal Reserve is maintaining a cautious stance, balancing rate hikes with inflation control and growth considerations. Inflation remains a focal point, with persistent pressures keeping monetary policy tight. Growth prospects are mixed, with geopolitical tensions and supply chain constraints exacerbating uncertainty.</li>
+<li><strong>Current Environment:</strong> The macro environment remains characterized by persistent inflationary pressures, with the Federal Reserve maintaining a cautious stance on interest rate hikes. Growth concerns are elevated amid geopolitical tensions and potential supply chain disruptions.</li>
 
-<li><strong>Key Risks and Opportunities</strong>: The primary risks include a potential recession triggered by aggressive Fed policy, geopolitical conflicts affecting energy markets, and continued supply chain disruptions. Opportunities might arise from sectors or regions less impacted by these risks, particularly where fiscal policy support is robust.</li>
+<li><strong>Key Risks and Opportunities:</strong> Key risks include potential further tightening by the Fed if inflation remains sticky, and geopolitical uncertainties that could exacerbate supply chain issues. Opportunities may arise from sectors resilient to inflation or benefiting from fiscal policies aimed at infrastructure and clean energy.</li>
 
-<li><strong>What to Watch</strong>: Investors should monitor inflation trends, Fed communications for shifts in policy tone, labor market data for signs of economic cooling, and geopolitical developments that could impact global trade and energy markets.</li>
+<li><strong>Investor Watchlist:</strong> Investors should closely monitor upcoming Federal Reserve meetings for signals on interest rate policy, as well as key inflation and employment data releases. Geopolitical developments, particularly in energy markets, could also have significant implications.</li>
 
 <strong>Key Takeaways</strong>
 
-<li>The prevailing institutional sentiment is defensive, with significant hedging against potential downside risks.</li>
-<li>Longer-dated Put contracts suggest concerns over long-term market stability, likely tied to macroeconomic uncertainties.</li>
-<li>Fed policy remains a critical driver, with inflation and growth dynamics closely watched for shifts in strategy.</li>
-<li>Key risks include recessionary pressures and geopolitical tensions, while opportunities may lie in resilient sectors.</li>
-<li>Vigilance on economic indicators and Fed communications is crucial for navigating the current environment.</li></ul>
+<li>Institutional investors are showing a bearish tilt with a strong focus on hedging downside risks across major indices.</li>
+<li>Deep out-of-the-money put options suggest concerns about significant market corrections in the medium to long term.</li>
+<li>The macro environment is fraught with uncertainties due to inflationary pressures and potential Fed policy shifts.</li>
+<li>Geopolitical risks and supply chain disruptions remain key factors to watch, affecting both risk and opportunity landscapes.</li>
+<li>Investors should stay alert to Fed communications and macroeconomic data for clues on future market directions.</li></ul>
             </div>
         </div>
 
@@ -354,7 +376,10 @@
                 <tr>
                     <td>1</td>
                     <td><strong>SPY</strong></td>
-                    <td>8,450,612</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">8,450,612</span>
+                        <span class="cp-ratio-value">C/P: 0.78</span>
+                    </td>
                     <td>0.78</td>
                     <td>4,350,935</td>
                     <td>0.33</td>
@@ -372,7 +397,10 @@
                 <tr>
                     <td>2</td>
                     <td><strong>QQQ</strong></td>
-                    <td>4,401,356</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">4,401,356</span>
+                        <span class="cp-ratio-value">C/P: 0.75</span>
+                    </td>
                     <td>0.75</td>
                     <td>2,590,333</td>
                     <td>0.50</td>
@@ -390,7 +418,10 @@
                 <tr>
                     <td>3</td>
                     <td><strong>IWM</strong></td>
-                    <td>1,558,805</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">1,558,805</span>
+                        <span class="cp-ratio-value">C/P: 0.60</span>
+                    </td>
                     <td>0.60</td>
                     <td>5,717,576</td>
                     <td>0.36</td>
@@ -430,7 +461,10 @@
                 <tr>
                     <td>1</td>
                     <td><strong>NVDA</strong></td>
-                    <td>3,023,124</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">3,023,124</span>
+                        <span class="cp-ratio-value">C/P: 2.26</span>
+                    </td>
                     <td>2.26</td>
                     <td>12,897,913</td>
                     <td>1.12</td>
@@ -448,7 +482,10 @@
                 <tr>
                     <td>2</td>
                     <td><strong>META</strong></td>
-                    <td>2,236,172</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">2,236,172</span>
+                        <span class="cp-ratio-value">C/P: 1.80</span>
+                    </td>
                     <td>1.80</td>
                     <td>1,472,264</td>
                     <td>1.49</td>
@@ -466,7 +503,10 @@
                 <tr>
                     <td>3</td>
                     <td><strong>TSLA</strong></td>
-                    <td>2,004,310</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">2,004,310</span>
+                        <span class="cp-ratio-value">C/P: 1.45</span>
+                    </td>
                     <td>1.45</td>
                     <td>3,997,085</td>
                     <td>1.16</td>
@@ -484,7 +524,10 @@
                 <tr>
                     <td>4</td>
                     <td><strong>AMZN</strong></td>
-                    <td>1,274,103</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">1,274,103</span>
+                        <span class="cp-ratio-value">C/P: 1.89</span>
+                    </td>
                     <td>1.89</td>
                     <td>4,496,777</td>
                     <td>1.45</td>
@@ -502,7 +545,10 @@
                 <tr>
                     <td>5</td>
                     <td><strong>AAPL</strong></td>
-                    <td>1,208,271</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">1,208,271</span>
+                        <span class="cp-ratio-value">C/P: 1.87</span>
+                    </td>
                     <td>1.87</td>
                     <td>5,296,022</td>
                     <td>1.42</td>
@@ -520,7 +566,10 @@
                 <tr>
                     <td>6</td>
                     <td><strong>GOOGL</strong></td>
-                    <td>985,687</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">985,687</span>
+                        <span class="cp-ratio-value">C/P: 2.09</span>
+                    </td>
                     <td>2.09</td>
                     <td>3,220,473</td>
                     <td>1.36</td>
@@ -538,7 +587,10 @@
                 <tr>
                     <td>7</td>
                     <td><strong>IBIT</strong></td>
-                    <td>862,500</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">862,500</span>
+                        <span class="cp-ratio-value">C/P: 2.84</span>
+                    </td>
                     <td>2.84</td>
                     <td>7,068,088</td>
                     <td>2.41</td>
@@ -556,7 +608,10 @@
                 <tr>
                     <td>8</td>
                     <td><strong>MSFT</strong></td>
-                    <td>822,257</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">822,257</span>
+                        <span class="cp-ratio-value">C/P: 2.33</span>
+                    </td>
                     <td>2.33</td>
                     <td>2,142,892</td>
                     <td>1.48</td>
@@ -574,7 +629,10 @@
                 <tr>
                     <td>9</td>
                     <td><strong>MSTR</strong></td>
-                    <td>765,147</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">765,147</span>
+                        <span class="cp-ratio-value">C/P: 1.48</span>
+                    </td>
                     <td>1.48</td>
                     <td>1,855,226</td>
                     <td>1.07</td>
@@ -592,7 +650,10 @@
                 <tr>
                     <td>10</td>
                     <td><strong>CMG</strong></td>
-                    <td>675,079</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">675,079</span>
+                        <span class="cp-ratio-value">C/P: 0.70</span>
+                    </td>
                     <td>0.70</td>
                     <td>1,383,938</td>
                     <td>1.47</td>
@@ -610,7 +671,10 @@
                 <tr>
                     <td>11</td>
                     <td><strong>PLTR</strong></td>
-                    <td>653,901</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">653,901</span>
+                        <span class="cp-ratio-value">C/P: 1.86</span>
+                    </td>
                     <td>1.86</td>
                     <td>3,022,929</td>
                     <td>1.02</td>
@@ -628,7 +692,10 @@
                 <tr>
                     <td>12</td>
                     <td><strong>AMD</strong></td>
-                    <td>642,236</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">642,236</span>
+                        <span class="cp-ratio-value">C/P: 1.23</span>
+                    </td>
                     <td>1.23</td>
                     <td>3,349,407</td>
                     <td>1.08</td>
@@ -646,7 +713,10 @@
                 <tr>
                     <td>13</td>
                     <td><strong>GOOG</strong></td>
-                    <td>607,845</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">607,845</span>
+                        <span class="cp-ratio-value">C/P: 1.94</span>
+                    </td>
                     <td>1.94</td>
                     <td>1,585,498</td>
                     <td>1.52</td>
@@ -664,7 +734,10 @@
                 <tr>
                     <td>14</td>
                     <td><strong>TLT</strong></td>
-                    <td>576,718</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">576,718</span>
+                        <span class="cp-ratio-value">C/P: 1.18</span>
+                    </td>
                     <td>1.18</td>
                     <td>6,087,259</td>
                     <td>1.39</td>
@@ -682,7 +755,10 @@
                 <tr>
                     <td>15</td>
                     <td><strong>GLD</strong></td>
-                    <td>561,763</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">561,763</span>
+                        <span class="cp-ratio-value">C/P: 1.31</span>
+                    </td>
                     <td>1.31</td>
                     <td>1,819,715</td>
                     <td>1.64</td>
@@ -700,7 +776,10 @@
                 <tr>
                     <td>16</td>
                     <td><strong>SOFI</strong></td>
-                    <td>512,093</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">512,093</span>
+                        <span class="cp-ratio-value">C/P: 2.29</span>
+                    </td>
                     <td>2.29</td>
                     <td>3,955,406</td>
                     <td>1.57</td>
@@ -718,7 +797,10 @@
                 <tr>
                     <td>17</td>
                     <td><strong>CORZ</strong></td>
-                    <td>511,892</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">511,892</span>
+                        <span class="cp-ratio-value">C/P: 7.22</span>
+                    </td>
                     <td>7.22</td>
                     <td>2,124,913</td>
                     <td>3.75</td>
@@ -736,7 +818,10 @@
                 <tr>
                     <td>18</td>
                     <td><strong>MARA</strong></td>
-                    <td>491,899</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">491,899</span>
+                        <span class="cp-ratio-value">C/P: 8.73</span>
+                    </td>
                     <td>8.73</td>
                     <td>2,640,642</td>
                     <td>1.50</td>
@@ -754,7 +839,10 @@
                 <tr>
                     <td>19</td>
                     <td><strong>SOUN</strong></td>
-                    <td>467,255</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">467,255</span>
+                        <span class="cp-ratio-value">C/P: 0.79</span>
+                    </td>
                     <td>0.79</td>
                     <td>983,048</td>
                     <td>2.01</td>
@@ -772,7 +860,10 @@
                 <tr>
                     <td>20</td>
                     <td><strong>BYND</strong></td>
-                    <td>455,858</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">455,858</span>
+                        <span class="cp-ratio-value">C/P: 1.57</span>
+                    </td>
                     <td>1.57</td>
                     <td>1,991,405</td>
                     <td>1.51</td>
@@ -790,7 +881,10 @@
                 <tr>
                     <td>21</td>
                     <td><strong>SLV</strong></td>
-                    <td>427,014</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">427,014</span>
+                        <span class="cp-ratio-value">C/P: 2.66</span>
+                    </td>
                     <td>2.66</td>
                     <td>5,887,160</td>
                     <td>1.46</td>
@@ -808,7 +902,10 @@
                 <tr>
                     <td>22</td>
                     <td><strong>BMNR</strong></td>
-                    <td>414,606</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">414,606</span>
+                        <span class="cp-ratio-value">C/P: 1.49</span>
+                    </td>
                     <td>1.49</td>
                     <td>1,309,002</td>
                     <td>1.83</td>
@@ -826,7 +923,10 @@
                 <tr>
                     <td>23</td>
                     <td><strong>SPX</strong></td>
-                    <td>396,552</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">396,552</span>
+                        <span class="cp-ratio-value">C/P: 0.46</span>
+                    </td>
                     <td>0.46</td>
                     <td>906,879</td>
                     <td>0.46</td>
@@ -844,7 +944,10 @@
                 <tr>
                     <td>24</td>
                     <td><strong>INTC</strong></td>
-                    <td>375,809</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">375,809</span>
+                        <span class="cp-ratio-value">C/P: 1.49</span>
+                    </td>
                     <td>1.49</td>
                     <td>6,697,306</td>
                     <td>1.41</td>
@@ -862,7 +965,10 @@
                 <tr>
                     <td>25</td>
                     <td><strong>AVGO</strong></td>
-                    <td>370,355</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">370,355</span>
+                        <span class="cp-ratio-value">C/P: 2.73</span>
+                    </td>
                     <td>2.73</td>
                     <td>1,723,846</td>
                     <td>1.02</td>
@@ -880,7 +986,10 @@
                 <tr>
                     <td>26</td>
                     <td><strong>ORCL</strong></td>
-                    <td>355,308</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">355,308</span>
+                        <span class="cp-ratio-value">C/P: 1.20</span>
+                    </td>
                     <td>1.20</td>
                     <td>0</td>
                     <td>0.00</td>
@@ -898,7 +1007,10 @@
                 <tr>
                     <td>27</td>
                     <td><strong>KWEB</strong></td>
-                    <td>329,140</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">329,140</span>
+                        <span class="cp-ratio-value">C/P: 7.44</span>
+                    </td>
                     <td>7.44</td>
                     <td>0</td>
                     <td>0.00</td>
@@ -916,7 +1028,10 @@
                 <tr>
                     <td>28</td>
                     <td><strong>QUBT</strong></td>
-                    <td>328,631</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">328,631</span>
+                        <span class="cp-ratio-value">C/P: 0.77</span>
+                    </td>
                     <td>0.77</td>
                     <td>0</td>
                     <td>0.00</td>
@@ -934,7 +1049,10 @@
                 <tr>
                     <td>29</td>
                     <td><strong>OPEN</strong></td>
-                    <td>324,796</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">324,796</span>
+                        <span class="cp-ratio-value">C/P: 3.03</span>
+                    </td>
                     <td>3.03</td>
                     <td>0</td>
                     <td>0.00</td>
@@ -952,7 +1070,10 @@
                 <tr>
                     <td>30</td>
                     <td><strong>MRNA</strong></td>
-                    <td>291,101</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">291,101</span>
+                        <span class="cp-ratio-value">C/P: 3.89</span>
+                    </td>
                     <td>3.89</td>
                     <td>0</td>
                     <td>0.00</td>
@@ -1128,7 +1249,10 @@
                 row.innerHTML = `
                     <td>${idx + 1}</td>
                     <td><strong>${item.ticker}</strong></td>
-                    <td>${item.total_volume.toLocaleString()}</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">${item.total_volume.toLocaleString()}</span>
+                        <span class="cp-ratio-value">C/P: ${item.cp_volume_ratio.toFixed(2)}</span>
+                    </td>
                     <td>${item.cp_volume_ratio.toFixed(2)}</td>
                     <td>${item.total_oi.toLocaleString()}</td>
                     <td>${item.cp_oi_ratio.toFixed(2)}</td>
