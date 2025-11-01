@@ -38,50 +38,18 @@ def main():
         # Check if today's data already exists (restored from gh-pages)
         if os.path.exists(json_file):
             print_progress(f"📦 Found existing data for {date_str}")
-            print_progress(f"   • Loading from: {json_file}")
-            print_progress("   • Skipping data fetch to save API quota\n")
+            print_progress(f"   • File: {json_file}")
+            print_progress("   • Data already processed and published")
+            print_progress("   • Skipping analysis (nothing to do)\n")
 
-            # Load existing data
-            with open(json_file, 'r', encoding='utf-8') as f:
-                historical_data = json.load(f)
-
-            data = historical_data.get('data', [])
-            anomalies = historical_data.get('anomalies', [])
-            summary = historical_data.get('summary', {})
-            metadata = {
-                'data_source': historical_data.get('data_source', 'CSV'),
-                'csv_date': historical_data.get('date', date_str)
-            }
-
-            print_progress(f"✓ Loaded {len(data)} tickers from existing data\n")
-
-            # Generate HTML report from existing data
-            print_progress("📄 Generating HTML report from existing data...")
-            os.makedirs('output', exist_ok=True)
-            reporter = HTMLReportGenerator()
-            reporter.generate(data, anomalies, summary, metadata=metadata)
-
-            # Copy current report to dated version
-            import shutil
-            dated_report = f'output/{date_str}.html'
-            shutil.copy2('output/anomaly_report.html', dated_report)
-            print_progress(f"✓ HTML report saved: {dated_report}")
-
-            # Generate archive index page
-            print_progress("📚 Generating archive index...")
-            reports = get_archived_reports()
-            generate_archive_index(reports)
-            print_progress(f"✓ Archive index updated ({len(reports)} reports)\n")
-
-            # Success message
             print("\n" + "="*80)
-            print("✅ Report Generated from Existing Data!")
+            print("ℹ️  Data Already Exists")
             print("="*80)
-            print(f"\n📊 Results:")
-            print(f"   • Tickers: {len(data)}")
-            print(f"   • Anomalies: {summary.get('total', 0)}")
-            print(f"   • Report: output/index.html")
-            print(f"   • Data source: {metadata.get('data_source', 'Unknown')}")
+            print(f"\n📋 Status:")
+            print(f"   • Date: {date_str}")
+            print(f"   • Data file: {json_file}")
+            print(f"   • Already published to gh-pages")
+            print(f"\n💡 No action needed - data is already up to date.")
             print("="*80 + "\n")
 
             return 0
