@@ -114,17 +114,18 @@ class HTMLReportGenerator:
         time_display = format_market_time_html(time_info)
 
         # Add data source info to time display
+        from datetime import datetime
+        current_date = datetime.now().strftime('%Y-%m-%d')
+
         data_source = metadata.get('data_source', 'Unknown')
         if data_source in ['CSV', 'CSV+API']:
             csv_date = metadata.get('csv_date', 'Unknown')
             time_display += f' | <strong>数据来源:</strong> CSV文件 ({csv_date}.csv.gz)'
-            # Use CSV date and filename for table header (the date of the data)
-            stock_date_info = f"{csv_date} from {csv_date}.csv.gz"
+            # Show analysis date and CSV file date
+            stock_date_info = f"{current_date} from {csv_date}.csv.gz"
         else:
             time_display += f' | <strong>数据来源:</strong> API'
             # Use current date for table header when using API
-            from datetime import datetime
-            current_date = datetime.now().strftime('%Y-%m-%d')
             stock_date_info = f"{current_date} from API"
 
         # Generate macro outlook analysis using AI
