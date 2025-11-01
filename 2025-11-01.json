@@ -1,6 +1,6 @@
 {
   "date": "2025-11-01",
-  "timestamp": "2025-11-01T09:30:00.364862",
+  "timestamp": "2025-11-01T10:48:12.992475",
   "tickers_count": 4355,
   "anomalies_count": 3465,
   "data_source": "CSV+API",
@@ -53,7 +53,7 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 14.3,
+        "avg_rank": 12.4,
         "best_rank": 1,
         "worst_rank": 27,
         "today_rank": 1,
@@ -111,13 +111,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 11.8,
+        "avg_rank": 11.6,
         "best_rank": 2,
         "worst_rank": 26,
         "today_rank": 2,
         "rank_change": 0,
         "trend": "rising",
-        "streak": 6,
+        "streak": 7,
         "icon": "🔥"
       }
     },
@@ -142,15 +142,15 @@
         "dominant_strike": null
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 3.0,
         "best_rank": 3,
         "worst_rank": 3,
         "today_rank": 3,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -202,11 +202,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 10.5,
+        "avg_rank": 8.2,
         "best_rank": 1,
-        "worst_rank": 27,
+        "worst_rank": 20,
         "today_rank": 4,
-        "rank_change": 1,
+        "rank_change": 0,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -260,11 +260,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 12.9,
+        "avg_rank": 10.9,
         "best_rank": 2,
-        "worst_rank": 25,
+        "worst_rank": 18,
         "today_rank": 5,
-        "rank_change": 5,
+        "rank_change": 0,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -318,7 +318,7 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 13.3,
+        "avg_rank": 13.0,
         "best_rank": 6,
         "worst_rank": 25,
         "today_rank": 6,
@@ -376,11 +376,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 14.7,
+        "avg_rank": 13.2,
         "best_rank": 3,
         "worst_rank": 28,
         "today_rank": 7,
-        "rank_change": -4,
+        "rank_change": 0,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -434,11 +434,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 12.0,
+        "avg_rank": 11.7,
         "best_rank": 2,
         "worst_rank": 25,
         "today_rank": 8,
-        "rank_change": 3,
+        "rank_change": 0,
         "trend": "rising",
         "streak": 10,
         "icon": "🔥"
@@ -492,11 +492,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 9.2,
+        "avg_rank": 8.2,
         "best_rank": 1,
         "worst_rank": 21,
         "today_rank": 9,
-        "rank_change": -2,
+        "rank_change": 0,
         "trend": "stable",
         "streak": 10,
         "icon": "🔥"
@@ -548,15 +548,15 @@
         "dominant_strike": 300
       },
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 14.6,
+        "appearances": 10,
+        "appearance_rate": 100.0,
+        "avg_rank": 14.1,
         "best_rank": 2,
         "worst_rank": 26,
         "today_rank": 10,
-        "rank_change": -1,
-        "trend": "stable",
-        "streak": 9,
+        "rank_change": 0,
+        "trend": "rising",
+        "streak": 10,
         "icon": "🔥"
       }
     },
@@ -608,13 +608,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 12.9,
+        "avg_rank": 13.4,
         "best_rank": 5,
         "worst_rank": 28,
         "today_rank": 11,
-        "rank_change": 17,
+        "rank_change": 0,
         "trend": "falling",
-        "streak": 2,
+        "streak": 3,
         "icon": "🔥"
       }
     },
@@ -664,15 +664,15 @@
         "dominant_strike": 60
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 12.0,
         "best_rank": 12,
         "worst_rank": 12,
         "today_rank": 12,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -724,13 +724,13 @@
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
-        "avg_rank": 12.9,
-        "best_rank": 2,
+        "avg_rank": 14.2,
+        "best_rank": 6,
         "worst_rank": 30,
         "today_rank": 13,
-        "rank_change": -5,
+        "rank_change": 0,
         "trend": "rising",
-        "streak": 4,
+        "streak": 5,
         "icon": "🌟"
       }
     },
@@ -780,15 +780,15 @@
         "dominant_strike": 300
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 14.0,
         "best_rank": 14,
         "worst_rank": 14,
         "today_rank": 14,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -838,15 +838,15 @@
         "dominant_strike": 50
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 15.0,
         "best_rank": 15,
         "worst_rank": 15,
         "today_rank": 15,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -898,13 +898,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 14.8,
+        "avg_rank": 16.0,
         "best_rank": 3,
         "worst_rank": 28,
         "today_rank": 16,
-        "rank_change": 1,
-        "trend": "falling",
-        "streak": 4,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 5,
         "icon": "🔥"
       }
     },
@@ -956,11 +956,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 13.9,
+        "avg_rank": 14.3,
         "best_rank": 4,
         "worst_rank": 22,
         "today_rank": 17,
-        "rank_change": -5,
+        "rank_change": 0,
         "trend": "stable",
         "streak": 10,
         "icon": "🔥"
@@ -1012,15 +1012,15 @@
         "dominant_strike": 250
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 18.0,
         "best_rank": 18,
         "worst_rank": 18,
         "today_rank": 18,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -1072,13 +1072,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 15.4,
+        "avg_rank": 16.8,
         "best_rank": 3,
         "worst_rank": 26,
         "today_rank": 19,
-        "rank_change": 5,
+        "rank_change": 0,
         "trend": "falling",
-        "streak": 1,
+        "streak": 2,
         "icon": "🔥"
       }
     },
@@ -1130,13 +1130,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 18.1,
-        "best_rank": 10,
+        "avg_rank": 19.2,
+        "best_rank": 12,
         "worst_rank": 28,
         "today_rank": 20,
-        "rank_change": -7,
-        "trend": "falling",
-        "streak": 1,
+        "rank_change": 0,
+        "trend": "rising",
+        "streak": 2,
         "icon": "🔥"
       }
     },
@@ -1188,12 +1188,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 13.4,
+        "avg_rank": 14.1,
         "best_rank": 1,
         "worst_rank": 27,
         "today_rank": 21,
-        "rank_change": -3,
-        "trend": "stable",
+        "rank_change": 0,
+        "trend": "falling",
         "streak": 10,
         "icon": "🔥"
       }
@@ -1244,15 +1244,15 @@
         "dominant_strike": 20
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 22.0,
         "best_rank": 22,
         "worst_rank": 22,
         "today_rank": 22,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -1302,15 +1302,15 @@
         "dominant_strike": 5
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 23.0,
         "best_rank": 23,
         "worst_rank": 23,
         "today_rank": 23,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -1360,15 +1360,15 @@
         "dominant_strike": 16
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 24.0,
         "best_rank": 24,
         "worst_rank": 24,
         "today_rank": 24,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -1418,15 +1418,15 @@
         "dominant_strike": 1
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 25.0,
         "best_rank": 25,
         "worst_rank": 25,
         "today_rank": 25,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -1478,13 +1478,13 @@
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
-        "avg_rank": 14.6,
+        "avg_rank": 15.9,
         "best_rank": 1,
         "worst_rank": 26,
         "today_rank": 26,
-        "rank_change": -6,
+        "rank_change": 0,
         "trend": "falling",
-        "streak": 1,
+        "streak": 2,
         "icon": "🌟"
       }
     },
@@ -1534,15 +1534,15 @@
         "dominant_strike": 50
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 27.0,
         "best_rank": 27,
         "worst_rank": 27,
         "today_rank": 27,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -1592,15 +1592,15 @@
         "dominant_strike": 5500
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 28.0,
         "best_rank": 28,
         "worst_rank": 28,
         "today_rank": 28,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -1656,8 +1656,8 @@
         "best_rank": 4,
         "worst_rank": 29,
         "today_rank": 29,
-        "rank_change": -16,
-        "trend": "rising",
+        "rank_change": 0,
+        "trend": "falling",
         "streak": 10,
         "icon": "🔥"
       }
@@ -1708,15 +1708,15 @@
         "dominant_strike": 300
       },
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
         "avg_rank": 30.0,
         "best_rank": 30,
         "worst_rank": 30,
         "today_rank": 30,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 2,
         "icon": "🆕"
       }
     },
@@ -2020,9 +2020,9 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
-        "avg_rank": 17.2,
+        "appearances": 7,
+        "appearance_rate": 70.0,
+        "avg_rank": 17.6,
         "best_rank": 2,
         "worst_rank": 29,
         "today_rank": 23,
@@ -2228,14 +2228,14 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 7,
-        "appearance_rate": 70.0,
-        "avg_rank": 10.7,
+        "appearances": 6,
+        "appearance_rate": 60.0,
+        "avg_rank": 12.3,
         "best_rank": 1,
         "worst_rank": 19,
         "today_rank": 1,
         "rank_change": 18,
-        "trend": "falling",
+        "trend": "stable",
         "streak": 0,
         "icon": "🌟"
       }
@@ -2436,9 +2436,9 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 5,
-        "appearance_rate": 50.0,
-        "avg_rank": 14.2,
+        "appearances": 4,
+        "appearance_rate": 40.0,
+        "avg_rank": 12.5,
         "best_rank": 4,
         "worst_rank": 29,
         "today_rank": 4,
@@ -2514,9 +2514,9 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
-        "avg_rank": 12.2,
+        "appearances": 7,
+        "appearance_rate": 70.0,
+        "avg_rank": 10.6,
         "best_rank": 2,
         "worst_rank": 25,
         "today_rank": 15,
@@ -2826,16 +2826,16 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 13.0,
+        "appearances": 8,
+        "appearance_rate": 80.0,
+        "avg_rank": 11.8,
         "best_rank": 3,
-        "worst_rank": 23,
+        "worst_rank": 21,
         "today_rank": 19,
         "rank_change": -11,
         "trend": "falling",
         "streak": 0,
-        "icon": "🔥"
+        "icon": "🌟"
       }
     },
     {
@@ -3060,16 +3060,16 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 18.2,
-        "best_rank": 8,
+        "appearances": 8,
+        "appearance_rate": 80.0,
+        "avg_rank": 19.5,
+        "best_rank": 11,
         "worst_rank": 30,
         "today_rank": 14,
         "rank_change": 6,
         "trend": "falling",
         "streak": 0,
-        "icon": "🔥"
+        "icon": "🌟"
       }
     },
     {
@@ -3398,16 +3398,16 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 16.1,
+        "appearances": 8,
+        "appearance_rate": 80.0,
+        "avg_rank": 16.0,
         "best_rank": 1,
         "worst_rank": 22,
         "today_rank": 16,
         "rank_change": 3,
         "trend": "stable",
         "streak": 0,
-        "icon": "🔥"
+        "icon": "🌟"
       }
     },
     {
@@ -3814,9 +3814,9 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
-        "avg_rank": 15.1,
+        "appearances": 7,
+        "appearance_rate": 70.0,
+        "avg_rank": 14.7,
         "best_rank": 3,
         "worst_rank": 23,
         "today_rank": 22,
@@ -4100,16 +4100,16 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 15.8,
+        "appearances": 8,
+        "appearance_rate": 80.0,
+        "avg_rank": 14.2,
         "best_rank": 2,
         "worst_rank": 30,
         "today_rank": 4,
         "rank_change": 10,
         "trend": "rising",
         "streak": 0,
-        "icon": "🔥"
+        "icon": "🌟"
       }
     },
     {
@@ -4412,9 +4412,9 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
-        "avg_rank": 21.9,
+        "appearances": 7,
+        "appearance_rate": 70.0,
+        "avg_rank": 21.3,
         "best_rank": 9,
         "worst_rank": 29,
         "today_rank": 20,
@@ -7012,9 +7012,9 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
-        "avg_rank": 12.5,
+        "appearances": 7,
+        "appearance_rate": 70.0,
+        "avg_rank": 12.6,
         "best_rank": 6,
         "worst_rank": 24,
         "today_rank": 24,
@@ -8754,14 +8754,14 @@
       "call_oi": 0,
       "cp_oi_ratio": 0,
       "history": {
-        "appearances": 7,
-        "appearance_rate": 70.0,
-        "avg_rank": 15.7,
-        "best_rank": 3,
+        "appearances": 6,
+        "appearance_rate": 60.0,
+        "avg_rank": 17.8,
+        "best_rank": 6,
         "worst_rank": 28,
         "today_rank": 21,
         "rank_change": 4,
-        "trend": "falling",
+        "trend": "stable",
         "streak": 0,
         "icon": "🌟"
       }
