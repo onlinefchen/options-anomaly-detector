@@ -12,16 +12,9 @@ from utils import get_market_times, format_market_time_html
 class HTMLReportGenerator:
     """Generate HTML reports for options anomaly analysis"""
 
-    # 指数和ETF列表（这些通常有巨大的期权交易量）
+    # 主要大盘指数（只显示这三个）
     INDEX_ETFS = {
-        # 主要指数
-        'SPY', 'QQQ', 'IWM', 'DIA',
-        # 行业ETF
-        'XLE', 'XLF', 'XLI', 'XLK', 'XLV', 'XLY', 'XLP', 'XLU', 'XLB', 'XLRE', 'XLC',
-        # 其他常见ETF
-        'EEM', 'GLD', 'SLV', 'TLT', 'HYG', 'EWZ', 'FXI',
-        # 波动率相关
-        'VXX', 'UVXY', 'VIXY', 'SVXY'
+        'SPY', 'QQQ', 'IWM'
     }
 
     def __init__(self):
@@ -30,13 +23,13 @@ class HTMLReportGenerator:
 
     def _classify_ticker(self, ticker: str) -> str:
         """
-        Classify ticker as 'index' or 'stock'
+        Classify ticker as 'index' (major market indices) or 'stock' (stocks & other ETFs)
 
         Args:
-            ticker: Stock ticker symbol
+            ticker: Ticker symbol
 
         Returns:
-            'index' or 'stock'
+            'index' for SPY/QQQ/IWM, 'stock' for everything else
         """
         return 'index' if ticker in self.INDEX_ETFS else 'stock'
 
@@ -67,8 +60,9 @@ class HTMLReportGenerator:
         index_data = [d for d in data if self._classify_ticker(d['ticker']) == 'index']
         stock_data = [d for d in data if self._classify_ticker(d['ticker']) == 'stock']
 
-        # 分别排序并取Top 30
-        sorted_index_data = sorted(index_data, key=lambda x: x['total_volume'], reverse=True)[:30]
+        # 大盘指数：显示所有找到的（最多3个：SPY, QQQ, IWM）
+        sorted_index_data = sorted(index_data, key=lambda x: x['total_volume'], reverse=True)
+        # 个股和ETF：取Top 30
         sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:30]
 
         # 用于整体图表的数据（包含所有数据的Top 30）
@@ -558,7 +552,7 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Index & ETF Options - Top 30 ({index_count})</h2>
+            <h2>Market Indices ({index_count})</h2>
             <table id="indexTable">
                 <thead>
                     <tr>
@@ -580,7 +574,7 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Stock Options - Top 30 ({stock_count})</h2>
+            <h2>Stocks & ETFs - Top 30 ({stock_count})</h2>
             <table id="stockTable">
                 <thead>
                     <tr>
