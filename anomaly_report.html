@@ -217,6 +217,29 @@
             font-weight: 500;
         }
 
+        .macro-content {
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .macro-content p {
+            margin: 16px 0;
+        }
+
+        .macro-content strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .macro-content ul {
+            margin: 12px 0;
+            padding-left: 24px;
+        }
+
+        .macro-content li {
+            margin: 8px 0;
+        }
+
         .footer {
             text-align: center;
             color: #6e6e73;
@@ -243,7 +266,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 08:08:34 EDT | <strong>东八区时间:</strong> 2025-11-01 20:08:34 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 08:14:38 EDT | <strong>东八区时间:</strong> 2025-11-01 20:14:38 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -275,160 +298,10 @@
         </div>
 
         <div class="section">
-            <h2>Detected Anomalies</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Severity</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                <tr>
-                    <td><strong>SPY</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 47.58)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>SPY</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 57487.2x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>QQQ</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 24.74)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>QQQ</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 29941.2x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>SPXW</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 19.79)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>SPXW</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 23970.4x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>NVDA</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 16.97)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>NVDA</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 20565.5x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>META</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 12.53)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>META</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 15212.1x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>TSLA</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 11.22)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>TSLA</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 13634.8x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>IWM</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 8.71)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>IWM</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 10604.1x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>AMZN</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 7.10)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>AMZN</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 8667.4x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>AAPL</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 6.73)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>AAPL</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 8219.5x above median</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>GOOGL</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>HIGH VOLUME</td>
-                    <td>Extremely high trading volume (Z-score: 5.47)</td>
-                </tr>
-            
-                <tr>
-                    <td><strong>GOOGL</strong></td>
-                    <td><span class="badge" style="background-color:#000">HIGH</span></td>
-                    <td>VOLUME SPIKE</td>
-                    <td>Volume 6705.4x above median</td>
-                </tr>
-            
-                </tbody>
-            </table>
+            <h2>Macro Market Outlook</h2>
+            <div class="macro-content">
+                <p>AI analysis not configured (OPENAI_API_KEY required)</p>
+            </div>
         </div>
 
         <div class="section">
