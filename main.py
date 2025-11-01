@@ -102,16 +102,36 @@ def main():
         print_progress(f"   • Flat Files access: {'✓' if strategy_info['has_flat_files_access'] else '✗'}")
         print_progress(f"   • Recommended strategy: {strategy_info['recommended_strategy'].upper()}\n")
 
-        # Fetch options data using hybrid strategy
-        # Use top_n_for_oi=30 to ensure we get OI data for top 25 stocks after excluding 3-5 indices
-        data, metadata = fetcher.fetch_data(strategy='auto', top_n_for_oi=30)
+        # Fetch options data using CSV (no API fallback)
+        # Try to download CSV for today
+        print_progress("📥 Checking for CSV data...")
+        today = datetime.now().strftime('%Y-%m-%d')
+        success, data, csv_date = fetcher.csv_handler.try_download_and_parse(date=today, max_retries=1)
 
-        if not data:
-            print("\n❌ Error: No data fetched. Check your API key and network connection.")
-            return 1
+        if not success or not data:
+            print_progress(f"⊘ No CSV data available for {today}")
+            print_progress("   • CSV file not found (likely a non-trading day)")
+            print_progress("   • Skipping analysis - will only generate reports for days with CSV data\n")
 
-        print_progress(f"✓ Successfully fetched data for {len(data)} tickers")
-        print_progress(f"   • Data source: {metadata.get('data_source', 'Unknown')}\n")
+            print("\n" + "="*80)
+            print("ℹ️  No Analysis Performed")
+            print("="*80)
+            print(f"\n📋 Reason:")
+            print(f"   • No CSV data available for {today}")
+            print(f"   • This is expected for weekends, holidays, and days before market close")
+            print(f"\n💡 Analysis will run automatically when CSV data becomes available.")
+            print("="*80 + "\n")
+            return 0
+
+        # CSV data found - enrich with OI data from API
+        print_progress(f"✓ CSV data found for {csv_date}")
+        print_progress(f"   • Downloaded {len(data)} tickers from CSV")
+
+        # Enrich top tickers with OI data from API
+        print_progress("📡 Enriching top 30 tickers with Open Interest data from API...")
+        data, metadata = fetcher.enrich_with_oi(data, top_n=30)
+        print_progress(f"✓ Successfully enriched data")
+        print_progress(f"   • Data source: {metadata.get('data_source', 'CSV+API')}\n")
 
         # Analyze historical activity
         print_progress("📊 Analyzing historical activity (past 10 trading days)...")
@@ -137,33 +157,29 @@ def main():
         # Archive historical data
         print_progress("💾 Archiving historical data...")
 
-        # Only save JSON and dated HTML if data is from CSV (not API-only)
-        data_source = metadata.get('data_source', 'Unknown')
-        if data_source in ['CSV', 'CSV+API']:
-            # Save raw data as JSON
-            historical_data = {
-                'date': date_str,
-                'timestamp': datetime.now().isoformat(),
-                'tickers_count': len(data),
-                'anomalies_count': summary['total'],
-                'data_source': data_source,
-                'data': data,
-                'anomalies': anomalies,
-                'summary': summary
-            }
+        # Save raw data as JSON
+        data_source = metadata.get('data_source', 'CSV+API')
+        historical_data = {
+            'date': date_str,
+            'timestamp': datetime.now().isoformat(),
+            'tickers_count': len(data),
+            'anomalies_count': summary['total'],
+            'data_source': data_source,
+            'data': data,
+            'anomalies': anomalies,
+            'summary': summary
+        }
 
-            json_file = f'output/{date_str}.json'
-            with open(json_file, 'w', encoding='utf-8') as f:
-                json.dump(historical_data, f, ensure_ascii=False, indent=2)
-            print_progress(f"✓ Raw data saved: {json_file}")
+        json_file = f'output/{date_str}.json'
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(historical_data, f, ensure_ascii=False, indent=2)
+        print_progress(f"✓ Raw data saved: {json_file}")
 
-            # Copy current report to dated version (only for CSV data)
-            import shutil
-            dated_report = f'output/{date_str}.html'
-            shutil.copy2('output/anomaly_report.html', dated_report)
-            print_progress(f"✓ Historical report saved: {dated_report}")
-        else:
-            print_progress(f"⊘ Skipping JSON/HTML save (data source: {data_source}, CSV required)")
+        # Copy current report to dated version
+        import shutil
+        dated_report = f'output/{date_str}.html'
+        shutil.copy2('output/anomaly_report.html', dated_report)
+        print_progress(f"✓ Historical report saved: {dated_report}")
 
         # Generate archive index page
         print_progress("📚 Generating archive index...")
