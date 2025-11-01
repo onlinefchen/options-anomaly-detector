@@ -94,13 +94,9 @@ class HTMLReportGenerator:
             if not price_fetcher.is_available():
                 print("  ⚠️  Polygon API not configured, skipping price fetch")
 
-        # Prepare data for Volume Chart - use overall top 30 (includes indices + stocks)
-        volume_chart_tickers = [d['ticker'] for d in sorted_data]
-        volume_chart_volumes = [d['total_volume'] for d in sorted_data]
-        volume_chart_cp_ratios = [d['cp_volume_ratio'] for d in sorted_data]
-
-        # Prepare data for C/P and OI charts - only use Stocks & ETFs Top 30 (exclude Market Indices)
+        # Prepare data for all charts - only use Stocks & ETFs Top 30 (exclude Market Indices)
         tickers = [d['ticker'] for d in sorted_stock_data]
+        volumes = [d['total_volume'] for d in sorted_stock_data]
         cp_volume_ratios = [d['cp_volume_ratio'] for d in sorted_stock_data]
         cp_oi_ratios = [d['cp_oi_ratio'] for d in sorted_stock_data]
         open_interests = [d['total_oi'] for d in sorted_stock_data]
@@ -152,12 +148,9 @@ class HTMLReportGenerator:
             high_severity=summary.get('by_severity', {}).get('HIGH', 0),
             medium_severity=summary.get('by_severity', {}).get('MEDIUM', 0),
             low_severity=summary.get('by_severity', {}).get('LOW', 0),
-            # Volume chart data (all top 30)
-            volume_chart_tickers_json=json.dumps(volume_chart_tickers),
-            volume_chart_volumes_json=json.dumps(volume_chart_volumes),
-            volume_chart_cp_ratios_json=json.dumps(volume_chart_cp_ratios),
-            # C/P and OI charts data (stocks/ETFs only)
+            # All charts data (stocks/ETFs only, excluding Market Indices)
             tickers_json=json.dumps(tickers),
+            volumes_json=json.dumps(volumes),
             cp_volume_ratios_json=json.dumps(cp_volume_ratios),
             cp_oi_ratios_json=json.dumps(cp_oi_ratios),
             open_interests_json=json.dumps(open_interests),
@@ -906,17 +899,17 @@ class HTMLReportGenerator:
             }}
         }});
 
-        // Volume Chart with C/P ratio in tooltip (shows all top 30 including indices)
+        // Volume Chart with C/P ratio in tooltip (stocks & ETFs only, excludes Market Indices)
         const volumeCtx = document.getElementById('volumeChart').getContext('2d');
-        const volumeChartCPRatios = {volume_chart_cp_ratios_json};
+        const cpRatiosForVolume = {cp_volume_ratios_json};
 
         new Chart(volumeCtx, {{
             type: 'bar',
             data: {{
-                labels: {volume_chart_tickers_json},
+                labels: {tickers_json},
                 datasets: [{{
                     label: '总成交量',
-                    data: {volume_chart_volumes_json},
+                    data: {volumes_json},
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1
@@ -937,7 +930,7 @@ class HTMLReportGenerator:
                         callbacks: {{
                             afterLabel: function(context) {{
                                 const index = context.dataIndex;
-                                const cpRatio = volumeChartCPRatios[index];
+                                const cpRatio = cpRatiosForVolume[index];
                                 return 'C/P Ratio: ' + cpRatio.toFixed(2);
                             }}
                         }}
