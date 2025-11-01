@@ -45,7 +45,8 @@ def main():
         print_progress(f"   • Recommended strategy: {strategy_info['recommended_strategy'].upper()}\n")
 
         # Fetch options data using hybrid strategy
-        data, metadata = fetcher.fetch_data(strategy='auto', top_n_for_oi=30)
+        # Use top_n_for_oi=35 to ensure we get OI data for top 30 stocks after excluding 3-5 indices
+        data, metadata = fetcher.fetch_data(strategy='auto', top_n_for_oi=35)
 
         if not data:
             print("\n❌ Error: No data fetched. Check your API key and network connection.")
