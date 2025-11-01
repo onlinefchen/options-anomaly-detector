@@ -376,47 +376,97 @@ class PolygonCSVHandler:
         print(f"  ✓ Aggregated {len(results)} unique tickers")
         return results
 
+    def get_latest_trading_day(self) -> str:
+        """
+        Get the most recent trading day based on US Eastern Time
+
+        Logic:
+        - Convert current time to US Eastern Time
+        - Go back 1 day to get yesterday's trading day (CSV available next day)
+        - Skip weekends to find the latest trading day
+
+        Returns:
+            Date string in YYYY-MM-DD format
+        """
+        import pytz
+
+        # Get current time in US Eastern timezone
+        eastern = pytz.timezone('US/Eastern')
+        now_eastern = datetime.now(pytz.utc).astimezone(eastern)
+
+        # Go back 1 day (CSV for trading day N is available on day N+1)
+        check_date = now_eastern - timedelta(days=1)
+
+        # Skip weekends: if yesterday was Sunday (6), go back to Friday
+        # if yesterday was Saturday (5), go back to Friday
+        while check_date.weekday() in [5, 6]:  # Saturday=5, Sunday=6
+            check_date -= timedelta(days=1)
+
+        result = check_date.strftime('%Y-%m-%d')
+        print(f"  🌍 Current US Eastern Time: {now_eastern.strftime('%Y-%m-%d %H:%M:%S %Z')}")
+        print(f"  📅 Target trading day: {result} ({check_date.strftime('%A')})")
+
+        return result
+
     def try_download_and_parse(
         self,
         date: Optional[str] = None,
-        max_retries: int = 2
+        max_retries: int = 3
     ) -> Tuple[bool, List[Dict], Optional[str]]:
         """
         Try to download and parse CSV data with retries
 
+        Logic:
+        - First attempt: Try latest trading day (based on US Eastern Time)
+        - If failed: Try previous trading days (up to max_retries times)
+        - Automatically skips weekends
+
         Args:
-            date: Date string or None for yesterday
-            max_retries: Number of retry attempts
+            date: Date string or None to auto-detect latest trading day
+            max_retries: Number of trading days to try (default: 3)
 
         Returns:
             Tuple of (success, data, date_used)
         """
-        used_date = date or (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+        if date is None:
+            # Auto-detect latest trading day based on US Eastern Time
+            used_date = self.get_latest_trading_day()
+        else:
+            used_date = date
+            print(f"  📅 Using specified date: {used_date}")
 
         for attempt in range(max_retries):
             if attempt > 0:
                 print(f"  🔄 Retry attempt {attempt + 1}/{max_retries}")
 
-                # If first attempt failed, try day before yesterday
-                if date is None:
-                    retry_date = (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')
-                    print(f"  💡 Trying previous day: {retry_date}")
-                    used_date = retry_date
-                    date = retry_date
+                # Try previous trading day
+                check_date = datetime.strptime(used_date, '%Y-%m-%d')
+                check_date -= timedelta(days=1)
+
+                # Skip weekends
+                while check_date.weekday() in [5, 6]:
+                    check_date -= timedelta(days=1)
+
+                used_date = check_date.strftime('%Y-%m-%d')
+                print(f"  💡 Trying previous trading day: {used_date} ({check_date.strftime('%A')})")
 
             # Download
-            csv_data = self.download_csv(used_date if date is None else date)
+            csv_data = self.download_csv(used_date)
             if csv_data is None:
+                print(f"  ✗ Failed to download CSV for {used_date}")
                 continue
 
             # Parse
             df = self.parse_csv(csv_data)
             if df.empty:
+                print(f"  ✗ CSV file is empty for {used_date}")
                 continue
 
             # Aggregate
             results = self.aggregate_by_underlying(df)
             if results:
+                print(f"  ✅ Successfully loaded data for {used_date}")
                 return True, results, used_date
 
+        print(f"  ❌ Failed to get CSV data after {max_retries} attempts")
         return False, [], None
