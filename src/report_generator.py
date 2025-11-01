@@ -98,6 +98,25 @@ class HTMLReportGenerator:
         else:
             time_display += f' | <strong>数据来源:</strong> API'
 
+        # Generate macro outlook analysis using AI
+        macro_analysis = ''
+        if sorted_index_data:
+            from ai_analyzer import AIAnalyzer
+            ai_analyzer = AIAnalyzer()
+            if ai_analyzer.is_available():
+                print("\n  🤖 Generating macro outlook analysis...")
+                macro_text = ai_analyzer.analyze_macro_outlook(sorted_index_data)
+                if macro_text:
+                    # Convert markdown formatting to basic HTML
+                    macro_analysis = self._markdown_to_html(macro_text)
+                    print("  ✓ Macro analysis generated")
+                else:
+                    macro_analysis = '<p>Macro analysis unavailable</p>'
+            else:
+                macro_analysis = '<p>AI analysis not configured (OPENAI_API_KEY required)</p>'
+        else:
+            macro_analysis = '<p>Insufficient index data for macro analysis</p>'
+
         # Generate HTML
         html = self.template.format(
             report_date=time_display,
@@ -122,7 +141,7 @@ class HTMLReportGenerator:
             # 保留原有的（用于兼容）
             volume_table_rows=self._generate_table_rows(sorted_data),
             table_data_json=json.dumps(sorted_data, ensure_ascii=False),
-            anomaly_rows=self._generate_anomaly_rows(sorted_anomalies)
+            macro_analysis=macro_analysis
         )
 
         # Write to file
@@ -136,6 +155,41 @@ class HTMLReportGenerator:
         index_file = os.path.join(output_dir, 'index.html')
         shutil.copy2(output_file, index_file)
         print(f"✓ GitHub Pages index created: {index_file}")
+
+    def _markdown_to_html(self, text: str) -> str:
+        """
+        Convert simple markdown to HTML
+
+        Args:
+            text: Markdown formatted text
+
+        Returns:
+            HTML formatted text
+        """
+        import re
+
+        # Escape HTML characters
+        html_text = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
+        # Convert **bold**
+        html_text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html_text)
+
+        # Convert bullet points
+        html_text = re.sub(r'^- (.+)$', r'<li>\1</li>', html_text, flags=re.MULTILINE)
+        html_text = re.sub(r'(<li>.*</li>)', r'<ul>\1</ul>', html_text, flags=re.DOTALL)
+        html_text = html_text.replace('</ul>\n<ul>', '\n')
+
+        # Convert paragraphs (double newline)
+        paragraphs = html_text.split('\n\n')
+        html_paragraphs = []
+        for para in paragraphs:
+            para = para.strip()
+            if para and not para.startswith('<'):
+                html_paragraphs.append(f'<p>{para}</p>')
+            else:
+                html_paragraphs.append(para)
+
+        return '\n\n'.join(html_paragraphs)
 
     def _format_contract_short(self, contract: Dict) -> str:
         """
@@ -473,6 +527,29 @@ class HTMLReportGenerator:
             font-weight: 500;
         }}
 
+        .macro-content {{
+            line-height: 1.8;
+            font-size: 14px;
+        }}
+
+        .macro-content p {{
+            margin: 16px 0;
+        }}
+
+        .macro-content strong {{
+            font-weight: 600;
+            color: #1d1d1f;
+        }}
+
+        .macro-content ul {{
+            margin: 12px 0;
+            padding-left: 24px;
+        }}
+
+        .macro-content li {{
+            margin: 8px 0;
+        }}
+
         .footer {{
             text-align: center;
             color: #6e6e73;
@@ -531,20 +608,10 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Detected Anomalies</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Severity</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {anomaly_rows}
-                </tbody>
-            </table>
+            <h2>Macro Market Outlook</h2>
+            <div class="macro-content">
+                {macro_analysis}
+            </div>
         </div>
 
         <div class="section">

@@ -569,3 +569,144 @@ class AIAnalyzer:
 </html>
 """
         return html
+
+    def analyze_macro_outlook(
+        self,
+        indices_data: List[Dict],
+        max_tokens: int = 1500
+    ) -> Optional[str]:
+        """
+        Analyze macro economic outlook using SPY/QQQ/IWM data
+
+        Args:
+            indices_data: Data for SPY, QQQ, IWM
+            max_tokens: Maximum tokens to generate
+
+        Returns:
+            AI-generated macro analysis (Markdown format)
+        """
+        if not self.is_available():
+            return None
+
+        try:
+            # Prepare indices summary
+            indices_summary = []
+            for item in indices_data:
+                indices_summary.append({
+                    'ticker': item['ticker'],
+                    'total_volume': item['total_volume'],
+                    'put_volume': item.get('put_volume', 0),
+                    'call_volume': item.get('call_volume', 0),
+                    'cp_volume_ratio': item['cp_volume_ratio'],
+                    'total_oi': item['total_oi'],
+                    'put_oi': item.get('put_oi', 0),
+                    'call_oi': item.get('call_oi', 0),
+                    'cp_oi_ratio': item['cp_oi_ratio'],
+                    'top_3_contracts': item.get('top_3_contracts', [])[:3],
+                    'strike_concentration': item.get('strike_concentration', {})
+                })
+
+            # Build prompt
+            prompt = self._build_macro_prompt(indices_summary)
+
+            # Call GPT-4o
+            response = self.client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": """You are a senior macro economist and market strategist with 20+ years experience at top hedge funds and central banks.
+
+Your expertise:
+1. Federal Reserve policy analysis - deeply understand rate decisions, QT/QE, yield curve dynamics
+2. Global macro trends - geopolitical risks, supply chains, energy markets, currency flows
+3. Market structure - institutional positioning, systematic flows, volatility regimes
+4. Economic cycles - recession indicators, credit markets, employment data
+5. Options market interpretation - what major indices options tell us about institutional sentiment
+
+Your analysis philosophy:
+- Connect the dots between macro conditions and market behavior
+- Explain the "why" behind current market positioning
+- Identify key risks and opportunities
+- Be honest about uncertainties
+- Focus on what matters most for investors
+
+Write concise but insightful analysis in English."""
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                temperature=0.7,
+                max_tokens=max_tokens
+            )
+
+            analysis = response.choices[0].message.content
+            return analysis
+
+        except Exception as e:
+            print(f"❌ Macro analysis failed: {e}")
+            return None
+
+    def _build_macro_prompt(self, indices_summary: List[Dict]) -> str:
+        """
+        Build macro analysis prompt
+
+        Args:
+            indices_summary: Summary of SPY/QQQ/IWM data
+
+        Returns:
+            Prompt string
+        """
+        # Build detailed indices data
+        indices_detail = []
+        for item in indices_summary:
+            strike_conc = item.get('strike_concentration', {})
+            top_contracts = item.get('top_3_contracts', [])
+
+            contracts_str = ""
+            if top_contracts:
+                contracts_list = []
+                for c in top_contracts:
+                    contract_detail = (
+                        f"{c.get('type', 'N/A').upper()} ${c.get('strike', 'N/A')} "
+                        f"Exp {c.get('expiry', 'N/A')} "
+                        f"(OI {c.get('oi', 0):,}, {c.get('percentage', 0):.1f}%)"
+                    )
+                    contracts_list.append(contract_detail)
+                contracts_str = "\n     " + "\n     ".join(contracts_list)
+
+            detail = f"""
+{item['ticker']}:
+  Volume: {item['total_volume']:,} (Put: {item['put_volume']:,}, Call: {item['call_volume']:,})
+  C/P Volume Ratio: {item['cp_volume_ratio']:.2f}
+  Open Interest: {item['total_oi']:,} (Put: {item['put_oi']:,}, Call: {item['call_oi']:,})
+  C/P OI Ratio: {item['cp_oi_ratio']:.2f}
+  Strike Concentration: {strike_conc.get('range', 'N/A')} ({strike_conc.get('percentage', 0):.1f}%)
+  Top 3 Contracts:{contracts_str}
+"""
+            indices_detail.append(detail)
+
+        prompt = f"""Analyze the current macro market environment based on these major indices options data:
+
+{''.join(indices_detail)}
+
+Please provide:
+
+**Market Sentiment & Positioning**
+- What does the C/P ratio tell us about institutional sentiment?
+- How are smart money positioning (based on OI and top contracts)?
+- Any unusual patterns suggesting hedging or directional bets?
+
+**Macro Outlook**
+- What's the current macro environment (Fed policy, inflation, growth)?
+- Key risks and opportunities in the near term
+- What should investors watch for?
+
+**Key Takeaways**
+- 3-5 bullet points summarizing the most important insights
+
+Keep it concise, actionable, and focused on what matters most."""
+
+        return prompt
