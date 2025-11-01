@@ -18,7 +18,6 @@ from anomaly_detector import OptionsAnomalyDetector
 from report_generator import HTMLReportGenerator
 from archive_index_generator import get_archived_reports, generate_archive_index
 from history_analyzer import HistoryAnalyzer
-from price_fetcher import PriceFetcher
 from utils import print_banner, print_summary_table, print_anomalies_summary, print_progress
 
 
@@ -60,12 +59,6 @@ def main():
         analyzer = HistoryAnalyzer(output_dir='output', lookback_days=10)
         data = analyzer.enrich_data_with_history(data)
         print_progress("✓ Historical analysis complete\n")
-
-        # Fetch current prices
-        print_progress("💰 Fetching current stock prices...")
-        price_fetcher = PriceFetcher()
-        data = price_fetcher.enrich_data_with_prices(data)
-        print_progress("✓ Price fetching complete\n")
 
         # Detect anomalies
         print_progress("🔍 Detecting anomalies...")

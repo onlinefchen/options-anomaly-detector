@@ -71,6 +71,29 @@ class HTMLReportGenerator:
         # 用于整体图表的数据（包含所有过滤后数据的Top 30）
         sorted_data = sorted(filtered_data, key=lambda x: x['total_volume'], reverse=True)[:30]
 
+        # Fetch current prices for displayed tickers only
+        print("  💰 Fetching current prices for displayed tickers...")
+        from price_fetcher import PriceFetcher
+        price_fetcher = PriceFetcher()
+
+        # Collect tickers that will be displayed
+        display_tickers = list(set(
+            [item['ticker'] for item in sorted_index_data] +
+            [item['ticker'] for item in sorted_stock_data]
+        ))
+
+        if price_fetcher.is_available() and display_tickers:
+            prices = price_fetcher.get_batch_quotes(display_tickers)
+            # Add prices to all data items
+            for item in data:
+                item['current_price'] = prices.get(item['ticker'])
+            print(f"  ✓ Fetched {len(prices)} prices for {len(display_tickers)} tickers")
+        else:
+            for item in data:
+                item['current_price'] = None
+            if not price_fetcher.is_available():
+                print("  ⚠️  Polygon API not configured, skipping price fetch")
+
         # Prepare data for charts
         tickers = [d['ticker'] for d in sorted_data]
         volumes = [d['total_volume'] for d in sorted_data]
