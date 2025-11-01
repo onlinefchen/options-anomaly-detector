@@ -288,7 +288,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 09:13:56 EDT | <strong>东八区时间:</strong> 2025-11-01 21:13:56 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-01 09:19:36 EDT | <strong>东八区时间:</strong> 2025-11-01 21:19:36 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-30.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -324,25 +324,29 @@
             <div class="macro-content">
                 <strong>Market Sentiment &amp; Positioning</strong>
 
-<ul><li><strong>C/P Ratio Analysis:</strong> The Call/Put (C/P) Volume and Open Interest Ratios across SPY, QQQ, and IWM all suggest a bearish sentiment. SPY's C/P OI ratio is notably low at 0.33, indicating heavy put positioning relative to calls, which implies that institutions are either hedging against downside risk or positioning for a potential market downturn. Similarly, QQQ and IWM show C/P OI ratios of 0.50 and 0.36, respectively, which are also skewed towards puts.</li>
+<ul><li><strong>C/P Ratio Analysis:</strong> The Call/Put (C/P) ratios across SPY, QQQ, and IWM all reflect a bearish sentiment among institutional investors. The C/P Volume Ratios for SPY (0.78), QQQ (0.75), and IWM (0.60) indicate a higher volume of put options, suggesting that investors are more inclined to protect against downside risks or are positioning for a potential decline.</li>
 
-<li><strong>Smart Money Positioning:</strong> The concentration of open interest in out-of-the-money puts, particularly in SPY and QQQ, with significant open interest in strikes well below current levels, suggests that institutional investors are preparing for potential downside. The high open interest in longer-dated put contracts (expiring in late 2025) indicates a strategic hedge or a bearish long-term view.</li>
+<li><strong>Smart Money Positioning:</strong> The significant open interest in puts, particularly long-dated ones, suggests a defensive posture. In SPY and IWM, the notably high put open interest compared to calls (C/P OI Ratios of 0.33 and 0.36, respectively) points to substantial hedging activity. The heavy concentration in strikes further out from current levels, such as SPY’s 500-550 and IWM’s 220-240, indicates that investors are preparing for significant market adjustments.</li>
 
-<li><strong>Unusual Patterns:</strong> The substantial open interest in distant strike puts, such as SPY's $500 strike, implies a protective or speculative stance on downside risk, possibly betting on significant market corrections or increased volatility in the medium to long term.</li>
+<li><strong>Unusual Patterns:</strong> The prevalence of long-dated put options with expiration dates well into 2025 suggests a strategic approach to hedging or bearish positioning, possibly due to expectations of prolonged market volatility or macroeconomic challenges.</li>
 
 <strong>Macro Outlook</strong>
 
-<li><strong>Current Macro Environment:</strong> The macro landscape remains challenging with persistent inflationary pressures and a Federal Reserve poised to maintain a hawkish stance in the near term. Global growth concerns, compounded by geopolitical tensions and supply chain disruptions, add to the uncertainty.</li>
+<li><strong>Current Macro Environment:</strong> The macroeconomic landscape is characterized by persistent inflationary pressures, with the Federal Reserve maintaining a cautious stance on further tightening. Growth remains tepid, and the yield curve inversion continues to signal recessionary risks.</li>
 
-<li><strong>Key Risks and Opportunities:</strong> A major risk is the potential for a recession if the Fed's tightening policy overshoots, leading to a sharp economic contraction. Conversely, opportunities may arise from tactical allocations in sectors less sensitive to interest rate fluctuations or those that benefit from a strong dollar.</li>
+<li><strong>Key Risks and Opportunities:</strong> The primary risks include potential monetary policy missteps, geopolitical tensions, and supply chain disruptions, which could exacerbate inflation and impact growth. Opportunities may arise from sectors resilient to inflation or those poised to benefit from fiscal policy support or technological advancements.</li>
 
-<li><strong>Investors' Watchlist:</strong> Investors should monitor Fed communications for any pivot indications, inflation data releases, which could alter rate hike expectations, and geopolitical developments that might impact energy markets and global trade flows.</li>
+<li><strong>Investors' Watchlist:</strong> Investors should monitor upcoming Fed meetings for any shifts in policy stance, inflation data releases for signs of easing pressures, and geopolitical developments that could impact market stability.</li>
 
 <strong>Key Takeaways</strong>
 
-<li>The options market data reflects a bearish institutional sentiment with a strong preference for protective puts, indicating caution or expectations of downside risk.</li>
-<li>The macro environment remains fraught with inflation and growth challenges, with the Fed likely to maintain its restrictive policy stance, presenting recession risks.</li>
-<li>Investors should be vigilant about Fed policy changes, inflation trends, and geopolitical developments to navigate potential market volatility effectively.</li></ul>
+<li>The high put option volumes and open interest across major indices reflect a bearish institutional sentiment, with significant hedging against downside risks.</li>
+  
+<li>Long-dated put options suggest expectations of prolonged volatility and potential market downturns, likely driven by macro uncertainties.</li>
+  
+<li>The macro environment remains fraught with risks, including inflation persistence and potential recession, necessitating close monitoring of Federal Reserve actions and economic data.</li>
+  
+<li>Investors should stay vigilant to policy shifts and evolving geopolitical dynamics, which could significantly impact market trajectories.</li></ul>
             </div>
         </div>
 
@@ -1336,10 +1340,10 @@
         new Chart(volumeCtx, {
             type: 'bar',
             data: {
-                labels: ["SPY", "QQQ", "NVDA", "META", "TSLA", "IWM", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB"],
+                labels: ["NVDA", "META", "TSLA", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB", "QUBT", "OPEN", "MRNA"],
                 datasets: [{
                     label: '总成交量',
-                    data: [8450612, 4401356, 3023124, 2236172, 2004310, 1558805, 1274103, 1208271, 985687, 862500, 822257, 765147, 675079, 653901, 642236, 607845, 576718, 561763, 512093, 511892, 491899, 467255, 455858, 427014, 414606, 396552, 375809, 370355, 355308, 329140],
+                    data: [3023124, 2236172, 2004310, 1274103, 1208271, 985687, 862500, 822257, 765147, 675079, 653901, 642236, 607845, 576718, 561763, 512093, 511892, 491899, 467255, 455858, 427014, 414606, 396552, 375809, 370355, 355308, 329140, 328631, 324796, 291101],
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1
@@ -1370,18 +1374,18 @@
         new Chart(cpCtx, {
             type: 'bar',
             data: {
-                labels: ["SPY", "QQQ", "NVDA", "META", "TSLA", "IWM", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB"],
+                labels: ["NVDA", "META", "TSLA", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB", "QUBT", "OPEN", "MRNA"],
                 datasets: [
                     {
                         label: 'C/P 成交比',
-                        data: [0.78, 0.75, 2.26, 1.8, 1.45, 0.6, 1.89, 1.87, 2.09, 2.84, 2.33, 1.48, 0.7, 1.86, 1.23, 1.94, 1.18, 1.31, 2.29, 7.22, 8.73, 0.79, 1.57, 2.66, 1.49, 0.46, 1.49, 2.73, 1.2, 7.44],
+                        data: [2.26, 1.8, 1.45, 1.89, 1.87, 2.09, 2.84, 2.33, 1.48, 0.7, 1.86, 1.23, 1.94, 1.18, 1.31, 2.29, 7.22, 8.73, 0.79, 1.57, 2.66, 1.49, 0.46, 1.49, 2.73, 1.2, 7.44, 0.77, 3.03, 3.89],
                         backgroundColor: 'rgba(255, 99, 132, 0.6)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'C/P 持仓比',
-                        data: [0.33, 0.5, 1.12, 1.49, 1.16, 0.36, 1.45, 1.42, 1.36, 2.41, 1.48, 1.07, 1.47, 1.02, 1.08, 1.52, 1.39, 1.64, 1.57, 3.75, 1.5, 2.01, 1.51, 1.46, 1.83, 0.46, 1.41, 1.02, 0, 0],
+                        data: [1.12, 1.49, 1.16, 1.45, 1.42, 1.36, 2.41, 1.48, 1.07, 1.47, 1.02, 1.08, 1.52, 1.39, 1.64, 1.57, 3.75, 1.5, 2.01, 1.51, 1.46, 1.83, 0.46, 1.41, 1.02, 0, 0, 0, 0, 0],
                         backgroundColor: 'rgba(54, 162, 235, 0.6)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -1410,10 +1414,10 @@
         new Chart(oiCtx, {
             type: 'bar',
             data: {
-                labels: ["SPY", "QQQ", "NVDA", "META", "TSLA", "IWM", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB"],
+                labels: ["NVDA", "META", "TSLA", "AMZN", "AAPL", "GOOGL", "IBIT", "MSFT", "MSTR", "CMG", "PLTR", "AMD", "GOOG", "TLT", "GLD", "SOFI", "CORZ", "MARA", "SOUN", "BYND", "SLV", "BMNR", "SPX", "INTC", "AVGO", "ORCL", "KWEB", "QUBT", "OPEN", "MRNA"],
                 datasets: [{
                     label: '持仓量',
-                    data: [4350935, 2590333, 12897913, 1472264, 3997085, 5717576, 4496777, 5296022, 3220473, 7068088, 2142892, 1855226, 1383938, 3022929, 3349407, 1585498, 6087259, 1819715, 3955406, 2124913, 2640642, 983048, 1991405, 5887160, 1309002, 906879, 6697306, 1723846, 0, 0],
+                    data: [12897913, 1472264, 3997085, 4496777, 5296022, 3220473, 7068088, 2142892, 1855226, 1383938, 3022929, 3349407, 1585498, 6087259, 1819715, 3955406, 2124913, 2640642, 983048, 1991405, 5887160, 1309002, 906879, 6697306, 1723846, 0, 0, 0, 0, 0],
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
