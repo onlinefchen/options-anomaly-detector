@@ -96,8 +96,10 @@ def main():
         print_progress(f"   • Downloaded {len(data)} tickers from CSV")
 
         # Enrich top tickers with OI data from API
-        print_progress("📡 Enriching top 30 tickers with Open Interest data from API...")
-        data, metadata = fetcher.enrich_with_oi(data, top_n=30)
+        # Use top_n=35 to ensure all top 25 stocks have OI data after filtering out indices
+        # (indices like SPY, QQQ, IWM, SPXW, VIX occupy ~5-8 spots in top 35)
+        print_progress("📡 Enriching top 35 tickers with Open Interest data from API...")
+        data, metadata = fetcher.enrich_with_oi(data, top_n=35)
         print_progress(f"✓ Successfully enriched data")
         print_progress(f"   • Data source: {metadata.get('data_source', 'CSV+API')}\n")
 

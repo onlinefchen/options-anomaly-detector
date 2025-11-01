@@ -260,3 +260,78 @@ class HybridDataFetcher:
             'recommended_strategy': 'auto' if has_csv else 'api',
             'available_strategies': ['auto', 'csv', 'api'] if has_csv else ['api']
         }
+
+    def enrich_with_oi(self, data: List[Dict], top_n: int = 30):
+        """
+        Enrich top N tickers with Open Interest data from API
+
+        Args:
+            data: List of ticker data dicts (must be pre-sorted by volume)
+            top_n: Number of top tickers to enrich with OI data
+
+        Returns:
+            Tuple of (enriched_data, metadata)
+        """
+        enriched_count = 0
+
+        for idx, item in enumerate(data[:top_n], 1):
+            ticker = item['ticker']
+
+            # Fetch OI from API
+            oi_data = self.api_fetcher.get_options_chain(ticker)
+
+            if oi_data.get('status') == 'OK':
+                contracts = oi_data.get('results', [])
+
+                put_oi = 0
+                call_oi = 0
+                contracts_with_oi = []
+                strike_dict = {}
+
+                for contract in contracts:
+                    details = contract.get('details', {})
+                    contract_type = details.get('contract_type')
+                    oi = contract.get('open_interest', 0) or 0
+                    strike = details.get('strike_price')
+
+                    if contract_type == 'put':
+                        put_oi += oi
+                    elif contract_type == 'call':
+                        call_oi += oi
+
+                    # Collect contract info for analysis
+                    if oi > 0:
+                        contracts_with_oi.append({
+                            'ticker': details.get('ticker'),
+                            'oi': oi,
+                            'strike': strike,
+                            'expiry': details.get('expiration_date'),
+                            'type': contract_type
+                        })
+
+                        # Track strike price distribution
+                        if strike:
+                            strike_dict[strike] = strike_dict.get(strike, 0) + oi
+
+                total_oi = put_oi + call_oi
+                cp_oi_ratio = round(call_oi / put_oi, 2) if put_oi > 0 else 0
+
+                # Get Top 3 active contracts
+                top_3 = sorted(contracts_with_oi, key=lambda x: x['oi'], reverse=True)[:3]
+                for contract in top_3:
+                    contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0
+
+                # Analyze strike concentration
+                strike_concentration = self._analyze_strike_concentration(strike_dict, total_oi)
+
+                # Update item with OI data
+                item['total_oi'] = total_oi
+                item['put_oi'] = put_oi
+                item['call_oi'] = call_oi
+                item['cp_oi_ratio'] = cp_oi_ratio
+                item['top_3_contracts'] = top_3
+                item['strike_concentration'] = strike_concentration
+
+                enriched_count += 1
+
+        return data, {'data_source': 'CSV+API'}
