@@ -56,17 +56,20 @@ class HTMLReportGenerator:
         import os
         import shutil
 
+        # 过滤掉不需要显示的ticker
+        filtered_data = [d for d in data if d['ticker'] not in ['SPXW', 'VIX']]
+
         # 将数据分成指数ETF和个股两组
-        index_data = [d for d in data if self._classify_ticker(d['ticker']) == 'index']
-        stock_data = [d for d in data if self._classify_ticker(d['ticker']) == 'stock']
+        index_data = [d for d in filtered_data if self._classify_ticker(d['ticker']) == 'index']
+        stock_data = [d for d in filtered_data if self._classify_ticker(d['ticker']) == 'stock']
 
         # 大盘指数：显示所有找到的（最多3个：SPY, QQQ, IWM）
         sorted_index_data = sorted(index_data, key=lambda x: x['total_volume'], reverse=True)
         # 个股和ETF：取Top 30
         sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:30]
 
-        # 用于整体图表的数据（包含所有数据的Top 30）
-        sorted_data = sorted(data, key=lambda x: x['total_volume'], reverse=True)[:30]
+        # 用于整体图表的数据（包含所有过滤后数据的Top 30）
+        sorted_data = sorted(filtered_data, key=lambda x: x['total_volume'], reverse=True)[:30]
 
         # Prepare data for charts
         tickers = [d['ticker'] for d in sorted_data]
@@ -98,7 +101,7 @@ class HTMLReportGenerator:
         # Generate HTML
         html = self.template.format(
             report_date=time_display,
-            total_tickers=len(data),
+            total_tickers=len(filtered_data),
             total_anomalies=summary.get('total', 0),
             high_severity=summary.get('by_severity', {}).get('HIGH', 0),
             medium_severity=summary.get('by_severity', {}).get('MEDIUM', 0),
