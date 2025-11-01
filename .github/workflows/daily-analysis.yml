@@ -98,6 +98,11 @@ jobs:
 
       - name: 📜 Generate historical data (if requested)
         if: ${{ github.event.inputs.force_generate == 'true' }}
+        env:
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+          POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
+          POLYGON_S3_SECRET_KEY: ${{ secrets.POLYGON_S3_SECRET_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           echo "=================================================="
           echo "📜 GENERATING HISTORICAL DATA"
