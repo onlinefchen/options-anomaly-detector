@@ -94,12 +94,12 @@ class HTMLReportGenerator:
             if not price_fetcher.is_available():
                 print("  ⚠️  Polygon API not configured, skipping price fetch")
 
-        # Prepare data for charts
-        tickers = [d['ticker'] for d in sorted_data]
-        volumes = [d['total_volume'] for d in sorted_data]
-        cp_volume_ratios = [d['cp_volume_ratio'] for d in sorted_data]
-        cp_oi_ratios = [d['cp_oi_ratio'] for d in sorted_data]
-        open_interests = [d['total_oi'] for d in sorted_data]
+        # Prepare data for charts - only use Stocks & ETFs Top 30 (exclude Market Indices)
+        tickers = [d['ticker'] for d in sorted_stock_data]
+        volumes = [d['total_volume'] for d in sorted_stock_data]
+        cp_volume_ratios = [d['cp_volume_ratio'] for d in sorted_stock_data]
+        cp_oi_ratios = [d['cp_oi_ratio'] for d in sorted_stock_data]
+        open_interests = [d['total_oi'] for d in sorted_stock_data]
 
         # Sort anomalies by severity
         severity_order = {'HIGH': 3, 'MEDIUM': 2, 'LOW': 1}
