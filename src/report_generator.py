@@ -262,7 +262,10 @@ class HTMLReportGenerator:
                 <tr>
                     <td>{idx}</td>
                     <td><strong>{item['ticker']}</strong></td>
-                    <td>{item['total_volume']:,}</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">{item['total_volume']:,}</span>
+                        <span class="cp-ratio-value">C/P: {item['cp_volume_ratio']:.2f}</span>
+                    </td>
                     <td>{item['cp_volume_ratio']:.2f}</td>
                     <td>{item['total_oi']:,}</td>
                     <td>{item['cp_oi_ratio']:.2f}</td>
@@ -484,6 +487,28 @@ class HTMLReportGenerator:
 
         table tr:hover {{
             background: #f5f5f7;
+        }}
+
+        /* Volume cell with hover effect to show C/P ratio */
+        .volume-cell {{
+            position: relative;
+        }}
+
+        .volume-cell .volume-value {{
+            display: inline;
+        }}
+
+        .volume-cell .cp-ratio-value {{
+            display: none;
+        }}
+
+        table tr:hover .volume-cell .volume-value {{
+            display: none;
+        }}
+
+        table tr:hover .volume-cell .cp-ratio-value {{
+            display: inline;
+            color: #0066cc;
         }}
 
         .compact-cell {{
@@ -822,7 +847,10 @@ class HTMLReportGenerator:
                 row.innerHTML = `
                     <td>${{idx + 1}}</td>
                     <td><strong>${{item.ticker}}</strong></td>
-                    <td>${{item.total_volume.toLocaleString()}}</td>
+                    <td class="volume-cell">
+                        <span class="volume-value">${{item.total_volume.toLocaleString()}}</span>
+                        <span class="cp-ratio-value">C/P: ${{item.cp_volume_ratio.toFixed(2)}}</span>
+                    </td>
                     <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
                     <td>${{item.total_oi.toLocaleString()}}</td>
                     <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
