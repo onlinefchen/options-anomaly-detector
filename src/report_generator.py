@@ -246,8 +246,16 @@ class HTMLReportGenerator:
         """Generate table rows HTML for volume rankings"""
         rows = []
         for idx, item in enumerate(data, 1):
-            # Format Top 3 contracts
+            # Format volume in 万 (W) with 2 decimal places
+            volume_w = item['total_volume'] / 10000
+            oi_w = item['total_oi'] / 10000
+
+            # Format Top 3 contracts with Current Price at the beginning
             top3_html = ''
+            current_price = item.get('current_price')
+            if current_price:
+                top3_html += f"<div><small>Current: ${current_price:.2f}</small></div>"
+
             for i, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
                 contract_short = self._format_contract_short(contract)
                 oi_k = contract.get('oi', 0) / 1000
@@ -256,21 +264,6 @@ class HTMLReportGenerator:
 
             if not top3_html:
                 top3_html = '<small>N/A</small>'
-
-            # Format strike range
-            strike_info = item.get('strike_concentration', {})
-            strike_range = strike_info.get('range', 'N/A')
-            strike_pct = strike_info.get('percentage', 0)
-            dominant = strike_info.get('dominant_strike')
-            current_price = item.get('current_price')
-
-            price_line = f"<div><small>Current: ${current_price:.2f}</small></div>" if current_price else ""
-
-            strike_html = f"""
-                <div><strong>{strike_range}</strong> <span class='pct'>({strike_pct:.1f}%)</span></div>
-                {price_line}
-                <div><small>Key: {dominant if dominant else 'N/A'}</small></div>
-            """
 
             # Format history activity
             history = item.get('history', {})
@@ -292,17 +285,21 @@ class HTMLReportGenerator:
                 <div><small>Avg Rank: {avg_rank if avg_rank else 'N/A'}</small></div>
             """
 
+            # Streak (consecutive days)
+            streak = history.get('streak', 0)
+            streak_html = f"<strong>{streak}</strong>" if streak > 0 else "-"
+
             rows.append(f"""
                 <tr>
                     <td>{idx}</td>
                     <td><strong>{item['ticker']}</strong></td>
-                    <td>{item['total_volume']:,}</td>
+                    <td>{volume_w:.2f}W</td>
                     <td>{item['cp_volume_ratio']:.2f}</td>
-                    <td>{item['total_oi']:,}</td>
+                    <td>{oi_w:.2f}W</td>
                     <td>{item['cp_oi_ratio']:.2f}</td>
                     <td class="compact-cell">{top3_html}</td>
-                    <td class="compact-cell">{strike_html}</td>
                     <td class="compact-cell">{history_html}</td>
+                    <td class="compact-cell" style="text-align: center;">{streak_html}</td>
                 </tr>
             """)
         return ''.join(rows)
@@ -361,7 +358,7 @@ class HTMLReportGenerator:
             background: #f5f5f7;
             padding: 40px 20px;
             color: #1d1d1f;
-            line-height: 1.5;
+            line-height: 1.4;
         }}
 
         .container {{
@@ -479,7 +476,7 @@ class HTMLReportGenerator:
         table th {{
             background: #f5f5f7;
             color: #1d1d1f;
-            padding: 12px 16px;
+            padding: 8px 12px;
             text-align: left;
             font-weight: 600;
             font-size: 13px;
@@ -511,7 +508,7 @@ class HTMLReportGenerator:
         }}
 
         table td {{
-            padding: 12px 16px;
+            padding: 8px 12px;
             border-bottom: 1px solid #d2d2d7;
             font-size: 13px;
         }}
@@ -523,8 +520,8 @@ class HTMLReportGenerator:
 
         .compact-cell {{
             font-size: 12px;
-            line-height: 1.5;
-            padding: 10px 16px !important;
+            line-height: 1.4;
+            padding: 6px 10px !important;
         }}
 
         .compact-cell div {{
@@ -668,8 +665,8 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
-                        <th>Strike Range</th>
                         <th>10-Day Activity</th>
+                        <th>Streak</th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -690,8 +687,8 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
-                        <th>Strike Range</th>
                         <th>10-Day Activity</th>
+                        <th>Streak</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">
@@ -809,8 +806,17 @@ class HTMLReportGenerator:
             tbody.innerHTML = '';
 
             data.forEach((item, idx) => {{
-                // Format Top 3 contracts
+                // Format volume and OI in 万 (W) with 2 decimal places
+                const volumeW = (item.total_volume / 10000).toFixed(2) + 'W';
+                const oiW = (item.total_oi / 10000).toFixed(2) + 'W';
+
+                // Format Top 3 contracts with Current Price at the beginning
                 let top3Html = '';
+                const currentPrice = item.current_price;
+                if (currentPrice) {{
+                    top3Html += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
+                }}
+
                 const top3Contracts = item.top_3_contracts || [];
                 top3Contracts.slice(0, 3).forEach((contract, i) => {{
                     const contractShort = formatContractShort(contract);
@@ -821,21 +827,6 @@ class HTMLReportGenerator:
                 if (!top3Html) {{
                     top3Html = '<small>N/A</small>';
                 }}
-
-                // Format strike concentration
-                const strikeInfo = item.strike_concentration || {{}};
-                const strikeRange = strikeInfo.range || 'N/A';
-                const strikePct = strikeInfo.percentage || 0;
-                const dominant = strikeInfo.dominant_strike;
-                const currentPrice = item.current_price;
-
-                const priceLine = currentPrice ? `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>` : '';
-
-                const strikeHtml = `
-                    <div><strong>${{strikeRange}}</strong> <span class='pct'>(${{strikePct.toFixed(1)}}%)</span></div>
-                    ${{priceLine}}
-                    <div><small>Key: ${{dominant || 'N/A'}}</small></div>
-                `;
 
                 // Format history
                 const history = item.history || {{}};
@@ -858,17 +849,21 @@ class HTMLReportGenerator:
                     <div><small>Avg Rank: ${{avgRank || 'N/A'}}</small></div>
                 `;
 
+                // Streak (consecutive days)
+                const streak = history.streak || 0;
+                const streakHtml = streak > 0 ? `<strong>${{streak}}</strong>` : '-';
+
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${{idx + 1}}</td>
                     <td><strong>${{item.ticker}}</strong></td>
-                    <td>${{item.total_volume.toLocaleString()}}</td>
+                    <td>${{volumeW}}</td>
                     <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
-                    <td>${{item.total_oi.toLocaleString()}}</td>
+                    <td>${{oiW}}</td>
                     <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
                     <td class="compact-cell">${{top3Html}}</td>
-                    <td class="compact-cell">${{strikeHtml}}</td>
                     <td class="compact-cell">${{historyHtml}}</td>
+                    <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
                 `;
                 tbody.appendChild(row);
             }});

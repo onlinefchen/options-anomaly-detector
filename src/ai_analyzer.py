@@ -404,8 +404,16 @@ class AIAnalyzer:
         # Top 25 详细表格
         top_25_rows = []
         for i, item in enumerate(data[:25], 1):
-            # Top 3 Contracts
+            # Format volume and OI in 万 (W) with 2 decimal places
+            volume_w = item['total_volume'] / 10000
+            oi_w = item['total_oi'] / 10000
+
+            # Top 3 Contracts with Current Price at the beginning
             top3_text = ""
+            current_price = item.get('current_price')
+            if current_price:
+                top3_text += f"Current: ${current_price:.2f}<br>"
+
             for j, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
                 expiry = contract.get('expiry', '')
                 if expiry:
@@ -418,19 +426,6 @@ class AIAnalyzer:
 
             if not top3_text:
                 top3_text = "N/A"
-
-            # Strike Range
-            strike_info = item.get('strike_concentration', {})
-            strike_range = strike_info.get('range', 'N/A')
-            strike_pct = strike_info.get('percentage', 0)
-            dominant = strike_info.get('dominant_strike')
-            current_price = item.get('current_price')
-
-            strike_text = f"{strike_range} ({strike_pct:.1f}%)"
-            if current_price:
-                strike_text += f"<br>Current: ${current_price:.2f}"
-            if dominant:
-                strike_text += f"<br>Key: {dominant}"
 
             # History
             history = item.get('history', {})
@@ -447,17 +442,21 @@ class AIAnalyzer:
 
             history_text = f"{appearances}/10 {icon} {rank_symbol}"
 
+            # Streak (consecutive days)
+            streak = history.get('streak', 0)
+            streak_text = f"<strong>{streak}</strong>" if streak > 0 else "-"
+
             top_25_rows.append(f"""
                 <tr>
                     <td style="text-align: center;">{i}</td>
                     <td><strong>{item['ticker']}</strong></td>
-                    <td style="text-align: right;">{item['total_volume']:,}</td>
+                    <td style="text-align: right;">{volume_w:.2f}W</td>
                     <td style="text-align: center;">{item['cp_volume_ratio']:.2f}</td>
-                    <td style="text-align: right;">{item['total_oi']:,}</td>
+                    <td style="text-align: right;">{oi_w:.2f}W</td>
                     <td style="text-align: center;">{item.get('cp_oi_ratio', 0):.2f}</td>
                     <td style="font-size: 11px; line-height: 1.4;">{top3_text}</td>
-                    <td style="font-size: 11px; line-height: 1.4;">{strike_text}</td>
                     <td style="text-align: center; font-size: 11px;">{history_text}</td>
+                    <td style="text-align: center; font-size: 11px;">{streak_text}</td>
                 </tr>
             """)
 
@@ -469,7 +468,7 @@ class AIAnalyzer:
     <style>
         body {{
             font-family: 'Courier New', Courier, monospace;
-            line-height: 1.8;
+            line-height: 1.4;
             color: #1d1d1f;
             max-width: 700px;
             margin: 0 auto;
@@ -509,13 +508,13 @@ class AIAnalyzer:
         th {{
             background: #f5f5f7;
             color: #1d1d1f;
-            padding: 12px 8px;
+            padding: 8px 8px;
             text-align: left;
             font-weight: 600;
             border-bottom: 1px solid #d2d2d7;
         }}
         td {{
-            padding: 12px 8px;
+            padding: 8px 8px;
             border-bottom: 1px solid #f5f5f7;
             color: #1d1d1f;
         }}
@@ -597,8 +596,8 @@ class AIAnalyzer:
                     <th style="text-align: right;">持仓量</th>
                     <th style="text-align: center;">C/P OI</th>
                     <th>Top 3 Contracts</th>
-                    <th>Strike Range</th>
                     <th style="text-align: center;">10-Day</th>
+                    <th style="text-align: center;">Streak</th>
                 </tr>
             </thead>
             <tbody>
