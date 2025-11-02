@@ -115,16 +115,7 @@ jobs:
       - name: 📚 Regenerate archive index
         run: |
           echo "📚 重新生成归档索引..."
-          python -c "
-import sys
-import os
-sys.path.insert(0, 'src')
-from archive_index_generator import get_archived_reports, generate_archive_index
-
-reports = get_archived_reports('output')
-generate_archive_index(reports, os.path.join('output', 'archive.html'))
-print(f'✓ 归档索引更新完成 ({len(reports)} 个报告)')
-          "
+          python src/archive_index_generator.py
 
       - name: 📄 Update index.html
         run: |
