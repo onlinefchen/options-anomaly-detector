@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>期权异常分析 - 历史报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f7;
+            padding: 20px;
+            color: #1d1d1f;
+        }
+
+        .date-cell {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #d1f4e0;
+            color: #0f5132;
+        }
+
+        .badge-secondary {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #1d1d1f;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .nav {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 10px 25px;
+            margin: 0 10px;
+            background: #0071e3;
+            color: white;
+            text-decoration: none;
+            border-radius: 980px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            background: #0077ED;
+            transform: scale(1.02);
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            color: #333;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #5568d3;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .stats {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin: 0 5px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 期权异常分析 - 历史报告</h1>
+            <p class="date">数据归档与历史查询</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">📊 最新报告</a>
+            <a href="archive.html">📚 历史报告</a>
+        </div>
+
+        <div class="section">
+            <h2>📅 历史报告列表</h2>
+            <p style="color: #666; margin-bottom: 20px;">
+                共 <strong>12</strong> 份历史报告，每日自动更新并归档
+            </p>
+
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>交易日</th>
+                        <th>统计</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td class="date-cell">2025-10-30</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4355 只股票</span>
+                        <span class="stats">🚨 3457 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-30.html" class="btn">查看报告</a>
+                        <a href="2025-10-30.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-29</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4423 只股票</span>
+                        <span class="stats">🚨 3505 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-29.html" class="btn">查看报告</a>
+                        <a href="2025-10-29.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-28</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4386 只股票</span>
+                        <span class="stats">🚨 3359 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-28.html" class="btn">查看报告</a>
+                        <a href="2025-10-28.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-27</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4456 只股票</span>
+                        <span class="stats">🚨 3464 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-27.html" class="btn">查看报告</a>
+                        <a href="2025-10-27.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-26</td>
+                    <td><span class="badge badge-secondary">⊘ 非交易日</span></td>
+                    <td>
+                        <span class="stats">📊 0 只股票</span>
+                        <span class="stats">🚨 0 个异常</span>
+                    </td>
+                    <td>
+                        -
+                        <a href="2025-10-26.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-25</td>
+                    <td><span class="badge badge-secondary">⊘ 非交易日</span></td>
+                    <td>
+                        <span class="stats">📊 0 只股票</span>
+                        <span class="stats">🚨 0 个异常</span>
+                    </td>
+                    <td>
+                        -
+                        <a href="2025-10-25.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-24</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4359 只股票</span>
+                        <span class="stats">🚨 3376 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-24.html" class="btn">查看报告</a>
+                        <a href="2025-10-24.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-23</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4331 只股票</span>
+                        <span class="stats">🚨 3358 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-23.html" class="btn">查看报告</a>
+                        <a href="2025-10-23.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-22</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4327 只股票</span>
+                        <span class="stats">🚨 3346 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-22.html" class="btn">查看报告</a>
+                        <a href="2025-10-22.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-21</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4420 只股票</span>
+                        <span class="stats">🚨 3447 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-21.html" class="btn">查看报告</a>
+                        <a href="2025-10-21.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-20</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 4596 只股票</span>
+                        <span class="stats">🚨 3621 个异常</span>
+                    </td>
+                    <td>
+                        <a href="2025-10-20.html" class="btn">查看报告</a>
+                        <a href="2025-10-20.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-17</td>
+                    <td><span class="badge badge-success">✓ 交易日</span></td>
+                    <td>
+                        <span class="stats">📊 26 只股票</span>
+                        <span class="stats">🚨 0 个异常</span>
+                    </td>
+                    <td>
+                        -
+                        <a href="2025-10-17.json" class="btn btn-secondary">下载数据</a>
+                    </td>
+                </tr>
+            
+                </tbody>
+            </table>
+        
+        </div>
+
+        <div class="footer">
+            <p>期权异常检测系统 | 数据来源: Polygon.io</p>
+            <p>⚠️ 本报告仅供参考，不构成投资建议</p>
+        </div>
+    </div>
+</body>
+</html>
