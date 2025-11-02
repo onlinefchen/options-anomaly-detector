@@ -57,12 +57,36 @@ def regenerate_html_from_json(json_file: str):
 
 def main():
     """Main execution"""
+    import argparse
+
+    parser = argparse.ArgumentParser(description='重新生成HTML报告（从现有JSON数据）')
+    parser.add_argument('json_file', nargs='?', help='指定单个JSON文件路径')
+    parser.add_argument('--output-dir', default='output', help='输出目录 (默认: output)')
+    args = parser.parse_args()
+
+    # 单文件模式
+    if args.json_file:
+        print("=" * 70)
+        print("重新生成HTML报告 - 单文件模式")
+        print("=" * 70)
+        print()
+
+        if regenerate_html_from_json(args.json_file):
+            print()
+            print("✓ 完成！")
+        else:
+            print()
+            print("✗ 失败！")
+            sys.exit(1)
+        return
+
+    # 批量模式
     print("=" * 70)
     print("重新生成HTML报告（从现有JSON数据）")
     print("=" * 70)
     print()
 
-    output_dir = 'output'
+    output_dir = args.output_dir
 
     # Find all JSON files
     json_files = []

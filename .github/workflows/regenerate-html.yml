@@ -1,0 +1,161 @@
+name: Regenerate HTML Reports
+
+on:
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      days:
+        description: '📊 更新最近N天的HTML报告'
+        required: false
+        type: number
+        default: 7
+      specific_date:
+        description: '📅 或者：指定特定日期 (YYYY-MM-DD)'
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  regenerate:
+    name: 🔄 Regenerate HTML Reports
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Needed for pushing to gh-pages
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 📂 Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-data
+
+      - name: 💾 Copy JSON files to output directory
+        run: |
+          mkdir -p output
+          if [ -d "gh-pages-data" ]; then
+            echo "📊 Copying JSON files from gh-pages..."
+            find gh-pages-data -name "*.json" -type f -exec cp {} output/ \; || true
+            echo "✓ Found $(ls output/*.json 2>/dev/null | wc -l) JSON files"
+          else
+            echo "❌ No gh-pages data found"
+            exit 1
+          fi
+
+      - name: 🔄 Regenerate HTML reports
+        run: |
+          echo "=================================================="
+          echo "🔄 REGENERATING HTML REPORTS"
+          echo "=================================================="
+          echo ""
+
+          if [ -n "${{ github.event.inputs.specific_date }}" ]; then
+            # 指定日期模式
+            DATE="${{ github.event.inputs.specific_date }}"
+            echo "模式: 重新生成特定日期 $DATE"
+
+            JSON_FILE="output/${DATE}.json"
+            if [ -f "$JSON_FILE" ]; then
+              echo "✓ Found $JSON_FILE, regenerating HTML..."
+              python regenerate_html.py "$JSON_FILE"
+            else
+              echo "❌ No JSON file found for $DATE (not a trading day or no data)"
+              exit 1
+            fi
+          else
+            # 最近N天模式
+            DAYS="${{ github.event.inputs.days }}"
+            echo "模式: 重新生成最近 $DAYS 天的HTML报告"
+            echo ""
+
+            # 获取所有JSON文件并按日期排序（最新的在前）
+            JSON_FILES=$(ls -1 output/*.json 2>/dev/null | grep -E '[0-9]{4}-[0-9]{2}-[0-9]{2}\.json$' | sort -r | head -n $DAYS)
+
+            if [ -z "$JSON_FILES" ]; then
+              echo "❌ No JSON files found"
+              exit 1
+            fi
+
+            COUNT=0
+            SUCCESS=0
+
+            for JSON_FILE in $JSON_FILES; do
+              COUNT=$((COUNT + 1))
+              DATE=$(basename "$JSON_FILE" .json)
+              echo "[$COUNT/$DAYS] Processing $DATE..."
+
+              if python regenerate_html.py "$JSON_FILE"; then
+                SUCCESS=$((SUCCESS + 1))
+                echo "  ✓ Success"
+              else
+                echo "  ✗ Failed"
+              fi
+              echo ""
+            done
+
+            echo "=================================================="
+            echo "完成！成功生成 $SUCCESS/$COUNT 个HTML文件"
+            echo "=================================================="
+          fi
+
+      - name: 📚 Regenerate archive index
+        run: |
+          echo "📚 重新生成归档索引..."
+          python -c "
+import sys
+import os
+sys.path.insert(0, 'src')
+from archive_index_generator import get_archived_reports, generate_archive_index
+
+reports = get_archived_reports('output')
+generate_archive_index(reports, os.path.join('output', 'archive.html'))
+print(f'✓ 归档索引更新完成 ({len(reports)} 个报告)')
+          "
+
+      - name: 📄 Update index.html
+        run: |
+          # 复制最新报告到 index.html
+          LATEST_HTML=$(ls -1 output/*.html 2>/dev/null | grep -E '[0-9]{4}-[0-9]{2}-[0-9]{2}\.html$' | sort -r | head -n 1)
+
+          if [ -n "$LATEST_HTML" ]; then
+            cp "$LATEST_HTML" output/index.html
+            DATE=$(basename "$LATEST_HTML" .html)
+            echo "✓ 复制最新报告到 index.html ($DATE)"
+          else
+            echo "⚠️  No HTML files found"
+          fi
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages
+          keep_files: true  # Keep all existing files
+          commit_message: '🔄 Regenerate HTML reports (last ${{ github.event.inputs.days }} days)'
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          enable_jekyll: false
+
+      - name: ✅ Regeneration summary
+        run: |
+          echo "=================================================="
+          echo "✅ HTML REGENERATION COMPLETE"
+          echo "=================================================="
+          echo "🔗 Report URL: https://onlinefchen.github.io/options-anomaly-detector/"
+          echo "📊 Days processed: ${{ github.event.inputs.days }}"
+          echo "=================================================="
