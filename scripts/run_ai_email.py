@@ -65,8 +65,18 @@ def main():
     ai_analyzer = AIAnalyzer()
     email_sender = EmailSender()
 
-    # 跳过AI分析，直接发送表格数据
-    print('📧 Preparing email with table data (AI analysis disabled)...')
+    # 运行AI分析（如果配置了OpenAI API Key）
+    analysis = ''
+    if ai_analyzer.is_available():
+        print('🤖 Running AI analysis...')
+        analysis = ai_analyzer.analyze(anomalies, data, summary)
+
+        if analysis:
+            print('✓ AI analysis completed')
+        else:
+            print('⚠️  AI analysis returned empty result')
+    else:
+        print('⊘ OpenAI API Key not configured, skipping AI analysis')
 
     # 发送邮件
     if email_sender.is_available():
@@ -76,8 +86,7 @@ def main():
             print(f'\n📧 Sending email to {recipient}...')
 
             subject = ai_analyzer.generate_email_subject(data, summary.get('total', 0))
-            # Pass empty string for analysis since we're skipping AI analysis
-            html_content = ai_analyzer.format_for_email('', data, summary)
+            html_content = ai_analyzer.format_for_email(analysis, data, summary)
 
             success = email_sender.send_report(recipient, subject, html_content)
 
