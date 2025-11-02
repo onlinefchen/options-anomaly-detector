@@ -14,6 +14,7 @@ import requests
 import boto3
 from botocore.client import Config
 from utils import get_market_times
+from options_utils import parse_option_ticker
 
 
 class PolygonCSVHandler:
@@ -257,30 +258,6 @@ class PolygonCSVHandler:
             print(f"  ✗ Download failed: {e}")
             return None
 
-    def parse_option_ticker(self, ticker: str) -> Optional[Dict]:
-        """
-        Parse option ticker to extract information
-
-        Format: O:SPY251219C00600000
-
-        Args:
-            ticker: Option ticker string
-
-        Returns:
-            Dict with parsed info or None
-        """
-        pattern = r'O:([A-Z]+)(\d{6})([CP])(\d+)'
-        match = re.match(pattern, ticker)
-
-        if match:
-            return {
-                'underlying': match.group(1),
-                'expiry': match.group(2),
-                'contract_type': 'call' if match.group(3) == 'C' else 'put',
-                'strike': int(match.group(4)) / 1000
-            }
-        return None
-
     def parse_csv(self, csv_data: bytes) -> pd.DataFrame:
         """
         Parse compressed CSV data
@@ -325,7 +302,7 @@ class PolygonCSVHandler:
         # Parse all tickers
         parsed_data = []
         for _, row in df.iterrows():
-            parsed = self.parse_option_ticker(row['ticker'])
+            parsed = parse_option_ticker(row['ticker'])
             if parsed:
                 parsed['volume'] = row.get('volume', 0) or 0
                 parsed['transactions'] = row.get('transactions', 0) or 0
