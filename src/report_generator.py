@@ -700,13 +700,8 @@ class HTMLReportGenerator:
 
         <div class="section">
             <h2>Volume Analysis</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-                <div class="chart-container">
-                    <canvas id="volumeChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <canvas id="oiChart"></canvas>
-                </div>
+            <div class="chart-container">
+                <canvas id="volumeOIChart"></canvas>
             </div>
         </div>
 
@@ -899,54 +894,44 @@ class HTMLReportGenerator:
             }}
         }});
 
-        // Calculate max value for unified Y-axis scale
+        // Combined Volume & OI Chart
         const volumeData = {volumes_json};
         const oiData = {open_interests_json};
-        const maxVolume = Math.max(...volumeData);
-        const maxOI = Math.max(...oiData);
-        const unifiedYMax = Math.max(maxVolume, maxOI) * 1.1; // Add 10% padding
+        const volumeOICtx = document.getElementById('volumeOIChart').getContext('2d');
 
-        // Volume Chart with C/P ratio in tooltip (stocks & ETFs only, excludes Market Indices)
-        const volumeCtx = document.getElementById('volumeChart').getContext('2d');
-        const cpRatiosForVolume = {cp_volume_ratios_json};
-
-        new Chart(volumeCtx, {{
+        new Chart(volumeOICtx, {{
             type: 'bar',
             data: {{
                 labels: {tickers_json},
-                datasets: [{{
-                    label: '总成交量',
-                    data: volumeData,
-                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
-                    borderColor: 'rgba(102, 126, 234, 1)',
-                    borderWidth: 1
-                }}]
+                datasets: [
+                    {{
+                        label: '总成交量',
+                        data: volumeData,
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 1
+                    }},
+                    {{
+                        label: '持仓量',
+                        data: oiData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }}
+                ]
             }},
             options: {{
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {{
-                    legend: {{
-                        display: false
-                    }},
                     title: {{
                         display: true,
-                        text: '期权成交量'
-                    }},
-                    tooltip: {{
-                        callbacks: {{
-                            afterLabel: function(context) {{
-                                const index = context.dataIndex;
-                                const cpRatio = cpRatiosForVolume[index];
-                                return 'C/P Ratio: ' + cpRatio.toFixed(2);
-                            }}
-                        }}
+                        text: '成交量 & 持仓量对比'
                     }}
                 }},
                 scales: {{
                     y: {{
-                        beginAtZero: true,
-                        max: unifiedYMax
+                        beginAtZero: true
                     }}
                 }}
             }}
@@ -987,38 +972,6 @@ class HTMLReportGenerator:
                 scales: {{
                     y: {{
                         beginAtZero: true
-                    }}
-                }}
-            }}
-        }});
-
-        // OI Chart
-        const oiCtx = document.getElementById('oiChart').getContext('2d');
-        new Chart(oiCtx, {{
-            type: 'bar',
-            data: {{
-                labels: {tickers_json},
-                datasets: [{{
-                    label: '持仓量',
-                    data: oiData,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }}]
-            }},
-            options: {{
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {{
-                    title: {{
-                        display: true,
-                        text: '持仓量分布'
-                    }}
-                }},
-                scales: {{
-                    y: {{
-                        beginAtZero: true,
-                        max: unifiedYMax
                     }}
                 }}
             }}
