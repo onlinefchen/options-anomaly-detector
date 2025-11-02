@@ -57,6 +57,9 @@ jobs:
           fi
 
       - name: 🔄 Regenerate HTML reports
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
         run: |
           echo "=================================================="
           echo "🔄 REGENERATING HTML REPORTS"
