@@ -83,14 +83,21 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         print(f'      - 总成交量: {sum(d["total_volume"] for d in data):,}')
         print()
 
-        print(f'📊 STEP 2/4: 分析历史活跃度')
+        # Enrich top tickers with OI data from API
+        print(f'📡 STEP 2/5: 获取 Open Interest 数据')
+        print(f'   ⏳ 正在为前 35 个标的获取 OI 数据...')
+        data, metadata = fetcher.enrich_with_oi(data, top_n=35)
+        print(f'   ✅ OI 数据获取完成')
+        print()
+
+        print(f'📊 STEP 3/5: 分析历史活跃度')
         print(f'   ⏳ 正在分析 {date} 的历史数据...')
         analyzer = HistoryAnalyzer(output_dir=output_dir, lookback_days=10)
         data = analyzer.enrich_data_with_history(data)
         print(f'   ✅ 历史分析完成')
         print()
 
-        print(f'🔍 STEP 3/4: 检测异常信号')
+        print(f'🔍 STEP 4/5: 检测异常信号')
         print(f'   ⏳ 正在检测 {date} 的市场异常...')
         detector = OptionsAnomalyDetector()
         anomalies = detector.detect_all_anomalies(data)
@@ -140,7 +147,7 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
         metadata: 元数据（包含data_source等）
         output_dir: 输出目录
     """
-    print(f'💾 STEP 4/4: 保存数据文件')
+    print(f'💾 STEP 5/5: 保存数据文件')
     os.makedirs(output_dir, exist_ok=True)
 
     # 保存 JSON
