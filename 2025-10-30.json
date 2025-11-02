@@ -1,8 +1,8 @@
 {
   "date": "2025-10-30",
-  "timestamp": "2025-11-02T06:33:54.585338",
+  "generated_at": "2025-11-02T09:45:35.518106",
   "tickers_count": 4355,
-  "anomalies_count": 3466,
+  "anomalies_count": 3457,
   "data_source": "CSV",
   "data": [
     {
@@ -14,42 +14,10 @@
       "contracts_count": 5060,
       "put_contracts": 2681,
       "call_contracts": 2379,
-      "total_oi": 4350935,
-      "put_oi": 3261448,
-      "call_oi": 1089487,
-      "cp_oi_ratio": 0.33,
-      "top_3_contracts": [
-        {
-          "ticker": "O:SPY251121P00500000",
-          "oi": 223193,
-          "strike": 500,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 5.1
-        },
-        {
-          "ticker": "O:SPY251107P00530000",
-          "oi": 211253,
-          "strike": 530,
-          "expiry": "2025-11-07",
-          "type": "put",
-          "percentage": 4.9
-        },
-        {
-          "ticker": "O:SPY251121P00515000",
-          "oi": 206508,
-          "strike": 515,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 4.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "500-550",
-        "oi": 910290,
-        "percentage": 20.9,
-        "dominant_strike": 530
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
@@ -72,42 +40,10 @@
       "contracts_count": 4619,
       "put_contracts": 2403,
       "call_contracts": 2216,
-      "total_oi": 2590333,
-      "put_oi": 1723162,
-      "call_oi": 867171,
-      "cp_oi_ratio": 0.5,
-      "top_3_contracts": [
-        {
-          "ticker": "O:QQQ251121P00540000",
-          "oi": 78566,
-          "strike": 540,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 3.0
-        },
-        {
-          "ticker": "O:QQQ251121P00500000",
-          "oi": 71388,
-          "strike": 500,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.8
-        },
-        {
-          "ticker": "O:QQQ251121P00600000",
-          "oi": 53224,
-          "strike": 600,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.1
-        }
-      ],
-      "strike_concentration": {
-        "range": "600-650",
-        "oi": 1148421,
-        "percentage": 44.3,
-        "dominant_strike": 600
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
@@ -134,13 +70,6 @@
       "put_oi": 0,
       "call_oi": 0,
       "cp_oi_ratio": 0,
-      "top_3_contracts": [],
-      "strike_concentration": {
-        "range": "N/A",
-        "oi": 0,
-        "percentage": 0.0,
-        "dominant_strike": null
-      },
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -163,42 +92,10 @@
       "contracts_count": 2564,
       "put_contracts": 1157,
       "call_contracts": 1407,
-      "total_oi": 12897913,
-      "put_oi": 6073099,
-      "call_oi": 6824814,
-      "cp_oi_ratio": 1.12,
-      "top_3_contracts": [
-        {
-          "ticker": "O:NVDA251121C00180000",
-          "oi": 138888,
-          "strike": 180,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.1
-        },
-        {
-          "ticker": "O:NVDA260116C00100000",
-          "oi": 87081,
-          "strike": 100,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 0.7
-        },
-        {
-          "ticker": "O:NVDA251121C00200000",
-          "oi": 86156,
-          "strike": 200,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 0.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "180-190",
-        "oi": 973382,
-        "percentage": 7.5,
-        "dominant_strike": 180
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
@@ -221,42 +118,10 @@
       "contracts_count": 3976,
       "put_contracts": 1684,
       "call_contracts": 2292,
-      "total_oi": 1472264,
-      "put_oi": 591128,
-      "call_oi": 881136,
-      "cp_oi_ratio": 1.49,
-      "top_3_contracts": [
-        {
-          "ticker": "O:META260116C00800000",
-          "oi": 23120,
-          "strike": 800,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.6
-        },
-        {
-          "ticker": "O:META260116C00900000",
-          "oi": 18215,
-          "strike": 900,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.2
-        },
-        {
-          "ticker": "O:META260116C00700000",
-          "oi": 17083,
-          "strike": 700,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.2
-        }
-      ],
-      "strike_concentration": {
-        "range": "700-750",
-        "oi": 240998,
-        "percentage": 16.4,
-        "dominant_strike": 700
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 4,
         "appearance_rate": 40.0,
@@ -279,42 +144,10 @@
       "contracts_count": 3423,
       "put_contracts": 1522,
       "call_contracts": 1901,
-      "total_oi": 3997085,
-      "put_oi": 1853935,
-      "call_oi": 2143150,
-      "cp_oi_ratio": 1.16,
-      "top_3_contracts": [
-        {
-          "ticker": "O:TSLA260116C00960000",
-          "oi": 41879,
-          "strike": 960,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.0
-        },
-        {
-          "ticker": "O:TSLA251121C00500000",
-          "oi": 41244,
-          "strike": 500,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.0
-        },
-        {
-          "ticker": "O:TSLA251219C00960000",
-          "oi": 41185,
-          "strike": 960,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.0
-        }
-      ],
-      "strike_concentration": {
-        "range": "500-550",
-        "oi": 316068,
-        "percentage": 7.9,
-        "dominant_strike": 500
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
@@ -337,42 +170,10 @@
       "contracts_count": 1919,
       "put_contracts": 897,
       "call_contracts": 1022,
-      "total_oi": 5717576,
-      "put_oi": 4191053,
-      "call_oi": 1526523,
-      "cp_oi_ratio": 0.36,
-      "top_3_contracts": [
-        {
-          "ticker": "O:IWM251121P00235000",
-          "oi": 175758,
-          "strike": 235,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 3.1
-        },
-        {
-          "ticker": "O:IWM251121P00232000",
-          "oi": 166742,
-          "strike": 232,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.9
-        },
-        {
-          "ticker": "O:IWM251121P00240000",
-          "oi": 163856,
-          "strike": 240,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.9
-        }
-      ],
-      "strike_concentration": {
-        "range": "220-240",
-        "oi": 1999926,
-        "percentage": 35.0,
-        "dominant_strike": 235
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -395,42 +196,10 @@
       "contracts_count": 1720,
       "put_contracts": 791,
       "call_contracts": 929,
-      "total_oi": 4496777,
-      "put_oi": 1838405,
-      "call_oi": 2658372,
-      "cp_oi_ratio": 1.45,
-      "top_3_contracts": [
-        {
-          "ticker": "O:AMZN251219C00300000",
-          "oi": 74633,
-          "strike": 300,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.7
-        },
-        {
-          "ticker": "O:AMZN251219C00235000",
-          "oi": 66698,
-          "strike": 235,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.5
-        },
-        {
-          "ticker": "O:AMZN251121C00210000",
-          "oi": 48689,
-          "strike": 210,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.1
-        }
-      ],
-      "strike_concentration": {
-        "range": "240-260",
-        "oi": 613805,
-        "percentage": 13.6,
-        "dominant_strike": 250
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -453,42 +222,10 @@
       "contracts_count": 1618,
       "put_contracts": 746,
       "call_contracts": 872,
-      "total_oi": 5296022,
-      "put_oi": 2189349,
-      "call_oi": 3106673,
-      "cp_oi_ratio": 1.42,
-      "top_3_contracts": [
-        {
-          "ticker": "O:AAPL260116C00270000",
-          "oi": 87750,
-          "strike": 270,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.7
-        },
-        {
-          "ticker": "O:AAPL260116P00150000",
-          "oi": 66103,
-          "strike": 150,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 1.2
-        },
-        {
-          "ticker": "O:AAPL260116C00310000",
-          "oi": 65448,
-          "strike": 310,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.2
-        }
-      ],
-      "strike_concentration": {
-        "range": "240-260",
-        "oi": 734251,
-        "percentage": 13.9,
-        "dominant_strike": 250
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
@@ -511,42 +248,10 @@
       "contracts_count": 1967,
       "put_contracts": 927,
       "call_contracts": 1040,
-      "total_oi": 3220473,
-      "put_oi": 1362715,
-      "call_oi": 1857758,
-      "cp_oi_ratio": 1.36,
-      "top_3_contracts": [
-        {
-          "ticker": "O:GOOGL261218C00300000",
-          "oi": 82995,
-          "strike": 300,
-          "expiry": "2026-12-18",
-          "type": "call",
-          "percentage": 2.6
-        },
-        {
-          "ticker": "O:GOOGL260116C00260000",
-          "oi": 54175,
-          "strike": 260,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.7
-        },
-        {
-          "ticker": "O:GOOGL260116C00305000",
-          "oi": 41408,
-          "strike": 305,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.3
-        }
-      ],
-      "strike_concentration": {
-        "range": "300-320",
-        "oi": 333238,
-        "percentage": 10.3,
-        "dominant_strike": 300
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
@@ -569,42 +274,10 @@
       "contracts_count": 355,
       "put_contracts": 90,
       "call_contracts": 265,
-      "total_oi": 13391337,
-      "put_oi": 4306137,
-      "call_oi": 9085200,
-      "cp_oi_ratio": 2.11,
-      "top_3_contracts": [
-        {
-          "ticker": "O:VIX251119C00035000",
-          "oi": 293830,
-          "strike": 35,
-          "expiry": "2025-11-19",
-          "type": "call",
-          "percentage": 2.2
-        },
-        {
-          "ticker": "O:VIX251217C00060000",
-          "oi": 292179,
-          "strike": 60,
-          "expiry": "2025-12-17",
-          "type": "call",
-          "percentage": 2.2
-        },
-        {
-          "ticker": "O:VIX251119C00047500",
-          "oi": 269711,
-          "strike": 47.5,
-          "expiry": "2025-11-19",
-          "type": "call",
-          "percentage": 2.0
-        }
-      ],
-      "strike_concentration": {
-        "range": "60-70",
-        "oi": 929659,
-        "percentage": 6.9,
-        "dominant_strike": 60
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -627,42 +300,10 @@
       "contracts_count": 1581,
       "put_contracts": 663,
       "call_contracts": 918,
-      "total_oi": 7068088,
-      "put_oi": 2074836,
-      "call_oi": 4993252,
-      "cp_oi_ratio": 2.41,
-      "top_3_contracts": [
-        {
-          "ticker": "O:IBIT251121C00135000",
-          "oi": 172614,
-          "strike": 135,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 2.4
-        },
-        {
-          "ticker": "O:IBIT251121C00090000",
-          "oi": 130055,
-          "strike": 90,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.8
-        },
-        {
-          "ticker": "O:IBIT251219P00060000",
-          "oi": 119813,
-          "strike": 60,
-          "expiry": "2025-12-19",
-          "type": "put",
-          "percentage": 1.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "60-70",
-        "oi": 2079394,
-        "percentage": 29.4,
-        "dominant_strike": 60
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -685,42 +326,10 @@
       "contracts_count": 2184,
       "put_contracts": 1017,
       "call_contracts": 1167,
-      "total_oi": 2142892,
-      "put_oi": 863418,
-      "call_oi": 1279474,
-      "cp_oi_ratio": 1.48,
-      "top_3_contracts": [
-        {
-          "ticker": "O:MSFT260116C00500000",
-          "oi": 40532,
-          "strike": 500,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.9
-        },
-        {
-          "ticker": "O:MSFT260116C00600000",
-          "oi": 31791,
-          "strike": 600,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.5
-        },
-        {
-          "ticker": "O:MSFT251219C00585000",
-          "oi": 31784,
-          "strike": 585,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.5
-        }
-      ],
-      "strike_concentration": {
-        "range": "500-550",
-        "oi": 591946,
-        "percentage": 27.6,
-        "dominant_strike": 500
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 6,
         "appearance_rate": 60.0,
@@ -743,42 +352,10 @@
       "contracts_count": 2339,
       "put_contracts": 1043,
       "call_contracts": 1296,
-      "total_oi": 1855226,
-      "put_oi": 894915,
-      "call_oi": 960311,
-      "cp_oi_ratio": 1.07,
-      "top_3_contracts": [
-        {
-          "ticker": "O:MSTR251121C00330000",
-          "oi": 55686,
-          "strike": 330,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 3.0
-        },
-        {
-          "ticker": "O:MSTR260116C00000500",
-          "oi": 48064,
-          "strike": 0.5,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 2.6
-        },
-        {
-          "ticker": "O:MSTR251219C00350000",
-          "oi": 41055,
-          "strike": 350,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 2.2
-        }
-      ],
-      "strike_concentration": {
-        "range": "300-320",
-        "oi": 117588,
-        "percentage": 6.3,
-        "dominant_strike": 300
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 7,
         "appearance_rate": 70.0,
@@ -801,42 +378,10 @@
       "contracts_count": 952,
       "put_contracts": 420,
       "call_contracts": 532,
-      "total_oi": 1383938,
-      "put_oi": 560247,
-      "call_oi": 823691,
-      "cp_oi_ratio": 1.47,
-      "top_3_contracts": [
-        {
-          "ticker": "O:CMG251219P00037500",
-          "oi": 51974,
-          "strike": 37.5,
-          "expiry": "2025-12-19",
-          "type": "put",
-          "percentage": 3.8
-        },
-        {
-          "ticker": "O:CMG251219P00027500",
-          "oi": 42415,
-          "strike": 27.5,
-          "expiry": "2025-12-19",
-          "type": "put",
-          "percentage": 3.1
-        },
-        {
-          "ticker": "O:CMG251121P00032500",
-          "oi": 36711,
-          "strike": 32.5,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "50-60",
-        "oi": 263230,
-        "percentage": 19.0,
-        "dominant_strike": 50
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 1,
         "appearance_rate": 10.0,
@@ -859,42 +404,10 @@
       "contracts_count": 1605,
       "put_contracts": 721,
       "call_contracts": 884,
-      "total_oi": 3022929,
-      "put_oi": 1497748,
-      "call_oi": 1525181,
-      "cp_oi_ratio": 1.02,
-      "top_3_contracts": [
-        {
-          "ticker": "O:PLTR251121C00160000",
-          "oi": 38047,
-          "strike": 160,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.3
-        },
-        {
-          "ticker": "O:PLTR251107C00210000",
-          "oi": 24469,
-          "strike": 210,
-          "expiry": "2025-11-07",
-          "type": "call",
-          "percentage": 0.8
-        },
-        {
-          "ticker": "O:PLTR270115P00050000",
-          "oi": 24391,
-          "strike": 50,
-          "expiry": "2027-01-15",
-          "type": "put",
-          "percentage": 0.8
-        }
-      ],
-      "strike_concentration": {
-        "range": "100-110",
-        "oi": 167088,
-        "percentage": 5.5,
-        "dominant_strike": 100
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -917,42 +430,10 @@
       "contracts_count": 1833,
       "put_contracts": 767,
       "call_contracts": 1066,
-      "total_oi": 3349407,
-      "put_oi": 1613351,
-      "call_oi": 1736056,
-      "cp_oi_ratio": 1.08,
-      "top_3_contracts": [
-        {
-          "ticker": "O:AMD260116P00240000",
-          "oi": 28294,
-          "strike": 240,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 0.8
-        },
-        {
-          "ticker": "O:AMD260116P00100000",
-          "oi": 24855,
-          "strike": 100,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 0.7
-        },
-        {
-          "ticker": "O:AMD251121C00300000",
-          "oi": 22390,
-          "strike": 300,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 0.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "200-220",
-        "oi": 238070,
-        "percentage": 7.1,
-        "dominant_strike": 200
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -975,42 +456,10 @@
       "contracts_count": 1749,
       "put_contracts": 793,
       "call_contracts": 956,
-      "total_oi": 1585498,
-      "put_oi": 629365,
-      "call_oi": 956133,
-      "cp_oi_ratio": 1.52,
-      "top_3_contracts": [
-        {
-          "ticker": "O:GOOG260116P00165000",
-          "oi": 18647,
-          "strike": 165,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 1.2
-        },
-        {
-          "ticker": "O:GOOG260116C00250000",
-          "oi": 16215,
-          "strike": 250,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.0
-        },
-        {
-          "ticker": "O:GOOG260320P00215000",
-          "oi": 15361,
-          "strike": 215,
-          "expiry": "2026-03-20",
-          "type": "put",
-          "percentage": 1.0
-        }
-      ],
-      "strike_concentration": {
-        "range": "240-260",
-        "oi": 201892,
-        "percentage": 12.7,
-        "dominant_strike": 250
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 3,
         "appearance_rate": 30.0,
@@ -1033,42 +482,10 @@
       "contracts_count": 1244,
       "put_contracts": 572,
       "call_contracts": 672,
-      "total_oi": 6087259,
-      "put_oi": 2551385,
-      "call_oi": 3535874,
-      "cp_oi_ratio": 1.39,
-      "top_3_contracts": [
-        {
-          "ticker": "O:TLT251121C00092000",
-          "oi": 118039,
-          "strike": 92,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.9
-        },
-        {
-          "ticker": "O:TLT260116C00150000",
-          "oi": 115880,
-          "strike": 150,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.9
-        },
-        {
-          "ticker": "O:TLT260116C00095000",
-          "oi": 100114,
-          "strike": 95,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.6
-        }
-      ],
-      "strike_concentration": {
-        "range": "90-100",
-        "oi": 2384307,
-        "percentage": 39.2,
-        "dominant_strike": 90
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -1091,42 +508,10 @@
       "contracts_count": 2856,
       "put_contracts": 1200,
       "call_contracts": 1656,
-      "total_oi": 1819715,
-      "put_oi": 689674,
-      "call_oi": 1130041,
-      "cp_oi_ratio": 1.64,
-      "top_3_contracts": [
-        {
-          "ticker": "O:GLD251121C00380000",
-          "oi": 82995,
-          "strike": 380,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 4.6
-        },
-        {
-          "ticker": "O:GLD251114C00395000",
-          "oi": 78843,
-          "strike": 395,
-          "expiry": "2025-11-14",
-          "type": "call",
-          "percentage": 4.3
-        },
-        {
-          "ticker": "O:GLD251114C00410000",
-          "oi": 77862,
-          "strike": 410,
-          "expiry": "2025-11-14",
-          "type": "call",
-          "percentage": 4.3
-        }
-      ],
-      "strike_concentration": {
-        "range": "360-380",
-        "oi": 450759,
-        "percentage": 24.8,
-        "dominant_strike": 375
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -1149,42 +534,10 @@
       "contracts_count": 999,
       "put_contracts": 429,
       "call_contracts": 570,
-      "total_oi": 3955406,
-      "put_oi": 1540806,
-      "call_oi": 2414600,
-      "cp_oi_ratio": 1.57,
-      "top_3_contracts": [
-        {
-          "ticker": "O:SOFI260116C00010000",
-          "oi": 81038,
-          "strike": 10,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 2.0
-        },
-        {
-          "ticker": "O:SOFI270115P00015000",
-          "oi": 58420,
-          "strike": 15,
-          "expiry": "2027-01-15",
-          "type": "put",
-          "percentage": 1.5
-        },
-        {
-          "ticker": "O:SOFI260116P00005000",
-          "oi": 55543,
-          "strike": 5,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 1.4
-        }
-      ],
-      "strike_concentration": {
-        "range": "30-35",
-        "oi": 656181,
-        "percentage": 16.6,
-        "dominant_strike": 30
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -1207,42 +560,10 @@
       "contracts_count": 372,
       "put_contracts": 138,
       "call_contracts": 234,
-      "total_oi": 2124913,
-      "put_oi": 447710,
-      "call_oi": 1677203,
-      "cp_oi_ratio": 3.75,
-      "top_3_contracts": [
-        {
-          "ticker": "O:CORZ251219C00030000",
-          "oi": 93712,
-          "strike": 30,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 4.4
-        },
-        {
-          "ticker": "O:CORZ251219C00020000",
-          "oi": 76167,
-          "strike": 20,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 3.6
-        },
-        {
-          "ticker": "O:CORZ251219C00015000",
-          "oi": 71921,
-          "strike": 15,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 3.4
-        }
-      ],
-      "strike_concentration": {
-        "range": "20-25",
-        "oi": 539047,
-        "percentage": 25.4,
-        "dominant_strike": 20
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 2,
         "appearance_rate": 20.0,
@@ -1265,42 +586,10 @@
       "contracts_count": 653,
       "put_contracts": 249,
       "call_contracts": 404,
-      "total_oi": 2640642,
-      "put_oi": 1057792,
-      "call_oi": 1582850,
-      "cp_oi_ratio": 1.5,
-      "top_3_contracts": [
-        {
-          "ticker": "O:MARA251219C00030000",
-          "oi": 66218,
-          "strike": 30,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 2.5
-        },
-        {
-          "ticker": "O:MARA270115P00005000",
-          "oi": 65469,
-          "strike": 5,
-          "expiry": "2027-01-15",
-          "type": "put",
-          "percentage": 2.5
-        },
-        {
-          "ticker": "O:MARA260116P00005000",
-          "oi": 61906,
-          "strike": 5,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 2.3
-        }
-      ],
-      "strike_concentration": {
-        "range": "5-10",
-        "oi": 372294,
-        "percentage": 14.1,
-        "dominant_strike": 5
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 2,
         "appearance_rate": 20.0,
@@ -1323,42 +612,10 @@
       "contracts_count": 506,
       "put_contracts": 192,
       "call_contracts": 314,
-      "total_oi": 983048,
-      "put_oi": 326434,
-      "call_oi": 656614,
-      "cp_oi_ratio": 2.01,
-      "top_3_contracts": [
-        {
-          "ticker": "O:SOUN251107P00016000",
-          "oi": 68358,
-          "strike": 16,
-          "expiry": "2025-11-07",
-          "type": "put",
-          "percentage": 7.0
-        },
-        {
-          "ticker": "O:SOUN251107C00018000",
-          "oi": 39180,
-          "strike": 18,
-          "expiry": "2025-11-07",
-          "type": "call",
-          "percentage": 4.0
-        },
-        {
-          "ticker": "O:SOUN251121C00025000",
-          "oi": 37246,
-          "strike": 25,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 3.8
-        }
-      ],
-      "strike_concentration": {
-        "range": "15-20",
-        "oi": 333210,
-        "percentage": 33.9,
-        "dominant_strike": 16
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 2,
         "appearance_rate": 20.0,
@@ -1381,42 +638,10 @@
       "contracts_count": 421,
       "put_contracts": 147,
       "call_contracts": 274,
-      "total_oi": 1991405,
-      "put_oi": 792087,
-      "call_oi": 1199318,
-      "cp_oi_ratio": 1.51,
-      "top_3_contracts": [
-        {
-          "ticker": "O:BYND251219C00040000",
-          "oi": 104637,
-          "strike": 40,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 5.3
-        },
-        {
-          "ticker": "O:BYND251121P00001000",
-          "oi": 54020,
-          "strike": 1,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.7
-        },
-        {
-          "ticker": "O:BYND260116P00003000",
-          "oi": 51147,
-          "strike": 3,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 2.6
-        }
-      ],
-      "strike_concentration": {
-        "range": "0-5",
-        "oi": 1421979,
-        "percentage": 71.4,
-        "dominant_strike": 1
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -1439,42 +664,10 @@
       "contracts_count": 1407,
       "put_contracts": 500,
       "call_contracts": 907,
-      "total_oi": 5887160,
-      "put_oi": 2393997,
-      "call_oi": 3493163,
-      "cp_oi_ratio": 1.46,
-      "top_3_contracts": [
-        {
-          "ticker": "O:SLV251219C00050000",
-          "oi": 128445,
-          "strike": 50,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 2.2
-        },
-        {
-          "ticker": "O:SLV251121C00045000",
-          "oi": 109400,
-          "strike": 45,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 1.9
-        },
-        {
-          "ticker": "O:SLV251219C00047000",
-          "oi": 101652,
-          "strike": 47,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "50-60",
-        "oi": 882428,
-        "percentage": 15.0,
-        "dominant_strike": 50
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -1497,42 +690,10 @@
       "contracts_count": 1048,
       "put_contracts": 496,
       "call_contracts": 552,
-      "total_oi": 1309002,
-      "put_oi": 462442,
-      "call_oi": 846560,
-      "cp_oi_ratio": 1.83,
-      "top_3_contracts": [
-        {
-          "ticker": "O:BMNR270115C00028000",
-          "oi": 43841,
-          "strike": 28,
-          "expiry": "2027-01-15",
-          "type": "call",
-          "percentage": 3.3
-        },
-        {
-          "ticker": "O:BMNR251121C00065000",
-          "oi": 36758,
-          "strike": 65,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 2.8
-        },
-        {
-          "ticker": "O:BMNR270115C00035000",
-          "oi": 36179,
-          "strike": 35,
-          "expiry": "2027-01-15",
-          "type": "call",
-          "percentage": 2.8
-        }
-      ],
-      "strike_concentration": {
-        "range": "50-60",
-        "oi": 276297,
-        "percentage": 21.1,
-        "dominant_strike": 50
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 1,
         "appearance_rate": 10.0,
@@ -1555,42 +716,10 @@
       "contracts_count": 3045,
       "put_contracts": 2003,
       "call_contracts": 1042,
-      "total_oi": 906879,
-      "put_oi": 619653,
-      "call_oi": 287226,
-      "cp_oi_ratio": 0.46,
-      "top_3_contracts": [
-        {
-          "ticker": "O:SPXW251107P05400000",
-          "oi": 36421,
-          "strike": 5400,
-          "expiry": "2025-11-07",
-          "type": "put",
-          "percentage": 4.0
-        },
-        {
-          "ticker": "O:SPXW251107P05500000",
-          "oi": 36390,
-          "strike": 5500,
-          "expiry": "2025-11-07",
-          "type": "put",
-          "percentage": 4.0
-        },
-        {
-          "ticker": "O:SPXW251104P05500000",
-          "oi": 25194,
-          "strike": 5500,
-          "expiry": "2025-11-04",
-          "type": "put",
-          "percentage": 2.8
-        }
-      ],
-      "strike_concentration": {
-        "range": "5500-5550",
-        "oi": 102205,
-        "percentage": 11.3,
-        "dominant_strike": 5500
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -1613,42 +742,10 @@
       "contracts_count": 1036,
       "put_contracts": 451,
       "call_contracts": 585,
-      "total_oi": 6697306,
-      "put_oi": 2774236,
-      "call_oi": 3923070,
-      "cp_oi_ratio": 1.41,
-      "top_3_contracts": [
-        {
-          "ticker": "O:INTC260116C00060000",
-          "oi": 246020,
-          "strike": 60,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 3.7
-        },
-        {
-          "ticker": "O:INTC251121C00045000",
-          "oi": 141406,
-          "strike": 45,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 2.1
-        },
-        {
-          "ticker": "O:INTC260116C00040000",
-          "oi": 108050,
-          "strike": 40,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 1.6
-        }
-      ],
-      "strike_concentration": {
-        "range": "25-30",
-        "oi": 933867,
-        "percentage": 13.9,
-        "dominant_strike": 25
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 8,
         "appearance_rate": 80.0,
@@ -1671,42 +768,10 @@
       "contracts_count": 1465,
       "put_contracts": 627,
       "call_contracts": 838,
-      "total_oi": 1723846,
-      "put_oi": 854378,
-      "call_oi": 869468,
-      "cp_oi_ratio": 1.02,
-      "top_3_contracts": [
-        {
-          "ticker": "O:AVGO251219C00310000",
-          "oi": 33102,
-          "strike": 310,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.9
-        },
-        {
-          "ticker": "O:AVGO251219C00330000",
-          "oi": 18836,
-          "strike": 330,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.1
-        },
-        {
-          "ticker": "O:AVGO251219C00300000",
-          "oi": 15030,
-          "strike": 300,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 0.9
-        }
-      ],
-      "strike_concentration": {
-        "range": "300-320",
-        "oi": 161976,
-        "percentage": 9.4,
-        "dominant_strike": 300
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 2,
         "appearance_rate": 20.0,
@@ -1729,42 +794,10 @@
       "contracts_count": 1503,
       "put_contracts": 666,
       "call_contracts": 837,
-      "total_oi": 1392523,
-      "put_oi": 645765,
-      "call_oi": 746758,
-      "cp_oi_ratio": 1.16,
-      "top_3_contracts": [
-        {
-          "ticker": "O:ORCL251219C00280000",
-          "oi": 24343,
-          "strike": 280,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 1.7
-        },
-        {
-          "ticker": "O:ORCL260618C00165000",
-          "oi": 10985,
-          "strike": 165,
-          "expiry": "2026-06-18",
-          "type": "call",
-          "percentage": 0.8
-        },
-        {
-          "ticker": "O:ORCL251121P00250000",
-          "oi": 10355,
-          "strike": 250,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 0.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "300-320",
-        "oi": 126625,
-        "percentage": 9.1,
-        "dominant_strike": 300
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -1787,42 +820,10 @@
       "contracts_count": 341,
       "put_contracts": 139,
       "call_contracts": 202,
-      "total_oi": 3379083,
-      "put_oi": 1273449,
-      "call_oi": 2105634,
-      "cp_oi_ratio": 1.65,
-      "top_3_contracts": [
-        {
-          "ticker": "O:KWEB260116P00038000",
-          "oi": 186383,
-          "strike": 38,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 5.5
-        },
-        {
-          "ticker": "O:KWEB260116P00031000",
-          "oi": 156258,
-          "strike": 31,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 4.6
-        },
-        {
-          "ticker": "O:KWEB251219C00050000",
-          "oi": 106420,
-          "strike": 50,
-          "expiry": "2025-12-19",
-          "type": "call",
-          "percentage": 3.1
-        }
-      ],
-      "strike_concentration": {
-        "range": "35-40",
-        "oi": 804467,
-        "percentage": 23.8,
-        "dominant_strike": 38
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -1845,42 +846,10 @@
       "contracts_count": 438,
       "put_contracts": 177,
       "call_contracts": 261,
-      "total_oi": 604215,
-      "put_oi": 298961,
-      "call_oi": 305254,
-      "cp_oi_ratio": 1.02,
-      "top_3_contracts": [
-        {
-          "ticker": "O:QUBT251107C00016000",
-          "oi": 58303,
-          "strike": 16,
-          "expiry": "2025-11-07",
-          "type": "call",
-          "percentage": 9.6
-        },
-        {
-          "ticker": "O:QUBT251107P00014000",
-          "oi": 58189,
-          "strike": 14,
-          "expiry": "2025-11-07",
-          "type": "put",
-          "percentage": 9.6
-        },
-        {
-          "ticker": "O:QUBT260116P00005000",
-          "oi": 22459,
-          "strike": 5,
-          "expiry": "2026-01-16",
-          "type": "put",
-          "percentage": 3.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "15-20",
-        "oi": 179713,
-        "percentage": 29.7,
-        "dominant_strike": 16
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -1903,42 +872,10 @@
       "contracts_count": 454,
       "put_contracts": 185,
       "call_contracts": 269,
-      "total_oi": 2438430,
-      "put_oi": 680874,
-      "call_oi": 1757556,
-      "cp_oi_ratio": 2.58,
-      "top_3_contracts": [
-        {
-          "ticker": "O:OPEN251121C00010000",
-          "oi": 71721,
-          "strike": 10,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 2.9
-        },
-        {
-          "ticker": "O:OPEN270115C00001000",
-          "oi": 67199,
-          "strike": 1,
-          "expiry": "2027-01-15",
-          "type": "call",
-          "percentage": 2.8
-        },
-        {
-          "ticker": "O:OPEN260116C00010000",
-          "oi": 65434,
-          "strike": 10,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 2.7
-        }
-      ],
-      "strike_concentration": {
-        "range": "10-15",
-        "oi": 483191,
-        "percentage": 19.8,
-        "dominant_strike": 10
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 7,
         "appearance_rate": 70.0,
@@ -1961,42 +898,10 @@
       "contracts_count": 607,
       "put_contracts": 235,
       "call_contracts": 372,
-      "total_oi": 918599,
-      "put_oi": 431080,
-      "call_oi": 487519,
-      "cp_oi_ratio": 1.13,
-      "top_3_contracts": [
-        {
-          "ticker": "O:MRNA251121C00025000",
-          "oi": 37980,
-          "strike": 25,
-          "expiry": "2025-11-21",
-          "type": "call",
-          "percentage": 4.1
-        },
-        {
-          "ticker": "O:MRNA260116C00035000",
-          "oi": 21945,
-          "strike": 35,
-          "expiry": "2026-01-16",
-          "type": "call",
-          "percentage": 2.4
-        },
-        {
-          "ticker": "O:MRNA251121P00020000",
-          "oi": 19404,
-          "strike": 20,
-          "expiry": "2025-11-21",
-          "type": "put",
-          "percentage": 2.1
-        }
-      ],
-      "strike_concentration": {
-        "range": "25-30",
-        "oi": 232650,
-        "percentage": 25.3,
-        "dominant_strike": 25
-      },
+      "total_oi": 0,
+      "put_oi": 0,
+      "call_oi": 0,
+      "cp_oi_ratio": 0,
       "history": {
         "appearances": 0,
         "appearance_rate": 0.0,
@@ -125619,22 +124524,6 @@
       "metric": "volume"
     },
     {
-      "ticker": "SPY",
-      "type": "DEFENSIVE_POSITIONING",
-      "severity": "MEDIUM",
-      "description": "重度防御型持仓 (Call/Put 持仓量: 0.33)",
-      "value": 0.33,
-      "metric": "cp_oi_ratio"
-    },
-    {
-      "ticker": "IWM",
-      "type": "DEFENSIVE_POSITIONING",
-      "severity": "MEDIUM",
-      "description": "重度防御型持仓 (Call/Put 持仓量: 0.36)",
-      "value": 0.36,
-      "metric": "cp_oi_ratio"
-    },
-    {
       "ticker": "IBIT",
       "type": "EXTREME_GREED",
       "severity": "HIGH",
@@ -125649,14 +124538,6 @@
       "description": "极度看涨情绪 (Call/Put 成交量: 7.22)",
       "value": 7.22,
       "metric": "cp_volume_ratio"
-    },
-    {
-      "ticker": "CORZ",
-      "type": "AGGRESSIVE_POSITIONING",
-      "severity": "MEDIUM",
-      "description": "重度进攻型持仓 (Call/Put 持仓量: 3.75)",
-      "value": 3.75,
-      "metric": "cp_oi_ratio"
     },
     {
       "ticker": "MARA",
@@ -125681,14 +124562,6 @@
       "description": "极度看跌情绪 (Call/Put 成交量: 0.46)",
       "value": 0.46,
       "metric": "cp_volume_ratio"
-    },
-    {
-      "ticker": "SPX",
-      "type": "DEFENSIVE_POSITIONING",
-      "severity": "MEDIUM",
-      "description": "重度防御型持仓 (Call/Put 持仓量: 0.46)",
-      "value": 0.46,
-      "metric": "cp_oi_ratio"
     },
     {
       "ticker": "AVGO",
@@ -142049,63 +140922,23 @@
       "description": "极度看跌情绪 (Call/Put 成交量: 0.50)",
       "value": 0.5,
       "metric": "cp_volume_ratio"
-    },
-    {
-      "ticker": "VIX",
-      "type": "LOW_TURNOVER",
-      "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.06), strong position holding",
-      "value": 0.06475141354444294,
-      "metric": "vol_oi_ratio"
-    },
-    {
-      "ticker": "TLT",
-      "type": "LOW_TURNOVER",
-      "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.09), strong position holding",
-      "value": 0.09474182057967305,
-      "metric": "vol_oi_ratio"
-    },
-    {
-      "ticker": "SLV",
-      "type": "LOW_TURNOVER",
-      "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.07), strong position holding",
-      "value": 0.07253310594582107,
-      "metric": "vol_oi_ratio"
-    },
-    {
-      "ticker": "INTC",
-      "type": "LOW_TURNOVER",
-      "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.06), strong position holding",
-      "value": 0.05611345815765324,
-      "metric": "vol_oi_ratio"
-    },
-    {
-      "ticker": "KWEB",
-      "type": "LOW_TURNOVER",
-      "severity": "LOW",
-      "description": "Low turnover (Volume/OI: 0.10), strong position holding",
-      "value": 0.09740512440801247,
-      "metric": "vol_oi_ratio"
     }
   ],
   "summary": {
-    "total": 3466,
+    "total": 3457,
     "by_severity": {
       "HIGH": 3447,
-      "MEDIUM": 14,
-      "LOW": 5
+      "MEDIUM": 10
     },
     "by_type": {
       "HIGH_VOLUME": 30,
       "VOLUME_SPIKE": 1377,
-      "DEFENSIVE_POSITIONING": 3,
       "EXTREME_GREED": 1533,
-      "AGGRESSIVE_POSITIONING": 1,
-      "EXTREME_FEAR": 517,
-      "LOW_TURNOVER": 5
+      "EXTREME_FEAR": 517
     }
+  },
+  "metadata": {
+    "data_source": "CSV",
+    "csv_date": "2025-10-30"
   }
 }
