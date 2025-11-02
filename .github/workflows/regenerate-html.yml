@@ -71,12 +71,27 @@ jobs:
             DATE="${{ github.event.inputs.specific_date }}"
             echo "模式: 重新生成特定日期 $DATE"
 
+            # Check if date is a trading day
+            IS_TRADING_DAY=$(python3 -c "
+import pandas_market_calendars as mcal
+nyse = mcal.get_calendar('NYSE')
+date_str = '$DATE'
+valid = nyse.valid_days(start_date=date_str, end_date=date_str).size > 0
+print('true' if valid else 'false')
+            ")
+
+            if [ "$IS_TRADING_DAY" != "true" ]; then
+              echo "❌ $DATE is not a trading day"
+              echo "   Only trading days can have valid data"
+              exit 1
+            fi
+
             JSON_FILE="output/${DATE}.json"
             if [ -f "$JSON_FILE" ]; then
               echo "✓ Found $JSON_FILE, regenerating HTML..."
               python regenerate_html.py "$JSON_FILE"
             else
-              echo "❌ No JSON file found for $DATE (not a trading day or no data)"
+              echo "❌ No JSON file found for $DATE"
               exit 1
             fi
           else
@@ -100,6 +115,22 @@ jobs:
               COUNT=$((COUNT + 1))
               DATE=$(basename "$JSON_FILE" .json)
               echo "[$COUNT/$DAYS] Processing $DATE..."
+
+              # Check if date is a trading day
+              IS_TRADING_DAY=$(python3 -c "
+import pandas_market_calendars as mcal
+from datetime import datetime
+nyse = mcal.get_calendar('NYSE')
+date_str = '$DATE'
+valid = nyse.valid_days(start_date=date_str, end_date=date_str).size > 0
+print('true' if valid else 'false')
+              ")
+
+              if [ "$IS_TRADING_DAY" != "true" ]; then
+                echo "  ⊘ Skipped (not a trading day)"
+                echo ""
+                continue
+              fi
 
               if python regenerate_html.py "$JSON_FILE"; then
                 SUCCESS=$((SUCCESS + 1))
