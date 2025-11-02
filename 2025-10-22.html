@@ -267,7 +267,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-02 04:34:56 EST | <strong>东八区时间:</strong> 2025-11-02 17:34:56 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-22.csv.gz)</p>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-02 09:07:20 EST | <strong>东八区时间:</strong> 2025-11-02 22:07:20 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-22.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -303,33 +303,33 @@
             <div class="macro-content">
                 <strong>Market Sentiment &amp; Positioning</strong>
 
-<ul><li><strong>C/P Ratio Analysis:</strong> The Call/Put (C/P) volume ratios for SPY (0.81), QQQ (0.89), and IWM (0.53) suggest a moderately bullish sentiment for SPY and QQQ, with more interest in calls than puts. IWM shows a stronger inclination towards puts, indicating potential caution or hedging against small-cap volatility.</li>
+<ul><li>The Call/Put (C/P) volume ratios for SPY (0.81) and QQQ (0.89) are slightly below 1, indicating a modest preference for puts over calls, suggesting a cautious or hedging stance among investors. However, these ratios do not indicate extreme bearishness. In contrast, IWM's lower C/P volume ratio (0.53) suggests a more significant inclination towards puts, potentially reflecting concerns about small-cap volatility or economic sensitivity.</li>
 
-<li><strong>Smart Money Positioning:</strong> The absence of open interest data limits visibility into long-term positioning. However, the higher put volume in IWM could imply that institutions are more guarded about the small-cap sector, possibly as a hedge against economic downturns that typically hit smaller companies harder.</li>
+<li>The absence of open interest data (OI) and specific top contract information limits insights into specific positioning. However, the skew towards put volume, particularly in IWM, may indicate protective positioning or expectations of volatility.</li>
 
-<li><strong>Unusual Patterns:</strong> The lack of open interest across the board is highly unusual and suggests either a temporary data anomaly or a significant event causing a reset in positioning. This absence points towards a potential period of heightened uncertainty, prompting investors to reassess strategies.</li>
+<li>The lack of strike concentration data makes it difficult to ascertain specific hedging levels or directional bets. The overall pattern suggests caution but not panic, likely reflecting uncertainty amidst mixed macro signals.</li>
 
 <strong>Macro Outlook</strong>
 
-<li><strong>Current Macro Environment:</strong> The Federal Reserve is likely navigating a complex landscape with inflationary pressures persisting amid a deceleration in global growth. Recent data may still reflect a tight labor market, complicating the Fed's policy decisions. Consequently, market participants are likely weighing the probability of a prolonged higher rate environment.</li>
+<li>The current macro environment is characterized by a cautious Federal Reserve navigating a high-inflation, slow-growth scenario. While the Fed may be nearing the end of its tightening cycle, inflation remains a concern, and any signs of persistent price pressures could alter the rate trajectory.</li>
 
-<li><strong>Key Risks and Opportunities:</strong> The primary risks include persistent inflation, geopolitical tensions, and energy market volatility, which could exacerbate supply chain issues. An opportunity lies in sectors resilient to rate hikes or those benefiting from fiscal policy measures.</li>
+<li>Key risks include geopolitical tensions affecting energy supplies, potential for policy missteps by central banks, and vulnerabilities in credit markets, particularly if economic growth falters.</li>
 
-<li><strong>Investor Watchlist:</strong> Investors should focus on upcoming Fed communications for rate guidance, inflation data releases, and any geopolitical developments that could impact global trade dynamics.</li>
+<li>Opportunities may arise from sectors benefiting from structural shifts like energy transition or technological innovation, though investors should remain vigilant to valuation risks.</li>
+
+<li>Investors should watch for upcoming Fed communications, inflation data releases, and geopolitical developments, as these will heavily influence market sentiment and positioning.</li></ul>
 
 <strong>Key Takeaways</strong>
 
-<li>The unusual absence of open interest suggests a period of reevaluation among institutional investors, indicative of heightened uncertainty.</li>
-<li>Despite moderate bullish sentiment in SPY and QQQ, caution remains prevalent in IWM, reflecting concerns over economic resilience in smaller firms.</li>
-<li>Macro risks are centered around persistent inflation and geopolitical uncertainties, warranting close monitoring of Fed policy signals and global economic indicators.</li>
-<li>Investors should be prepared for potential volatility and adapt strategies to navigate a complex macroeconomic landscape.</li></ul>
-            </div>
-        </div>
+<p>1. <strong>Cautious Sentiment:</strong> Current options data reflects a cautious market sentiment with a slight preference for puts, particularly in small-cap stocks, indicating concerns over economic sensitivity.</p>
 
-        <div class="section">
-            <h2>Market Overview - Top 30 by Volume</h2>
-            <div class="chart-container">
-                <canvas id="volumeChart"></canvas>
+<p>2. <strong>Macro Uncertainty:</strong> The macro environment remains uncertain, with the Fed's policy path and inflation trajectory being pivotal for future market direction.</p>
+
+<p>3. <strong>Risk Factors:</strong> Geopolitical tensions, inflation persistence, and credit market vulnerabilities are key risks to monitor.</p>
+
+<p>4. <strong>Opportunity and Vigilance:</strong> While certain sectors may present opportunities, investors should remain vigilant to valuations and macroeconomic signals.</p>
+
+<p>5. <strong>Watch for Catalysts:</strong> Upcoming economic data and Fed communications will be critical in shaping short-term market moves.</p>
             </div>
         </div>
 
@@ -798,16 +798,16 @@
         </div>
 
         <div class="section">
-            <h2>Call/Put Ratio Analysis</h2>
+            <h2>Call/Put Ratio Analysis (2025-11-02 from 2025-10-22.csv.gz)</h2>
             <div class="chart-container">
                 <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>Open Interest Distribution</h2>
+            <h2>Volume Analysis (2025-11-02 from 2025-10-22.csv.gz)</h2>
             <div class="chart-container">
-                <canvas id="oiChart"></canvas>
+                <canvas id="volumeOIChart"></canvas>
             </div>
         </div>
 
@@ -1000,41 +1000,39 @@
             }
         });
 
-        // Volume Chart with C/P ratio in tooltip (stocks & ETFs only, excludes Market Indices)
-        const volumeCtx = document.getElementById('volumeChart').getContext('2d');
-        const cpRatiosForVolume = [1.38, 1.94, 1.27, 1.55, 1.96, 1.39, 1.95, 1.38, 2.26, 3.02, 3.2, 2.08, 0.35, 1.15, 1.91, 1.7, 2.58, 1.86, 1.33, 2.83, 4.76, 0.61, 1.9, 1.31, 2.28];
+        // Combined Volume & OI Chart
+        const volumeData = [3322370, 2207899, 1475390, 1114652, 853669, 817764, 815030, 708769, 692043, 615625, 546957, 496815, 493885, 493610, 466668, 451149, 416893, 400596, 356693, 355950, 337066, 331010, 307361, 273087, 270685];
+        const oiData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const volumeOICtx = document.getElementById('volumeOIChart').getContext('2d');
 
-        new Chart(volumeCtx, {
+        new Chart(volumeOICtx, {
             type: 'bar',
             data: {
                 labels: ["BYND", "NVDA", "TSLA", "GLD", "SLV", "PLTR", "AAPL", "AMD", "IBIT", "AMZN", "OPEN", "TLT", "SPX", "NFLX", "INTC", "HOOD", "SOFI", "GOOGL", "MSTR", "UUUU", "MARA", "RGTI", "MSFT", "GDX", "CRWV"],
-                datasets: [{
-                    label: '总成交量',
-                    data: [3322370, 2207899, 1475390, 1114652, 853669, 817764, 815030, 708769, 692043, 615625, 546957, 496815, 493885, 493610, 466668, 451149, 416893, 400596, 356693, 355950, 337066, 331010, 307361, 273087, 270685],
-                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
-                    borderColor: 'rgba(102, 126, 234, 1)',
-                    borderWidth: 1
-                }]
+                datasets: [
+                    {
+                        label: '总成交量',
+                        data: volumeData,
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '持仓量',
+                        data: oiData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }
+                ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        display: false
-                    },
                     title: {
                         display: true,
-                        text: '期权成交量'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            afterLabel: function(context) {
-                                const index = context.dataIndex;
-                                const cpRatio = cpRatiosForVolume[index];
-                                return 'C/P Ratio: ' + cpRatio.toFixed(2);
-                            }
-                        }
+                        text: '成交量 & 持仓量对比'
                     }
                 },
                 scales: {
@@ -1075,37 +1073,6 @@
                     title: {
                         display: true,
                         text: 'Call/Put 比例对比'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // OI Chart
-        const oiCtx = document.getElementById('oiChart').getContext('2d');
-        new Chart(oiCtx, {
-            type: 'bar',
-            data: {
-                labels: ["BYND", "NVDA", "TSLA", "GLD", "SLV", "PLTR", "AAPL", "AMD", "IBIT", "AMZN", "OPEN", "TLT", "SPX", "NFLX", "INTC", "HOOD", "SOFI", "GOOGL", "MSTR", "UUUU", "MARA", "RGTI", "MSFT", "GDX", "CRWV"],
-                datasets: [{
-                    label: '持仓量',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: '持仓量分布'
                     }
                 },
                 scales: {
