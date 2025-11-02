@@ -692,14 +692,14 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Call/Put Ratio Analysis</h2>
+            <h2>Call/Put Ratio Analysis ({stock_date})</h2>
             <div class="chart-container">
                 <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>Volume Analysis</h2>
+            <h2>Volume Analysis ({stock_date})</h2>
             <div class="chart-container">
                 <canvas id="volumeOIChart"></canvas>
             </div>
