@@ -19,6 +19,7 @@ from report_generator import HTMLReportGenerator
 from archive_index_generator import get_archived_reports, generate_archive_index
 from history_analyzer import HistoryAnalyzer
 from utils import print_banner, print_summary_table, print_anomalies_summary, print_progress
+from trading_calendar import is_trading_day, get_last_trading_day
 
 
 def main():
@@ -34,6 +35,29 @@ def main():
         # Generate date stamp
         date_str = datetime.now().strftime('%Y-%m-%d')
         json_file = f'output/{date_str}.json'
+
+        # Check if today is a trading day
+        print_progress(f"📅 Checking if {date_str} is a trading day...")
+        if not is_trading_day(date_str):
+            last_trading_day = get_last_trading_day(date_str)
+            print_progress(f"   ⊘ {date_str} is NOT a trading day (weekend or holiday)")
+            print_progress(f"   • Last trading day was: {last_trading_day}")
+            print_progress(f"   • Skipping analysis - no CSV data available for non-trading days\\n")
+
+            print("\\n" + "="*80)
+            print("ℹ️  Non-Trading Day")
+            print("="*80)
+            print(f"\\n📋 Status:")
+            print(f"   • Date: {date_str}")
+            print(f"   • Trading day: No")
+            print(f"   • Last trading day: {last_trading_day}")
+            print(f"\\n💡 Analysis only runs on trading days when CSV data is available.")
+            print("="*80 + "\\n")
+
+            return 0
+
+        print_progress(f"   ✓ {date_str} is a trading day")
+        print_progress(f"   • CSV data should be available after market close\\n")
 
         # Check if today's data already exists (restored from gh-pages)
         if os.path.exists(json_file):
