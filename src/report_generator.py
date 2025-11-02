@@ -699,16 +699,14 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Call/Put Ratio Analysis</h2>
-            <div class="chart-container">
-                <canvas id="cpRatioChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Open Interest Distribution</h2>
-            <div class="chart-container">
-                <canvas id="oiChart"></canvas>
+            <h2>Volume Analysis</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div class="chart-container">
+                    <canvas id="cpRatioChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="oiChart"></canvas>
+                </div>
             </div>
         </div>
 
