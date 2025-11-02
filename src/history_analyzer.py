@@ -27,7 +27,7 @@ class HistoryAnalyzer:
         """
         获取过去N个交易日的日期列表
 
-        只统计有JSON文件的日期（实际交易日）
+        只统计有JSON文件且是交易日的日期
 
         Args:
             end_date: End date for lookback (defaults to today)
@@ -36,6 +36,8 @@ class HistoryAnalyzer:
         Returns:
             List of date strings in YYYY-MM-DD format, sorted oldest to newest
         """
+        from trading_calendar import is_trading_day
+
         if end_date is None:
             end_date = datetime.now()
 
@@ -48,8 +50,8 @@ class HistoryAnalyzer:
             date_str = current.strftime('%Y-%m-%d')
             json_file = os.path.join(self.output_dir, f"{date_str}.json")
 
-            # 只统计存在JSON文件的日期
-            if os.path.exists(json_file):
+            # 只统计存在JSON文件且是交易日的日期
+            if os.path.exists(json_file) and is_trading_day(date_str):
                 trading_days.append(date_str)
 
             current -= timedelta(days=1)
