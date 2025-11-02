@@ -42,25 +42,20 @@ class HybridDataFetcher:
         top_n_for_oi: int = 30
     ):
         """
-        Fetch options data using optimal strategy
+        Fetch options data using CSV as primary source
 
         Args:
-            strategy: 'auto', 'csv', or 'api'
+            strategy: 'auto' or 'csv' (both use CSV)
             top_n_for_oi: Number of top tickers to fetch OI for
 
         Returns:
             Tuple of (data, metadata) where:
             - data: List of aggregated data dicts
-            - metadata: Dict with 'data_source' key ('CSV', 'API', or 'CSV+API')
+            - metadata: Dict with 'data_source' key ('CSV' or 'CSV+API')
         """
         print(f"\n{'='*80}")
         print(f"📡 DATA FETCHING STRATEGY")
         print(f"{'='*80}")
-
-        if strategy == 'api':
-            print(f"  Strategy: Pure API (forced)\n")
-            data = self._fetch_via_api()
-            return data, {'data_source': 'API'}
 
         if strategy == 'csv':
             print(f"  Strategy: CSV only (forced)\n")
@@ -68,17 +63,16 @@ class HybridDataFetcher:
             if success:
                 return data, {'data_source': 'CSV', 'csv_date': csv_date}
             else:
-                print(f"\n  ⚠️  CSV fetch failed, falling back to API\n")
-                data = self._fetch_via_api()
-                return data, {'data_source': 'API'}
+                print(f"\n  ❌ CSV fetch failed - no fallback available\n")
+                return [], {'data_source': 'FAILED', 'error': 'CSV unavailable'}
 
-        # Auto strategy: try CSV first
-        print(f"  Strategy: AUTO (CSV → API → fallback)\n")
+        # Auto strategy: CSV + optional OI enrichment
+        print(f"  Strategy: AUTO (CSV + OI enrichment)\n")
         return self._fetch_auto(top_n_for_oi)
 
     def _fetch_auto(self, top_n_for_oi: int):
         """
-        Auto strategy: intelligently choose best method
+        Auto strategy: CSV for volume + API for OI enrichment
 
         Args:
             top_n_for_oi: Number of top tickers to enrich with OI
@@ -86,19 +80,18 @@ class HybridDataFetcher:
         Returns:
             Tuple of (data, metadata)
         """
-        # Step 1: Try CSV for volume data
-        print(f"📦 STEP 1: Attempting CSV download for volume data")
+        # Step 1: Get CSV data (required)
+        print(f"📦 STEP 1: Downloading CSV for volume data")
         print(f"{'-'*80}")
 
         success, data, csv_date = self.csv_handler.try_download_and_parse()
 
         if not success or not data:
-            print(f"\n❌ CSV method failed or no data")
-            print(f"📱 Falling back to pure API method...\n")
-            data = self._fetch_via_api()
-            return data, {'data_source': 'API'}
+            print(f"\n❌ CSV download failed or no data available")
+            print(f"   Cannot proceed without CSV data")
+            return [], {'data_source': 'FAILED', 'error': 'CSV unavailable'}
 
-        print(f"\n✅ CSV method successful!")
+        print(f"\n✅ CSV download successful!")
         print(f"   • Total tickers: {len(data)}")
         print(f"   • Total volume: {sum(d['total_volume'] for d in data):,}")
 
@@ -138,25 +131,6 @@ class HybridDataFetcher:
 
         return data, {'data_source': 'CSV+API', 'csv_date': csv_date}
 
-    def _fetch_via_api(self) -> List[Dict]:
-        """
-        Pure API strategy (fallback)
-
-        Returns:
-            List of aggregated data
-        """
-        print(f"📱 PURE API METHOD")
-        print(f"{'-'*80}")
-        print(f"   Fetching popular tickers...\n")
-
-        tickers = self.api_fetcher.get_top_active_tickers(limit=48)
-        data = self.api_fetcher.aggregate_options_by_underlying(tickers)
-
-        print(f"\n✅ API fetch complete: {len(data)} tickers")
-        print(f"{'='*80}\n")
-
-        return data
-
     def get_strategy_info(self) -> Dict:
         """
         Get information about available strategies
@@ -168,8 +142,8 @@ class HybridDataFetcher:
 
         return {
             'has_flat_files_access': has_csv,
-            'recommended_strategy': 'auto' if has_csv else 'api',
-            'available_strategies': ['auto', 'csv', 'api'] if has_csv else ['api']
+            'recommended_strategy': 'auto' if has_csv else 'csv',
+            'available_strategies': ['auto', 'csv']
         }
 
     def enrich_with_oi(self, data: List[Dict], top_n: int = 30):
