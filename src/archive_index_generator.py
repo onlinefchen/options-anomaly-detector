@@ -24,6 +24,11 @@ def get_archived_reports(output_dir: str = 'output') -> List[Dict]:
     if not os.path.exists(output_dir):
         return reports
 
+    # Import trading calendar to check trading days
+    import sys
+    sys.path.insert(0, os.path.dirname(__file__))
+    from trading_calendar import is_trading_day
+
     for filename in os.listdir(output_dir):
         # Look for dated JSON files (YYYY-MM-DD.json)
         if filename.endswith('.json') and len(filename) == 15:  # YYYY-MM-DD.json
@@ -36,13 +41,17 @@ def get_archived_reports(output_dir: str = 'output') -> List[Dict]:
                 with open(json_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
 
+                # Check if this date is a trading day
+                is_trade_day = is_trading_day(date_str)
+
                 reports.append({
                     'date': date_str,
                     'tickers_count': data.get('tickers_count', 0),
                     'anomalies_count': data.get('anomalies_count', 0),
                     'html_file': f'{date_str}.html',
                     'json_file': f'{date_str}.json',
-                    'has_html': os.path.exists(html_path)
+                    'has_html': os.path.exists(html_path),
+                    'is_trading_day': is_trade_day
                 })
             except Exception as e:
                 print(f"Warning: Failed to read {json_path}: {e}")
@@ -75,10 +84,34 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
         }}
 
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f7;
             padding: 20px;
-            color: #333;
+            color: #1d1d1f;
+        }}
+
+        .date-cell {{
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95em;
+            font-weight: 600;
+        }}
+
+        .badge {{
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }}
+
+        .badge-success {{
+            background: #d1f4e0;
+            color: #0f5132;
+        }}
+
+        .badge-secondary {{
+            background: #e9ecef;
+            color: #6c757d;
         }}
 
         .container {{
@@ -88,45 +121,48 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
 
         .header {{
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             margin-bottom: 30px;
             text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
         }}
 
         .header h1 {{
             font-size: 2.5em;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1d1d1f;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }}
 
         .nav {{
             background: white;
             padding: 15px 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             margin-bottom: 30px;
             text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
         }}
 
         .nav a {{
             display: inline-block;
             padding: 10px 25px;
             margin: 0 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0071e3;
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: transform 0.2s;
+            border-radius: 980px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
         }}
 
         .nav a:hover {{
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: #0077ED;
+            transform: scale(1.02);
         }}
 
         .section {{
@@ -256,9 +292,16 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
             html_link = f'<a href="{report["html_file"]}" class="btn">查看报告</a>' if report['has_html'] else '-'
             json_link = f'<a href="{report["json_file"]}" class="btn btn-secondary">下载数据</a>'
 
+            # Trading day badge
+            if report['is_trading_day']:
+                trading_badge = '<span class="badge badge-success">✓ 交易日</span>'
+            else:
+                trading_badge = '<span class="badge badge-secondary">⊘ 非交易日</span>'
+
             rows.append(f'''
                 <tr>
-                    <td><strong>{report['date']}</strong></td>
+                    <td class="date-cell">{report['date']}</td>
+                    <td>{trading_badge}</td>
                     <td>
                         <span class="stats">📊 {report['tickers_count']} 只股票</span>
                         <span class="stats">🚨 {report['anomalies_count']} 个异常</span>
@@ -275,6 +318,7 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
                 <thead>
                     <tr>
                         <th>日期</th>
+                        <th>交易日</th>
                         <th>统计</th>
                         <th>操作</th>
                     </tr>
