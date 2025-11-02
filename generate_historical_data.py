@@ -18,6 +18,7 @@ from anomaly_detector import OptionsAnomalyDetector
 from report_generator import HTMLReportGenerator
 from history_analyzer import HistoryAnalyzer
 from archive_index_generator import get_archived_reports, generate_archive_index
+from trading_calendar import has_trading_days_between
 
 # Load environment variables
 load_dotenv()
@@ -83,11 +84,27 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         print(f'      - 总成交量: {sum(d["total_volume"] for d in data):,}')
         print()
 
-        # Enrich top tickers with OI data from API
-        print(f'📡 STEP 2/5: 获取 Open Interest 数据')
-        print(f'   ⏳ 正在为前 35 个标的获取 OI 数据...')
-        data, metadata = fetcher.enrich_with_oi(data, top_n=35)
-        print(f'   ✅ OI 数据获取完成')
+        # Algorithm 2: Determine if OI should be fetched
+        print(f'📡 STEP 2/5: 检查是否需要获取 Open Interest 数据')
+        current_date = datetime.now().strftime('%Y-%m-%d')
+        should_fetch_oi = not has_trading_days_between(csv_date, current_date)
+
+        if should_fetch_oi:
+            print(f'   ✓ {csv_date} 至今无新交易日')
+            print(f'   → OI 数据有意义（反映 {csv_date} 盘后市场状态）')
+            print(f'   ⏳ 正在为前 35 个标的获取 OI 数据...')
+            data, metadata = fetcher.enrich_with_oi(data, top_n=35)
+            print(f'   ✅ OI 数据获取完成')
+        else:
+            print(f'   ⊘ {csv_date} 至今有新交易日')
+            print(f'   → OI 数据无意义（会是今天的数据，不是 {csv_date} 的）')
+            print(f'   → 跳过 OI 获取')
+            metadata = {
+                'data_source': 'CSV',
+                'csv_date': csv_date,
+                'oi_skipped': 'historical_data',
+                'oi_skip_reason': f'New trading days exist between {csv_date} and {current_date}'
+            }
         print()
 
         print(f'📊 STEP 3/5: 分析历史活跃度')
@@ -151,16 +168,17 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
     os.makedirs(output_dir, exist_ok=True)
 
     # 保存 JSON
-    data_source = metadata.get('data_source', 'Unknown')
+    data_source = metadata.get('data_source', 'CSV')
     historical_data = {
-        'date': date,
-        'timestamp': datetime.now().isoformat(),
+        'date': date,  # CSV date (data date)
+        'generated_at': datetime.now().isoformat(),  # When report was generated
         'tickers_count': len(data),
         'anomalies_count': summary.get('total', 0),
         'data_source': data_source,
         'data': data,
         'anomalies': anomalies,
-        'summary': summary
+        'summary': summary,
+        'metadata': metadata  # Include full metadata (OI skip info, etc.)
     }
 
     json_file = os.path.join(output_dir, f'{date}.json')

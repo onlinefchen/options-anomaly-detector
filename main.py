@@ -19,7 +19,7 @@ from report_generator import HTMLReportGenerator
 from archive_index_generator import get_archived_reports, generate_archive_index
 from history_analyzer import HistoryAnalyzer
 from utils import print_banner, print_summary_table, print_anomalies_summary, print_progress
-from trading_calendar import is_trading_day, get_last_trading_day
+from trading_calendar import get_previous_trading_day, has_trading_days_between
 
 
 def main():
@@ -32,36 +32,18 @@ def main():
     print_banner()
 
     try:
-        # Generate date stamp
-        date_str = datetime.now().strftime('%Y-%m-%d')
-        json_file = f'output/{date_str}.json'
+        # Algorithm 1: Determine csv_date (previous completed trading day)
+        print_progress("📅 Determining target CSV date...")
+        current_date = datetime.now().strftime('%Y-%m-%d')
+        csv_date = get_previous_trading_day(from_date=current_date)
+        print_progress(f"   • Current date: {current_date}")
+        print_progress(f"   • Target CSV date: {csv_date}")
+        print_progress(f"   • CSV file: {csv_date}.csv.gz\n")
 
-        # Check if today is a trading day
-        print_progress(f"📅 Checking if {date_str} is a trading day...")
-        if not is_trading_day(date_str):
-            last_trading_day = get_last_trading_day(date_str)
-            print_progress(f"   ⊘ {date_str} is NOT a trading day (weekend or holiday)")
-            print_progress(f"   • Last trading day was: {last_trading_day}")
-            print_progress(f"   • Skipping analysis - no CSV data available for non-trading days\\n")
-
-            print("\\n" + "="*80)
-            print("ℹ️  Non-Trading Day")
-            print("="*80)
-            print(f"\\n📋 Status:")
-            print(f"   • Date: {date_str}")
-            print(f"   • Trading day: No")
-            print(f"   • Last trading day: {last_trading_day}")
-            print(f"\\n💡 Analysis only runs on trading days when CSV data is available.")
-            print("="*80 + "\\n")
-
-            return 0
-
-        print_progress(f"   ✓ {date_str} is a trading day")
-        print_progress(f"   • CSV data should be available after market close\\n")
-
-        # Check if today's data already exists (restored from gh-pages)
+        # Check if this CSV date's data already exists (restored from gh-pages)
+        json_file = f'output/{csv_date}.json'
         if os.path.exists(json_file):
-            print_progress(f"📦 Found existing data for {date_str}")
+            print_progress(f"📦 Found existing data for {csv_date}")
             print_progress(f"   • File: {json_file}")
             print_progress("   • Data already processed and published")
             print_progress("   • Skipping analysis (nothing to do)\n")
@@ -70,7 +52,7 @@ def main():
             print("ℹ️  Data Already Exists")
             print("="*80)
             print(f"\n📋 Status:")
-            print(f"   • Date: {date_str}")
+            print(f"   • CSV date: {csv_date}")
             print(f"   • Data file: {json_file}")
             print(f"   • Already published to gh-pages")
             print(f"\n💡 No action needed - data is already up to date.")
@@ -79,7 +61,7 @@ def main():
             return 0
 
         # If no existing data, proceed with full analysis
-        print_progress(f"🆕 No existing data for {date_str}, proceeding with full analysis\n")
+        print_progress(f"🆕 No existing data for {csv_date}, proceeding with analysis\n")
 
         # Initialize components
         print_progress("🔧 Initializing components...")
@@ -94,38 +76,55 @@ def main():
         print_progress(f"   • Flat Files access: {'✓' if strategy_info['has_flat_files_access'] else '✗'}")
         print_progress(f"   • Recommended strategy: {strategy_info['recommended_strategy'].upper()}\n")
 
-        # Fetch options data using CSV (no API fallback)
-        # Try to download CSV for today
-        print_progress("📥 Checking for CSV data...")
-        today = datetime.now().strftime('%Y-%m-%d')
-        success, data, csv_date = fetcher.csv_handler.try_download_and_parse(date=today, max_retries=1)
+        # Download CSV for csv_date
+        print_progress(f"📥 Downloading CSV data for {csv_date}...")
+        success, data, actual_csv_date = fetcher.csv_handler.try_download_and_parse(date=csv_date, max_retries=1)
 
         if not success or not data:
-            print_progress(f"⊘ No CSV data available for {today}")
-            print_progress("   • CSV file not found (likely a non-trading day)")
-            print_progress("   • Skipping analysis - will only generate reports for days with CSV data\n")
+            print_progress(f"⊘ CSV download failed for {csv_date}")
+            print_progress("   • CSV file not found or inaccessible")
+            print_progress("   • Skipping analysis\n")
 
             print("\n" + "="*80)
-            print("ℹ️  No Analysis Performed")
+            print("❌ CSV Download Failed")
             print("="*80)
-            print(f"\n📋 Reason:")
-            print(f"   • No CSV data available for {today}")
-            print(f"   • This is expected for weekends, holidays, and days before market close")
-            print(f"\n💡 Analysis will run automatically when CSV data becomes available.")
+            print(f"\n📋 Details:")
+            print(f"   • Target CSV date: {csv_date}")
+            print(f"   • CSV file expected: {csv_date}.csv.gz")
+            print(f"   • The CSV file may not be available yet")
+            print(f"\n💡 Analysis will run when CSV becomes available.")
             print("="*80 + "\n")
             return 0
 
-        # CSV data found - enrich with OI data from API
-        print_progress(f"✓ CSV data found for {csv_date}")
-        print_progress(f"   • Downloaded {len(data)} tickers from CSV")
+        print_progress(f"✓ CSV data downloaded successfully")
+        print_progress(f"   • CSV date: {actual_csv_date}")
+        print_progress(f"   • Tickers: {len(data)}\n")
 
-        # Enrich top tickers with OI data from API
-        # Use top_n=35 to ensure all top 25 stocks have OI data after filtering out indices
-        # (indices like SPY, QQQ, IWM, SPXW, VIX occupy ~5-8 spots in top 35)
-        print_progress("📡 Enriching top 35 tickers with Open Interest data from API...")
-        data, metadata = fetcher.enrich_with_oi(data, top_n=35)
-        print_progress(f"✓ Successfully enriched data")
-        print_progress(f"   • Data source: {metadata.get('data_source', 'CSV+API')}\n")
+        # Algorithm 2: Determine if OI should be fetched
+        print_progress("🔍 Checking if Open Interest data should be fetched...")
+        should_fetch_oi = not has_trading_days_between(csv_date, current_date)
+
+        if should_fetch_oi:
+            print_progress(f"   ✓ No new trading days between {csv_date} and {current_date}")
+            print_progress(f"   → OI data is meaningful (reflects market state at/after {csv_date} close)")
+            print_progress(f"   → Fetching OI for top 35 tickers...\n")
+
+            # Enrich with OI data from API
+            print_progress("📡 Enriching with Open Interest data from API...")
+            data, metadata = fetcher.enrich_with_oi(data, top_n=35)
+            print_progress(f"✓ OI enrichment complete")
+            print_progress(f"   • Data source: {metadata.get('data_source', 'CSV+API')}\n")
+        else:
+            print_progress(f"   ⊘ New trading days exist between {csv_date} and {current_date}")
+            print_progress(f"   → OI data would be from today (not meaningful for historical {csv_date})")
+            print_progress(f"   → Skipping OI enrichment\n")
+
+            metadata = {
+                'data_source': 'CSV',
+                'csv_date': actual_csv_date,
+                'oi_skipped': 'historical_data',
+                'oi_skip_reason': f'New trading days exist between {csv_date} and {current_date}'
+            }
 
         # Analyze historical activity
         print_progress("📊 Analyzing historical activity (past 10 trading days)...")
@@ -152,26 +151,27 @@ def main():
         print_progress("💾 Archiving historical data...")
 
         # Save raw data as JSON
-        data_source = metadata.get('data_source', 'CSV+API')
+        data_source = metadata.get('data_source', 'CSV')
         historical_data = {
-            'date': date_str,
-            'timestamp': datetime.now().isoformat(),
+            'date': csv_date,  # CSV date (data date)
+            'generated_at': datetime.now().isoformat(),  # When report was generated
             'tickers_count': len(data),
             'anomalies_count': summary['total'],
             'data_source': data_source,
             'data': data,
             'anomalies': anomalies,
-            'summary': summary
+            'summary': summary,
+            'metadata': metadata  # Include full metadata (OI skip info, etc.)
         }
 
-        json_file = f'output/{date_str}.json'
+        json_file = f'output/{csv_date}.json'
         with open(json_file, 'w', encoding='utf-8') as f:
             json.dump(historical_data, f, ensure_ascii=False, indent=2)
         print_progress(f"✓ Raw data saved: {json_file}")
 
         # Copy current report to dated version
         import shutil
-        dated_report = f'output/{date_str}.html'
+        dated_report = f'output/{csv_date}.html'
         shutil.copy2('output/anomaly_report.html', dated_report)
         print_progress(f"✓ Historical report saved: {dated_report}")
 

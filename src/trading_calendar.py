@@ -115,6 +115,54 @@ class TradingCalendar:
         schedule = self.nyse.schedule(start_date=start_date, end_date=end_date)
         return [day.strftime('%Y-%m-%d') for day in schedule.index]
 
+    def get_previous_trading_day(self, from_date: Optional[str] = None) -> str:
+        """
+        Get the previous completed trading day (the most recent trading day before from_date)
+
+        For the algorithm: we want the last completed trading day, so we look at
+        (from_date - 1 day) and find the most recent trading day on or before that.
+
+        Args:
+            from_date: Reference date in YYYY-MM-DD format (default: today)
+
+        Returns:
+            Previous trading day in YYYY-MM-DD format
+        """
+        if from_date is None:
+            from_date = datetime.now().strftime('%Y-%m-%d')
+
+        # Calculate candidate_date = from_date - 1 day
+        reference = pd.Timestamp(from_date)
+        candidate = reference - pd.Timedelta(days=1)
+        candidate_str = candidate.strftime('%Y-%m-%d')
+
+        # Find the last trading day on or before candidate_date
+        # This is exactly what get_last_trading_day does
+        return self.get_last_trading_day(candidate_str)
+
+    def has_trading_days_between(self, start_date: str, end_date: str) -> bool:
+        """
+        Check if there are any trading days between two dates (exclusive)
+
+        Args:
+            start_date: Start date in YYYY-MM-DD format (exclusive)
+            end_date: End date in YYYY-MM-DD format (exclusive)
+
+        Returns:
+            True if there are trading days between the dates, False otherwise
+        """
+        # Calculate search range (exclusive of both boundaries)
+        start = pd.Timestamp(start_date) + pd.Timedelta(days=1)
+        end = pd.Timestamp(end_date) - pd.Timedelta(days=1)
+
+        # If start > end, no room for any days between
+        if start > end:
+            return False
+
+        # Check if any trading days exist in the range
+        schedule = self.nyse.schedule(start_date=start, end_date=end)
+        return len(schedule) > 0
+
 
 # Singleton instance
 _calendar = None
@@ -154,6 +202,35 @@ def get_last_trading_day(before_date: Optional[str] = None) -> str:
     """
     calendar = get_trading_calendar()
     return calendar.get_last_trading_day(before_date)
+
+
+def get_previous_trading_day(from_date: Optional[str] = None) -> str:
+    """
+    Get the previous trading day before a given date (exclusive)
+
+    Args:
+        from_date: Reference date in YYYY-MM-DD format (default: today)
+
+    Returns:
+        Previous trading day in YYYY-MM-DD format
+    """
+    calendar = get_trading_calendar()
+    return calendar.get_previous_trading_day(from_date)
+
+
+def has_trading_days_between(start_date: str, end_date: str) -> bool:
+    """
+    Check if there are any trading days between two dates (exclusive)
+
+    Args:
+        start_date: Start date in YYYY-MM-DD format (exclusive)
+        end_date: End date in YYYY-MM-DD format (exclusive)
+
+    Returns:
+        True if there are trading days between the dates, False otherwise
+    """
+    calendar = get_trading_calendar()
+    return calendar.has_trading_days_between(start_date, end_date)
 
 
 if __name__ == '__main__':
