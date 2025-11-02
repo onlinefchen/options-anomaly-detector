@@ -899,6 +899,13 @@ class HTMLReportGenerator:
             }}
         }});
 
+        // Calculate max value for unified Y-axis scale
+        const volumeData = {volumes_json};
+        const oiData = {open_interests_json};
+        const maxVolume = Math.max(...volumeData);
+        const maxOI = Math.max(...oiData);
+        const unifiedYMax = Math.max(maxVolume, maxOI) * 1.1; // Add 10% padding
+
         // Volume Chart with C/P ratio in tooltip (stocks & ETFs only, excludes Market Indices)
         const volumeCtx = document.getElementById('volumeChart').getContext('2d');
         const cpRatiosForVolume = {cp_volume_ratios_json};
@@ -909,7 +916,7 @@ class HTMLReportGenerator:
                 labels: {tickers_json},
                 datasets: [{{
                     label: '总成交量',
-                    data: {volumes_json},
+                    data: volumeData,
                     backgroundColor: 'rgba(102, 126, 234, 0.8)',
                     borderColor: 'rgba(102, 126, 234, 1)',
                     borderWidth: 1
@@ -938,7 +945,8 @@ class HTMLReportGenerator:
                 }},
                 scales: {{
                     y: {{
-                        beginAtZero: true
+                        beginAtZero: true,
+                        max: unifiedYMax
                     }}
                 }}
             }}
@@ -992,7 +1000,7 @@ class HTMLReportGenerator:
                 labels: {tickers_json},
                 datasets: [{{
                     label: '持仓量',
-                    data: {open_interests_json},
+                    data: oiData,
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
@@ -1009,7 +1017,8 @@ class HTMLReportGenerator:
                 }},
                 scales: {{
                     y: {{
-                        beginAtZero: true
+                        beginAtZero: true,
+                        max: unifiedYMax
                     }}
                 }}
             }}
