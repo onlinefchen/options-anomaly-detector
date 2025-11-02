@@ -69,7 +69,7 @@ def main():
     analysis = ''
     if ai_analyzer.is_available():
         print('🤖 Running AI analysis...')
-        analysis = ai_analyzer.analyze(anomalies, data, summary)
+        analysis = ai_analyzer.analyze_market_data(data, anomalies, summary)
 
         if analysis:
             print('✓ AI analysis completed')
