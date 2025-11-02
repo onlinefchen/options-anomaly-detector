@@ -648,13 +648,6 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
-            <h2>Market Overview - Top 30 by Volume</h2>
-            <div class="chart-container">
-                <canvas id="volumeChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
             <h2>Market Indices ({index_count})</h2>
             <table id="indexTable">
                 <thead>
@@ -699,10 +692,17 @@ class HTMLReportGenerator:
         </div>
 
         <div class="section">
+            <h2>Call/Put Ratio Analysis</h2>
+            <div class="chart-container">
+                <canvas id="cpRatioChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
             <h2>Volume Analysis</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
                 <div class="chart-container">
-                    <canvas id="cpRatioChart"></canvas>
+                    <canvas id="volumeChart"></canvas>
                 </div>
                 <div class="chart-container">
                     <canvas id="oiChart"></canvas>
