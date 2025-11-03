@@ -233,6 +233,44 @@ def has_trading_days_between(start_date: str, end_date: str) -> bool:
     return calendar.has_trading_days_between(start_date, end_date)
 
 
+def get_weekday(date: str) -> tuple:
+    """
+    Get weekday information for a date
+
+    Args:
+        date: Date string in YYYY-MM-DD format
+
+    Returns:
+        Tuple of (weekday_number, weekday_name, weekday_name_cn)
+        weekday_number: 0=Monday, 1=Tuesday, ..., 6=Sunday
+        weekday_name: English weekday name (e.g., 'Monday', 'Sunday')
+        weekday_name_cn: Chinese weekday name (e.g., '周一', '周日')
+    """
+    date_obj = datetime.strptime(date, '%Y-%m-%d')
+    weekday_num = date_obj.weekday()
+
+    weekday_names_en = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    weekday_names_cn = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+
+    return (weekday_num, weekday_names_en[weekday_num], weekday_names_cn[weekday_num])
+
+
+def format_date_with_weekday(date: str, show_chinese: bool = False) -> str:
+    """
+    Format date with weekday information
+
+    Args:
+        date: Date string in YYYY-MM-DD format
+        show_chinese: Whether to show Chinese weekday name
+
+    Returns:
+        Formatted string like "2025-11-03 (Sunday)" or "2025-11-03 (周日)"
+    """
+    weekday_num, weekday_en, weekday_cn = get_weekday(date)
+    weekday_name = weekday_cn if show_chinese else weekday_en
+    return f"{date} ({weekday_name})"
+
+
 if __name__ == '__main__':
     # Test the module
     import sys
@@ -242,8 +280,9 @@ if __name__ == '__main__':
     else:
         date = datetime.now().strftime('%Y-%m-%d')
 
-    print(f"Testing trading calendar for {date}")
+    print(f"Testing trading calendar for {format_date_with_weekday(date)}")
     print(f"Is trading day: {is_trading_day(date)}")
 
     if not is_trading_day(date):
-        print(f"Last trading day: {get_last_trading_day(date)}")
+        last_trading_day = get_last_trading_day(date)
+        print(f"Last trading day: {format_date_with_weekday(last_trading_day)}")
