@@ -94,7 +94,7 @@ def main():
             print(f"   • The CSV file may not be available yet")
             print(f"\n💡 Analysis will run when CSV becomes available.")
             print("="*80 + "\n")
-            return 0
+            return 1  # Return failure code to stop workflow
 
         print_progress(f"✓ CSV data downloaded successfully")
         print_progress(f"   • CSV date: {actual_csv_date}")

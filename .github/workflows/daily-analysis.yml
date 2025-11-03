@@ -152,7 +152,7 @@ jobs:
           retention-days: 90
 
       - name: 🤖 AI Analysis & Email Notification
-        if: github.event_name != 'push'
+        if: success() && github.event_name != 'push'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -201,6 +201,7 @@ jobs:
   deploy:
     name: 🚀 Deploy to GitHub Pages
     needs: fetch-and-analyze
+    if: success()
     runs-on: ubuntu-latest
 
     permissions:
