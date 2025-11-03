@@ -18,7 +18,7 @@ from anomaly_detector import OptionsAnomalyDetector
 from report_generator import HTMLReportGenerator
 from history_analyzer import HistoryAnalyzer
 from archive_index_generator import get_archived_reports, generate_archive_index
-from trading_calendar import has_trading_days_between
+from trading_calendar import has_trading_days_between, get_previous_trading_day, get_trading_calendar
 
 # Load environment variables
 load_dotenv()
@@ -26,7 +26,7 @@ load_dotenv()
 
 def get_trading_days_in_range(start_date: str, end_date: str) -> list:
     """
-    获取日期区间内的所有交易日（排除周末）
+    获取日期区间内的所有交易日（使用 NYSE 交易日历）
 
     Args:
         start_date: 开始日期 YYYY-MM-DD
@@ -35,19 +35,8 @@ def get_trading_days_in_range(start_date: str, end_date: str) -> list:
     Returns:
         交易日期列表
     """
-    start = datetime.strptime(start_date, '%Y-%m-%d')
-    end = datetime.strptime(end_date, '%Y-%m-%d')
-
-    trading_days = []
-    current = start
-
-    while current <= end:
-        # 排除周末 (0=Monday, 5=Saturday, 6=Sunday)
-        if current.weekday() < 5:
-            trading_days.append(current.strftime('%Y-%m-%d'))
-        current += timedelta(days=1)
-
-    return trading_days
+    calendar = get_trading_calendar()
+    return calendar.get_trading_days_in_range(start_date, end_date)
 
 
 def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
@@ -262,7 +251,9 @@ def main():
 
     elif args.days:
         # 过去N个交易日
-        end_date = datetime.now()
+        # 使用前一个已完成的交易日作为结束日期（不包含今天）
+        end_date_str = get_previous_trading_day()
+        end_date = datetime.strptime(end_date_str, '%Y-%m-%d')
         start_date = end_date - timedelta(days=args.days * 2)  # 预留足够的天数
 
         dates = get_trading_days_in_range(
@@ -273,6 +264,7 @@ def main():
         print(f"模式: 生成过去N个交易日")
         print(f"天数: {args.days} 个交易日")
         print(f"日期范围: {dates[0]} 至 {dates[-1]}")
+        print(f"注意: 结束日期是最后一个已完成的交易日 ({end_date_str})")
 
     print()
     print("=" * 70)
