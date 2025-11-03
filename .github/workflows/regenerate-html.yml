@@ -72,13 +72,7 @@ jobs:
             echo "模式: 重新生成特定日期 $DATE"
 
             # Check if date is a trading day
-            IS_TRADING_DAY=$(python3 -c "
-import pandas_market_calendars as mcal
-nyse = mcal.get_calendar('NYSE')
-date_str = '$DATE'
-valid = nyse.valid_days(start_date=date_str, end_date=date_str).size > 0
-print('true' if valid else 'false')
-            ")
+            IS_TRADING_DAY=$(python3 -c "import pandas_market_calendars as mcal; nyse = mcal.get_calendar('NYSE'); date_str = '$DATE'; valid = nyse.valid_days(start_date=date_str, end_date=date_str).size > 0; print('true' if valid else 'false')")
 
             if [ "$IS_TRADING_DAY" != "true" ]; then
               echo "❌ $DATE is not a trading day"
@@ -117,14 +111,7 @@ print('true' if valid else 'false')
               echo "[$COUNT/$DAYS] Processing $DATE..."
 
               # Check if date is a trading day
-              IS_TRADING_DAY=$(python3 -c "
-import pandas_market_calendars as mcal
-from datetime import datetime
-nyse = mcal.get_calendar('NYSE')
-date_str = '$DATE'
-valid = nyse.valid_days(start_date=date_str, end_date=date_str).size > 0
-print('true' if valid else 'false')
-              ")
+              IS_TRADING_DAY=$(python3 -c "import pandas_market_calendars as mcal; from datetime import datetime; nyse = mcal.get_calendar('NYSE'); date_str = '$DATE'; valid = nyse.valid_days(start_date=date_str, end_date=date_str).size > 0; print('true' if valid else 'false')")
 
               if [ "$IS_TRADING_DAY" != "true" ]; then
                 echo "  ⊘ Skipped (not a trading day)"
