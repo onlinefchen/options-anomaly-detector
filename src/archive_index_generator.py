@@ -75,7 +75,7 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>期权异常分析 - 历史报告</title>
+    <title>Options Analysis Archive</title>
     <style>
         * {{
             margin: 0;
@@ -84,172 +84,174 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
         }}
 
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #f5f5f7;
-            padding: 20px;
-            color: #1d1d1f;
-        }}
-
-        .date-cell {{
             font-family: "Courier New", Courier, monospace;
-            font-size: 0.95em;
-            font-weight: 600;
-        }}
-
-        .badge {{
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.85em;
-            font-weight: 500;
-        }}
-
-        .badge-success {{
-            background: #d1f4e0;
-            color: #0f5132;
-        }}
-
-        .badge-secondary {{
-            background: #e9ecef;
-            color: #6c757d;
+            background: #ffffff;
+            padding: 40px 20px;
+            color: #1d1d1f;
+            line-height: 1.6;
         }}
 
         .container {{
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }}
 
         .header {{
-            background: white;
-            padding: 40px;
-            border-radius: 18px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #d2d2d7;
         }}
 
         .header h1 {{
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 10px;
             color: #1d1d1f;
             font-weight: 600;
             letter-spacing: -0.5px;
         }}
 
+        .header p {{
+            color: #86868b;
+            font-size: 0.9em;
+        }}
+
         .nav {{
-            background: white;
-            padding: 15px 30px;
-            border-radius: 18px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 40px;
         }}
 
         .nav a {{
             display: inline-block;
-            padding: 10px 25px;
-            margin: 0 10px;
-            background: #0071e3;
-            color: white;
+            padding: 8px 20px;
+            margin: 0 8px;
+            color: #1d1d1f;
             text-decoration: none;
-            border-radius: 980px;
-            font-weight: 500;
-            font-size: 14px;
+            border: 1px solid #d2d2d7;
+            border-radius: 2px;
+            font-size: 13px;
             transition: all 0.2s;
         }}
 
         .nav a:hover {{
-            background: #0077ED;
-            transform: scale(1.02);
+            background: #f5f5f7;
+            border-color: #86868b;
         }}
 
         .section {{
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }}
 
-        .section h2 {{
+        .section-title {{
+            font-size: 1.2em;
             margin-bottom: 20px;
-            color: #333;
-            border-left: 5px solid #667eea;
-            padding-left: 15px;
+            color: #1d1d1f;
+            font-weight: 600;
+        }}
+
+        .summary {{
+            color: #86868b;
+            font-size: 0.9em;
+            margin-bottom: 30px;
         }}
 
         table {{
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            font-size: 13px;
         }}
 
         table th {{
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 12px;
             text-align: left;
             font-weight: 600;
+            border-bottom: 1px solid #d2d2d7;
         }}
 
         table td {{
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
+            padding: 12px;
+            border-bottom: 1px solid #f5f5f7;
         }}
 
         table tr:hover {{
-            background: #f8f9fa;
+            background: #fafafa;
         }}
 
-        .btn {{
+        .date-cell {{
+            font-family: "Courier New", Courier, monospace;
+            font-weight: 600;
+            color: #1d1d1f;
+        }}
+
+        .badge {{
             display: inline-block;
-            padding: 8px 16px;
-            margin: 0 5px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.9em;
-            transition: background 0.2s;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: 500;
+            border-radius: 2px;
         }}
 
-        .btn:hover {{
-            background: #5568d3;
+        .badge-trading {{
+            background: #f5f5f7;
+            color: #1d1d1f;
+            border: 1px solid #d2d2d7;
         }}
 
-        .btn-secondary {{
-            background: #6c757d;
-        }}
-
-        .btn-secondary:hover {{
-            background: #5a6268;
+        .badge-non-trading {{
+            background: #ffffff;
+            color: #86868b;
+            border: 1px solid #d2d2d7;
         }}
 
         .stats {{
             display: inline-block;
-            padding: 4px 10px;
-            background: #f0f0f0;
-            border-radius: 4px;
-            font-size: 0.9em;
-            margin: 0 5px;
+            color: #86868b;
+            font-size: 12px;
+            margin-right: 15px;
+        }}
+
+        .link {{
+            color: #06c;
+            text-decoration: none;
+            font-size: 12px;
+            margin-right: 12px;
+        }}
+
+        .link:hover {{
+            text-decoration: underline;
         }}
 
         .footer {{
             text-align: center;
-            color: white;
-            margin-top: 30px;
-            padding: 20px;
+            color: #86868b;
+            font-size: 11px;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #d2d2d7;
+        }}
+
+        .footer p {{
+            margin: 5px 0;
         }}
 
         @media (max-width: 768px) {{
+            body {{
+                padding: 20px 15px;
+            }}
             .header h1 {{
-                font-size: 1.8em;
+                font-size: 1.5em;
             }}
             .nav a {{
                 display: block;
-                margin: 10px 0;
+                margin: 8px 0;
+            }}
+            table {{
+                font-size: 11px;
+            }}
+            table th, table td {{
+                padding: 8px;
             }}
         }}
     </style>
@@ -257,27 +259,27 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
 <body>
     <div class="container">
         <div class="header">
-            <h1>📚 期权异常分析 - 历史报告</h1>
-            <p class="date">数据归档与历史查询</p>
+            <h1>Options Analysis Archive</h1>
+            <p>Historical Reports & Data Archive</p>
         </div>
 
         <div class="nav">
-            <a href="index.html">📊 最新报告</a>
-            <a href="archive.html">📚 历史报告</a>
+            <a href="index.html">Latest Report</a>
+            <a href="archive.html">Archive</a>
         </div>
 
         <div class="section">
-            <h2>📅 历史报告列表</h2>
-            <p style="color: #666; margin-bottom: 20px;">
-                共 <strong>{total_reports}</strong> 份历史报告，每日自动更新并归档
-            </p>
+            <div class="section-title">Historical Reports</div>
+            <div class="summary">
+                Total {total_reports} reports | Updated daily
+            </div>
 
             {report_table}
         </div>
 
         <div class="footer">
-            <p>期权异常检测系统 | 数据来源: Polygon.io</p>
-            <p>⚠️ 本报告仅供参考，不构成投资建议</p>
+            <p>Options Anomaly Detection System | Data Source: Polygon.io</p>
+            <p>For informational purposes only. Not investment advice.</p>
         </div>
     </div>
 </body>
@@ -285,26 +287,26 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
 
     # Generate table rows
     if not reports:
-        table_html = '<p style="text-align:center; padding:40px;">暂无历史报告</p>'
+        table_html = '<p style="text-align:center; padding:40px; color:#86868b;">No historical reports</p>'
     else:
         rows = []
         for report in reports:
-            html_link = f'<a href="{report["html_file"]}" class="btn">查看报告</a>' if report['has_html'] else '-'
-            json_link = f'<a href="{report["json_file"]}" class="btn btn-secondary">下载数据</a>'
+            html_link = f'<a href="{report["html_file"]}" class="link">View Report</a>' if report['has_html'] else '<span style="color:#d2d2d7;">-</span>'
+            json_link = f'<a href="{report["json_file"]}" class="link">Download Data</a>'
 
             # Trading day badge
             if report['is_trading_day']:
-                trading_badge = '<span class="badge badge-success">✓ 交易日</span>'
+                trading_badge = '<span class="badge badge-trading">Trading Day</span>'
             else:
-                trading_badge = '<span class="badge badge-secondary">⊘ 非交易日</span>'
+                trading_badge = '<span class="badge badge-non-trading">Non-Trading</span>'
 
             rows.append(f'''
                 <tr>
                     <td class="date-cell">{report['date']}</td>
                     <td>{trading_badge}</td>
                     <td>
-                        <span class="stats">📊 {report['tickers_count']} 只股票</span>
-                        <span class="stats">🚨 {report['anomalies_count']} 个异常</span>
+                        <span class="stats">{report['tickers_count']} Tickers</span>
+                        <span class="stats">{report['anomalies_count']} Anomalies</span>
                     </td>
                     <td>
                         {html_link}
@@ -317,10 +319,10 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
             <table>
                 <thead>
                     <tr>
-                        <th>日期</th>
-                        <th>交易日</th>
-                        <th>统计</th>
-                        <th>操作</th>
+                        <th>Date</th>
+                        <th>Trading Day</th>
+                        <th>Statistics</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
