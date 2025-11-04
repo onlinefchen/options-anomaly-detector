@@ -284,12 +284,13 @@ class PolygonCSVHandler:
             print(f"  ✗ Parse error: {e}")
             return pd.DataFrame()
 
-    def aggregate_by_underlying(self, df: pd.DataFrame) -> List[Dict]:
+    def aggregate_by_underlying(self, df: pd.DataFrame, trading_date: Optional[str] = None) -> List[Dict]:
         """
         Aggregate options data by underlying ticker
 
         Args:
             df: DataFrame with columns [ticker, volume, ...]
+            trading_date: Optional trading date in YYYY-MM-DD format for LEAP C/P calculation
 
         Returns:
             List of aggregated data dicts
@@ -331,7 +332,7 @@ class PolygonCSVHandler:
 
             cp_ratio = round(call_volume / put_volume, 2) if put_volume > 0 else 0
 
-            results.append({
+            result = {
                 'ticker': underlying,
                 'total_volume': int(total_volume),
                 'put_volume': int(put_volume),
@@ -345,13 +346,68 @@ class PolygonCSVHandler:
                 'put_oi': 0,
                 'call_oi': 0,
                 'cp_oi_ratio': 0
-            })
+            }
+
+            # Calculate LEAP C/P ratio if trading_date is provided
+            if trading_date:
+                leap_cp = self._calculate_leap_cp_from_contracts(underlying_df, trading_date)
+                result['leap_cp_ratio'] = leap_cp
+
+            results.append(result)
 
         # Sort by volume
         results = sorted(results, key=lambda x: x['total_volume'], reverse=True)
 
         print(f"  ✓ Aggregated {len(results)} unique tickers")
         return results
+
+    def _calculate_leap_cp_from_contracts(self, contracts_df: pd.DataFrame, trading_date: str) -> float:
+        """
+        Calculate LEAP C/P ratio from contract DataFrame
+
+        Args:
+            contracts_df: DataFrame with parsed contract data (expiry, contract_type, volume)
+            trading_date: Trading date in YYYY-MM-DD format
+
+        Returns:
+            C/P ratio for LEAP options (0 if no LEAP puts found)
+        """
+        from datetime import datetime, timedelta
+
+        # Calculate the 3-month threshold date
+        date_obj = datetime.strptime(trading_date, '%Y-%m-%d')
+        leap_threshold = date_obj + timedelta(days=90)  # ~3 months
+
+        leap_call_volume = 0
+        leap_put_volume = 0
+
+        for _, contract in contracts_df.iterrows():
+            expiry_str = contract.get('expiry')
+            contract_type = contract.get('contract_type')
+            volume = contract.get('volume', 0) or 0
+
+            if not expiry_str or not contract_type:
+                continue
+
+            try:
+                # Parse expiry date (YYMMDD format)
+                # Convert to YYYY-MM-DD
+                expiry_date = datetime.strptime(f'20{expiry_str}', '%Y%m%d')
+
+                # Check if this is a LEAP (expires 3+ months out)
+                if expiry_date >= leap_threshold:
+                    if contract_type == 'call':
+                        leap_call_volume += volume
+                    elif contract_type == 'put':
+                        leap_put_volume += volume
+            except (ValueError, TypeError):
+                continue
+
+        # Calculate C/P ratio
+        if leap_put_volume == 0:
+            return 0.0
+
+        return round(leap_call_volume / leap_put_volume, 2)
 
     def get_latest_trading_day(self) -> str:
         """
@@ -439,8 +495,8 @@ class PolygonCSVHandler:
                 print(f"  ✗ CSV file is empty for {used_date}")
                 continue
 
-            # Aggregate
-            results = self.aggregate_by_underlying(df)
+            # Aggregate (with LEAP C/P calculation based on CSV data)
+            results = self.aggregate_by_underlying(df, trading_date=used_date)
             if results:
                 print(f"  ✅ Successfully loaded data for {used_date}")
                 return True, results, used_date
