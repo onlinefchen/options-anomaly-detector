@@ -86,15 +86,16 @@ def main():
             print_progress("   • Skipping analysis\n")
 
             print("\n" + "="*80)
-            print("❌ CSV Download Failed")
+            print("⏰ CSV Not Yet Available")
             print("="*80)
             print(f"\n📋 Details:")
             print(f"   • Target CSV date: {csv_date}")
             print(f"   • CSV file expected: {csv_date}.csv.gz")
-            print(f"   • The CSV file may not be available yet")
-            print(f"\n💡 Analysis will run when CSV becomes available.")
+            print(f"   • The CSV file may not be uploaded yet (post-market processing)")
+            print(f"\n💡 Next hourly run will retry automatically.")
+            print(f"   Analysis will complete when CSV becomes available.")
             print("="*80 + "\n")
-            return 1  # Return failure code to stop workflow
+            return 0  # Return success to allow workflow to continue
 
         print_progress(f"✓ CSV data downloaded successfully")
         print_progress(f"   • CSV date: {actual_csv_date}")
