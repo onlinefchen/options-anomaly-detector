@@ -308,12 +308,12 @@ class HTMLReportGenerator:
                         <td><strong>{item['ticker']}</strong></td>
                         <td>{volume_w:.2f}W</td>
                         <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td>{leap_cp_html}</td>
+                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
+                        <td class="compact-cell">{history_html}</td>
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
-                        <td>{leap_cp_html}</td>
                         <td class="compact-cell">{top1_html}</td>
-                        <td class="compact-cell">{history_html}</td>
-                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
                     </tr>
                 """)
             else:
@@ -324,11 +324,11 @@ class HTMLReportGenerator:
                         <td><strong>{item['ticker']}</strong></td>
                         <td>{volume_w:.2f}W</td>
                         <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
+                        <td class="compact-cell">{history_html}</td>
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
                         <td class="compact-cell">{top1_html}</td>
-                        <td class="compact-cell">{history_html}</td>
-                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
                     </tr>
                 """)
         return ''.join(rows)
@@ -684,11 +684,11 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th>Streak</th>
+                        <th>10-Day Activity</th>
                         <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 1 Contract</th>
-                        <th>10-Day Activity</th>
-                        <th>Streak</th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -706,12 +706,12 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
+                        <th>Streak</th>
+                        <th>10-Day Activity</th>
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
                         <th>Top 1 Contract</th>
-                        <th>10-Day Activity</th>
-                        <th>Streak</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">
@@ -889,12 +889,12 @@ class HTMLReportGenerator:
                         <td><strong>${{item.ticker}}</strong></td>
                         <td>${{volumeW}}</td>
                         <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                        <td>${{leapCpHtml}}</td>
+                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
+                        <td class="compact-cell">${{historyHtml}}</td>
                         <td>${{oiW}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
-                        <td>${{leapCpHtml}}</td>
                         <td class="compact-cell">${{top1Html}}</td>
-                        <td class="compact-cell">${{historyHtml}}</td>
-                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
                     `;
                 }} else {{
                     // Index table - no LEAP C/P column
@@ -903,11 +903,11 @@ class HTMLReportGenerator:
                         <td><strong>${{item.ticker}}</strong></td>
                         <td>${{volumeW}}</td>
                         <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
+                        <td class="compact-cell">${{historyHtml}}</td>
                         <td>${{oiW}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
                         <td class="compact-cell">${{top1Html}}</td>
-                        <td class="compact-cell">${{historyHtml}}</td>
-                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
                     `;
                 }}
 
