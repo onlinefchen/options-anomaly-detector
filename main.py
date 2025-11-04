@@ -110,7 +110,7 @@ def main():
             print_progress(f"   → OI data is meaningful (reflects market state at/after {csv_date} close)")
             print_progress(f"   → Fetching OI for top 35 tickers...\n")
 
-            # Enrich with OI data from API
+            # Enrich with OI data from API (includes LEAP C/P calculation)
             print_progress("📡 Enriching with Open Interest data from API...")
             data, metadata = fetcher.enrich_with_oi(data, top_n=35, trading_date=csv_date)
             print_progress(f"✓ OI enrichment complete")
@@ -126,6 +126,12 @@ def main():
                 'oi_skipped': 'historical_data',
                 'oi_skip_reason': f'New trading days exist between {csv_date} and {current_date}'
             }
+
+            # Even if OI is skipped, still calculate LEAP C/P ratio (volume-based)
+            print_progress("📊 Calculating LEAP C/P ratios (volume-based)...")
+            data, leap_count = fetcher.enrich_with_leap_cp(data, top_n=35, trading_date=csv_date)
+            print_progress(f"✓ LEAP C/P calculation complete")
+            print_progress(f"   • Enriched {leap_count} tickers with LEAP C/P data\n")
 
         # Analyze historical activity
         print_progress("📊 Analyzing historical activity (past 10 trading days)...")

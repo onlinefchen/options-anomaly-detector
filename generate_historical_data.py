@@ -94,6 +94,11 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
                 'oi_skipped': 'historical_data',
                 'oi_skip_reason': f'New trading days exist between {csv_date} and {current_date}'
             }
+
+            # Even if OI is skipped, still calculate LEAP C/P ratio (volume-based)
+            print(f'   📊 正在计算 LEAP C/P 比率（基于成交量）...')
+            data, leap_count = fetcher.enrich_with_leap_cp(data, top_n=35, trading_date=csv_date)
+            print(f'   ✅ LEAP C/P 计算完成（{leap_count} 个标的）')
         print()
 
         print(f'📊 STEP 3/5: 分析历史活跃度')
