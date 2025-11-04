@@ -82,7 +82,7 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
             print(f'   ✓ {csv_date} 至今无新交易日')
             print(f'   → OI 数据有意义（反映 {csv_date} 盘后市场状态）')
             print(f'   ⏳ 正在为前 35 个标的获取 OI 数据...')
-            data, metadata = fetcher.enrich_with_oi(data, top_n=35)
+            data, metadata = fetcher.enrich_with_oi(data, top_n=35, trading_date=csv_date)
             print(f'   ✅ OI 数据获取完成')
         else:
             print(f'   ⊘ {csv_date} 至今有新交易日')

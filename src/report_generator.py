@@ -162,11 +162,11 @@ class HTMLReportGenerator:
             cp_oi_ratios_json=json.dumps(cp_oi_ratios),
             open_interests_json=json.dumps(open_interests),
             # 指数ETF表格
-            index_table_rows=self._generate_table_rows(sorted_index_data),
+            index_table_rows=self._generate_table_rows(sorted_index_data, include_leap_cp=False),
             index_data_json=json.dumps(sorted_index_data, ensure_ascii=False),
             index_count=len(sorted_index_data),
             # 个股表格
-            stock_table_rows=self._generate_table_rows(sorted_stock_data),
+            stock_table_rows=self._generate_table_rows(sorted_stock_data, include_leap_cp=True),
             stock_data_json=json.dumps(sorted_stock_data, ensure_ascii=False),
             stock_date=stock_date_info,
             # 保留原有的（用于兼容）
@@ -243,28 +243,34 @@ class HTMLReportGenerator:
         except:
             return "N/A"
 
-    def _generate_table_rows(self, data: List[Dict]) -> str:
-        """Generate table rows HTML for volume rankings"""
+    def _generate_table_rows(self, data: List[Dict], include_leap_cp: bool = False) -> str:
+        """Generate table rows HTML for volume rankings
+
+        Args:
+            data: List of ticker data dicts
+            include_leap_cp: Whether to include LEAP C/P ratio column (for stocks table)
+        """
         rows = []
         for idx, item in enumerate(data, 1):
             # Format volume in 万 (W) with 2 decimal places
             volume_w = item['total_volume'] / 10000
             oi_w = item['total_oi'] / 10000
 
-            # Format Top 3 contracts with Current Price at the beginning
-            top3_html = ''
+            # Format Top 1 contract with Current Price at the beginning
+            top1_html = ''
             current_price = item.get('current_price')
             if current_price:
-                top3_html += f"<div><small>Current: ${current_price:.2f}</small></div>"
+                top1_html += f"<div><small>Current: ${current_price:.2f}</small></div>"
 
-            for i, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
+            # Show only top 1 contract
+            for i, contract in enumerate(item.get('top_3_contracts', [])[:1], 1):
                 contract_short = self._format_contract_short(contract)
                 oi_k = contract.get('oi', 0) / 1000
                 pct = contract.get('percentage', 0)
-                top3_html += f"<div class='contract-item'>{i}. {contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
+                top1_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
 
-            if not top3_html:
-                top3_html = '<small>N/A</small>'
+            if not top1_html:
+                top1_html = '<small>N/A</small>'
 
             # Format history activity
             history = item.get('history', {})
@@ -290,19 +296,41 @@ class HTMLReportGenerator:
             streak = history.get('streak', 0)
             streak_html = f"<strong>{streak}</strong>" if streak > 0 else "-"
 
-            rows.append(f"""
-                <tr>
-                    <td>{idx}</td>
-                    <td><strong>{item['ticker']}</strong></td>
-                    <td>{volume_w:.2f}W</td>
-                    <td>{item['cp_volume_ratio']:.2f}</td>
-                    <td>{oi_w:.2f}W</td>
-                    <td>{item['cp_oi_ratio']:.2f}</td>
-                    <td class="compact-cell">{top3_html}</td>
-                    <td class="compact-cell">{history_html}</td>
-                    <td class="compact-cell" style="text-align: center;">{streak_html}</td>
-                </tr>
-            """)
+            # Build row HTML
+            if include_leap_cp:
+                # Stocks table - include LEAP C/P column
+                leap_cp = item.get('leap_cp_ratio', 0)
+                leap_cp_html = f"{leap_cp:.2f}" if leap_cp else "-"
+
+                rows.append(f"""
+                    <tr>
+                        <td>{idx}</td>
+                        <td><strong>{item['ticker']}</strong></td>
+                        <td>{volume_w:.2f}W</td>
+                        <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td>{oi_w:.2f}W</td>
+                        <td>{item['cp_oi_ratio']:.2f}</td>
+                        <td>{leap_cp_html}</td>
+                        <td class="compact-cell">{top1_html}</td>
+                        <td class="compact-cell">{history_html}</td>
+                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
+                    </tr>
+                """)
+            else:
+                # Index table - no LEAP C/P column
+                rows.append(f"""
+                    <tr>
+                        <td>{idx}</td>
+                        <td><strong>{item['ticker']}</strong></td>
+                        <td>{volume_w:.2f}W</td>
+                        <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td>{oi_w:.2f}W</td>
+                        <td>{item['cp_oi_ratio']:.2f}</td>
+                        <td class="compact-cell">{top1_html}</td>
+                        <td class="compact-cell">{history_html}</td>
+                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
+                    </tr>
+                """)
         return ''.join(rows)
 
     def _generate_anomaly_rows(self, anomalies: List[Dict]) -> str:
@@ -658,7 +686,7 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th>Top 3 Contracts</th>
+                        <th>Top 1 Contract</th>
                         <th>10-Day Activity</th>
                         <th>Streak</th>
                     </tr>
@@ -680,7 +708,8 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th>Top 3 Contracts</th>
+                        <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
+                        <th>Top 1 Contract</th>
                         <th>10-Day Activity</th>
                         <th>Streak</th>
                     </tr>
@@ -804,22 +833,23 @@ class HTMLReportGenerator:
                 const volumeW = (item.total_volume / 10000).toFixed(2) + 'W';
                 const oiW = (item.total_oi / 10000).toFixed(2) + 'W';
 
-                // Format Top 3 contracts with Current Price at the beginning
-                let top3Html = '';
+                // Format Top 1 contract with Current Price at the beginning
+                let top1Html = '';
                 const currentPrice = item.current_price;
                 if (currentPrice) {{
-                    top3Html += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
+                    top1Html += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
                 }}
 
                 const top3Contracts = item.top_3_contracts || [];
-                top3Contracts.slice(0, 3).forEach((contract, i) => {{
+                // Only show top 1 contract
+                top3Contracts.slice(0, 1).forEach((contract, i) => {{
                     const contractShort = formatContractShort(contract);
                     const oiK = (contract.oi || 0) / 1000;
                     const pct = contract.percentage || 0;
-                    top3Html += `<div class='contract-item'>${{i + 1}}. ${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                    top1Html += `<div class='contract-item'>${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
                 }});
-                if (!top3Html) {{
-                    top3Html = '<small>N/A</small>';
+                if (!top1Html) {{
+                    top1Html = '<small>N/A</small>';
                 }}
 
                 // Format history
@@ -848,17 +878,39 @@ class HTMLReportGenerator:
                 const streakHtml = streak > 0 ? `<strong>${{streak}}</strong>` : '-';
 
                 const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${{idx + 1}}</td>
-                    <td><strong>${{item.ticker}}</strong></td>
-                    <td>${{volumeW}}</td>
-                    <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
-                    <td>${{oiW}}</td>
-                    <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
-                    <td class="compact-cell">${{top3Html}}</td>
-                    <td class="compact-cell">${{historyHtml}}</td>
-                    <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
-                `;
+
+                // For stock table, include LEAP C/P column
+                if (tableType === 'stock') {{
+                    const leapCp = item.leap_cp_ratio || 0;
+                    const leapCpHtml = leapCp ? leapCp.toFixed(2) : '-';
+
+                    row.innerHTML = `
+                        <td>${{idx + 1}}</td>
+                        <td><strong>${{item.ticker}}</strong></td>
+                        <td>${{volumeW}}</td>
+                        <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                        <td>${{oiW}}</td>
+                        <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
+                        <td>${{leapCpHtml}}</td>
+                        <td class="compact-cell">${{top1Html}}</td>
+                        <td class="compact-cell">${{historyHtml}}</td>
+                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
+                    `;
+                }} else {{
+                    // Index table - no LEAP C/P column
+                    row.innerHTML = `
+                        <td>${{idx + 1}}</td>
+                        <td><strong>${{item.ticker}}</strong></td>
+                        <td>${{volumeW}}</td>
+                        <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                        <td>${{oiW}}</td>
+                        <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
+                        <td class="compact-cell">${{top1Html}}</td>
+                        <td class="compact-cell">${{historyHtml}}</td>
+                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
+                    `;
+                }}
+
                 tbody.appendChild(row);
             }});
         }}

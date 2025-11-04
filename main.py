@@ -111,7 +111,7 @@ def main():
 
             # Enrich with OI data from API
             print_progress("📡 Enriching with Open Interest data from API...")
-            data, metadata = fetcher.enrich_with_oi(data, top_n=35)
+            data, metadata = fetcher.enrich_with_oi(data, top_n=35, trading_date=csv_date)
             print_progress(f"✓ OI enrichment complete")
             print_progress(f"   • Data source: {metadata.get('data_source', 'CSV+API')}\n")
         else:

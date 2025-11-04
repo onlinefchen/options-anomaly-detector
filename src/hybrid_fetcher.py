@@ -116,7 +116,7 @@ class HybridDataFetcher:
                 contracts = api_response.get('results', [])
 
                 # Use centralized OI aggregation utility
-                oi_data = aggregate_oi_from_contracts(contracts)
+                oi_data = aggregate_oi_from_contracts(contracts, trading_date=trading_date)
 
                 # Update item with OI data
                 item.update(oi_data)
@@ -146,13 +146,14 @@ class HybridDataFetcher:
             'available_strategies': ['auto', 'csv']
         }
 
-    def enrich_with_oi(self, data: List[Dict], top_n: int = 30):
+    def enrich_with_oi(self, data: List[Dict], top_n: int = 30, trading_date: Optional[str] = None):
         """
         Enrich top N tickers with Open Interest data from API
 
         Args:
             data: List of ticker data dicts (must be pre-sorted by volume)
             top_n: Number of top tickers to enrich with OI data
+            trading_date: Optional trading date in YYYY-MM-DD format for LEAP C/P calculation
 
         Returns:
             Tuple of (enriched_data, metadata)
@@ -169,7 +170,7 @@ class HybridDataFetcher:
                 contracts = api_response.get('results', [])
 
                 # Use centralized OI aggregation utility
-                oi_data = aggregate_oi_from_contracts(contracts)
+                oi_data = aggregate_oi_from_contracts(contracts, trading_date=trading_date)
 
                 # Update item with OI data
                 item.update(oi_data)

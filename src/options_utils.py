@@ -80,7 +80,7 @@ def analyze_strike_concentration(strike_dict: dict, total_oi: int) -> dict:
     }
 
 
-def aggregate_oi_from_contracts(contracts: List[dict]) -> dict:
+def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[str] = None) -> dict:
     """
     从合约列表中聚合OI数据
 
@@ -88,6 +88,7 @@ def aggregate_oi_from_contracts(contracts: List[dict]) -> dict:
 
     Args:
         contracts: List of contract dicts from Polygon API
+        trading_date: Optional trading date in YYYY-MM-DD format for LEAP C/P calculation
 
     Returns:
         Dict with aggregated OI data and analysis:
@@ -97,7 +98,8 @@ def aggregate_oi_from_contracts(contracts: List[dict]) -> dict:
             'call_oi': int,
             'cp_oi_ratio': float,
             'top_3_contracts': list,
-            'strike_concentration': dict
+            'strike_concentration': dict,
+            'leap_cp_ratio': float (if trading_date provided)
         }
     """
     put_oi = 0
@@ -141,7 +143,7 @@ def aggregate_oi_from_contracts(contracts: List[dict]) -> dict:
     # 分析价格区间
     strike_concentration = analyze_strike_concentration(strike_dict, total_oi)
 
-    return {
+    result = {
         'total_oi': total_oi,
         'put_oi': put_oi,
         'call_oi': call_oi,
@@ -149,3 +151,63 @@ def aggregate_oi_from_contracts(contracts: List[dict]) -> dict:
         'top_3_contracts': top_3,
         'strike_concentration': strike_concentration
     }
+
+    # Calculate LEAP C/P ratio if trading_date is provided
+    if trading_date:
+        leap_cp = calculate_leap_cp_ratio(contracts, trading_date)
+        result['leap_cp_ratio'] = leap_cp
+
+    return result
+
+
+def calculate_leap_cp_ratio(contracts: List[dict], trading_date: str) -> float:
+    """
+    Calculate LEAP C/P ratio for options expiring 3+ months out
+
+    LEAP (Long-term Equity Anticipation Securities) are longer-dated options.
+    This calculates the Call/Put ratio for contracts expiring at least 3 months
+    after the trading date.
+
+    Args:
+        contracts: List of contract dicts from Polygon API
+        trading_date: Trading date in YYYY-MM-DD format
+
+    Returns:
+        C/P ratio for LEAP options (0 if no LEAP puts found)
+    """
+    from datetime import datetime, timedelta
+
+    # Calculate the 3-month threshold date
+    date_obj = datetime.strptime(trading_date, '%Y-%m-%d')
+    leap_threshold = date_obj + timedelta(days=90)  # ~3 months
+
+    leap_call_volume = 0
+    leap_put_volume = 0
+
+    for contract in contracts:
+        details = contract.get('details', {})
+        expiry_str = details.get('expiration_date')
+        contract_type = details.get('contract_type')
+        volume = contract.get('volume', 0) or 0
+
+        if not expiry_str or not contract_type:
+            continue
+
+        try:
+            # Parse expiry date (YYYY-MM-DD format)
+            expiry_date = datetime.strptime(expiry_str, '%Y-%m-%d')
+
+            # Check if this is a LEAP (expires 3+ months out)
+            if expiry_date >= leap_threshold:
+                if contract_type == 'call':
+                    leap_call_volume += volume
+                elif contract_type == 'put':
+                    leap_put_volume += volume
+        except (ValueError, TypeError):
+            continue
+
+    # Calculate C/P ratio
+    if leap_put_volume == 0:
+        return 0.0
+
+    return round(leap_call_volume / leap_put_volume, 2)
