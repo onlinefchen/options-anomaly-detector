@@ -302,6 +302,7 @@ class HTMLReportGenerator:
                 # Stocks table - include LEAP C/P column
                 leap_cp = item.get('leap_cp_ratio', 0)
                 leap_cp_html = f"{leap_cp:.2f}" if leap_cp else "-"
+                avg_trade_size = item.get('avg_trade_size', 0)
 
                 rows.append(f"""
                     <tr>
@@ -309,6 +310,7 @@ class HTMLReportGenerator:
                         <td><strong>{item['ticker']}</strong></td>
                         <td>{volume_w:.2f}W</td>
                         <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td>{avg_trade_size:.1f}</td>
                         <td>{leap_cp_html}</td>
                         <td class="compact-cell" style="text-align: center;">{streak_html}</td>
                         <td class="compact-cell">{history_html}</td>
@@ -319,12 +321,15 @@ class HTMLReportGenerator:
                 """)
             else:
                 # Index table - no LEAP C/P column, no Streak, no 10-Day Activity
+                avg_trade_size = item.get('avg_trade_size', 0)
+
                 rows.append(f"""
                     <tr>
                         <td>{idx}</td>
                         <td><strong>{item['ticker']}</strong></td>
                         <td>{volume_w:.2f}W</td>
                         <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td>{avg_trade_size:.1f}</td>
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
                         <td class="compact-cell">{top3_html}</td>
@@ -513,7 +518,6 @@ class HTMLReportGenerator:
 
         table th.sortable {{
             cursor: pointer;
-            user-select: none;
             position: relative;
         }}
 
@@ -683,6 +687,7 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
@@ -703,6 +708,7 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
                         <th>Streak</th>
                         <th>10-Day Activity</th>
@@ -880,12 +886,14 @@ class HTMLReportGenerator:
                 if (tableType === 'stock') {{
                     const leapCp = item.leap_cp_ratio || 0;
                     const leapCpHtml = leapCp ? leapCp.toFixed(2) : '-';
+                    const avgTradeSize = item.avg_trade_size || 0;
 
                     row.innerHTML = `
                         <td>${{idx + 1}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
                         <td>${{volumeW}}</td>
                         <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                        <td>${{avgTradeSize.toFixed(1)}}</td>
                         <td>${{leapCpHtml}}</td>
                         <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
                         <td class="compact-cell">${{historyHtml}}</td>
@@ -895,13 +903,14 @@ class HTMLReportGenerator:
                     `;
                 }} else {{
                     // Index table - no LEAP C/P column
+                    const avgTradeSize = item.avg_trade_size || 0;
+
                     row.innerHTML = `
                         <td>${{idx + 1}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
                         <td>${{volumeW}}</td>
                         <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
-                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
-                        <td class="compact-cell">${{historyHtml}}</td>
+                        <td>${{avgTradeSize.toFixed(1)}}</td>
                         <td>${{oiW}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
                         <td class="compact-cell">${{top1Html}}</td>

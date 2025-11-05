@@ -330,6 +330,10 @@ class PolygonCSVHandler:
             if total_volume == 0:
                 continue
 
+            # Calculate total transactions and average trade size
+            total_transactions = underlying_df['transactions'].sum()
+            avg_trade_size = round(total_volume / total_transactions, 1) if total_transactions > 0 else 0
+
             cp_ratio = round(call_volume / put_volume, 2) if put_volume > 0 else 0
 
             result = {
@@ -338,6 +342,8 @@ class PolygonCSVHandler:
                 'put_volume': int(put_volume),
                 'call_volume': int(call_volume),
                 'cp_volume_ratio': cp_ratio,
+                'total_transactions': int(total_transactions),
+                'avg_trade_size': avg_trade_size,
                 'contracts_count': len(underlying_df),
                 'put_contracts': len(put_df),
                 'call_contracts': len(call_df),
