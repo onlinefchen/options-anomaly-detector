@@ -12,9 +12,9 @@ from utils import get_market_times, format_market_time_html
 class HTMLReportGenerator:
     """Generate HTML reports for options anomaly analysis"""
 
-    # 主要大盘指数（只显示这三个）
+    # 主要大盘指数（固定显示，不参与排序）
     INDEX_ETFS = {
-        'SPY', 'QQQ', 'IWM'
+        'SPY', 'QQQ', 'IWM', 'SPX'
     }
 
     def __init__(self):
@@ -60,12 +60,13 @@ class HTMLReportGenerator:
         filtered_data = [d for d in data if d['ticker'] not in ['SPXW', 'VIX']]
 
         # 将数据分成指数ETF和个股两组
-        index_data = [d for d in filtered_data if self._classify_ticker(d['ticker']) == 'index']
-        stock_data = [d for d in filtered_data if self._classify_ticker(d['ticker']) == 'stock']
+        # 大盘指数：固定顺序显示 SPY, QQQ, IWM, SPX（如果存在的话），不参与排序
+        index_order = ['SPY', 'QQQ', 'IWM', 'SPX']
+        index_dict = {d['ticker']: d for d in filtered_data if d['ticker'] in self.INDEX_ETFS}
+        sorted_index_data = [index_dict[ticker] for ticker in index_order if ticker in index_dict]
 
-        # 大盘指数：显示所有找到的（最多3个：SPY, QQQ, IWM）
-        sorted_index_data = sorted(index_data, key=lambda x: x['total_volume'], reverse=True)
-        # 个股和ETF：取Top 25
+        # 个股和ETF：排除指数ETF，取Top 25
+        stock_data = [d for d in filtered_data if d['ticker'] not in self.INDEX_ETFS]
         sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:25]
 
         # 用于整体图表的数据（包含所有过滤后数据的Top 30）
@@ -317,15 +318,13 @@ class HTMLReportGenerator:
                     </tr>
                 """)
             else:
-                # Index table - no LEAP C/P column
+                # Index table - no LEAP C/P column, no Streak, no 10-Day Activity
                 rows.append(f"""
                     <tr>
                         <td>{idx}</td>
                         <td><strong>{item['ticker']}</strong></td>
                         <td>{volume_w:.2f}W</td>
                         <td>{item['cp_volume_ratio']:.2f}</td>
-                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
-                        <td class="compact-cell">{history_html}</td>
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
                         <td class="compact-cell">{top1_html}</td>
@@ -684,8 +683,6 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
-                        <th>Streak</th>
-                        <th>10-Day Activity</th>
                         <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 1 Contract</th>
