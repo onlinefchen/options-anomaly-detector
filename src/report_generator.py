@@ -512,7 +512,7 @@ class HTMLReportGenerator:
             padding: 8px 12px;
             text-align: left;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
             border-bottom: 1px solid #d2d2d7;
         }}
 
@@ -542,7 +542,7 @@ class HTMLReportGenerator:
         table td {{
             padding: 8px 12px;
             border-bottom: 1px solid #d2d2d7;
-            font-size: 13px;
+            font-size: 14px;
         }}
 
         table tr:hover {{
