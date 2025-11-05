@@ -1,6 +1,6 @@
 {
   "date": "2025-11-04",
-  "generated_at": "2025-11-05T11:57:32.313529",
+  "generated_at": "2025-11-05T11:58:20.763544",
   "tickers_count": 4316,
   "anomalies_count": 3392,
   "data_source": "CSV+API",
@@ -65,7 +65,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 673.95
+      "current_price": 673.8
     },
     {
       "ticker": "QQQ",
@@ -127,7 +127,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 616.83
+      "current_price": 616.78
     },
     {
       "ticker": "SPXW",
@@ -226,7 +226,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 196.42
+      "current_price": 196.36
     },
     {
       "ticker": "IBIT",
@@ -288,7 +288,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 57.75
+      "current_price": 57.71
     },
     {
       "ticker": "IWM",
@@ -350,7 +350,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 241.54
+      "current_price": 241.48
     },
     {
       "ticker": "TSLA",
@@ -412,7 +412,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 446.87
+      "current_price": 446.6
     },
     {
       "ticker": "PLTR",
@@ -474,7 +474,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 186
+      "current_price": 185.94
     },
     {
       "ticker": "VIX",
@@ -598,7 +598,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 236.37
+      "current_price": 236.39
     },
     {
       "ticker": "AMZN",
@@ -660,7 +660,7 @@
         "streak": 1,
         "icon": "[HOT]"
       },
-      "current_price": 248.04
+      "current_price": 248.12
     },
     {
       "ticker": "HYG",
@@ -784,7 +784,7 @@
         "streak": 4,
         "icon": "[ACT]"
       },
-      "current_price": 629
+      "current_price": 629.08
     },
     {
       "ticker": "AAPL",
@@ -846,7 +846,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 269.81
+      "current_price": 269.77
     },
     {
       "ticker": "XLI",
@@ -970,7 +970,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 364.59
+      "current_price": 364.74
     },
     {
       "ticker": "INTC",
@@ -1032,7 +1032,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 36.64
+      "current_price": 36.58
     },
     {
       "ticker": "MSTR",
@@ -1156,7 +1156,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 43.19
+      "current_price": 43.24
     },
     {
       "ticker": "ETHA",
@@ -1218,7 +1218,7 @@
         "streak": 1,
         "icon": "[NEW]"
       },
-      "current_price": 24.99
+      "current_price": 24.97
     },
     {
       "ticker": "PFE",
@@ -1652,7 +1652,7 @@
         "streak": 0,
         "icon": "[OCC]"
       },
-      "current_price": 17.01
+      "current_price": 16.99
     },
     {
       "ticker": "UBER",
@@ -1776,7 +1776,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 1.35
+      "current_price": 1.36
     },
     {
       "ticker": "BMNR",
