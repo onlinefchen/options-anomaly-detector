@@ -177,4 +177,7 @@ class HybridDataFetcher:
 
                 enriched_count += 1
 
-        return data, {'data_source': 'CSV+API'}
+        return data, {
+            'data_source': 'CSV+API',
+            'csv_date': trading_date  # Include csv_date for report generation
+        }
