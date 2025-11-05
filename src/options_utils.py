@@ -152,10 +152,12 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
         'strike_concentration': strike_concentration
     }
 
-    # Calculate LEAP C/P ratio if trading_date is provided
-    if trading_date:
-        leap_cp = calculate_leap_cp_ratio(contracts, trading_date)
-        result['leap_cp_ratio'] = leap_cp
+    # NOTE: LEAP C/P ratio calculation is DISABLED for API enrichment
+    # because API options chain does not include volume data.
+    # LEAP C/P is only calculated from CSV data (which has volume).
+    # The CSV handler already calculates this correctly.
+    #
+    # DO NOT calculate LEAP C/P here to avoid overwriting CSV-calculated values with 0!
 
     return result
 

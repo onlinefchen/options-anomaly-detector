@@ -116,7 +116,7 @@ class HybridDataFetcher:
                 contracts = api_response.get('results', [])
 
                 # Use centralized OI aggregation utility
-                oi_data = aggregate_oi_from_contracts(contracts, trading_date=trading_date)
+                oi_data = aggregate_oi_from_contracts(contracts, trading_date=csv_date)
 
                 # Update item with OI data
                 item.update(oi_data)
