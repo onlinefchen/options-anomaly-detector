@@ -1,6 +1,6 @@
 {
   "date": "2025-11-04",
-  "generated_at": "2025-11-05T11:43:58.968932",
+  "generated_at": "2025-11-05T11:44:11.130666",
   "tickers_count": 4316,
   "anomalies_count": 3392,
   "data_source": "CSV+API",
@@ -127,7 +127,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 616.3
+      "current_price": 616.31
     },
     {
       "ticker": "SPXW",
@@ -288,7 +288,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 57.62
+      "current_price": 57.64
     },
     {
       "ticker": "IWM",
@@ -598,7 +598,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 237.36
+      "current_price": 237.28
     },
     {
       "ticker": "AMZN",
