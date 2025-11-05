@@ -1,6 +1,6 @@
 {
   "date": "2025-11-04",
-  "generated_at": "2025-11-05T11:11:45.028156",
+  "generated_at": "2025-11-05T11:12:08.767033",
   "tickers_count": 4316,
   "anomalies_count": 3393,
   "data_source": "CSV+API",
@@ -63,7 +63,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 672.97
+      "current_price": 672.93
     },
     {
       "ticker": "QQQ",
@@ -123,7 +123,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 615.87
+      "current_price": 615.76
     },
     {
       "ticker": "SPXW",
@@ -218,7 +218,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 196.06
+      "current_price": 196.05
     },
     {
       "ticker": "IBIT",
@@ -338,7 +338,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 241.1
+      "current_price": 241.09
     },
     {
       "ticker": "TSLA",
@@ -398,7 +398,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 446.04
+      "current_price": 446
     },
     {
       "ticker": "PLTR",
@@ -458,7 +458,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 185.5
+      "current_price": 185.23
     },
     {
       "ticker": "VIX",
@@ -578,7 +578,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 237.67
+      "current_price": 237.1
     },
     {
       "ticker": "AMZN",
@@ -758,7 +758,7 @@
         "streak": 4,
         "icon": "[ACT]"
       },
-      "current_price": 627.29
+      "current_price": 627.27
     },
     {
       "ticker": "AAPL",
@@ -998,7 +998,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 36.51
+      "current_price": 36.5
     },
     {
       "ticker": "MSTR",
@@ -1178,7 +1178,7 @@
         "streak": 1,
         "icon": "[NEW]"
       },
-      "current_price": 24.77
+      "current_price": 24.76
     },
     {
       "ticker": "PFE",
@@ -1418,7 +1418,7 @@
         "streak": 1,
         "icon": "[NEW]"
       },
-      "current_price": 43.17
+      "current_price": 43.1
     },
     {
       "ticker": "SPX",
@@ -1718,7 +1718,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 1.35
+      "current_price": 1.34
     },
     {
       "ticker": "BMNR",
@@ -1778,7 +1778,7 @@
         "streak": 0,
         "icon": "[NEW]"
       },
-      "current_price": 40.3
+      "current_price": 40.31
     },
     {
       "ticker": "SOFI",
