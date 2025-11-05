@@ -836,23 +836,23 @@ class HTMLReportGenerator:
                 const volumeW = (item.total_volume / 10000).toFixed(2) + 'W';
                 const oiW = (item.total_oi / 10000).toFixed(2) + 'W';
 
-                // Format Top 1 contract with Current Price at the beginning
-                let top1Html = '';
+                // Format Top 3 contracts with Current Price at the beginning
+                let top3Html = '';
                 const currentPrice = item.current_price;
                 if (currentPrice) {{
-                    top1Html += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
+                    top3Html += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
                 }}
 
                 const top3Contracts = item.top_3_contracts || [];
-                // Only show top 1 contract
-                top3Contracts.slice(0, 1).forEach((contract, i) => {{
+                // Show top 3 contracts
+                top3Contracts.slice(0, 3).forEach((contract, i) => {{
                     const contractShort = formatContractShort(contract);
                     const oiK = (contract.oi || 0) / 1000;
                     const pct = contract.percentage || 0;
-                    top1Html += `<div class='contract-item'>${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                    top3Html += `<div class='contract-item'>${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
                 }});
-                if (!top1Html) {{
-                    top1Html = '<small>N/A</small>';
+                if (!top3Html) {{
+                    top3Html = '<small>N/A</small>';
                 }}
 
                 // Format history
@@ -899,7 +899,7 @@ class HTMLReportGenerator:
                         <td class="compact-cell">${{historyHtml}}</td>
                         <td>${{oiW}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
-                        <td class="compact-cell">${{top1Html}}</td>
+                        <td class="compact-cell">${{top3Html}}</td>
                     `;
                 }} else {{
                     // Index table - no LEAP C/P column
@@ -913,7 +913,7 @@ class HTMLReportGenerator:
                         <td>${{avgTradeSize.toFixed(1)}}</td>
                         <td>${{oiW}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
-                        <td class="compact-cell">${{top1Html}}</td>
+                        <td class="compact-cell">${{top3Html}}</td>
                     `;
                 }}
 
