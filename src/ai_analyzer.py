@@ -408,6 +408,13 @@ class AIAnalyzer:
             volume_w = item['total_volume'] / 10000
             oi_w = item['total_oi'] / 10000
 
+            # Avg Trade Size
+            avg_trade_size = item.get('avg_trade_size', 0)
+
+            # LEAP C/P ratio
+            leap_cp = item.get('leap_cp_ratio', 0)
+            leap_cp_text = f"{leap_cp:.2f}" if leap_cp else "-"
+
             # Top 3 Contracts with Current Price at the beginning
             top3_text = ""
             current_price = item.get('current_price')
@@ -452,11 +459,13 @@ class AIAnalyzer:
                     <td><strong>{item['ticker']}</strong></td>
                     <td style="text-align: right;">{volume_w:.2f}W</td>
                     <td style="text-align: center;">{item['cp_volume_ratio']:.2f}</td>
+                    <td style="text-align: center;">{avg_trade_size:.1f}</td>
+                    <td style="text-align: center;">{leap_cp_text}</td>
+                    <td style="text-align: center; font-size: 11px;">{streak_text}</td>
+                    <td style="text-align: center; font-size: 11px;">{history_text}</td>
                     <td style="text-align: right;">{oi_w:.2f}W</td>
                     <td style="text-align: center;">{item.get('cp_oi_ratio', 0):.2f}</td>
                     <td style="font-size: 11px; line-height: 1.4;">{top3_text}</td>
-                    <td style="text-align: center; font-size: 11px;">{history_text}</td>
-                    <td style="text-align: center; font-size: 11px;">{streak_text}</td>
                 </tr>
             """)
 
@@ -593,11 +602,13 @@ class AIAnalyzer:
                     <th>标的</th>
                     <th style="text-align: right;">成交量</th>
                     <th style="text-align: center;">C/P Volume</th>
+                    <th style="text-align: center;">Avg Size</th>
+                    <th style="text-align: center;">LEAP C/P</th>
+                    <th style="text-align: center;">Streak</th>
+                    <th style="text-align: center;">10-Day</th>
                     <th style="text-align: right;">持仓量</th>
                     <th style="text-align: center;">C/P OI</th>
                     <th>Top 3 Contracts</th>
-                    <th style="text-align: center;">10-Day</th>
-                    <th style="text-align: center;">Streak</th>
                 </tr>
             </thead>
             <tbody>

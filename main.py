@@ -183,6 +183,13 @@ def main():
         generate_archive_index(reports)
         print_progress(f"✓ Archive index updated ({len(reports)} reports)\n")
 
+        # Create a flag file to indicate new data was generated
+        # This is used by the GitHub Actions workflow to decide whether to send email
+        flag_file = 'output/NEW_DATA_GENERATED'
+        with open(flag_file, 'w') as f:
+            f.write(csv_date)
+        print_progress(f"✓ Flag file created: {flag_file}\n")
+
         # Success message
         print("\n" + "="*80)
         print("✅ Analysis Complete!")

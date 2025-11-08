@@ -164,6 +164,17 @@ jobs:
           echo "=================================================="
           echo ""
 
+          # 检查是否生成了新数据
+          if [ ! -f "output/NEW_DATA_GENERATED" ]; then
+            echo "⊘ No new data generated (data already existed)"
+            echo "   → Skipping email notification to avoid duplicates"
+            echo "=================================================="
+            exit 0
+          fi
+
+          echo "✓ New data generated, proceeding with email notification"
+          echo ""
+
           # 检查是否配置了 AI 或邮件
           HAS_AI=false
           HAS_EMAIL=false
