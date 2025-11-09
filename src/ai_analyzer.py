@@ -362,20 +362,26 @@ class AIAnalyzer:
 
         return prompt
 
-    def generate_email_subject(self, data: List[Dict], anomalies_count: int) -> str:
+    def generate_email_subject(self, data: List[Dict], anomalies_count: int, csv_date: str = None) -> str:
         """
         生成邮件主题
 
         Args:
             data: 市场数据
             anomalies_count: 异常数量
+            csv_date: CSV文件日期
 
         Returns:
             邮件主题
         """
         from datetime import datetime
 
-        date_str = datetime.now().strftime('%Y-%m-%d')
+        # 使用CSV日期，如果没有则使用当前日期
+        if csv_date and csv_date != 'Unknown':
+            date_str = csv_date
+        else:
+            date_str = datetime.now().strftime('%Y-%m-%d')
+
         top_ticker = data[0]['ticker'] if data else 'N/A'
 
         if anomalies_count > 0:
@@ -383,7 +389,7 @@ class AIAnalyzer:
         else:
             return f"期权市场日报 {date_str} - {top_ticker} 领涨"
 
-    def format_for_email(self, analysis: str, data: List[Dict], summary: Dict) -> str:
+    def format_for_email(self, analysis: str, data: List[Dict], summary: Dict, csv_date: str = None) -> str:
         """
         格式化为邮件内容（HTML）
 
@@ -391,12 +397,26 @@ class AIAnalyzer:
             analysis: AI 分析结果
             data: 市场数据
             summary: 异常摘要
+            csv_date: CSV文件日期
 
         Returns:
             HTML 格式的邮件内容
         """
         from datetime import datetime
         import markdown
+
+        # 使用CSV日期，如果没有则使用当前日期
+        if csv_date and csv_date != 'Unknown':
+            date_str = csv_date
+            # 尝试解析CSV日期以获取星期几
+            try:
+                date_obj = datetime.strptime(csv_date, '%Y-%m-%d')
+                date_with_weekday = date_obj.strftime('%Y-%m-%d %A')
+            except:
+                date_with_weekday = csv_date
+        else:
+            date_str = datetime.now().strftime('%Y-%m-%d')
+            date_with_weekday = datetime.now().strftime('%Y-%m-%d %A')
 
         # 转换 Markdown 到 HTML（如果有内容）
         analysis_html = markdown.markdown(analysis) if analysis and analysis.strip() else ""
@@ -586,7 +606,7 @@ class AIAnalyzer:
 <body>
     <div class="container">
         <h1>期权市场日报</h1>
-        <div class="date">{datetime.now().strftime('%Y-%m-%d %A')}</div>
+        <div class="date">{date_with_weekday}</div>
 
         <div class="summary">
             <div class="summary-item">分析标的数: <strong>{len(data)}</strong></div>

@@ -58,8 +58,13 @@ def main():
     data = result.get('data', [])
     anomalies = result.get('anomalies', [])
     summary = result.get('summary', {})
+    metadata = result.get('metadata', {})
 
-    print(f'\n📊 Loaded data: {len(data)} tickers, {summary.get("total", 0)} anomalies\n')
+    # 获取CSV日期
+    csv_date = metadata.get('csv_date', result.get('date', 'Unknown'))
+
+    print(f'\n📊 Loaded data: {len(data)} tickers, {summary.get("total", 0)} anomalies')
+    print(f'📅 CSV date: {csv_date}\n')
 
     # 初始化组件
     ai_analyzer = AIAnalyzer()
@@ -85,8 +90,8 @@ def main():
         if recipient:
             print(f'\n📧 Sending email to {recipient}...')
 
-            subject = ai_analyzer.generate_email_subject(data, summary.get('total', 0))
-            html_content = ai_analyzer.format_for_email(analysis, data, summary)
+            subject = ai_analyzer.generate_email_subject(data, summary.get('total', 0), csv_date)
+            html_content = ai_analyzer.format_for_email(analysis, data, summary, csv_date)
 
             success = email_sender.send_report(recipient, subject, html_content)
 
