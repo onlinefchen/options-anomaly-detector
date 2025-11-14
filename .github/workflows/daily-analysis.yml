@@ -12,10 +12,15 @@ on:
   workflow_dispatch:
     inputs:
       force_overwrite:
-        description: '🔄 强制重新生成 - 重新下载CSV、重新分析、重新发邮件'
+        description: '🔄 强制重新生成 - 即使数据已存在也重新下载、分析、发邮件'
         required: false
         type: boolean
         default: false
+      days_back:
+        description: '📊 生成过去N个交易日的数据（留空则只生成今天）'
+        required: false
+        type: number
+        default: 0
 
   # Run on push to main for testing
   push:
@@ -73,60 +78,30 @@ jobs:
             echo "⚠️  No historical data found (first run?)"
           fi
 
-      - name: 🔍 Check if data already exists
-        id: check-data
+      - name: 📊 Generate historical data (if days_back specified)
+        if: ${{ github.event.inputs.days_back != '' && github.event.inputs.days_back != '0' }}
+        env:
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+          POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
+          POLYGON_S3_SECRET_KEY: ${{ secrets.POLYGON_S3_SECRET_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWD: ${{ secrets.GMAIL_APP_PASSWD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          FORCE_OVERWRITE: ${{ github.event.inputs.force_overwrite }}
         run: |
           echo "=================================================="
-          echo "🔍 CHECKING IF DATA ALREADY EXISTS"
-          echo "=================================================="
-
-          CSV_DATE=$(TZ='Asia/Shanghai' python3 -c "from datetime import datetime; import sys; sys.path.insert(0, 'src'); from trading_calendar import get_previous_trading_day; print(get_previous_trading_day(datetime.now().strftime('%Y-%m-%d')))")
-          echo "Target CSV date: $CSV_DATE"
-
-          JSON_FILE="output/${CSV_DATE}.json"
-          HTML_FILE="output/${CSV_DATE}.html"
-
-          if [ -f "$JSON_FILE" ] && [ -f "$HTML_FILE" ]; then
-            echo "✓ Data files found:"
-            echo "  • JSON: $JSON_FILE"
-            echo "  • HTML: $HTML_FILE"
-            echo ""
-
-            if [ "${{ github.event.inputs.force_overwrite }}" = "true" ]; then
-              echo "🔄 Force overwrite enabled - will regenerate data"
-              echo "skip_analysis=false" >> $GITHUB_OUTPUT
-            else
-              echo "⊘ Data already exists and force_overwrite not set"
-              echo "⊘ Skipping analysis to avoid duplicate work"
-              echo "skip_analysis=true" >> $GITHUB_OUTPUT
-            fi
-          else
-            echo "⊘ Data files not found - proceeding with analysis"
-            echo "skip_analysis=false" >> $GITHUB_OUTPUT
-          fi
-
-          echo "csv_date=$CSV_DATE" >> $GITHUB_OUTPUT
-          echo "=================================================="
-
-      - name: 📡 CSV Availability Check
-        if: steps.check-data.outputs.skip_analysis != 'true'
-        run: |
-          echo "=================================================="
-          echo "📡 STEP 1: CSV AVAILABILITY CHECK"
+          echo "📊 GENERATING PAST ${{ github.event.inputs.days_back }} TRADING DAYS"
           echo "=================================================="
           echo ""
-          echo "⚠️  CSV FILE IS THE CORE PREREQUISITE"
-          echo "   → Without CSV, analysis cannot proceed"
-          echo "   → Workflow runs hourly (4-9 PM Beijing) until CSV is available"
+          echo "Force overwrite: ${{ github.event.inputs.force_overwrite }}"
           echo ""
-          echo "Current time: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S %Z')"
-          echo "Next retry: In 1 hour (if CSV not available)"
+          python generate_historical_data.py --days ${{ github.event.inputs.days_back }}
           echo ""
-          echo "Checking Polygon Flat Files for today's CSV..."
-          echo ""
+          echo "=================================================="
 
-      - name: 🔍 Run anomaly detection
-        if: steps.check-data.outputs.skip_analysis != 'true'
+      - name: 🔍 Run daily analysis (if days_back not specified)
+        if: ${{ github.event.inputs.days_back == '' || github.event.inputs.days_back == '0' }}
         env:
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
           POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
@@ -164,7 +139,7 @@ jobs:
           retention-days: 90
 
       - name: 🤖 AI Analysis & Email Notification
-        if: success() && github.event_name != 'push' && steps.check-data.outputs.skip_analysis != 'true'
+        if: success() && github.event_name != 'push'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -174,55 +149,8 @@ jobs:
           echo "=================================================="
           echo "🤖 AI ANALYSIS & EMAIL NOTIFICATION"
           echo "=================================================="
-          echo ""
-
-          # 检查是否生成了新数据或强制覆盖
-          if [ ! -f "output/NEW_DATA_GENERATED" ] && [ "${{ github.event.inputs.force_overwrite }}" != "true" ]; then
-            echo "⊘ No new data generated and force_overwrite not set"
-            echo "   → Skipping email notification to avoid duplicates"
-            echo "=================================================="
-            exit 0
-          fi
-
-          if [ "${{ github.event.inputs.force_overwrite }}" = "true" ]; then
-            echo "🔄 Force overwrite enabled - will send email"
-          else
-            echo "✓ New data generated - will send email"
-          fi
-          echo ""
-
-          # 检查是否配置了 AI 或邮件
-          HAS_AI=false
-          HAS_EMAIL=false
-
-          if [ -n "$OPENAI_API_KEY" ]; then
-            echo "✓ OpenAI API Key configured"
-            HAS_AI=true
-          else
-            echo "⊘ OpenAI API Key not configured (skipping AI analysis)"
-          fi
-
-          if [ -n "$GMAIL_USER" ] && [ -n "$GMAIL_APP_PASSWD" ]; then
-            echo "✓ Gmail credentials configured"
-            HAS_EMAIL=true
-          else
-            echo "⊘ Gmail not configured (skipping email)"
-          fi
-
-          echo ""
-
-          # 如果两者都未配置，跳过
-          if [ "$HAS_AI" = "false" ] && [ "$HAS_EMAIL" = "false" ]; then
-            echo "⚠️  Neither AI nor Email configured, skipping this step"
-            exit 0
-          fi
-
-          # 运行 AI 分析和邮件发送
-          echo "Running AI analysis and email sender..."
           python scripts/run_ai_email.py
 
-          echo ""
-          echo "=================================================="
 
   # Job 2: 网页部署
   deploy:

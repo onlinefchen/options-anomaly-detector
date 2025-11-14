@@ -2,10 +2,12 @@
 """
 AI 分析和邮件发送脚本
 用于 GitHub Actions workflow
+处理所有标记为新生成的数据文件
 """
 import sys
 import os
 import json
+import glob
 
 # Add src to path
 sys.path.insert(0, 'src')
@@ -14,32 +16,28 @@ from ai_analyzer import AIAnalyzer
 from email_sender import EmailSender
 
 
-def main():
-    # 查找最新的分析结果文件
-    output_dir = 'output'
-    if not os.path.exists(output_dir):
-        print(f'⚠️  Output directory not found: {output_dir}')
-        sys.exit(0)
+def process_date(csv_date: str, output_dir: str = 'output'):
+    """
+    处理单个日期的AI分析和邮件发送
 
-    # 获取所有JSON文件，按修改时间排序
-    json_files = [
-        os.path.join(output_dir, f)
-        for f in os.listdir(output_dir)
-        if f.endswith('.json')
-    ]
+    Args:
+        csv_date: CSV日期
+        output_dir: 输出目录
 
-    if not json_files:
-        print(f'⚠️  No data files found in {output_dir}')
-        sys.exit(0)
-
-    # 使用最新的文件
-    json_file = max(json_files, key=os.path.getmtime)
-    print(f'📂 Using latest data file: {json_file}')
+    Returns:
+        True if successful, False otherwise
+    """
+    json_file = os.path.join(output_dir, f'{csv_date}.json')
 
     if not os.path.exists(json_file):
         print(f'⚠️  Data file not found: {json_file}')
-        sys.exit(0)
+        return False
 
+    print(f'\n{"="*60}')
+    print(f'📂 Processing: {csv_date}')
+    print(f'{"="*60}')
+
+    # 加载数据
     with open(json_file, 'r') as f:
         result = json.load(f)
 
@@ -51,7 +49,7 @@ def main():
     if data_source not in ['CSV', 'CSV+API']:
         print(f'⊘ Data is from API only, skipping AI analysis and email')
         print(f'   (AI and email are only sent for CSV data)')
-        sys.exit(0)
+        return True
 
     print(f'✓ Data is from CSV, proceeding with AI analysis and email')
 
@@ -59,9 +57,6 @@ def main():
     anomalies = result.get('anomalies', [])
     summary = result.get('summary', {})
     metadata = result.get('metadata', {})
-
-    # 获取CSV日期
-    csv_date = metadata.get('csv_date', result.get('date', 'Unknown'))
 
     print(f'\n📊 Loaded data: {len(data)} tickers, {summary.get("total", 0)} anomalies')
     print(f'📅 CSV date: {csv_date}\n')
@@ -97,14 +92,54 @@ def main():
 
             if success:
                 print('✅ Email sent successfully!')
+                return True
             else:
                 print('❌ Failed to send email')
+                return False
         else:
             print('⚠️  No recipient email configured')
+            return True
     else:
         print('⊘ Email not available (no Gmail credentials)')
+        return True
 
-    print('\n✓ AI & Email step completed')
+
+def main():
+    output_dir = 'output'
+
+    # 查找所有NEW_DATA_GENERATED_*标记文件
+    flag_pattern = os.path.join(output_dir, 'NEW_DATA_GENERATED_*')
+    flag_files = glob.glob(flag_pattern)
+
+    if not flag_files:
+        print('⊘ No new data generated (no flag files found)')
+        print('   → Skipping AI analysis and email')
+        sys.exit(0)
+
+    print(f'✓ Found {len(flag_files)} new data file(s) to process')
+
+    # 处理每个标记的日期
+    success_count = 0
+    for flag_file in flag_files:
+        # 从标记文件名提取日期
+        # NEW_DATA_GENERATED_2025-11-13 -> 2025-11-13
+        basename = os.path.basename(flag_file)
+        csv_date = basename.replace('NEW_DATA_GENERATED_', '')
+
+        # 处理这个日期
+        if process_date(csv_date, output_dir):
+            success_count += 1
+            # 删除标记文件（避免重复处理）
+            try:
+                os.remove(flag_file)
+                print(f'✓ Flag file removed: {basename}')
+            except Exception as e:
+                print(f'⚠️  Failed to remove flag file: {e}')
+
+    print(f'\n{"="*60}')
+    print(f'✓ AI & Email processing completed')
+    print(f'   Processed: {success_count}/{len(flag_files)} files')
+    print(f'{"="*60}\n')
 
 
 if __name__ == '__main__':

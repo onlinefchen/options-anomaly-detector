@@ -207,10 +207,10 @@ def main():
 
         # Create a flag file to indicate new data was generated
         # This is used by the GitHub Actions workflow to decide whether to send email
-        flag_file = 'output/NEW_DATA_GENERATED'
+        flag_file = f'output/NEW_DATA_GENERATED_{csv_date}'
         with open(flag_file, 'w') as f:
             f.write(csv_date)
-        print_progress(f"✓ Flag file created: {flag_file}\n")
+        print_progress(f"✓ Flag file created: NEW_DATA_GENERATED_{csv_date}\n")
 
         # Success message
         print("\n" + "="*80)

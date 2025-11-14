@@ -191,6 +191,12 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
     )
     file_size = os.path.getsize(html_file) / 1024
     print(f'   ✅ HTML 已保存: {html_file} ({file_size:.1f} KB)')
+
+    # 创建标记文件，告知workflow有新数据生成（用于AI分析和邮件发送）
+    flag_file = os.path.join(output_dir, f'NEW_DATA_GENERATED_{date}')
+    with open(flag_file, 'w') as f:
+        f.write(date)
+    print(f'   ✅ 标记文件已创建: NEW_DATA_GENERATED_{date}')
     print()
 
 
@@ -273,6 +279,11 @@ def main():
     print("=" * 70)
     print()
 
+    # 检查是否强制覆盖
+    force_overwrite = os.getenv('FORCE_OVERWRITE', 'false').lower() == 'true'
+    print(f"Force overwrite: {force_overwrite}")
+    print()
+
     # 生成数据
     today = datetime.now()
     success_count = 0
@@ -287,6 +298,21 @@ def main():
         print(f"📅 [{idx}/{total_days}] 处理日期: {date} (距今 {days_ago} 天)")
         print(f"   进度: {idx}/{total_days} ({idx*100//total_days}%) | 成功: {success_count} | 跳过: {skip_count}")
         print("━" * 70)
+
+        # 检查文件是否已存在
+        json_file = os.path.join(args.output, f'{date}.json')
+        html_file = os.path.join(args.output, f'{date}.html')
+
+        if os.path.exists(json_file) and os.path.exists(html_file):
+            if force_overwrite:
+                print(f'📦 数据已存在，但force_overwrite=true，将重新生成')
+            else:
+                skip_count += 1
+                print(f'📦 数据已存在: {json_file}')
+                print(f'   跳过 {date}（使用force_overwrite=true可强制重新生成）')
+                print("━" * 70)
+                print()
+                continue
 
         result = generate_data_for_date(date, args.output)
 
