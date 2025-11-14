@@ -193,8 +193,22 @@ jobs:
           echo "=================================================="
           python main.py
 
+      - name: 📚 Generate archive index (always update)
+        run: |
+          echo "=================================================="
+          echo "📚 GENERATING ARCHIVE INDEX"
+          echo "=================================================="
+          python3 -c "
+          import sys
+          sys.path.insert(0, 'src')
+          from archive_index_generator import get_archived_reports, generate_archive_index
+          reports = get_archived_reports('output')
+          generate_archive_index(reports, 'output/archive.html')
+          print(f'✓ Archive index generated: {len(reports)} reports')
+          "
+          echo ""
+
       - name: 📊 Upload analysis results
-        if: steps.check-data.outputs.skip_analysis != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: analysis-results-${{ steps.get-date.outputs.date }}
