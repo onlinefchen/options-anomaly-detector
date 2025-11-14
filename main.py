@@ -40,28 +40,39 @@ def main():
         print_progress(f"   • Target CSV date: {csv_date}")
         print_progress(f"   • CSV file: {csv_date}.csv.gz\n")
 
+        # Check if force overwrite is enabled
+        force_overwrite = os.getenv('FORCE_OVERWRITE', 'false').lower() == 'true'
+
         # Check if this CSV date's data already exists (restored from gh-pages)
         json_file = f'output/{csv_date}.json'
         if os.path.exists(json_file):
-            print_progress(f"📦 Found existing data for {csv_date}")
-            print_progress(f"   • File: {json_file}")
-            print_progress("   • Data already processed and published")
-            print_progress("   • Skipping analysis (nothing to do)\n")
+            if force_overwrite:
+                print_progress(f"📦 Found existing data for {csv_date}")
+                print_progress(f"   • File: {json_file}")
+                print_progress("   • Force overwrite enabled - will regenerate\n")
+            else:
+                print_progress(f"📦 Found existing data for {csv_date}")
+                print_progress(f"   • File: {json_file}")
+                print_progress("   • Data already processed and published")
+                print_progress("   • Skipping analysis (nothing to do)\n")
 
-            print("\n" + "="*80)
-            print("ℹ️  Data Already Exists")
-            print("="*80)
-            print(f"\n📋 Status:")
-            print(f"   • CSV date: {csv_date}")
-            print(f"   • Data file: {json_file}")
-            print(f"   • Already published to gh-pages")
-            print(f"\n💡 No action needed - data is already up to date.")
-            print("="*80 + "\n")
+                print("\n" + "="*80)
+                print("ℹ️  Data Already Exists")
+                print("="*80)
+                print(f"\n📋 Status:")
+                print(f"   • CSV date: {csv_date}")
+                print(f"   • Data file: {json_file}")
+                print(f"   • Already published to gh-pages")
+                print(f"\n💡 No action needed - data is already up to date.")
+                print("="*80 + "\n")
 
-            return 0
+                return 0
 
-        # If no existing data, proceed with full analysis
-        print_progress(f"🆕 No existing data for {csv_date}, proceeding with analysis\n")
+        # If no existing data or force overwrite, proceed with full analysis
+        if not os.path.exists(json_file):
+            print_progress(f"🆕 No existing data for {csv_date}, proceeding with analysis\n")
+        else:
+            print_progress(f"🔄 Force overwrite mode - regenerating data for {csv_date}\n")
 
         # Initialize components
         print_progress("🔧 Initializing components...")

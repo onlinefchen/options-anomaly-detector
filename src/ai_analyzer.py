@@ -98,9 +98,9 @@ class AIAnalyzer:
             # 构建 prompt
             prompt = self._build_analysis_prompt(market_summary)
 
-            # 调用 GPT-4o（最新最强模型，无token限制）
+            # 调用 GPT-5（2025年8月发布的最新最强模型）
             response = self.client.chat.completions.create(
-                model="gpt-4o",  # 最新最强的GPT-4o模型
+                model="gpt-5",  # GPT-5 - OpenAI最新旗舰模型（2025年8月发布）
                 messages=[
                     {
                         "role": "system",
