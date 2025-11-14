@@ -1,6 +1,6 @@
 {
   "date": "2025-11-13",
-  "generated_at": "2025-11-14T13:14:55.863716",
+  "generated_at": "2025-11-14T13:49:02.940792",
   "tickers_count": 4325,
   "anomalies_count": 3334,
   "data_source": "CSV+API",
@@ -65,7 +65,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 665.73
+      "current_price": 664.64
     },
     {
       "ticker": "QQQ",
@@ -127,7 +127,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 599.59
+      "current_price": 598.92
     },
     {
       "ticker": "SPXW",
@@ -177,9 +177,9 @@
       "contracts_count": 3700,
       "put_contracts": 1602,
       "call_contracts": 2098,
-      "total_oi": 4996820,
-      "put_oi": 2339671,
-      "call_oi": 2657149,
+      "total_oi": 4997523,
+      "put_oi": 2340151,
+      "call_oi": 2657372,
       "cp_oi_ratio": 1.14,
       "leap_cp_ratio": 2.92,
       "top_3_contracts": [
@@ -210,7 +210,7 @@
       ],
       "strike_concentration": {
         "range": "500-550",
-        "oi": 364108,
+        "oi": 364232,
         "percentage": 7.3,
         "dominant_strike": 500
       },
@@ -226,7 +226,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 383.6
+      "current_price": 384.6485
     },
     {
       "ticker": "NVDA",
@@ -239,10 +239,10 @@
       "contracts_count": 2539,
       "put_contracts": 1100,
       "call_contracts": 1439,
-      "total_oi": 14623019,
-      "put_oi": 6765497,
-      "call_oi": 7857522,
-      "cp_oi_ratio": 1.16,
+      "total_oi": 14493803,
+      "put_oi": 6635869,
+      "call_oi": 7857934,
+      "cp_oi_ratio": 1.18,
       "leap_cp_ratio": 1.76,
       "top_3_contracts": [
         {
@@ -272,8 +272,8 @@
       ],
       "strike_concentration": {
         "range": "200-220",
-        "oi": 1829142,
-        "percentage": 12.5,
+        "oi": 1827040,
+        "percentage": 12.6,
         "dominant_strike": 200
       },
       "history": {
@@ -288,7 +288,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 180.93
+      "current_price": 181.08
     },
     {
       "ticker": "IWM",
@@ -350,7 +350,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 234.2
+      "current_price": 233.6
     },
     {
       "ticker": "IBIT",
@@ -363,10 +363,10 @@
       "contracts_count": 1665,
       "put_contracts": 779,
       "call_contracts": 886,
-      "total_oi": 8364861,
-      "put_oi": 2662004,
-      "call_oi": 5702857,
-      "cp_oi_ratio": 2.14,
+      "total_oi": 8351619,
+      "put_oi": 2647460,
+      "call_oi": 5704159,
+      "cp_oi_ratio": 2.15,
       "leap_cp_ratio": 2.45,
       "top_3_contracts": [
         {
@@ -391,12 +391,12 @@
           "strike": 60,
           "expiry": "2025-12-19",
           "type": "put",
-          "percentage": 1.4
+          "percentage": 1.5
         }
       ],
       "strike_concentration": {
         "range": "60-70",
-        "oi": 2472844,
+        "oi": 2469650,
         "percentage": 29.6,
         "dominant_strike": 60
       },
@@ -412,7 +412,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 54.06
+      "current_price": 53.83
     },
     {
       "ticker": "VIX",
@@ -425,9 +425,9 @@
       "contracts_count": 489,
       "put_contracts": 164,
       "call_contracts": 325,
-      "total_oi": 15845459,
-      "put_oi": 5010555,
-      "call_oi": 10834904,
+      "total_oi": 15845785,
+      "put_oi": 5010768,
+      "call_oi": 10835017,
       "cp_oi_ratio": 2.16,
       "leap_cp_ratio": 9.18,
       "top_3_contracts": [
@@ -487,9 +487,9 @@
       "contracts_count": 1840,
       "put_contracts": 805,
       "call_contracts": 1035,
-      "total_oi": 3908506,
-      "put_oi": 1840914,
-      "call_oi": 2067592,
+      "total_oi": 3835076,
+      "put_oi": 1812038,
+      "call_oi": 2023038,
       "cp_oi_ratio": 1.12,
       "leap_cp_ratio": 0.8,
       "top_3_contracts": [
@@ -499,7 +499,7 @@
           "strike": 200,
           "expiry": "2026-01-16",
           "type": "call",
-          "percentage": 1.0
+          "percentage": 1.1
         },
         {
           "ticker": "O:PLTR270115P00050000",
@@ -520,7 +520,7 @@
       ],
       "strike_concentration": {
         "range": "200-220",
-        "oi": 350174,
+        "oi": 345946,
         "percentage": 9.0,
         "dominant_strike": 200
       },
@@ -536,7 +536,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 162.78
+      "current_price": 164
     },
     {
       "ticker": "AMD",
@@ -549,10 +549,10 @@
       "contracts_count": 1760,
       "put_contracts": 732,
       "call_contracts": 1028,
-      "total_oi": 3628688,
-      "put_oi": 1715661,
-      "call_oi": 1913027,
-      "cp_oi_ratio": 1.12,
+      "total_oi": 3607010,
+      "put_oi": 1696177,
+      "call_oi": 1910833,
+      "cp_oi_ratio": 1.13,
       "leap_cp_ratio": 2.07,
       "top_3_contracts": [
         {
@@ -582,7 +582,7 @@
       ],
       "strike_concentration": {
         "range": "200-220",
-        "oi": 250933,
+        "oi": 249392,
         "percentage": 6.9,
         "dominant_strike": 200
       },
@@ -598,7 +598,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 239
+      "current_price": 239.979
     },
     {
       "ticker": "AAPL",
@@ -611,10 +611,10 @@
       "contracts_count": 1194,
       "put_contracts": 528,
       "call_contracts": 666,
-      "total_oi": 5802537,
-      "put_oi": 2371382,
-      "call_oi": 3431155,
-      "cp_oi_ratio": 1.45,
+      "total_oi": 5752144,
+      "put_oi": 2371404,
+      "call_oi": 3380740,
+      "cp_oi_ratio": 1.43,
       "leap_cp_ratio": 1.66,
       "top_3_contracts": [
         {
@@ -623,7 +623,7 @@
           "strike": 270,
           "expiry": "2026-01-16",
           "type": "call",
-          "percentage": 1.5
+          "percentage": 1.6
         },
         {
           "ticker": "O:AAPL260116C00310000",
@@ -631,7 +631,7 @@
           "strike": 310,
           "expiry": "2026-01-16",
           "type": "call",
-          "percentage": 1.1
+          "percentage": 1.2
         },
         {
           "ticker": "O:AAPL260116P00150000",
@@ -644,7 +644,7 @@
       ],
       "strike_concentration": {
         "range": "240-260",
-        "oi": 798673,
+        "oi": 791389,
         "percentage": 13.8,
         "dominant_strike": 250
       },
@@ -660,7 +660,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 271.5
+      "current_price": 271.05
     },
     {
       "ticker": "SLV",
@@ -673,10 +673,10 @@
       "contracts_count": 1613,
       "put_contracts": 582,
       "call_contracts": 1031,
-      "total_oi": 6831455,
-      "put_oi": 2771360,
-      "call_oi": 4060095,
-      "cp_oi_ratio": 1.47,
+      "total_oi": 6773041,
+      "put_oi": 2771844,
+      "call_oi": 4001197,
+      "cp_oi_ratio": 1.44,
       "leap_cp_ratio": 7.08,
       "top_3_contracts": [
         {
@@ -706,8 +706,8 @@
       ],
       "strike_concentration": {
         "range": "50-60",
-        "oi": 1002576,
-        "percentage": 14.7,
+        "oi": 983067,
+        "percentage": 14.5,
         "dominant_strike": 50
       },
       "history": {
@@ -722,7 +722,7 @@
         "streak": 5,
         "icon": "[HOT]"
       },
-      "current_price": 46.99
+      "current_price": 46.07
     },
     {
       "ticker": "SOFI",
@@ -735,9 +735,9 @@
       "contracts_count": 1010,
       "put_contracts": 427,
       "call_contracts": 583,
-      "total_oi": 4453446,
-      "put_oi": 1765542,
-      "call_oi": 2687904,
+      "total_oi": 4456040,
+      "put_oi": 1766283,
+      "call_oi": 2689757,
       "cp_oi_ratio": 1.52,
       "leap_cp_ratio": 2.53,
       "top_3_contracts": [
@@ -768,8 +768,8 @@
       ],
       "strike_concentration": {
         "range": "30-35",
-        "oi": 852406,
-        "percentage": 19.1,
+        "oi": 853556,
+        "percentage": 19.2,
         "dominant_strike": 30
       },
       "history": {
@@ -784,7 +784,7 @@
         "streak": 7,
         "icon": "[HOT]"
       },
-      "current_price": 26.79
+      "current_price": 26.99
     },
     {
       "ticker": "HYG",
@@ -846,7 +846,7 @@
         "streak": 6,
         "icon": "[ACT]"
       },
-      "current_price": 0
+      "current_price": 80.1
     },
     {
       "ticker": "MSTR",
@@ -859,10 +859,10 @@
       "contracts_count": 2459,
       "put_contracts": 1144,
       "call_contracts": 1315,
-      "total_oi": 2260696,
-      "put_oi": 943135,
-      "call_oi": 1317561,
-      "cp_oi_ratio": 1.4,
+      "total_oi": 2232969,
+      "put_oi": 916382,
+      "call_oi": 1316587,
+      "cp_oi_ratio": 1.44,
       "leap_cp_ratio": 1.51,
       "top_3_contracts": [
         {
@@ -892,8 +892,8 @@
       ],
       "strike_concentration": {
         "range": "300-320",
-        "oi": 113823,
-        "percentage": 5.0,
+        "oi": 112887,
+        "percentage": 5.1,
         "dominant_strike": 300
       },
       "history": {
@@ -908,7 +908,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 196.7
+      "current_price": 197.83
     },
     {
       "ticker": "AMZN",
@@ -921,9 +921,9 @@
       "contracts_count": 1370,
       "put_contracts": 558,
       "call_contracts": 812,
-      "total_oi": 4932294,
-      "put_oi": 2073409,
-      "call_oi": 2858885,
+      "total_oi": 4932699,
+      "put_oi": 2073460,
+      "call_oi": 2859239,
       "cp_oi_ratio": 1.38,
       "leap_cp_ratio": 2.03,
       "top_3_contracts": [
@@ -954,7 +954,7 @@
       ],
       "strike_concentration": {
         "range": "220-240",
-        "oi": 781382,
+        "oi": 781416,
         "percentage": 15.8,
         "dominant_strike": 220
       },
@@ -970,7 +970,7 @@
         "streak": 9,
         "icon": "[HOT]"
       },
-      "current_price": 233.34
+      "current_price": 233.72
     },
     {
       "ticker": "CRWV",
@@ -983,9 +983,9 @@
       "contracts_count": 1666,
       "put_contracts": 703,
       "call_contracts": 963,
-      "total_oi": 1985385,
-      "put_oi": 787749,
-      "call_oi": 1197636,
+      "total_oi": 1987963,
+      "put_oi": 788948,
+      "call_oi": 1199015,
       "cp_oi_ratio": 1.52,
       "leap_cp_ratio": 1.43,
       "top_3_contracts": [
@@ -1032,7 +1032,7 @@
         "streak": 4,
         "icon": "[OCC]"
       },
-      "current_price": 73.85
+      "current_price": 73.88
     },
     {
       "ticker": "META",
@@ -1045,9 +1045,9 @@
       "contracts_count": 2700,
       "put_contracts": 1093,
       "call_contracts": 1607,
-      "total_oi": 1467741,
-      "put_oi": 532760,
-      "call_oi": 934981,
+      "total_oi": 1466165,
+      "put_oi": 532766,
+      "call_oi": 933399,
       "cp_oi_ratio": 1.75,
       "leap_cp_ratio": 2.33,
       "top_3_contracts": [
@@ -1078,7 +1078,7 @@
       ],
       "strike_concentration": {
         "range": "600-650",
-        "oi": 328826,
+        "oi": 329054,
         "percentage": 22.4,
         "dominant_strike": 600
       },
@@ -1094,7 +1094,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 598.38
+      "current_price": 598.373
     },
     {
       "ticker": "OPEN",
@@ -1107,9 +1107,9 @@
       "contracts_count": 516,
       "put_contracts": 223,
       "call_contracts": 293,
-      "total_oi": 2894698,
-      "put_oi": 794026,
-      "call_oi": 2100672,
+      "total_oi": 2895957,
+      "put_oi": 794083,
+      "call_oi": 2101874,
       "cp_oi_ratio": 2.65,
       "leap_cp_ratio": 1.94,
       "top_3_contracts": [
@@ -1140,7 +1140,7 @@
       ],
       "strike_concentration": {
         "range": "10-15",
-        "oi": 615751,
+        "oi": 615871,
         "percentage": 21.3,
         "dominant_strike": 10
       },
@@ -1156,7 +1156,7 @@
         "streak": 6,
         "icon": "[ACT]"
       },
-      "current_price": 7.8
+      "current_price": 7.67
     },
     {
       "ticker": "INTC",
@@ -1169,9 +1169,9 @@
       "contracts_count": 940,
       "put_contracts": 400,
       "call_contracts": 540,
-      "total_oi": 6995528,
-      "put_oi": 2895727,
-      "call_oi": 4099801,
+      "total_oi": 6995849,
+      "put_oi": 2895817,
+      "call_oi": 4100032,
       "cp_oi_ratio": 1.42,
       "leap_cp_ratio": 4.63,
       "top_3_contracts": [
@@ -1202,7 +1202,7 @@
       ],
       "strike_concentration": {
         "range": "40-45",
-        "oi": 754204,
+        "oi": 754296,
         "percentage": 10.8,
         "dominant_strike": 40
       },
@@ -1218,7 +1218,7 @@
         "streak": 1,
         "icon": "[ACT]"
       },
-      "current_price": 34.26
+      "current_price": 34.49
     },
     {
       "ticker": "GLD",
@@ -1231,10 +1231,10 @@
       "contracts_count": 2770,
       "put_contracts": 1147,
       "call_contracts": 1623,
-      "total_oi": 2832044,
-      "put_oi": 896678,
-      "call_oi": 1935366,
-      "cp_oi_ratio": 2.16,
+      "total_oi": 2816516,
+      "put_oi": 881149,
+      "call_oi": 1935367,
+      "cp_oi_ratio": 2.2,
       "leap_cp_ratio": 4.31,
       "top_3_contracts": [
         {
@@ -1243,7 +1243,7 @@
           "strike": 400,
           "expiry": "2025-12-19",
           "type": "call",
-          "percentage": 4.8
+          "percentage": 4.9
         },
         {
           "ticker": "O:GLD251219C00415000",
@@ -1251,7 +1251,7 @@
           "strike": 415,
           "expiry": "2025-12-19",
           "type": "call",
-          "percentage": 4.1
+          "percentage": 4.2
         },
         {
           "ticker": "O:GLD251219C00390000",
@@ -1264,8 +1264,8 @@
       ],
       "strike_concentration": {
         "range": "400-420",
-        "oi": 595320,
-        "percentage": 21.0,
+        "oi": 595321,
+        "percentage": 21.1,
         "dominant_strike": 410
       },
       "history": {
@@ -1280,7 +1280,7 @@
         "streak": 10,
         "icon": "[HOT]"
       },
-      "current_price": 378.53
+      "current_price": 373.59
     },
     {
       "ticker": "HOOD",
@@ -1293,9 +1293,9 @@
       "contracts_count": 1485,
       "put_contracts": 608,
       "call_contracts": 877,
-      "total_oi": 2331700,
-      "put_oi": 917483,
-      "call_oi": 1414217,
+      "total_oi": 2333052,
+      "put_oi": 918156,
+      "call_oi": 1414896,
       "cp_oi_ratio": 1.54,
       "leap_cp_ratio": 1.88,
       "top_3_contracts": [
@@ -1342,7 +1342,7 @@
         "streak": 1,
         "icon": "[ACT]"
       },
-      "current_price": 114.63
+      "current_price": 114.5
     },
     {
       "ticker": "XOM",
@@ -1355,9 +1355,9 @@
       "contracts_count": 508,
       "put_contracts": 181,
       "call_contracts": 327,
-      "total_oi": 1047053,
-      "put_oi": 431958,
-      "call_oi": 615095,
+      "total_oi": 1047086,
+      "put_oi": 431966,
+      "call_oi": 615120,
       "cp_oi_ratio": 1.42,
       "leap_cp_ratio": 2.61,
       "top_3_contracts": [
@@ -1388,7 +1388,7 @@
       ],
       "strike_concentration": {
         "range": "120-130",
-        "oi": 344634,
+        "oi": 344652,
         "percentage": 32.9,
         "dominant_strike": 120
       },
@@ -1404,7 +1404,7 @@
         "streak": 1,
         "icon": "[NEW]"
       },
-      "current_price": 118.5
+      "current_price": 118.6499
     },
     {
       "ticker": "COIN",
@@ -1417,10 +1417,10 @@
       "contracts_count": 1639,
       "put_contracts": 739,
       "call_contracts": 900,
-      "total_oi": 1247121,
-      "put_oi": 486016,
-      "call_oi": 761105,
-      "cp_oi_ratio": 1.57,
+      "total_oi": 1230512,
+      "put_oi": 486216,
+      "call_oi": 744296,
+      "cp_oi_ratio": 1.53,
       "leap_cp_ratio": 1.37,
       "top_3_contracts": [
         {
@@ -1429,7 +1429,7 @@
           "strike": 390,
           "expiry": "2025-12-19",
           "type": "call",
-          "percentage": 1.9
+          "percentage": 2.0
         },
         {
           "ticker": "O:COIN251219C00310000",
@@ -1437,7 +1437,7 @@
           "strike": 310,
           "expiry": "2025-12-19",
           "type": "call",
-          "percentage": 1.6
+          "percentage": 1.7
         },
         {
           "ticker": "O:COIN251219C00500000",
@@ -1450,7 +1450,7 @@
       ],
       "strike_concentration": {
         "range": "300-320",
-        "oi": 159996,
+        "oi": 157302,
         "percentage": 12.8,
         "dominant_strike": 300
       },
@@ -1466,7 +1466,7 @@
         "streak": 2,
         "icon": "[ACT]"
       },
-      "current_price": 268.17
+      "current_price": 269.3
     },
     {
       "ticker": "SPX",
@@ -1479,10 +1479,10 @@
       "contracts_count": 2891,
       "put_contracts": 1813,
       "call_contracts": 1078,
-      "total_oi": 1611244,
-      "put_oi": 844417,
-      "call_oi": 766827,
-      "cp_oi_ratio": 0.91,
+      "total_oi": 1525195,
+      "put_oi": 844443,
+      "call_oi": 680752,
+      "cp_oi_ratio": 0.81,
       "leap_cp_ratio": 0.63,
       "top_3_contracts": [
         {
@@ -1491,7 +1491,7 @@
           "strike": 6000,
           "expiry": "2025-11-21",
           "type": "call",
-          "percentage": 5.4
+          "percentage": 5.7
         },
         {
           "ticker": "O:SPX251121C05000000",
@@ -1499,7 +1499,7 @@
           "strike": 5000,
           "expiry": "2025-11-21",
           "type": "call",
-          "percentage": 3.6
+          "percentage": 3.8
         },
         {
           "ticker": "O:SPXW251114P05350000",
@@ -1507,13 +1507,13 @@
           "strike": 5350,
           "expiry": "2025-11-14",
           "type": "put",
-          "percentage": 2.7
+          "percentage": 2.9
         }
       ],
       "strike_concentration": {
         "range": "6000-6050",
         "oi": 111770,
-        "percentage": 6.9,
+        "percentage": 7.3,
         "dominant_strike": 6000
       },
       "history": {
@@ -1541,9 +1541,9 @@
       "contracts_count": 709,
       "put_contracts": 286,
       "call_contracts": 423,
-      "total_oi": 3046719,
-      "put_oi": 1177079,
-      "call_oi": 1869640,
+      "total_oi": 3047471,
+      "put_oi": 1177385,
+      "call_oi": 1870086,
       "cp_oi_ratio": 1.59,
       "leap_cp_ratio": 1.47,
       "top_3_contracts": [
@@ -1553,7 +1553,7 @@
           "strike": 5,
           "expiry": "2027-01-15",
           "type": "put",
-          "percentage": 2.2
+          "percentage": 2.1
         },
         {
           "ticker": "O:MARA260116C00018000",
@@ -1574,7 +1574,7 @@
       ],
       "strike_concentration": {
         "range": "5-10",
-        "oi": 382559,
+        "oi": 382586,
         "percentage": 12.6,
         "dominant_strike": 5
       },
@@ -1590,7 +1590,7 @@
         "streak": 1,
         "icon": "[OCC]"
       },
-      "current_price": 12.11
+      "current_price": 12.1
     },
     {
       "ticker": "BP",
@@ -1603,9 +1603,9 @@
       "contracts_count": 292,
       "put_contracts": 100,
       "call_contracts": 192,
-      "total_oi": 587264,
+      "total_oi": 587265,
       "put_oi": 200843,
-      "call_oi": 386421,
+      "call_oi": 386422,
       "cp_oi_ratio": 1.92,
       "leap_cp_ratio": 9.54,
       "top_3_contracts": [
@@ -1652,7 +1652,7 @@
         "streak": 1,
         "icon": "[NEW]"
       },
-      "current_price": 36.05
+      "current_price": 36.04
     },
     {
       "ticker": "GOOGL",
@@ -1665,9 +1665,9 @@
       "contracts_count": 1440,
       "put_contracts": 567,
       "call_contracts": 873,
-      "total_oi": 3269221,
-      "put_oi": 1405922,
-      "call_oi": 1863299,
+      "total_oi": 3259458,
+      "put_oi": 1396034,
+      "call_oi": 1863424,
       "cp_oi_ratio": 1.33,
       "leap_cp_ratio": 1.25,
       "top_3_contracts": [
@@ -1698,8 +1698,8 @@
       ],
       "strike_concentration": {
         "range": "300-320",
-        "oi": 387374,
-        "percentage": 11.8,
+        "oi": 387071,
+        "percentage": 11.9,
         "dominant_strike": 300
       },
       "history": {
@@ -1714,7 +1714,7 @@
         "streak": 1,
         "icon": "[OCC]"
       },
-      "current_price": 271.44
+      "current_price": 272.22
     },
     {
       "ticker": "ORCL",
@@ -1727,9 +1727,9 @@
       "contracts_count": 1538,
       "put_contracts": 688,
       "call_contracts": 850,
-      "total_oi": 1785933,
-      "put_oi": 824771,
-      "call_oi": 961162,
+      "total_oi": 1786441,
+      "put_oi": 825104,
+      "call_oi": 961337,
       "cp_oi_ratio": 1.17,
       "leap_cp_ratio": 0.79,
       "top_3_contracts": [
@@ -1760,7 +1760,7 @@
       ],
       "strike_concentration": {
         "range": "240-260",
-        "oi": 213864,
+        "oi": 213908,
         "percentage": 12.0,
         "dominant_strike": 250
       },
@@ -1776,7 +1776,7 @@
         "streak": 3,
         "icon": "[OCC]"
       },
-      "current_price": 213.3
+      "current_price": 211.79
     },
     {
       "ticker": "TLT",
@@ -1789,9 +1789,9 @@
       "contracts_count": 917,
       "put_contracts": 416,
       "call_contracts": 501,
-      "total_oi": 6686460,
-      "put_oi": 2739591,
-      "call_oi": 3946869,
+      "total_oi": 6687927,
+      "put_oi": 2740993,
+      "call_oi": 3946934,
       "cp_oi_ratio": 1.44,
       "leap_cp_ratio": 2.99,
       "top_3_contracts": [
@@ -1822,7 +1822,7 @@
       ],
       "strike_concentration": {
         "range": "90-100",
-        "oi": 2599118,
+        "oi": 2599181,
         "percentage": 38.9,
         "dominant_strike": 90
       },
@@ -1838,7 +1838,7 @@
         "streak": 2,
         "icon": "[HOT]"
       },
-      "current_price": 89.88
+      "current_price": 90.04
     },
     {
       "ticker": "TSLL",
@@ -1851,9 +1851,9 @@
       "contracts_count": 722,
       "put_contracts": 306,
       "call_contracts": 416,
-      "total_oi": 1435231,
-      "put_oi": 410844,
-      "call_oi": 1024387,
+      "total_oi": 1436027,
+      "put_oi": 411058,
+      "call_oi": 1024969,
       "cp_oi_ratio": 2.49,
       "leap_cp_ratio": 5.18,
       "top_3_contracts": [
@@ -1885,7 +1885,7 @@
       "strike_concentration": {
         "range": "60-70",
         "oi": 134252,
-        "percentage": 9.4,
+        "percentage": 9.3,
         "dominant_strike": 61
       },
       "history": {
@@ -1900,7 +1900,7 @@
         "streak": 0,
         "icon": "[NEW]"
       },
-      "current_price": 14.88
+      "current_price": 14.95
     },
     {
       "ticker": "IREN",
@@ -1913,9 +1913,9 @@
       "contracts_count": 1143,
       "put_contracts": 521,
       "call_contracts": 622,
-      "total_oi": 2616178,
-      "put_oi": 1150414,
-      "call_oi": 1465764,
+      "total_oi": 2616853,
+      "put_oi": 1150736,
+      "call_oi": 1466117,
       "cp_oi_ratio": 1.27,
       "leap_cp_ratio": 6.58,
       "top_3_contracts": [
@@ -1975,9 +1975,9 @@
       "contracts_count": 438,
       "put_contracts": 166,
       "call_contracts": 272,
-      "total_oi": 3807947,
-      "put_oi": 1506762,
-      "call_oi": 2301185,
+      "total_oi": 3808142,
+      "put_oi": 1506790,
+      "call_oi": 2301352,
       "cp_oi_ratio": 1.53,
       "leap_cp_ratio": 8.62,
       "top_3_contracts": [
@@ -2008,7 +2008,7 @@
       ],
       "strike_concentration": {
         "range": "25-30",
-        "oi": 1595635,
+        "oi": 1595759,
         "percentage": 41.9,
         "dominant_strike": 25
       },
@@ -2037,9 +2037,9 @@
       "contracts_count": 722,
       "put_contracts": 268,
       "call_contracts": 454,
-      "total_oi": 1738300,
-      "put_oi": 521326,
-      "call_oi": 1216974,
+      "total_oi": 1738523,
+      "put_oi": 521354,
+      "call_oi": 1217169,
       "cp_oi_ratio": 2.33,
       "leap_cp_ratio": 12.87,
       "top_3_contracts": [
@@ -2057,7 +2057,7 @@
           "strike": 17.5,
           "expiry": "2025-11-21",
           "type": "call",
-          "percentage": 1.9
+          "percentage": 1.8
         },
         {
           "ticker": "O:CIFR251219C00012000",
@@ -2070,7 +2070,7 @@
       ],
       "strike_concentration": {
         "range": "15-20",
-        "oi": 475461,
+        "oi": 475517,
         "percentage": 27.4,
         "dominant_strike": 15
       },
@@ -2099,10 +2099,10 @@
       "contracts_count": 1417,
       "put_contracts": 600,
       "call_contracts": 817,
-      "total_oi": 2437010,
-      "put_oi": 962484,
-      "call_oi": 1474526,
-      "cp_oi_ratio": 1.53,
+      "total_oi": 2416439,
+      "put_oi": 961868,
+      "call_oi": 1454571,
+      "cp_oi_ratio": 1.51,
       "leap_cp_ratio": 2.44,
       "top_3_contracts": [
         {
@@ -2111,7 +2111,7 @@
           "strike": 500,
           "expiry": "2026-01-16",
           "type": "call",
-          "percentage": 1.7
+          "percentage": 1.8
         },
         {
           "ticker": "O:MSFT260116C00600000",
@@ -2132,8 +2132,8 @@
       ],
       "strike_concentration": {
         "range": "500-550",
-        "oi": 760743,
-        "percentage": 31.2,
+        "oi": 760822,
+        "percentage": 31.5,
         "dominant_strike": 500
       },
       "history": {
@@ -157513,7 +157513,7 @@
       "type": "LOW_TURNOVER",
       "severity": "LOW",
       "description": "Low turnover (Volume/OI: 0.07), strong position holding",
-      "value": 0.0695286264664217,
+      "value": 0.06952719603351933,
       "metric": "vol_oi_ratio"
     },
     {
@@ -157529,7 +157529,7 @@
       "type": "LOW_TURNOVER",
       "severity": "LOW",
       "description": "Low turnover (Volume/OI: 0.08), strong position holding",
-      "value": 0.07892013297638148,
+      "value": 0.07891651177719816,
       "metric": "vol_oi_ratio"
     },
     {
@@ -157537,7 +157537,7 @@
       "type": "LOW_TURNOVER",
       "severity": "LOW",
       "description": "Low turnover (Volume/OI: 0.06), strong position holding",
-      "value": 0.05909853644529392,
+      "value": 0.059085573152936624,
       "metric": "vol_oi_ratio"
     },
     {
@@ -157545,7 +157545,7 @@
       "type": "LOW_TURNOVER",
       "severity": "LOW",
       "description": "Low turnover (Volume/OI: 0.09), strong position holding",
-      "value": 0.09458797614567639,
+      "value": 0.09458313266679656,
       "metric": "vol_oi_ratio"
     }
   ],
