@@ -127,9 +127,8 @@ class AIAnalyzer:
                         "role": "user",
                         "content": prompt
                     }
-                ],
-                # 不限制token，让AI充分展开深度分析
-                temperature=0.7
+                ]
+                # GPT-5 只支持 temperature=1（默认值），移除自定义temperature参数
             )
 
             analysis = response.choices[0].message.content
