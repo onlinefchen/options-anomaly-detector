@@ -636,6 +636,56 @@ class AIAnalyzer:
             </tbody>
         </table>
 
+        <h2 style="font-size: 16px; margin-top: 40px;">📊 表格列说明</h2>
+        <table style="font-size: 12px; margin-top: 10px;">
+            <tbody>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Rank</strong></td>
+                    <td style="border: none; padding: 4px 8px;">按成交量排名</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Ticker</strong></td>
+                    <td style="border: none; padding: 4px 8px;">标的代码</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Total Volume</strong></td>
+                    <td style="border: none; padding: 4px 8px;">期权总成交量（单位：万手）</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>C/P Volume</strong></td>
+                    <td style="border: none; padding: 4px 8px;">看涨/看跌期权成交量比例</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Avg Trade Size</strong></td>
+                    <td style="border: none; padding: 4px 8px;">平均每笔成交手数（成交量/成交笔数），数值越大说明机构参与度越高</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>LEAP C/P</strong></td>
+                    <td style="border: none; padding: 4px 8px;">长期期权（3个月以上）的看涨/看跌比例，反映长期市场预期</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Streak</strong></td>
+                    <td style="border: none; padding: 4px 8px;">连续上榜天数</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>10-Day Activity</strong></td>
+                    <td style="border: none; padding: 4px 8px;">过去10个交易日的上榜统计（出现次数/趋势/排名变化）</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Total OI</strong></td>
+                    <td style="border: none; padding: 4px 8px;">期权总持仓量（单位：万手）</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>C/P OI</strong></td>
+                    <td style="border: none; padding: 4px 8px;">看涨/看跌期权持仓量比例</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Top 3 Contracts</strong></td>
+                    <td style="border: none; padding: 4px 8px;">持仓量最大的3个期权合约（格式：到期日+类型+行权价）</td>
+                </tr>
+            </tbody>
+        </table>
+
         <div class="footer">
             <div><a href="https://onlinefchen.github.io/options-anomaly-detector/">查看完整报告</a> | <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub</a></div>
             <div style="margin-top: 10px;">自动化报告 - 仅供参考</div>
