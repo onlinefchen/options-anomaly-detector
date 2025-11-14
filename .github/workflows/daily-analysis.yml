@@ -12,30 +12,10 @@ on:
   workflow_dispatch:
     inputs:
       force_overwrite:
-        description: '🔄 强制覆盖 (Force Overwrite) - 即使数据已存在也重新生成'
+        description: '🔄 强制重新生成 - 重新下载CSV、重新分析、重新发邮件'
         required: false
         type: boolean
         default: false
-      force_generate:
-        description: '📜 强制生成历史数据 (Historical Data Generation)'
-        required: false
-        type: boolean
-        default: false
-      start_date:
-        description: '📅 开始日期 (YYYY-MM-DD)'
-        required: false
-        type: string
-        default: ''
-      end_date:
-        description: '📅 结束日期 (YYYY-MM-DD，留空则只生成开始日期)'
-        required: false
-        type: string
-        default: ''
-      days_back:
-        description: '📊 或者：生成过去N个交易日（优先级最高）'
-        required: false
-        type: number
-        default: 0
 
   # Run on push to main for testing
   push:
@@ -145,40 +125,6 @@ jobs:
           echo "Checking Polygon Flat Files for today's CSV..."
           echo ""
 
-      - name: 📜 Generate historical data (if requested)
-        if: ${{ github.event.inputs.force_generate == 'true' && steps.check-data.outputs.skip_analysis != 'true' }}
-        env:
-          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
-          POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
-          POLYGON_S3_SECRET_KEY: ${{ secrets.POLYGON_S3_SECRET_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          echo "=================================================="
-          echo "📜 GENERATING HISTORICAL DATA"
-          echo "=================================================="
-          echo ""
-
-          # 判断使用哪种模式
-          if [ "${{ github.event.inputs.days_back }}" != "0" ] && [ "${{ github.event.inputs.days_back }}" != "" ]; then
-            echo "模式: 生成过去 ${{ github.event.inputs.days_back }} 个交易日"
-            python generate_historical_data.py --days ${{ github.event.inputs.days_back }}
-          elif [ -n "${{ github.event.inputs.start_date }}" ]; then
-            if [ -n "${{ github.event.inputs.end_date }}" ]; then
-              echo "模式: 生成日期区间 ${{ github.event.inputs.start_date }} 至 ${{ github.event.inputs.end_date }}"
-              python generate_historical_data.py --start "${{ github.event.inputs.start_date }}" --end "${{ github.event.inputs.end_date }}"
-            else
-              echo "模式: 生成单个日期 ${{ github.event.inputs.start_date }}"
-              python generate_historical_data.py --date "${{ github.event.inputs.start_date }}"
-            fi
-          else
-            echo "❌ 错误: 必须指定 days_back 或 start_date"
-            exit 1
-          fi
-
-          echo ""
-          echo "✓ 历史数据生成完成"
-          echo ""
-
       - name: 🔍 Run anomaly detection
         if: steps.check-data.outputs.skip_analysis != 'true'
         env:
@@ -230,15 +176,19 @@ jobs:
           echo "=================================================="
           echo ""
 
-          # 检查是否生成了新数据
-          if [ ! -f "output/NEW_DATA_GENERATED" ]; then
-            echo "⊘ No new data generated (data already existed)"
+          # 检查是否生成了新数据或强制覆盖
+          if [ ! -f "output/NEW_DATA_GENERATED" ] && [ "${{ github.event.inputs.force_overwrite }}" != "true" ]; then
+            echo "⊘ No new data generated and force_overwrite not set"
             echo "   → Skipping email notification to avoid duplicates"
             echo "=================================================="
             exit 0
           fi
 
-          echo "✓ New data generated, proceeding with email notification"
+          if [ "${{ github.event.inputs.force_overwrite }}" = "true" ]; then
+            echo "🔄 Force overwrite enabled - will send email"
+          else
+            echo "✓ New data generated - will send email"
+          fi
           echo ""
 
           # 检查是否配置了 AI 或邮件

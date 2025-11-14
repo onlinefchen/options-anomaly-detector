@@ -421,12 +421,7 @@ class AIAnalyzer:
         else:
             date_str = datetime.now().strftime('%Y-%m-%d')
 
-        top_ticker = data[0]['ticker'] if data else 'N/A'
-
-        if anomalies_count > 0:
-            return f"期权市场日报 {date_str} - {top_ticker} 领涨 | {anomalies_count}个异常"
-        else:
-            return f"期权市场日报 {date_str} - {top_ticker} 领涨"
+        return f"{date_str}交易日 盘后数据分析"
 
     def format_for_email(self, analysis: str, data: List[Dict], summary: Dict, csv_date: str = None) -> str:
         """
