@@ -76,30 +76,41 @@ def main():
         print_progress(f"   • Flat Files access: {'✓' if strategy_info['has_flat_files_access'] else '✗'}")
         print_progress(f"   • Recommended strategy: {strategy_info['recommended_strategy'].upper()}\n")
 
-        # Download CSV for csv_date
-        print_progress(f"📥 Downloading CSV data for {csv_date}...")
+        # Download CSV for csv_date (THE CORE PREREQUISITE)
+        print("\n" + "="*80)
+        print("📥 CSV FILE CHECK - CORE PREREQUISITE")
+        print("="*80)
+        print(f"Target CSV date: {csv_date}")
+        print(f"CSV file: {csv_date}.csv.gz")
+        print(f"Attempting to download from Polygon Flat Files...\n")
+
         success, data, actual_csv_date = fetcher.csv_handler.try_download_and_parse(date=csv_date, max_retries=1)
 
         if not success or not data:
-            print_progress(f"⊘ CSV download failed for {csv_date}")
-            print_progress("   • CSV file not found or inaccessible")
-            print_progress("   • Skipping analysis\n")
-
             print("\n" + "="*80)
-            print("⏰ CSV Not Yet Available")
+            print("⏰ CSV NOT YET AVAILABLE - WAITING FOR NEXT RETRY")
             print("="*80)
+            print(f"\n❌ Status: CSV file not found")
             print(f"\n📋 Details:")
-            print(f"   • Target CSV date: {csv_date}")
-            print(f"   • CSV file expected: {csv_date}.csv.gz")
-            print(f"   • The CSV file may not be uploaded yet (post-market processing)")
-            print(f"\n💡 Next hourly run will retry automatically.")
-            print(f"   Analysis will complete when CSV becomes available.")
+            print(f"   • Target date: {csv_date}")
+            print(f"   • File expected: {csv_date}.csv.gz")
+            print(f"   • Reason: Polygon may still be processing post-market data")
+            print(f"\n⏰ Auto-retry mechanism:")
+            print(f"   • Workflow runs every hour (4-9 PM Beijing Time)")
+            print(f"   • Next retry: In ~1 hour")
+            print(f"   • Analysis will start automatically when CSV becomes available")
+            print(f"\n💡 No action needed - just wait for the CSV to be uploaded")
             print("="*80 + "\n")
-            return 0  # Return success to allow workflow to continue
+            return 0  # Return success to allow workflow to continue to next hourly run
 
-        print_progress(f"✓ CSV data downloaded successfully")
-        print_progress(f"   • CSV date: {actual_csv_date}")
-        print_progress(f"   • Tickers: {len(data)}\n")
+        print("\n" + "="*80)
+        print("✅ CSV AVAILABLE - PROCEEDING WITH ANALYSIS")
+        print("="*80)
+        print(f"✓ CSV file successfully downloaded!")
+        print(f"   • CSV date: {actual_csv_date}")
+        print(f"   • Tickers found: {len(data)}")
+        print(f"   • Total volume: {sum(d['total_volume'] for d in data):,}")
+        print("="*80 + "\n")
 
         # Algorithm 2: Determine if OI should be fetched
         print_progress("🔍 Checking if Open Interest data should be fetched...")

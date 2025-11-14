@@ -1,9 +1,12 @@
 name: Daily Options Analysis
 
 on:
-  # Run hourly from 4:00 PM to 9:00 PM Beijing Time (retry until CSV is available)
+  # AUTO-RETRY MECHANISM: Run hourly from 4:00 PM to 9:00 PM Beijing Time
+  # Purpose: Keep checking until Polygon uploads today's CSV file
+  # CSV is THE CORE prerequisite - without it, analysis cannot proceed
   schedule:
     - cron: '0 8-13 * * *'  # 08:00-13:00 UTC = 4:00-9:00 PM Beijing Time (hourly)
+                            # Will retry every hour until CSV becomes available
 
   # Allow manual trigger
   workflow_dispatch:
@@ -85,15 +88,20 @@ jobs:
             echo "⚠️  No historical data found (first run?)"
           fi
 
-      - name: 📡 Fetch options data
-        env:
-          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+      - name: 📡 CSV Availability Check
         run: |
           echo "=================================================="
-          echo "📡 STEP 1: DATA FETCHING"
+          echo "📡 STEP 1: CSV AVAILABILITY CHECK"
           echo "=================================================="
-          echo "Date: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S %Z')"
-          echo "Market Session: Will be detected by script"
+          echo ""
+          echo "⚠️  CSV FILE IS THE CORE PREREQUISITE"
+          echo "   → Without CSV, analysis cannot proceed"
+          echo "   → Workflow runs hourly (4-9 PM Beijing) until CSV is available"
+          echo ""
+          echo "Current time: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S %Z')"
+          echo "Next retry: In 1 hour (if CSV not available)"
+          echo ""
+          echo "Checking Polygon Flat Files for today's CSV..."
           echo ""
 
       - name: 📜 Generate historical data (if requested)
