@@ -98,20 +98,34 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
             'call_oi': int,
             'cp_oi_ratio': float,
             'top_3_contracts': list,
+            'top_3_leap_contracts': list,  # NEW: Top 3 contracts expiring 3+ months out
             'strike_concentration': dict,
             'leap_cp_ratio': float (if trading_date provided)
         }
     """
+    from datetime import datetime, timedelta
+
     put_oi = 0
     call_oi = 0
     contracts_with_oi = []
+    leap_contracts = []  # Contracts expiring 3+ months out
     strike_dict = {}
+
+    # Calculate the 3-month threshold date if trading_date provided
+    leap_threshold = None
+    if trading_date:
+        try:
+            date_obj = datetime.strptime(trading_date, '%Y-%m-%d')
+            leap_threshold = date_obj + timedelta(days=90)  # ~3 months
+        except (ValueError, TypeError):
+            pass
 
     for contract in contracts:
         details = contract.get('details', {})
         contract_type = details.get('contract_type')
         oi = contract.get('open_interest', 0) or 0
         strike = details.get('strike_price')
+        expiry_str = details.get('expiration_date')
 
         if contract_type == 'put':
             put_oi += oi
@@ -120,13 +134,23 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
 
         # 收集合约信息用于分析
         if oi > 0:
-            contracts_with_oi.append({
+            contract_info = {
                 'ticker': details.get('ticker'),
                 'oi': oi,
                 'strike': strike,
-                'expiry': details.get('expiration_date'),
+                'expiry': expiry_str,
                 'type': contract_type
-            })
+            }
+            contracts_with_oi.append(contract_info)
+
+            # Check if this is a LEAP contract (expires 3+ months out)
+            if leap_threshold and expiry_str:
+                try:
+                    expiry_date = datetime.strptime(expiry_str, '%Y-%m-%d')
+                    if expiry_date >= leap_threshold:
+                        leap_contracts.append(contract_info)
+                except (ValueError, TypeError):
+                    pass
 
             # 统计行权价分布
             if strike:
@@ -135,9 +159,14 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
     total_oi = put_oi + call_oi
     cp_oi_ratio = round(call_oi / put_oi, 2) if put_oi > 0 else 0
 
-    # 获取 Top 3 活跃合约
+    # 获取 Top 3 活跃合约 (all contracts)
     top_3 = sorted(contracts_with_oi, key=lambda x: x['oi'], reverse=True)[:3]
     for contract in top_3:
+        contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0
+
+    # 获取 Top 3 LEAP 合约 (3+ months out)
+    top_3_leap = sorted(leap_contracts, key=lambda x: x['oi'], reverse=True)[:3]
+    for contract in top_3_leap:
         contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0
 
     # 分析价格区间
@@ -149,6 +178,7 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
         'call_oi': call_oi,
         'cp_oi_ratio': cp_oi_ratio,
         'top_3_contracts': top_3,
+        'top_3_leap_contracts': top_3_leap,  # NEW
         'strike_concentration': strike_concentration
     }
 

@@ -273,6 +273,17 @@ class HTMLReportGenerator:
             if not top3_html:
                 top3_html = '<small>N/A</small>'
 
+            # Format Top 3 LEAP contracts (3+ months out)
+            top3_leap_html = ''
+            for i, contract in enumerate(item.get('top_3_leap_contracts', [])[:3], 1):
+                contract_short = self._format_contract_short(contract)
+                oi_k = contract.get('oi', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_leap_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
+
+            if not top3_leap_html:
+                top3_leap_html = '<small>N/A</small>'
+
             # Format history activity
             history = item.get('history', {})
             appearances = history.get('appearances', 0)
@@ -306,6 +317,7 @@ class HTMLReportGenerator:
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
                         <td class="compact-cell">{top3_html}</td>
+                        <td class="compact-cell">{top3_leap_html}</td>
                     </tr>
                 """)
             else:
@@ -322,6 +334,7 @@ class HTMLReportGenerator:
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
                         <td class="compact-cell">{top3_html}</td>
+                        <td class="compact-cell">{top3_leap_html}</td>
                     </tr>
                 """)
         return ''.join(rows)
@@ -680,6 +693,7 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
+                        <th>Top 3 Leap</th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -702,6 +716,7 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
+                        <th>Top 3 Leap</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">

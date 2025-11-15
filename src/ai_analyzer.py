@@ -180,6 +180,21 @@ class AIAnalyzer:
             avg_trade_size = item.get('avg_trade_size', 0)
             leap_cp = item.get('leap_cp_ratio', 0)
 
+            # Format Top 3 LEAP contracts
+            leap_contracts = item.get('top_3_leap_contracts', [])
+            leap_contracts_list = []
+            for j, contract in enumerate(leap_contracts[:3], 1):
+                expiry = contract.get('expiry', '')
+                if expiry:
+                    expiry = expiry.replace('-', '')[-6:]
+                contract_type = contract.get('type', '')[0].upper() if contract.get('type') else 'X'
+                strike = int(contract.get('strike', 0))
+                oi = contract.get('oi', 0)
+                pct = contract.get('percentage', 0)
+                leap_contract_detail = f"{expiry}{contract_type}{strike} (OI: {oi:,}, {pct:.1f}%)"
+                leap_contracts_list.append(leap_contract_detail)
+            leap_contracts_str = "\n     " + "\n     ".join(leap_contracts_list) if leap_contracts_list else " N/A"
+
             detail = (
                 f"{i}. **{item['ticker']}**:\n"
                 f"   - Total Volume: {item['total_volume']:,} | Total OI: {item['total_oi']:,}\n"
@@ -193,7 +208,8 @@ class AIAnalyzer:
                 f"({'长期看多' if leap_cp > 1.2 else '长期看空' if leap_cp < 0.8 else '中性'})\n"
                 f"   - Contracts: {item['contracts_count']}\n"
                 f"   - Strike Concentration: {strike_info}\n"
-                f"   - Top 3 Contracts:{contracts_str}"
+                f"   - Top 3 Contracts:{contracts_str}\n"
+                f"   - Top 3 LEAP Contracts:{leap_contracts_str}"
             )
             tickers_detail.append(detail)
 
@@ -219,6 +235,7 @@ class AIAnalyzer:
 - **Total OI**: 期权总持仓量（单位：万手）
 - **C/P OI**: 看涨/看跌期权持仓量比例
 - **Top 3 Contracts**: 持仓量最大的3个期权合约（格式：到期日+类型+行权价）
+- **Top 3 LEAP**: 3个月以后到期的持仓量最大的3个期权合约，反映长期市场定位
 
 # 原始数据（仅供参考，不要在分析中重复这些数字）
 - 总标的数: {market_summary['total_tickers']}
@@ -485,6 +502,21 @@ class AIAnalyzer:
             if not top3_text:
                 top3_text = "N/A"
 
+            # Top 3 LEAP Contracts (3+ months out)
+            top3_leap_text = ""
+            for j, contract in enumerate(item.get('top_3_leap_contracts', [])[:3], 1):
+                expiry = contract.get('expiry', '')
+                if expiry:
+                    expiry = expiry.replace('-', '')[-6:]  # YYMMDD
+                contract_type = contract.get('type', '')[0].upper() if contract.get('type') else 'X'
+                strike = int(contract.get('strike', 0))
+                oi_k = contract.get('oi', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_leap_text += f"{j}. {expiry}{contract_type}{strike} {oi_k:.0f}K ({pct:.1f}%)<br>"
+
+            if not top3_leap_text:
+                top3_leap_text = "N/A"
+
             # History
             history = item.get('history', {})
             appearances = history.get('appearances', 0)
@@ -509,6 +541,7 @@ class AIAnalyzer:
                     <td style="text-align: right;">{oi_w:.2f}W</td>
                     <td style="text-align: center;">{item.get('cp_oi_ratio', 0):.2f}</td>
                     <td style="font-size: 11px; line-height: 1.4;">{top3_text}</td>
+                    <td style="font-size: 11px; line-height: 1.4;">{top3_leap_text}</td>
                 </tr>
             """)
 
@@ -650,6 +683,7 @@ class AIAnalyzer:
                     <th style="text-align: right;">持仓量</th>
                     <th style="text-align: center;">C/P OI</th>
                     <th>Top 3 Contracts</th>
+                    <th>Top 3 Leap</th>
                 </tr>
             </thead>
             <tbody>
@@ -695,6 +729,10 @@ class AIAnalyzer:
                 <tr>
                     <td style="border: none; padding: 4px 8px;"><strong>Top 3 Contracts</strong></td>
                     <td style="border: none; padding: 4px 8px;">持仓量最大的3个期权合约（格式：到期日+类型+行权价）</td>
+                </tr>
+                <tr>
+                    <td style="border: none; padding: 4px 8px;"><strong>Top 3 Leap</strong></td>
+                    <td style="border: none; padding: 4px 8px;">3个月以后到期的持仓量最大的3个期权合约，反映长期市场定位</td>
                 </tr>
             </tbody>
         </table>
