@@ -114,6 +114,14 @@ jobs:
           echo "=================================================="
           python main.py
 
+      - name: 🔧 Fix missing HTML files
+        run: |
+          echo "=================================================="
+          echo "🔧 FIXING MISSING HTML FILES"
+          echo "=================================================="
+          python scripts/regenerate_html_from_json.py --all-missing
+          echo ""
+
       - name: 📚 Generate archive index (always update)
         run: |
           echo "=================================================="
