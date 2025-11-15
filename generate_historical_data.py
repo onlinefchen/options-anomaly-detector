@@ -141,6 +141,86 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         return None
 
 
+def run_ai_and_send_email(date: str, data: list, anomalies: list, summary: dict,
+                          metadata: dict, skip_email: bool = False):
+    """
+    运行AI分析并发送邮件（可选）
+
+    Args:
+        date: CSV日期
+        data: 数据列表
+        anomalies: 异常列表
+        summary: 统计摘要
+        metadata: 元数据
+        skip_email: 是否跳过邮件发送（workflow中会禁用）
+
+    Returns:
+        True if successful, False otherwise
+    """
+    if skip_email:
+        print(f'⊘ 跳过邮件发送（workflow模式）')
+        return True
+
+    print(f'🤖 STEP 6/6: AI分析与邮件发送')
+
+    # 检查数据来源
+    data_source = metadata.get('data_source', 'CSV')
+    if data_source not in ['CSV', 'CSV+API']:
+        print(f'   ⊘ 数据来源是 {data_source}，跳过AI分析和邮件')
+        return True
+
+    try:
+        from ai_analyzer import AIAnalyzer
+        from email_sender import EmailSender
+
+        # 初始化组件
+        ai_analyzer = AIAnalyzer()
+        email_sender = EmailSender()
+
+        # 运行AI分析
+        analysis = ''
+        if ai_analyzer.is_available():
+            print(f'   ⏳ 正在运行 GPT-5 AI 分析...')
+            analysis = ai_analyzer.analyze_market_data(data, anomalies, summary)
+            if analysis:
+                print(f'   ✅ AI 分析完成')
+            else:
+                print(f'   ⚠️  AI 分析返回空结果')
+        else:
+            print(f'   ⊘ OpenAI API Key 未配置，跳过 AI 分析')
+
+        # 发送邮件
+        if email_sender.is_available():
+            recipient = os.getenv('RECIPIENT_EMAIL', os.getenv('GMAIL_USER'))
+
+            if recipient:
+                print(f'   📧 正在发送邮件到 {recipient}...')
+
+                subject = ai_analyzer.generate_email_subject(data, summary.get('total', 0), date)
+                html_content = ai_analyzer.format_for_email(analysis, data, summary, date)
+
+                success = email_sender.send_report(recipient, subject, html_content)
+
+                if success:
+                    print(f'   ✅ 邮件发送成功！')
+                    return True
+                else:
+                    print(f'   ❌ 邮件发送失败')
+                    return False
+            else:
+                print(f'   ⚠️  未配置收件人邮箱')
+                return True
+        else:
+            print(f'   ⊘ Gmail 未配置，跳过邮件发送')
+            return True
+
+    except Exception as e:
+        print(f'   ❌ AI分析或邮件发送失败: {e}')
+        import traceback
+        traceback.print_exc()
+        return False
+
+
 def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
                          metadata: dict, output_dir: str = 'output'):
     """
@@ -154,7 +234,7 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
         metadata: 元数据（包含data_source等）
         output_dir: 输出目录
     """
-    print(f'💾 STEP 5/5: 保存数据文件')
+    print(f'💾 STEP 5/6: 保存数据文件')
     os.makedirs(output_dir, exist_ok=True)
 
     # 保存 JSON
@@ -192,11 +272,6 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
     file_size = os.path.getsize(html_file) / 1024
     print(f'   ✅ HTML 已保存: {html_file} ({file_size:.1f} KB)')
 
-    # 创建标记文件，告知workflow有新数据生成（用于AI分析和邮件发送）
-    flag_file = os.path.join(output_dir, f'NEW_DATA_GENERATED_{date}')
-    with open(flag_file, 'w') as f:
-        f.write(date)
-    print(f'   ✅ 标记文件已创建: NEW_DATA_GENERATED_{date}')
     print()
 
 
@@ -323,10 +398,21 @@ def main():
             print(f'━' * 70)
         else:
             data, anomalies, summary, metadata = result
+
+            # 保存数据
             save_historical_data(date, data, anomalies, summary, metadata, args.output)
+
+            # 立即进行AI分析和邮件发送
+            # 这样每一天都是完整的原子操作：下载→分析→生成→AI→邮件
+            # 如果这一天成功，立即发邮件；如果失败，不影响其他天
+            email_success = run_ai_and_send_email(date, data, anomalies, summary, metadata, skip_email=False)
+
             success_count += 1
             print(f'━' * 70)
-            print(f'✅ {date} 处理完成！')
+            if email_success:
+                print(f'✅ {date} 处理完成！（数据已生成，邮件已发送）')
+            else:
+                print(f'⚠️  {date} 数据已生成，但邮件发送失败')
             print(f'━' * 70)
 
         print(f'📊 汇总统计: 已完成 {idx}/{total_days} | 成功 {success_count} | 跳过 {skip_count} | 剩余 {total_days - idx}')

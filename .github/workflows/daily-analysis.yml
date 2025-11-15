@@ -146,19 +146,6 @@ jobs:
             !output/.gitkeep
           retention-days: 90
 
-      - name: 🤖 AI Analysis & Email Notification
-        if: success() && github.event_name != 'push'
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWD: ${{ secrets.GMAIL_APP_PASSWD }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
-        run: |
-          echo "=================================================="
-          echo "🤖 AI ANALYSIS & EMAIL NOTIFICATION"
-          echo "=================================================="
-          python scripts/run_ai_email.py
-
 
   # Job 2: 网页部署
   deploy:
