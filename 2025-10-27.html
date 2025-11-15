@@ -138,13 +138,12 @@
             padding: 8px 12px;
             text-align: left;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
             border-bottom: 1px solid #d2d2d7;
         }
 
         table th.sortable {
             cursor: pointer;
-            user-select: none;
             position: relative;
         }
 
@@ -169,7 +168,7 @@
         table td {
             padding: 8px 12px;
             border-bottom: 1px solid #d2d2d7;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         table tr:hover {
@@ -267,7 +266,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-03 02:09:01 EST | <strong>东八区时间:</strong> 2025-11-03 15:09:01 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-27.csv.gz)</p>
+            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-14 22:05:58 EST | <strong>东八区时间:</strong> 2025-11-15 11:05:58 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-27.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -301,34 +300,12 @@
         <div class="section">
             <h2>Macro Market Outlook</h2>
             <div class="macro-content">
-                <strong>Market Sentiment &amp; Positioning</strong>
-
-<ul><li><strong>C/P Ratio Analysis</strong>: The C/P volume ratios for SPY (0.66), QQQ (0.76), and IWM (0.76) suggest a modestly bearish sentiment across major indices, with more puts being traded than calls. This indicates a level of caution among market participants, possibly reflecting concerns about downside risks.</li>
-
-<li><strong>Open Interest and Top Contracts</strong>: The absence of open interest data and specific top contract information limits our ability to assess institutional positioning deeply. However, the higher put volumes hint at protective strategies, such as hedging against potential downturns, rather than aggressive directional bets.</li>
-
-<li><strong>Unusual Patterns</strong>: The lack of open interest suggests these trades might be short-term plays or speculative bets, rather than long-term strategic positioning. The high put volumes could also indicate hedging activity, possibly in response to macroeconomic uncertainties.</li>
-
-<strong>Macro Outlook</strong>
-
-<li><strong>Current Environment</strong>: The Federal Reserve remains vigilant on inflation, with a bias towards maintaining higher interest rates until inflationary pressures decisively subside. While growth indicators remain mixed, the potential for a slowdown persists, particularly if tighter monetary conditions continue to weigh on consumer and business activity.</li>
-
-<li><strong>Key Risks and Opportunities</strong>: The primary risks include the potential for a deeper economic slowdown, geopolitical tensions, and persistent inflation. However, opportunities could emerge from stabilizing energy markets or policy shifts if inflation moderates faster than expected.</li>
-
-<li><strong>Investor Watchlist</strong>: Investors should monitor upcoming Fed communications, CPI data releases, and geopolitical developments, particularly those affecting energy supplies. Corporate earnings reports could also provide insights into how companies are navigating the current environment.</li>
-
-<strong>Key Takeaways</strong>
-
-<li>The options market reflects a cautious sentiment, with higher put volumes indicating protective hedging rather than outright bearish bets.</li>
-<li>The macro environment is characterized by persistent inflation concerns and a vigilant Fed, posing risks to growth.</li>
-<li>Absence of open interest data limits insights into longer-term institutional positioning.</li>
-<li>Key risks include economic slowdown and geopolitical tensions, while opportunities may arise from policy shifts and stabilizing markets.</li>
-<li>Investors should closely follow inflation data, Fed statements, and geopolitical events to navigate the current uncertainty effectively.</li></ul>
+                <p>AI analysis not configured (OPENAI_API_KEY required)</p>
             </div>
         </div>
 
         <div class="section">
-            <h2>Market Indices (3)</h2>
+            <h2>Market Indices (4)</h2>
             <table id="indexTable">
                 <thead>
                     <tr>
@@ -336,66 +313,64 @@
                         <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
-                        <th>10-Day Activity</th>
-                        <th>Streak</th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
                     
-                <tr>
-                    <td>1</td>
-                    <td><strong>SPY</strong></td>
-                    <td>871.16W</td>
-                    <td>0.66</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $682.06</small></div></td>
-                    <td class="compact-cell">
-                <div><strong>10/10 [HOT]</strong> -</div>
-                <div><small>Avg Rank: 1.0</small></div>
-            </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>2</td>
-                    <td><strong>QQQ</strong></td>
-                    <td>492.93W</td>
-                    <td>0.76</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $629.05</small></div></td>
-                    <td class="compact-cell">
-                <div><strong>10/10 [HOT]</strong> -</div>
-                <div><small>Avg Rank: 2.1</small></div>
-            </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>3</td>
-                    <td><strong>IWM</strong></td>
-                    <td>152.95W</td>
-                    <td>0.76</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $246.23</small></div></td>
-                    <td class="compact-cell">
-                <div><strong>10/10 [HOT]</strong> -1</div>
-                <div><small>Avg Rank: 6.5</small></div>
-            </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
+                    <tr>
+                        <td>1</td>
+                        <td><strong>SPY</strong></td>
+                        <td>871.16W</td>
+                        <td>0.66</td>
+                        <td>0.0</td>
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>2</td>
+                        <td><strong>QQQ</strong></td>
+                        <td>492.93W</td>
+                        <td>0.76</td>
+                        <td>0.0</td>
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>3</td>
+                        <td><strong>IWM</strong></td>
+                        <td>152.95W</td>
+                        <td>0.76</td>
+                        <td>0.0</td>
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>4</td>
+                        <td><strong>SPX</strong></td>
+                        <td>63.14W</td>
+                        <td>0.72</td>
+                        <td>0.0</td>
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
                 </tbody>
             </table>
         </div>
 
         <div class="section">
-            <h2>Stocks & ETFs - Top 25 (2025-11-03 from 2025-10-27.csv.gz)</h2>
+            <h2>Stocks & ETFs - Top 25 (2025-11-15 from 2025-10-27.csv.gz)</h2>
             <table id="stockTable">
                 <thead>
                     <tr>
@@ -403,403 +378,455 @@
                         <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
+                        <th>Streak</th>
+                        <th>10-Day Activity</th>
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
-                        <th>10-Day Activity</th>
-                        <th>Streak</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">
                     
-                <tr>
-                    <td>1</td>
-                    <td><strong>NVDA</strong></td>
-                    <td>301.27W</td>
-                    <td>2.83</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $202.62</small></div></td>
-                    <td class="compact-cell">
+                    <tr>
+                        <td>1</td>
+                        <td><strong>NVDA</strong></td>
+                        <td>301.27W</td>
+                        <td>2.83</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> -</div>
                 <div><small>Avg Rank: 4.6</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>2</td>
-                    <td><strong>ASST</strong></td>
-                    <td>267.36W</td>
-                    <td>23.31</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $1.32</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>2</td>
+                        <td><strong>ASST</strong></td>
+                        <td>267.36W</td>
+                        <td>23.31</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
                 <div><strong>4/10 [OCC]</strong> -11</div>
                 <div><small>Avg Rank: 13.5</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;">-</td>
-                </tr>
-            
-                <tr>
-                    <td>3</td>
-                    <td><strong>TSLA</strong></td>
-                    <td>244.78W</td>
-                    <td>1.98</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $456.10</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>3</td>
+                        <td><strong>TSLA</strong></td>
+                        <td>244.78W</td>
+                        <td>1.98</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +1</div>
                 <div><small>Avg Rank: 6.5</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>4</td>
-                    <td><strong>SOFI</strong></td>
-                    <td>94.14W</td>
-                    <td>1.68</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $29.63</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>4</td>
+                        <td><strong>SOFI</strong></td>
+                        <td>94.14W</td>
+                        <td>1.68</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +6</div>
                 <div><small>Avg Rank: 17.4</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>5</td>
-                    <td><strong>INTC</strong></td>
-                    <td>92.81W</td>
-                    <td>3.71</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $39.91</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>5</td>
+                        <td><strong>INTC</strong></td>
+                        <td>92.81W</td>
+                        <td>3.71</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +5</div>
                 <div><small>Avg Rank: 17.5</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>6</td>
-                    <td><strong>GLD</strong></td>
-                    <td>88.57W</td>
-                    <td>1.33</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $368.12</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>6</td>
+                        <td><strong>GLD</strong></td>
+                        <td>88.57W</td>
+                        <td>1.33</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> -1</div>
                 <div><small>Avg Rank: 11.6</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>7</td>
-                    <td><strong>AMD</strong></td>
-                    <td>86.31W</td>
-                    <td>1.90</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $256.85</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>7</td>
+                        <td><strong>AMD</strong></td>
+                        <td>86.31W</td>
+                        <td>1.90</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +5</div>
                 <div><small>Avg Rank: 13.2</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>8</td>
-                    <td><strong>BYND</strong></td>
-                    <td>82.16W</td>
-                    <td>2.04</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $1.66</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>8</td>
+                        <td><strong>BYND</strong></td>
+                        <td>82.16W</td>
+                        <td>2.04</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +2</div>
                 <div><small>Avg Rank: 11.4</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>9</td>
-                    <td><strong>IBIT</strong></td>
-                    <td>75.33W</td>
-                    <td>2.11</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $62.21</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>9</td>
+                        <td><strong>IBIT</strong></td>
+                        <td>75.33W</td>
+                        <td>2.11</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +2</div>
                 <div><small>Avg Rank: 13.3</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>10</td>
-                    <td><strong>PLTR</strong></td>
-                    <td>71.45W</td>
-                    <td>2.03</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $201.56</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>10</td>
+                        <td><strong>PLTR</strong></td>
+                        <td>71.45W</td>
+                        <td>2.03</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +7</div>
                 <div><small>Avg Rank: 15.3</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>11</td>
-                    <td><strong>SLV</strong></td>
-                    <td>71.24W</td>
-                    <td>1.81</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $44.01</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>11</td>
+                        <td><strong>SLV</strong></td>
+                        <td>71.24W</td>
+                        <td>1.81</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +6</div>
                 <div><small>Avg Rank: 16.5</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>12</td>
-                    <td><strong>AAPL</strong></td>
-                    <td>69.70W</td>
-                    <td>2.31</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $270.04</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>12</td>
+                        <td><strong>AAPL</strong></td>
+                        <td>69.70W</td>
+                        <td>2.31</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> +3</div>
                 <div><small>Avg Rank: 11.4</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>13</td>
-                    <td><strong>QCOM</strong></td>
-                    <td>64.11W</td>
-                    <td>2.21</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $181.35</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>13</td>
+                        <td><strong>QCOM</strong></td>
+                        <td>64.11W</td>
+                        <td>2.21</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
                 <div><strong>1/10 [NEW]</strong> -</div>
                 <div><small>Avg Rank: 18.0</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;">-</td>
-                </tr>
-            
-                <tr>
-                    <td>14</td>
-                    <td><strong>SPX</strong></td>
-                    <td>63.14W</td>
-                    <td>0.72</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><small>N/A</small></td>
-                    <td class="compact-cell">
-                <div><strong>10/10 [HOT]</strong> +6</div>
-                <div><small>Avg Rank: 21.8</small></div>
-            </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>15</td>
-                    <td><strong>AMZN</strong></td>
-                    <td>56.65W</td>
-                    <td>2.27</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $244.30</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>14</td>
+                        <td><strong>AMZN</strong></td>
+                        <td>56.65W</td>
+                        <td>2.27</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
                 <div><strong>9/10 [HOT]</strong> +5</div>
                 <div><small>Avg Rank: 14.0</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;">-</td>
-                </tr>
-            
-                <tr>
-                    <td>16</td>
-                    <td><strong>HYG</strong></td>
-                    <td>44.15W</td>
-                    <td>0.27</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $80.80</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>15</td>
+                        <td><strong>HYG</strong></td>
+                        <td>44.15W</td>
+                        <td>0.27</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
                 <div><strong>7/10 [ACT]</strong> -18</div>
                 <div><small>Avg Rank: 19.3</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;">-</td>
-                </tr>
-            
-                <tr>
-                    <td>17</td>
-                    <td><strong>UUUU</strong></td>
-                    <td>42.84W</td>
-                    <td>4.64</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $20.51</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>16</td>
+                        <td><strong>UUUU</strong></td>
+                        <td>42.84W</td>
+                        <td>4.64</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
                 <div><strong>2/10 [NEW]</strong> +3</div>
                 <div><small>Avg Rank: 23.5</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;">-</td>
-                </tr>
-            
-                <tr>
-                    <td>18</td>
-                    <td><strong>OPEN</strong></td>
-                    <td>42.68W</td>
-                    <td>4.34</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $7.78</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>17</td>
+                        <td><strong>OPEN</strong></td>
+                        <td>42.68W</td>
+                        <td>4.34</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>1</strong></td>
+                        <td class="compact-cell">
                 <div><strong>9/10 [HOT]</strong> -1</div>
                 <div><small>Avg Rank: 22.2</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>1</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>19</td>
-                    <td><strong>GOOGL</strong></td>
-                    <td>40.79W</td>
-                    <td>1.86</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $280.71</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>18</td>
+                        <td><strong>GOOGL</strong></td>
+                        <td>40.79W</td>
+                        <td>1.86</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>6</strong></td>
+                        <td class="compact-cell">
                 <div><strong>8/10 [ACT]</strong> -6</div>
                 <div><small>Avg Rank: 17.8</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>6</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>20</td>
-                    <td><strong>MSTR</strong></td>
-                    <td>33.11W</td>
-                    <td>1.66</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $270.13</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>19</td>
+                        <td><strong>MSTR</strong></td>
+                        <td>33.11W</td>
+                        <td>1.66</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>2</strong></td>
+                        <td class="compact-cell">
                 <div><strong>9/10 [HOT]</strong> +3</div>
                 <div><small>Avg Rank: 22.3</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>2</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>21</td>
-                    <td><strong>PYPL</strong></td>
-                    <td>33.01W</td>
-                    <td>1.64</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $69.32</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>20</td>
+                        <td><strong>PYPL</strong></td>
+                        <td>33.01W</td>
+                        <td>1.64</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
                 <div><strong>3/10 [OCC]</strong> -13</div>
                 <div><small>Avg Rank: 22.3</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;">-</td>
-                </tr>
-            
-                <tr>
-                    <td>22</td>
-                    <td><strong>HOOD</strong></td>
-                    <td>32.86W</td>
-                    <td>2.31</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $147.32</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>21</td>
+                        <td><strong>HOOD</strong></td>
+                        <td>32.86W</td>
+                        <td>2.31</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>1</strong></td>
+                        <td class="compact-cell">
                 <div><strong>6/10 [ACT]</strong> +10</div>
                 <div><small>Avg Rank: 23.7</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>1</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>23</td>
-                    <td><strong>TSLL</strong></td>
-                    <td>32.21W</td>
-                    <td>2.35</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $21.48</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>22</td>
+                        <td><strong>TSLL</strong></td>
+                        <td>32.21W</td>
+                        <td>2.35</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
                 <div><strong>2/10 [NEW]</strong> -6</div>
                 <div><small>Avg Rank: 25.0</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;">-</td>
-                </tr>
-            
-                <tr>
-                    <td>24</td>
-                    <td><strong>META</strong></td>
-                    <td>31.46W</td>
-                    <td>1.69</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $651.14</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>23</td>
+                        <td><strong>META</strong></td>
+                        <td>31.46W</td>
+                        <td>1.69</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>3</strong></td>
+                        <td class="compact-cell">
                 <div><strong>6/10 [ACT]</strong> -2</div>
                 <div><small>Avg Rank: 19.7</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>3</strong></td>
-                </tr>
-            
-                <tr>
-                    <td>25</td>
-                    <td><strong>TLT</strong></td>
-                    <td>30.95W</td>
-                    <td>1.64</td>
-                    <td>0.00W</td>
-                    <td>0.00</td>
-                    <td class="compact-cell"><div><small>Current: $90.38</small></div></td>
-                    <td class="compact-cell">
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>24</td>
+                        <td><strong>TLT</strong></td>
+                        <td>30.95W</td>
+                        <td>1.64</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
+                        <td class="compact-cell">
                 <div><strong>10/10 [HOT]</strong> -</div>
                 <div><small>Avg Rank: 20.4</small></div>
             </td>
-                    <td class="compact-cell" style="text-align: center;"><strong>10</strong></td>
-                </tr>
-            
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
+                    <tr>
+                        <td>25</td>
+                        <td><strong>ETHA</strong></td>
+                        <td>30.70W</td>
+                        <td>3.37</td>
+                        <td>0.0</td>
+                        <td>-</td>
+                        <td class="compact-cell" style="text-align: center;">-</td>
+                        <td class="compact-cell">
+                <div><strong>1/10 [NEW]</strong> -</div>
+                <div><small>Avg Rank: 25.0</small></div>
+            </td>
+                        <td>0.00W</td>
+                        <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                    </tr>
+                
                 </tbody>
             </table>
         </div>
 
         <div class="section">
-            <h2>Call/Put Ratio Analysis (2025-11-03 from 2025-10-27.csv.gz)</h2>
+            <h2>Call/Put Ratio Analysis (2025-11-15 from 2025-10-27.csv.gz)</h2>
             <div class="chart-container">
                 <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>Volume Analysis (2025-11-03 from 2025-10-27.csv.gz)</h2>
+            <h2>Volume Analysis (2025-11-15 from 2025-10-27.csv.gz)</h2>
             <div class="chart-container">
                 <canvas id="volumeOIChart"></canvas>
             </div>
@@ -813,8 +840,8 @@
 
     <script>
         // Store table data for sorting
-        const indexData = [{"ticker": "SPY", "total_volume": 8711568, "put_volume": 5258431, "call_volume": 3453137, "cp_volume_ratio": 0.66, "contracts_count": 5375, "put_contracts": 3009, "call_contracts": 2366, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 1.0, "best_rank": 1, "worst_rank": 1, "today_rank": 1, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 682.06}, {"ticker": "QQQ", "total_volume": 4929315, "put_volume": 2805115, "call_volume": 2124200, "cp_volume_ratio": 0.76, "contracts_count": 4513, "put_contracts": 2417, "call_contracts": 2096, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 2.1, "best_rank": 2, "worst_rank": 3, "today_rank": 2, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 629.05}, {"ticker": "IWM", "total_volume": 1529548, "put_volume": 868506, "call_volume": 661042, "cp_volume_ratio": 0.76, "contracts_count": 1786, "put_contracts": 880, "call_contracts": 906, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 5, "worst_rank": 9, "today_rank": 8, "rank_change": -1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 246.23}];
-        const stockData = [{"ticker": "NVDA", "total_volume": 3012664, "put_volume": 786767, "call_volume": 2225897, "cp_volume_ratio": 2.83, "contracts_count": 2469, "put_contracts": 1189, "call_contracts": 1280, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 4.6, "best_rank": 2, "worst_rank": 7, "today_rank": 4, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 202.62}, {"ticker": "ASST", "total_volume": 2673643, "put_volume": 109996, "call_volume": 2563647, "cp_volume_ratio": 23.31, "contracts_count": 289, "put_contracts": 96, "call_contracts": 193, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 4, "appearance_rate": 40.0, "avg_rank": 13.5, "best_rank": 5, "worst_rank": 21, "today_rank": 21, "rank_change": -11, "trend": "rising", "streak": 0, "icon": "[OCC]"}, "current_price": 1.32}, {"ticker": "TSLA", "total_volume": 2447785, "put_volume": 821525, "call_volume": 1626260, "cp_volume_ratio": 1.98, "contracts_count": 3361, "put_contracts": 1480, "call_contracts": 1881, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 3, "worst_rank": 13, "today_rank": 5, "rank_change": 1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 456.1}, {"ticker": "SOFI", "total_volume": 941389, "put_volume": 351475, "call_volume": 589914, "cp_volume_ratio": 1.68, "contracts_count": 936, "put_contracts": 405, "call_contracts": 531, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.4, "best_rank": 7, "worst_rank": 25, "today_rank": 15, "rank_change": 6, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 29.63}, {"ticker": "INTC", "total_volume": 928116, "put_volume": 197056, "call_volume": 731060, "cp_volume_ratio": 3.71, "contracts_count": 1053, "put_contracts": 472, "call_contracts": 581, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.5, "best_rank": 7, "worst_rank": 29, "today_rank": 24, "rank_change": 5, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 39.9097}, {"ticker": "GLD", "total_volume": 885668, "put_volume": 380906, "call_volume": 504762, "cp_volume_ratio": 1.33, "contracts_count": 3548, "put_contracts": 1547, "call_contracts": 2001, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.6, "best_rank": 6, "worst_rank": 21, "today_rank": 21, "rank_change": -1, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 368.12}, {"ticker": "AMD", "total_volume": 863096, "put_volume": 297980, "call_volume": 565116, "cp_volume_ratio": 1.9, "contracts_count": 1938, "put_contracts": 866, "call_contracts": 1072, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.2, "best_rank": 8, "worst_rank": 17, "today_rank": 12, "rank_change": 5, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 256.85}, {"ticker": "BYND", "total_volume": 821552, "put_volume": 270213, "call_volume": 551339, "cp_volume_ratio": 2.04, "contracts_count": 498, "put_contracts": 198, "call_contracts": 300, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 25, "today_rank": 23, "rank_change": 2, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 1.6597}, {"ticker": "IBIT", "total_volume": 753308, "put_volume": 242366, "call_volume": 510942, "cp_volume_ratio": 2.11, "contracts_count": 1564, "put_contracts": 706, "call_contracts": 858, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.3, "best_rank": 9, "worst_rank": 18, "today_rank": 10, "rank_change": 2, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 62.21}, {"ticker": "PLTR", "total_volume": 714473, "put_volume": 235910, "call_volume": 478563, "cp_volume_ratio": 2.03, "contracts_count": 1615, "put_contracts": 750, "call_contracts": 865, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 15.3, "best_rank": 8, "worst_rank": 22, "today_rank": 9, "rank_change": 7, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 201.56}, {"ticker": "SLV", "total_volume": 712435, "put_volume": 253265, "call_volume": 459170, "cp_volume_ratio": 1.81, "contracts_count": 1829, "put_contracts": 673, "call_contracts": 1156, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 16.5, "best_rank": 8, "worst_rank": 26, "today_rank": 20, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 44.01}, {"ticker": "AAPL", "total_volume": 696962, "put_volume": 210634, "call_volume": 486328, "cp_volume_ratio": 2.31, "contracts_count": 1416, "put_contracts": 660, "call_contracts": 756, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 19, "today_rank": 6, "rank_change": 3, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 270.04}, {"ticker": "QCOM", "total_volume": 641090, "put_volume": 199471, "call_volume": 441619, "cp_volume_ratio": 2.21, "contracts_count": 926, "put_contracts": 447, "call_contracts": 479, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 1, "appearance_rate": 10.0, "avg_rank": 18.0, "best_rank": 18, "worst_rank": 18, "today_rank": 18, "rank_change": 0, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 181.3489}, {"ticker": "SPX", "total_volume": 631436, "put_volume": 367280, "call_volume": 264156, "cp_volume_ratio": 0.72, "contracts_count": 3575, "put_contracts": 2354, "call_contracts": 1221, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 21.8, "best_rank": 17, "worst_rank": 28, "today_rank": 22, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "AMZN", "total_volume": 566521, "put_volume": 173028, "call_volume": 393493, "cp_volume_ratio": 2.27, "contracts_count": 1599, "put_contracts": 733, "call_contracts": 866, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 14.0, "best_rank": 8, "worst_rank": 20, "today_rank": 8, "rank_change": 5, "trend": "stable", "streak": 0, "icon": "[HOT]"}, "current_price": 244.3}, {"ticker": "HYG", "total_volume": 441548, "put_volume": 346726, "call_volume": 94822, "cp_volume_ratio": 0.27, "contracts_count": 150, "put_contracts": 103, "call_contracts": 47, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 7, "appearance_rate": 70.0, "avg_rank": 19.3, "best_rank": 8, "worst_rank": 29, "today_rank": 26, "rank_change": -18, "trend": "stable", "streak": 0, "icon": "[ACT]"}, "current_price": 80.8}, {"ticker": "UUUU", "total_volume": 428394, "put_volume": 75896, "call_volume": 352498, "cp_volume_ratio": 4.64, "contracts_count": 646, "put_contracts": 253, "call_contracts": 393, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 23.5, "best_rank": 22, "worst_rank": 25, "today_rank": 22, "rank_change": 3, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 20.51}, {"ticker": "OPEN", "total_volume": 426831, "put_volume": 79921, "call_volume": 346910, "cp_volume_ratio": 4.34, "contracts_count": 465, "put_contracts": 192, "call_contracts": 273, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.2, "best_rank": 10, "worst_rank": 30, "today_rank": 25, "rank_change": -1, "trend": "falling", "streak": 1, "icon": "[HOT]"}, "current_price": 7.78}, {"ticker": "GOOGL", "total_volume": 407867, "put_volume": 142556, "call_volume": 265311, "cp_volume_ratio": 1.86, "contracts_count": 1606, "put_contracts": 778, "call_contracts": 828, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 8, "appearance_rate": 80.0, "avg_rank": 17.8, "best_rank": 9, "worst_rank": 29, "today_rank": 16, "rank_change": -6, "trend": "rising", "streak": 6, "icon": "[ACT]"}, "current_price": 280.71}, {"ticker": "MSTR", "total_volume": 331051, "put_volume": 124453, "call_volume": 206598, "cp_volume_ratio": 1.66, "contracts_count": 1712, "put_contracts": 745, "call_contracts": 967, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.3, "best_rank": 11, "worst_rank": 28, "today_rank": 11, "rank_change": 3, "trend": "rising", "streak": 2, "icon": "[HOT]"}, "current_price": 270.13}, {"ticker": "PYPL", "total_volume": 330056, "put_volume": 124994, "call_volume": 205062, "cp_volume_ratio": 1.64, "contracts_count": 769, "put_contracts": 303, "call_contracts": 466, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 3, "appearance_rate": 30.0, "avg_rank": 22.3, "best_rank": 14, "worst_rank": 27, "today_rank": 27, "rank_change": -13, "trend": "stable", "streak": 0, "icon": "[OCC]"}, "current_price": 69.32}, {"ticker": "HOOD", "total_volume": 328628, "put_volume": 99225, "call_volume": 229403, "cp_volume_ratio": 2.31, "contracts_count": 1523, "put_contracts": 691, "call_contracts": 832, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 6, "appearance_rate": 60.0, "avg_rank": 23.7, "best_rank": 17, "worst_rank": 27, "today_rank": 17, "rank_change": 10, "trend": "stable", "streak": 1, "icon": "[ACT]"}, "current_price": 147.32}, {"ticker": "TSLL", "total_volume": 322085, "put_volume": 96059, "call_volume": 226026, "cp_volume_ratio": 2.35, "contracts_count": 658, "put_contracts": 281, "call_contracts": 377, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 25.0, "best_rank": 22, "worst_rank": 28, "today_rank": 28, "rank_change": -6, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 21.48}, {"ticker": "META", "total_volume": 314584, "put_volume": 117020, "call_volume": 197564, "cp_volume_ratio": 1.69, "contracts_count": 2480, "put_contracts": 1137, "call_contracts": 1343, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 6, "appearance_rate": 60.0, "avg_rank": 19.7, "best_rank": 5, "worst_rank": 29, "today_rank": 7, "rank_change": -2, "trend": "rising", "streak": 3, "icon": "[ACT]"}, "current_price": 651.14}, {"ticker": "TLT", "total_volume": 309521, "put_volume": 117245, "call_volume": 192276, "cp_volume_ratio": 1.64, "contracts_count": 1122, "put_contracts": 518, "call_contracts": 604, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 20.4, "best_rank": 10, "worst_rank": 30, "today_rank": 19, "rank_change": 0, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 90.3783}];
+        const indexData = [{"ticker": "SPY", "total_volume": 8711568, "put_volume": 5258431, "call_volume": 3453137, "cp_volume_ratio": 0.66, "contracts_count": 5375, "put_contracts": 3009, "call_contracts": 2366, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 1.0, "best_rank": 1, "worst_rank": 1, "today_rank": 1, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "QQQ", "total_volume": 4929315, "put_volume": 2805115, "call_volume": 2124200, "cp_volume_ratio": 0.76, "contracts_count": 4513, "put_contracts": 2417, "call_contracts": 2096, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 2.1, "best_rank": 2, "worst_rank": 3, "today_rank": 2, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "IWM", "total_volume": 1529548, "put_volume": 868506, "call_volume": 661042, "cp_volume_ratio": 0.76, "contracts_count": 1786, "put_contracts": 880, "call_contracts": 906, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 5, "worst_rank": 9, "today_rank": 8, "rank_change": -1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "SPX", "total_volume": 631436, "put_volume": 367280, "call_volume": 264156, "cp_volume_ratio": 0.72, "contracts_count": 3575, "put_contracts": 2354, "call_contracts": 1221, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 21.8, "best_rank": 17, "worst_rank": 28, "today_rank": 22, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}];
+        const stockData = [{"ticker": "NVDA", "total_volume": 3012664, "put_volume": 786767, "call_volume": 2225897, "cp_volume_ratio": 2.83, "contracts_count": 2469, "put_contracts": 1189, "call_contracts": 1280, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 4.6, "best_rank": 2, "worst_rank": 7, "today_rank": 4, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "ASST", "total_volume": 2673643, "put_volume": 109996, "call_volume": 2563647, "cp_volume_ratio": 23.31, "contracts_count": 289, "put_contracts": 96, "call_contracts": 193, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 4, "appearance_rate": 40.0, "avg_rank": 13.5, "best_rank": 5, "worst_rank": 21, "today_rank": 21, "rank_change": -11, "trend": "rising", "streak": 0, "icon": "[OCC]"}, "current_price": null}, {"ticker": "TSLA", "total_volume": 2447785, "put_volume": 821525, "call_volume": 1626260, "cp_volume_ratio": 1.98, "contracts_count": 3361, "put_contracts": 1480, "call_contracts": 1881, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 3, "worst_rank": 13, "today_rank": 5, "rank_change": 1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "SOFI", "total_volume": 941389, "put_volume": 351475, "call_volume": 589914, "cp_volume_ratio": 1.68, "contracts_count": 936, "put_contracts": 405, "call_contracts": 531, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.4, "best_rank": 7, "worst_rank": 25, "today_rank": 15, "rank_change": 6, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "INTC", "total_volume": 928116, "put_volume": 197056, "call_volume": 731060, "cp_volume_ratio": 3.71, "contracts_count": 1053, "put_contracts": 472, "call_contracts": 581, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.5, "best_rank": 7, "worst_rank": 29, "today_rank": 24, "rank_change": 5, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "GLD", "total_volume": 885668, "put_volume": 380906, "call_volume": 504762, "cp_volume_ratio": 1.33, "contracts_count": 3548, "put_contracts": 1547, "call_contracts": 2001, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.6, "best_rank": 6, "worst_rank": 21, "today_rank": 21, "rank_change": -1, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "AMD", "total_volume": 863096, "put_volume": 297980, "call_volume": 565116, "cp_volume_ratio": 1.9, "contracts_count": 1938, "put_contracts": 866, "call_contracts": 1072, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.2, "best_rank": 8, "worst_rank": 17, "today_rank": 12, "rank_change": 5, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "BYND", "total_volume": 821552, "put_volume": 270213, "call_volume": 551339, "cp_volume_ratio": 2.04, "contracts_count": 498, "put_contracts": 198, "call_contracts": 300, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 25, "today_rank": 23, "rank_change": 2, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "IBIT", "total_volume": 753308, "put_volume": 242366, "call_volume": 510942, "cp_volume_ratio": 2.11, "contracts_count": 1564, "put_contracts": 706, "call_contracts": 858, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.3, "best_rank": 9, "worst_rank": 18, "today_rank": 10, "rank_change": 2, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "PLTR", "total_volume": 714473, "put_volume": 235910, "call_volume": 478563, "cp_volume_ratio": 2.03, "contracts_count": 1615, "put_contracts": 750, "call_contracts": 865, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 15.3, "best_rank": 8, "worst_rank": 22, "today_rank": 9, "rank_change": 7, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "SLV", "total_volume": 712435, "put_volume": 253265, "call_volume": 459170, "cp_volume_ratio": 1.81, "contracts_count": 1829, "put_contracts": 673, "call_contracts": 1156, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 16.5, "best_rank": 8, "worst_rank": 26, "today_rank": 20, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "AAPL", "total_volume": 696962, "put_volume": 210634, "call_volume": 486328, "cp_volume_ratio": 2.31, "contracts_count": 1416, "put_contracts": 660, "call_contracts": 756, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 19, "today_rank": 6, "rank_change": 3, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "QCOM", "total_volume": 641090, "put_volume": 199471, "call_volume": 441619, "cp_volume_ratio": 2.21, "contracts_count": 926, "put_contracts": 447, "call_contracts": 479, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 1, "appearance_rate": 10.0, "avg_rank": 18.0, "best_rank": 18, "worst_rank": 18, "today_rank": 18, "rank_change": 0, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}, {"ticker": "AMZN", "total_volume": 566521, "put_volume": 173028, "call_volume": 393493, "cp_volume_ratio": 2.27, "contracts_count": 1599, "put_contracts": 733, "call_contracts": 866, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 14.0, "best_rank": 8, "worst_rank": 20, "today_rank": 8, "rank_change": 5, "trend": "stable", "streak": 0, "icon": "[HOT]"}, "current_price": null}, {"ticker": "HYG", "total_volume": 441548, "put_volume": 346726, "call_volume": 94822, "cp_volume_ratio": 0.27, "contracts_count": 150, "put_contracts": 103, "call_contracts": 47, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 7, "appearance_rate": 70.0, "avg_rank": 19.3, "best_rank": 8, "worst_rank": 29, "today_rank": 26, "rank_change": -18, "trend": "stable", "streak": 0, "icon": "[ACT]"}, "current_price": null}, {"ticker": "UUUU", "total_volume": 428394, "put_volume": 75896, "call_volume": 352498, "cp_volume_ratio": 4.64, "contracts_count": 646, "put_contracts": 253, "call_contracts": 393, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 23.5, "best_rank": 22, "worst_rank": 25, "today_rank": 22, "rank_change": 3, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}, {"ticker": "OPEN", "total_volume": 426831, "put_volume": 79921, "call_volume": 346910, "cp_volume_ratio": 4.34, "contracts_count": 465, "put_contracts": 192, "call_contracts": 273, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.2, "best_rank": 10, "worst_rank": 30, "today_rank": 25, "rank_change": -1, "trend": "falling", "streak": 1, "icon": "[HOT]"}, "current_price": null}, {"ticker": "GOOGL", "total_volume": 407867, "put_volume": 142556, "call_volume": 265311, "cp_volume_ratio": 1.86, "contracts_count": 1606, "put_contracts": 778, "call_contracts": 828, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 8, "appearance_rate": 80.0, "avg_rank": 17.8, "best_rank": 9, "worst_rank": 29, "today_rank": 16, "rank_change": -6, "trend": "rising", "streak": 6, "icon": "[ACT]"}, "current_price": null}, {"ticker": "MSTR", "total_volume": 331051, "put_volume": 124453, "call_volume": 206598, "cp_volume_ratio": 1.66, "contracts_count": 1712, "put_contracts": 745, "call_contracts": 967, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.3, "best_rank": 11, "worst_rank": 28, "today_rank": 11, "rank_change": 3, "trend": "rising", "streak": 2, "icon": "[HOT]"}, "current_price": null}, {"ticker": "PYPL", "total_volume": 330056, "put_volume": 124994, "call_volume": 205062, "cp_volume_ratio": 1.64, "contracts_count": 769, "put_contracts": 303, "call_contracts": 466, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 3, "appearance_rate": 30.0, "avg_rank": 22.3, "best_rank": 14, "worst_rank": 27, "today_rank": 27, "rank_change": -13, "trend": "stable", "streak": 0, "icon": "[OCC]"}, "current_price": null}, {"ticker": "HOOD", "total_volume": 328628, "put_volume": 99225, "call_volume": 229403, "cp_volume_ratio": 2.31, "contracts_count": 1523, "put_contracts": 691, "call_contracts": 832, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 6, "appearance_rate": 60.0, "avg_rank": 23.7, "best_rank": 17, "worst_rank": 27, "today_rank": 17, "rank_change": 10, "trend": "stable", "streak": 1, "icon": "[ACT]"}, "current_price": null}, {"ticker": "TSLL", "total_volume": 322085, "put_volume": 96059, "call_volume": 226026, "cp_volume_ratio": 2.35, "contracts_count": 658, "put_contracts": 281, "call_contracts": 377, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 25.0, "best_rank": 22, "worst_rank": 28, "today_rank": 28, "rank_change": -6, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}, {"ticker": "META", "total_volume": 314584, "put_volume": 117020, "call_volume": 197564, "cp_volume_ratio": 1.69, "contracts_count": 2480, "put_contracts": 1137, "call_contracts": 1343, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 6, "appearance_rate": 60.0, "avg_rank": 19.7, "best_rank": 5, "worst_rank": 29, "today_rank": 7, "rank_change": -2, "trend": "rising", "streak": 3, "icon": "[ACT]"}, "current_price": null}, {"ticker": "TLT", "total_volume": 309521, "put_volume": 117245, "call_volume": 192276, "cp_volume_ratio": 1.64, "contracts_count": 1122, "put_contracts": 518, "call_contracts": 604, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 20.4, "best_rank": 10, "worst_rank": 30, "today_rank": 19, "rank_change": 0, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "ETHA", "total_volume": 307036, "put_volume": 70230, "call_volume": 236806, "cp_volume_ratio": 3.37, "contracts_count": 802, "put_contracts": 335, "call_contracts": 467, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 1, "appearance_rate": 10.0, "avg_rank": 25.0, "best_rank": 25, "worst_rank": 25, "today_rank": 25, "rank_change": 0, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}];
 
         let indexSortColumn = 'total_volume';
         let indexSortOrder = 'desc';
@@ -912,11 +939,12 @@
                 }
 
                 const top3Contracts = item.top_3_contracts || [];
+                // Show top 3 contracts
                 top3Contracts.slice(0, 3).forEach((contract, i) => {
                     const contractShort = formatContractShort(contract);
                     const oiK = (contract.oi || 0) / 1000;
                     const pct = contract.percentage || 0;
-                    top3Html += `<div class='contract-item'>${i + 1}. ${contractShort} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
+                    top3Html += `<div class='contract-item'>${contractShort} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
                 });
                 if (!top3Html) {
                     top3Html = '<small>N/A</small>';
@@ -948,17 +976,42 @@
                 const streakHtml = streak > 0 ? `<strong>${streak}</strong>` : '-';
 
                 const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${idx + 1}</td>
-                    <td><strong>${item.ticker}</strong></td>
-                    <td>${volumeW}</td>
-                    <td>${item.cp_volume_ratio.toFixed(2)}</td>
-                    <td>${oiW}</td>
-                    <td>${item.cp_oi_ratio.toFixed(2)}</td>
-                    <td class="compact-cell">${top3Html}</td>
-                    <td class="compact-cell">${historyHtml}</td>
-                    <td class="compact-cell" style="text-align: center;">${streakHtml}</td>
-                `;
+
+                // For stock table, include LEAP C/P column
+                if (tableType === 'stock') {
+                    const leapCp = item.leap_cp_ratio || 0;
+                    const leapCpHtml = leapCp ? leapCp.toFixed(2) : '-';
+                    const avgTradeSize = item.avg_trade_size || 0;
+
+                    row.innerHTML = `
+                        <td>${idx + 1}</td>
+                        <td><strong>${item.ticker}</strong></td>
+                        <td>${volumeW}</td>
+                        <td>${item.cp_volume_ratio.toFixed(2)}</td>
+                        <td>${avgTradeSize.toFixed(1)}</td>
+                        <td>${leapCpHtml}</td>
+                        <td class="compact-cell" style="text-align: center;">${streakHtml}</td>
+                        <td class="compact-cell">${historyHtml}</td>
+                        <td>${oiW}</td>
+                        <td>${item.cp_oi_ratio.toFixed(2)}</td>
+                        <td class="compact-cell">${top3Html}</td>
+                    `;
+                } else {
+                    // Index table - no LEAP C/P column
+                    const avgTradeSize = item.avg_trade_size || 0;
+
+                    row.innerHTML = `
+                        <td>${idx + 1}</td>
+                        <td><strong>${item.ticker}</strong></td>
+                        <td>${volumeW}</td>
+                        <td>${item.cp_volume_ratio.toFixed(2)}</td>
+                        <td>${avgTradeSize.toFixed(1)}</td>
+                        <td>${oiW}</td>
+                        <td>${item.cp_oi_ratio.toFixed(2)}</td>
+                        <td class="compact-cell">${top3Html}</td>
+                    `;
+                }
+
                 tbody.appendChild(row);
             });
         }
@@ -995,14 +1048,14 @@
         });
 
         // Combined Volume & OI Chart
-        const volumeData = [3012664, 2673643, 2447785, 941389, 928116, 885668, 863096, 821552, 753308, 714473, 712435, 696962, 641090, 631436, 566521, 441548, 428394, 426831, 407867, 331051, 330056, 328628, 322085, 314584, 309521];
+        const volumeData = [3012664, 2673643, 2447785, 941389, 928116, 885668, 863096, 821552, 753308, 714473, 712435, 696962, 641090, 566521, 441548, 428394, 426831, 407867, 331051, 330056, 328628, 322085, 314584, 309521, 307036];
         const oiData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         const volumeOICtx = document.getElementById('volumeOIChart').getContext('2d');
 
         new Chart(volumeOICtx, {
             type: 'bar',
             data: {
-                labels: ["NVDA", "ASST", "TSLA", "SOFI", "INTC", "GLD", "AMD", "BYND", "IBIT", "PLTR", "SLV", "AAPL", "QCOM", "SPX", "AMZN", "HYG", "UUUU", "OPEN", "GOOGL", "MSTR", "PYPL", "HOOD", "TSLL", "META", "TLT"],
+                labels: ["NVDA", "ASST", "TSLA", "SOFI", "INTC", "GLD", "AMD", "BYND", "IBIT", "PLTR", "SLV", "AAPL", "QCOM", "AMZN", "HYG", "UUUU", "OPEN", "GOOGL", "MSTR", "PYPL", "HOOD", "TSLL", "META", "TLT", "ETHA"],
                 datasets: [
                     {
                         label: '总成交量',
@@ -1042,11 +1095,11 @@
         new Chart(cpCtx, {
             type: 'bar',
             data: {
-                labels: ["NVDA", "ASST", "TSLA", "SOFI", "INTC", "GLD", "AMD", "BYND", "IBIT", "PLTR", "SLV", "AAPL", "QCOM", "SPX", "AMZN", "HYG", "UUUU", "OPEN", "GOOGL", "MSTR", "PYPL", "HOOD", "TSLL", "META", "TLT"],
+                labels: ["NVDA", "ASST", "TSLA", "SOFI", "INTC", "GLD", "AMD", "BYND", "IBIT", "PLTR", "SLV", "AAPL", "QCOM", "AMZN", "HYG", "UUUU", "OPEN", "GOOGL", "MSTR", "PYPL", "HOOD", "TSLL", "META", "TLT", "ETHA"],
                 datasets: [
                     {
                         label: 'C/P 成交比',
-                        data: [2.83, 23.31, 1.98, 1.68, 3.71, 1.33, 1.9, 2.04, 2.11, 2.03, 1.81, 2.31, 2.21, 0.72, 2.27, 0.27, 4.64, 4.34, 1.86, 1.66, 1.64, 2.31, 2.35, 1.69, 1.64],
+                        data: [2.83, 23.31, 1.98, 1.68, 3.71, 1.33, 1.9, 2.04, 2.11, 2.03, 1.81, 2.31, 2.21, 2.27, 0.27, 4.64, 4.34, 1.86, 1.66, 1.64, 2.31, 2.35, 1.69, 1.64, 3.37],
                         backgroundColor: 'rgba(255, 99, 132, 0.6)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
