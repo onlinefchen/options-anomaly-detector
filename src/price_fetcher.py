@@ -25,7 +25,13 @@ class PriceFetcher:
 
     def is_available(self) -> bool:
         """Check if Polygon API is configured"""
-        return self.api_key is not None and len(self.api_key) > 0
+        if not self.api_key:
+            return False
+        if len(self.api_key) == 0:
+            return False
+        if self.api_key == 'YOUR_API_KEY_HERE':
+            return False
+        return True
 
     def get_quote(self, symbol: str) -> Optional[float]:
         """
