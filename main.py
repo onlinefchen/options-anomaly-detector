@@ -205,12 +205,52 @@ def main():
         generate_archive_index(reports)
         print_progress(f"✓ Archive index updated ({len(reports)} reports)\n")
 
-        # Create a flag file to indicate new data was generated
-        # This is used by the GitHub Actions workflow to decide whether to send email
-        flag_file = f'output/NEW_DATA_GENERATED_{csv_date}'
-        with open(flag_file, 'w') as f:
-            f.write(csv_date)
-        print_progress(f"✓ Flag file created: NEW_DATA_GENERATED_{csv_date}\n")
+        # Immediately run AI analysis and send email
+        # This completes the atomic operation: download→analyze→generate→AI→email
+        print_progress("🤖 Running AI analysis and sending email...\n")
+
+        from ai_analyzer import AIAnalyzer
+        from email_sender import EmailSender
+
+        # Initialize components
+        ai_analyzer = AIAnalyzer()
+        email_sender = EmailSender()
+
+        # Run AI analysis (if configured)
+        analysis = ''
+        if ai_analyzer.is_available():
+            print_progress("   ⏳ Running GPT-5 AI analysis...")
+            analysis = ai_analyzer.analyze_market_data(data, anomalies, summary)
+            if analysis:
+                print_progress("   ✓ AI analysis completed")
+            else:
+                print_progress("   ⚠️  AI analysis returned empty result")
+        else:
+            print_progress("   ⊘ OpenAI API Key not configured, skipping AI analysis")
+
+        # Send email (if configured and not in push event)
+        github_event = os.getenv('GITHUB_EVENT_NAME', '')
+        if github_event != 'push' and email_sender.is_available():
+            recipient = os.getenv('RECIPIENT_EMAIL', os.getenv('GMAIL_USER'))
+
+            if recipient:
+                print_progress(f"\n   📧 Sending email to {recipient}...")
+
+                subject = ai_analyzer.generate_email_subject(data, summary.get('total', 0), csv_date)
+                html_content = ai_analyzer.format_for_email(analysis, data, summary, csv_date)
+
+                success = email_sender.send_report(recipient, subject, html_content)
+
+                if success:
+                    print_progress("   ✓ Email sent successfully!\n")
+                else:
+                    print_progress("   ✗ Failed to send email\n")
+            else:
+                print_progress("   ⊘ No recipient email configured\n")
+        elif github_event == 'push':
+            print_progress("   ⊘ Skipping email (push event)\n")
+        else:
+            print_progress("   ⊘ Email not configured (no Gmail credentials)\n")
 
         # Success message
         print("\n" + "="*80)
