@@ -216,8 +216,6 @@ class AIAnalyzer:
 - **C/P Volume**: 看涨/看跌期权成交量比例（>1偏多，<1偏空）
 - **Avg Trade Size**: 平均每笔成交手数（成交量/成交笔数），数值越大说明机构参与度越高
 - **LEAP C/P**: 长期期权（3个月以上）的看涨/看跌比例，反映长期市场预期
-- **Streak**: 连续上榜天数（反映持续热度）
-- **10-Day Activity**: 过去10个交易日的上榜统计（出现次数/趋势/排名变化）
 - **Total OI**: 期权总持仓量（单位：万手）
 - **C/P OI**: 看涨/看跌期权持仓量比例
 - **Top 3 Contracts**: 持仓量最大的3个期权合约（格式：到期日+类型+行权价）
@@ -500,12 +498,6 @@ class AIAnalyzer:
             else:
                 rank_symbol = f'{rank_change}'
 
-            history_text = f"{appearances}/10 {icon} {rank_symbol}"
-
-            # Streak (consecutive days)
-            streak = history.get('streak', 0)
-            streak_text = f"<strong>{streak}</strong>" if streak > 0 else "-"
-
             top_25_rows.append(f"""
                 <tr>
                     <td style="text-align: center;">{i}</td>
@@ -514,8 +506,6 @@ class AIAnalyzer:
                     <td style="text-align: center;">{item['cp_volume_ratio']:.2f}</td>
                     <td style="text-align: center;">{avg_trade_size:.1f}</td>
                     <td style="text-align: center;">{leap_cp_text}</td>
-                    <td style="text-align: center; font-size: 11px;">{streak_text}</td>
-                    <td style="text-align: center; font-size: 11px;">{history_text}</td>
                     <td style="text-align: right;">{oi_w:.2f}W</td>
                     <td style="text-align: center;">{item.get('cp_oi_ratio', 0):.2f}</td>
                     <td style="font-size: 11px; line-height: 1.4;">{top3_text}</td>
@@ -657,8 +647,6 @@ class AIAnalyzer:
                     <th style="text-align: center;">C/P Volume</th>
                     <th style="text-align: center;">Avg Size</th>
                     <th style="text-align: center;">LEAP C/P</th>
-                    <th style="text-align: center;">Streak</th>
-                    <th style="text-align: center;">10-Day</th>
                     <th style="text-align: right;">持仓量</th>
                     <th style="text-align: center;">C/P OI</th>
                     <th>Top 3 Contracts</th>
@@ -695,14 +683,6 @@ class AIAnalyzer:
                 <tr>
                     <td style="border: none; padding: 4px 8px;"><strong>LEAP C/P</strong></td>
                     <td style="border: none; padding: 4px 8px;">长期期权（3个月以上）的看涨/看跌比例，反映长期市场预期</td>
-                </tr>
-                <tr>
-                    <td style="border: none; padding: 4px 8px;"><strong>Streak</strong></td>
-                    <td style="border: none; padding: 4px 8px;">连续上榜天数</td>
-                </tr>
-                <tr>
-                    <td style="border: none; padding: 4px 8px;"><strong>10-Day Activity</strong></td>
-                    <td style="border: none; padding: 4px 8px;">过去10个交易日的上榜统计（出现次数/趋势/排名变化）</td>
                 </tr>
                 <tr>
                     <td style="border: none; padding: 4px 8px;"><strong>Total OI</strong></td>

@@ -288,15 +288,6 @@ class HTMLReportGenerator:
             else:
                 rank_symbol = f'-{abs(rank_change)}'
 
-            history_html = f"""
-                <div><strong>{appearances}/10 {icon}</strong> {rank_symbol}</div>
-                <div><small>Avg Rank: {avg_rank if avg_rank else 'N/A'}</small></div>
-            """
-
-            # Streak (consecutive days)
-            streak = history.get('streak', 0)
-            streak_html = f"<strong>{streak}</strong>" if streak > 0 else "-"
-
             # Build row HTML
             if include_leap_cp:
                 # Stocks table - include LEAP C/P column
@@ -312,8 +303,6 @@ class HTMLReportGenerator:
                         <td>{item['cp_volume_ratio']:.2f}</td>
                         <td>{avg_trade_size:.1f}</td>
                         <td>{leap_cp_html}</td>
-                        <td class="compact-cell" style="text-align: center;">{streak_html}</td>
-                        <td class="compact-cell">{history_html}</td>
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
                         <td class="compact-cell">{top3_html}</td>
@@ -710,8 +699,6 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
-                        <th>Streak</th>
-                        <th>10-Day Activity</th>
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top 3 Contracts</th>
@@ -871,15 +858,6 @@ class HTMLReportGenerator:
                     }}
                 }}
 
-                const historyHtml = `
-                    <div><strong>${{appearances}}/10 ${{icon}}</strong> ${{rankSymbol}}</div>
-                    <div><small>Avg Rank: ${{avgRank || 'N/A'}}</small></div>
-                `;
-
-                // Streak (consecutive days)
-                const streak = history.streak || 0;
-                const streakHtml = streak > 0 ? `<strong>${{streak}}</strong>` : '-';
-
                 const row = document.createElement('tr');
 
                 // For stock table, include LEAP C/P column
@@ -895,8 +873,6 @@ class HTMLReportGenerator:
                         <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
                         <td>${{avgTradeSize.toFixed(1)}}</td>
                         <td>${{leapCpHtml}}</td>
-                        <td class="compact-cell" style="text-align: center;">${{streakHtml}}</td>
-                        <td class="compact-cell">${{historyHtml}}</td>
                         <td>${{oiW}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
                         <td class="compact-cell">${{top3Html}}</td>
