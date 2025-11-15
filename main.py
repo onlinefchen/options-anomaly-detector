@@ -124,13 +124,19 @@ def main():
         print("="*80 + "\n")
 
         # Algorithm 2: Determine if OI should be fetched
-        # Only fetch OI for the most recent completed trading day
+        # OI should only be fetched for the most recent post-market (盘后) data
+        # Logic: If no trading days exist between csv_date and current_date,
+        #        then csv_date is the most recent closed market → fetch OI
+        # Example scenarios:
+        #   - Monday pre-market: csv_date=Friday, current=Monday → no days between → fetch OI ✓
+        #   - Tuesday pre-market: csv_date=Monday, current=Tuesday → no days between → fetch OI ✓
+        #   - Friday analyzing Monday: csv_date=Monday, current=Friday → days between → skip OI ✗
         print_progress("🔍 Checking if Open Interest data should be fetched...")
-        latest_trading_day = get_previous_trading_day(from_date=current_date)
-        should_fetch_oi = (csv_date == latest_trading_day)
+        should_fetch_oi = not has_trading_days_between(csv_date, current_date)
 
         if should_fetch_oi:
-            print_progress(f"   ✓ {csv_date} is the latest trading day")
+            print_progress(f"   ✓ No new trading days between {csv_date} and {current_date}")
+            print_progress(f"   → {csv_date} is the most recent post-market (盘后) data")
             print_progress(f"   → OI data is meaningful (reflects market state at/after {csv_date} close)")
             print_progress(f"   → Fetching OI for top 35 tickers...\n")
 
@@ -140,8 +146,9 @@ def main():
             print_progress(f"✓ OI enrichment complete")
             print_progress(f"   • Data source: {metadata.get('data_source', 'CSV+API')}\n")
         else:
-            print_progress(f"   ⊘ {csv_date} is not the latest trading day (latest: {latest_trading_day})")
-            print_progress(f"   → OI data from API would be current OI (not meaningful for historical {csv_date})")
+            print_progress(f"   ⊘ New trading days exist between {csv_date} and {current_date}")
+            print_progress(f"   → {csv_date} is historical data (not the most recent post-market)")
+            print_progress(f"   → OI data would be from today (not meaningful for historical {csv_date})")
             print_progress(f"   → Skipping OI enrichment")
             print_progress(f"   → LEAP C/P already calculated from CSV data\n")
 
@@ -149,7 +156,7 @@ def main():
                 'data_source': 'CSV',
                 'csv_date': actual_csv_date,
                 'oi_skipped': 'historical_data',
-                'oi_skip_reason': f'{csv_date} is not the latest trading day (latest: {latest_trading_day})'
+                'oi_skip_reason': f'New trading days exist between {csv_date} and {current_date}'
             }
 
         # Analyze historical activity
