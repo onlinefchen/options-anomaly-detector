@@ -1,6 +1,6 @@
 {
   "date": "2025-11-14",
-  "generated_at": "2025-11-15T08:04:09.776198",
+  "generated_at": "2025-11-15T11:31:14.768636",
   "tickers_count": 4325,
   "anomalies_count": 3304,
   "data_source": "CSV+API",
@@ -217,11 +217,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 5.6,
+        "avg_rank": 5.5,
         "best_rank": 4,
         "worst_rank": 8,
         "today_rank": 4,
-        "rank_change": 4,
+        "rank_change": 0,
         "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
@@ -279,11 +279,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 4.0,
+        "avg_rank": 4.1,
         "best_rank": 3,
         "worst_rank": 5,
         "today_rank": 5,
-        "rank_change": -1,
+        "rank_change": 0,
         "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
@@ -341,9 +341,9 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 6.0,
+        "avg_rank": 5.8,
         "best_rank": 5,
-        "worst_rank": 8,
+        "worst_rank": 6,
         "today_rank": 6,
         "rank_change": 0,
         "trend": "stable",
@@ -403,12 +403,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 10.9,
+        "avg_rank": 10.6,
         "best_rank": 5,
         "worst_rank": 17,
         "today_rank": 7,
-        "rank_change": 10,
-        "trend": "falling",
+        "rank_change": 0,
+        "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
       },
@@ -465,11 +465,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 11.2,
+        "avg_rank": 10.6,
         "best_rank": 7,
         "worst_rank": 15,
         "today_rank": 8,
-        "rank_change": 2,
+        "rank_change": 0,
         "trend": "rising",
         "streak": 10,
         "icon": "[HOT]"
@@ -531,8 +531,8 @@
         "best_rank": 7,
         "worst_rank": 13,
         "today_rank": 9,
-        "rank_change": 2,
-        "trend": "falling",
+        "rank_change": 0,
+        "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
       },
@@ -589,11 +589,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 12.1,
-        "best_rank": 6,
+        "avg_rank": 12.5,
+        "best_rank": 8,
         "worst_rank": 16,
-        "today_rank": 11,
-        "rank_change": 5,
+        "today_rank": 10,
+        "rank_change": 1,
         "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
@@ -651,11 +651,11 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 10.2,
+        "avg_rank": 10.1,
         "best_rank": 5,
         "worst_rank": 19,
-        "today_rank": 10,
-        "rank_change": -5,
+        "today_rank": 11,
+        "rank_change": -1,
         "trend": "rising",
         "streak": 10,
         "icon": "[HOT]"
@@ -713,13 +713,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 16.4,
+        "avg_rank": 15.6,
         "best_rank": 9,
         "worst_rank": 24,
         "today_rank": 12,
-        "rank_change": -3,
+        "rank_change": 0,
         "trend": "rising",
-        "streak": 5,
+        "streak": 6,
         "icon": "[HOT]"
       },
       "current_price": 45.96
@@ -775,12 +775,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 19.7,
-        "best_rank": 11,
+        "avg_rank": 19.9,
+        "best_rank": 13,
         "worst_rank": 29,
-        "today_rank": 15,
-        "rank_change": 7,
-        "trend": "stable",
+        "today_rank": 13,
+        "rank_change": 2,
+        "trend": "rising",
         "streak": 10,
         "icon": "[HOT]"
       },
@@ -835,16 +835,16 @@
         "dominant_strike": 78
       },
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
-        "avg_rank": 19.8,
+        "appearances": 9,
+        "appearance_rate": 90.0,
+        "avg_rank": 19.1,
         "best_rank": 12,
         "worst_rank": 27,
         "today_rank": 14,
-        "rank_change": 7,
+        "rank_change": 0,
         "trend": "rising",
-        "streak": 6,
-        "icon": "[ACT]"
+        "streak": 7,
+        "icon": "[HOT]"
       },
       "current_price": 80.22
     },
@@ -899,12 +899,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 12.8,
-        "best_rank": 7,
+        "avg_rank": 13.6,
+        "best_rank": 9,
         "worst_rank": 20,
-        "today_rank": 18,
-        "rank_change": -6,
-        "trend": "falling",
+        "today_rank": 15,
+        "rank_change": 3,
+        "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
       },
@@ -959,15 +959,15 @@
         "dominant_strike": 220
       },
       "history": {
-        "appearances": 9,
-        "appearance_rate": 90.0,
-        "avg_rank": 15.4,
+        "appearances": 10,
+        "appearance_rate": 100.0,
+        "avg_rank": 15.5,
         "best_rank": 7,
         "worst_rank": 22,
         "today_rank": 16,
-        "rank_change": 2,
-        "trend": "falling",
-        "streak": 9,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 10,
         "icon": "[HOT]"
       },
       "current_price": 235.52
@@ -1023,13 +1023,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 16.9,
+        "avg_rank": 17.1,
         "best_rank": 12,
         "worst_rank": 29,
-        "today_rank": 13,
-        "rank_change": 2,
-        "trend": "falling",
-        "streak": 7,
+        "today_rank": 17,
+        "rank_change": -4,
+        "trend": "rising",
+        "streak": 8,
         "icon": "[HOT]"
       },
       "current_price": 28.2251
@@ -1083,15 +1083,15 @@
         "dominant_strike": 150
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 18.0,
+        "best_rank": 18,
+        "worst_rank": 18,
+        "today_rank": 18,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "[NEW]"
       },
       "current_price": 154.75
@@ -1147,12 +1147,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 16.9,
+        "avg_rank": 16.7,
         "best_rank": 7,
         "worst_rank": 22,
-        "today_rank": 21,
-        "rank_change": -14,
-        "trend": "rising",
+        "today_rank": 19,
+        "rank_change": 2,
+        "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
       },
@@ -1209,13 +1209,13 @@
       "history": {
         "appearances": 9,
         "appearance_rate": 90.0,
-        "avg_rank": 22.9,
+        "avg_rank": 23.0,
         "best_rank": 11,
         "worst_rank": 30,
-        "today_rank": 30,
-        "rank_change": -2,
+        "today_rank": 20,
+        "rank_change": 10,
         "trend": "falling",
-        "streak": 2,
+        "streak": 3,
         "icon": "[HOT]"
       },
       "current_price": 88.94
@@ -1269,15 +1269,15 @@
         "dominant_strike": 250
       },
       "history": {
-        "appearances": 3,
-        "appearance_rate": 30.0,
-        "avg_rank": 29.3,
-        "best_rank": 29,
+        "appearances": 4,
+        "appearance_rate": 40.0,
+        "avg_rank": 27.2,
+        "best_rank": 21,
         "worst_rank": 30,
-        "today_rank": 29,
-        "rank_change": 0,
-        "trend": "stable",
-        "streak": 3,
+        "today_rank": 21,
+        "rank_change": 8,
+        "trend": "rising",
+        "streak": 4,
         "icon": "[OCC]"
       },
       "current_price": 223.62
@@ -1333,13 +1333,13 @@
       "history": {
         "appearances": 7,
         "appearance_rate": 70.0,
-        "avg_rank": 17.4,
+        "avg_rank": 17.0,
         "best_rank": 10,
         "worst_rank": 30,
-        "today_rank": 19,
-        "rank_change": -6,
-        "trend": "rising",
-        "streak": 6,
+        "today_rank": 22,
+        "rank_change": -3,
+        "trend": "stable",
+        "streak": 7,
         "icon": "[ACT]"
       },
       "current_price": 8.16
@@ -1395,12 +1395,12 @@
       "history": {
         "appearances": 10,
         "appearance_rate": 100.0,
-        "avg_rank": 22.2,
+        "avg_rank": 22.3,
         "best_rank": 17,
         "worst_rank": 29,
-        "today_rank": 25,
-        "rank_change": -6,
-        "trend": "rising",
+        "today_rank": 23,
+        "rank_change": 2,
+        "trend": "stable",
         "streak": 10,
         "icon": "[HOT]"
       },
@@ -1457,13 +1457,13 @@
       "history": {
         "appearances": 6,
         "appearance_rate": 60.0,
-        "avg_rank": 19.7,
+        "avg_rank": 20.8,
         "best_rank": 13,
         "worst_rank": 28,
-        "today_rank": 22,
-        "rank_change": 6,
+        "today_rank": 24,
+        "rank_change": -2,
         "trend": "falling",
-        "streak": 1,
+        "streak": 2,
         "icon": "[ACT]"
       },
       "current_price": 123.4399
@@ -1519,13 +1519,13 @@
       "history": {
         "appearances": 7,
         "appearance_rate": 70.0,
-        "avg_rank": 21.6,
-        "best_rank": 13,
+        "avg_rank": 23.3,
+        "best_rank": 18,
         "worst_rank": 27,
-        "today_rank": 20,
-        "rank_change": 6,
-        "trend": "falling",
-        "streak": 0,
+        "today_rank": 25,
+        "rank_change": -5,
+        "trend": "stable",
+        "streak": 1,
         "icon": "[ACT]"
       },
       "current_price": 510.43
@@ -1579,15 +1579,15 @@
         "dominant_strike": 100
       },
       "history": {
-        "appearances": 4,
-        "appearance_rate": 40.0,
-        "avg_rank": 18.2,
+        "appearances": 5,
+        "appearance_rate": 50.0,
+        "avg_rank": 19.8,
         "best_rank": 9,
         "worst_rank": 27,
-        "today_rank": 17,
-        "rank_change": 10,
-        "trend": "rising",
-        "streak": 4,
+        "today_rank": 26,
+        "rank_change": -9,
+        "trend": "falling",
+        "streak": 5,
         "icon": "[OCC]"
       },
       "current_price": 78.26
@@ -1641,15 +1641,15 @@
         "dominant_strike": 100
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 27.0,
+        "best_rank": 27,
+        "worst_rank": 27,
+        "today_rank": 27,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "[NEW]"
       },
       "current_price": 96.4
@@ -1703,15 +1703,15 @@
         "dominant_strike": 150
       },
       "history": {
-        "appearances": 0,
-        "appearance_rate": 0.0,
-        "avg_rank": null,
-        "best_rank": null,
-        "worst_rank": null,
-        "today_rank": null,
-        "rank_change": null,
-        "trend": "new",
-        "streak": 0,
+        "appearances": 1,
+        "appearance_rate": 10.0,
+        "avg_rank": 28.0,
+        "best_rank": 28,
+        "worst_rank": 28,
+        "today_rank": 28,
+        "rank_change": 0,
+        "trend": "stable",
+        "streak": 1,
         "icon": "[NEW]"
       },
       "current_price": 250.1
@@ -1767,13 +1767,13 @@
       "history": {
         "appearances": 5,
         "appearance_rate": 50.0,
-        "avg_rank": 23.0,
-        "best_rank": 16,
-        "worst_rank": 28,
-        "today_rank": 28,
-        "rank_change": -5,
+        "avg_rank": 25.6,
+        "best_rank": 23,
+        "worst_rank": 29,
+        "today_rank": 29,
+        "rank_change": -1,
         "trend": "falling",
-        "streak": 1,
+        "streak": 2,
         "icon": "[OCC]"
       },
       "current_price": 287.6199
@@ -1829,13 +1829,13 @@
       "history": {
         "appearances": 6,
         "appearance_rate": 60.0,
-        "avg_rank": 22.5,
+        "avg_rank": 24.5,
         "best_rank": 16,
         "worst_rank": 30,
-        "today_rank": 24,
-        "rank_change": 6,
-        "trend": "stable",
-        "streak": 2,
+        "today_rank": 30,
+        "rank_change": -6,
+        "trend": "falling",
+        "streak": 3,
         "icon": "[ACT]"
       },
       "current_price": 285
@@ -1889,16 +1889,16 @@
         "dominant_strike": 1
       },
       "history": {
-        "appearances": 6,
-        "appearance_rate": 60.0,
-        "avg_rank": 23.5,
+        "appearances": 5,
+        "appearance_rate": 50.0,
+        "avg_rank": 23.6,
         "best_rank": 12,
         "worst_rank": 29,
         "today_rank": 27,
         "rank_change": -5,
         "trend": "falling",
         "streak": 0,
-        "icon": "[ACT]"
+        "icon": "[OCC]"
       },
       "current_price": 1.0899
     },
@@ -1951,15 +1951,15 @@
         "dominant_strike": 40
       },
       "history": {
-        "appearances": 8,
-        "appearance_rate": 80.0,
+        "appearances": 7,
+        "appearance_rate": 70.0,
         "avg_rank": 24.4,
         "best_rank": 17,
         "worst_rank": 28,
         "today_rank": 20,
         "rank_change": 5,
         "trend": "stable",
-        "streak": 1,
+        "streak": 0,
         "icon": "[ACT]"
       },
       "current_price": null
@@ -2013,15 +2013,15 @@
         "dominant_strike": 5
       },
       "history": {
-        "appearances": 4,
-        "appearance_rate": 40.0,
-        "avg_rank": 25.8,
+        "appearances": 3,
+        "appearance_rate": 30.0,
+        "avg_rank": 25.3,
         "best_rank": 23,
         "worst_rank": 27,
         "today_rank": 26,
         "rank_change": -3,
         "trend": "stable",
-        "streak": 1,
+        "streak": 0,
         "icon": "[OCC]"
       },
       "current_price": null
@@ -2227,16 +2227,16 @@
       "cp_oi_ratio": 0,
       "leap_cp_ratio": 1.69,
       "history": {
-        "appearances": 3,
-        "appearance_rate": 30.0,
-        "avg_rank": 22.0,
+        "appearances": 2,
+        "appearance_rate": 20.0,
+        "avg_rank": 20.0,
         "best_rank": 14,
         "worst_rank": 26,
         "today_rank": 26,
         "rank_change": -12,
         "trend": "stable",
         "streak": 0,
-        "icon": "[OCC]"
+        "icon": "[NEW]"
       },
       "current_price": null
     },
@@ -2497,14 +2497,14 @@
       "cp_oi_ratio": 0,
       "leap_cp_ratio": 0.98,
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
-        "avg_rank": 30.0,
-        "best_rank": 30,
-        "worst_rank": 30,
-        "today_rank": 30,
-        "rank_change": 0,
-        "trend": "stable",
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
+        "trend": "new",
         "streak": 0,
         "icon": "[NEW]"
       },
@@ -3067,14 +3067,14 @@
       "cp_oi_ratio": 0,
       "leap_cp_ratio": 0.73,
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
-        "avg_rank": 29.0,
-        "best_rank": 29,
-        "worst_rank": 29,
-        "today_rank": 29,
-        "rank_change": 0,
-        "trend": "stable",
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
+        "trend": "new",
         "streak": 0,
         "icon": "[NEW]"
       },
@@ -4365,7 +4365,7 @@
         "today_rank": 23,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 0,
         "icon": "[NEW]"
       },
       "current_price": null
@@ -5047,14 +5047,14 @@
       "cp_oi_ratio": 0,
       "leap_cp_ratio": 6.15,
       "history": {
-        "appearances": 1,
-        "appearance_rate": 10.0,
-        "avg_rank": 28.0,
-        "best_rank": 28,
-        "worst_rank": 28,
-        "today_rank": 28,
-        "rank_change": 0,
-        "trend": "stable",
+        "appearances": 0,
+        "appearance_rate": 0.0,
+        "avg_rank": null,
+        "best_rank": null,
+        "worst_rank": null,
+        "today_rank": null,
+        "rank_change": null,
+        "trend": "new",
         "streak": 0,
         "icon": "[NEW]"
       },
@@ -9075,7 +9075,7 @@
         "today_rank": 27,
         "rank_change": 0,
         "trend": "stable",
-        "streak": 1,
+        "streak": 0,
         "icon": "[NEW]"
       },
       "current_price": null
