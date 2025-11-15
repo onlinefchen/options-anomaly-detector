@@ -12,9 +12,10 @@ import argparse
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from report_generator import HTMLReportGenerator
+from trading_calendar import is_trading_day
 
 
-def regenerate_html(json_file: str, output_dir: str = 'output'):
+def regenerate_html(json_file: str, output_dir: str = 'output', check_trading_day: bool = True):
     """
     从 JSON 文件重新生成 HTML 报告
 
@@ -36,6 +37,12 @@ def regenerate_html(json_file: str, output_dir: str = 'output'):
     print(f'\n{"="*60}')
     print(f'📂 Processing: {date}')
     print(f'{"="*60}')
+
+    # 检查是否是交易日
+    if check_trading_day and not is_trading_day(date):
+        print(f'⊘ {date} is not a trading day - skipping HTML generation')
+        print(f'   (JSON exists but HTML should not be generated for non-trading days)')
+        return False
 
     # 读取 JSON 数据
     try:
@@ -108,7 +115,8 @@ def main():
         # 处理单个日期
         json_file = os.path.join(args.output, f'{args.date}.json')
         total_count = 1
-        if regenerate_html(json_file, args.output):
+        # 单个日期时也检查是否是交易日
+        if regenerate_html(json_file, args.output, check_trading_day=True):
             success_count = 1
 
     elif args.all_missing:
@@ -143,7 +151,8 @@ def main():
         total_count = len(missing)
         for date in missing:
             json_file = os.path.join(args.output, f'{date}.json')
-            if regenerate_html(json_file, args.output):
+            # 只为交易日生成HTML
+            if regenerate_html(json_file, args.output, check_trading_day=True):
                 success_count += 1
 
     print(f'\n{"="*60}')
