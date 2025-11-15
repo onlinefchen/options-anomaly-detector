@@ -272,6 +272,13 @@ def save_historical_data(date: str, data: list, anomalies: list, summary: dict,
     file_size = os.path.getsize(html_file) / 1024
     print(f'   ✅ HTML 已保存: {html_file} ({file_size:.1f} KB)')
 
+    # 立即更新 archive.html（新HTML生成后）
+    print(f'   ⏳ 更新 archive.html ...')
+    from archive_index_generator import get_archived_reports, generate_archive_index
+    reports = get_archived_reports(output_dir)
+    generate_archive_index(reports, os.path.join(output_dir, 'archive.html'))
+    print(f'   ✅ Archive 已更新 ({len(reports)} 个报告)')
+
     print()
 
 
@@ -428,20 +435,7 @@ def main():
     print("生成的文件:")
     print(f"  - {args.output}/*.json  (原始数据)")
     print(f"  - {args.output}/*.html  (HTML报告)")
-    print()
-
-    # Generate archive index if we have any reports
-    if success_count > 0:
-        print("📚 生成归档索引...")
-        reports = get_archived_reports(args.output)
-        generate_archive_index(reports, os.path.join(args.output, 'archive.html'))
-        print(f"✓ 归档索引更新完成 ({len(reports)} 个报告)")
-        print()
-
-    print("下一步:")
-    print("  1. 运行 main.py 进行一次完整分析")
-    print("  2. 查看报告中的 '10日活跃度' 列")
-    print("  3. 应该能看到完整的历史统计数据")
+    print(f"  - {args.output}/archive.html (归档索引，每次HTML生成后自动更新)")
     print()
 
 
