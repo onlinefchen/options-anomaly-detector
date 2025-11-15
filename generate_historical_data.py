@@ -74,26 +74,27 @@ def generate_data_for_date(date: str, output_dir: str = 'output') -> tuple:
         print()
 
         # Algorithm 2: Determine if OI should be fetched
+        # Only fetch OI for the most recent completed trading day
         print(f'📡 STEP 2/5: 检查是否需要获取 Open Interest 数据')
-        current_date = datetime.now().strftime('%Y-%m-%d')
-        should_fetch_oi = not has_trading_days_between(csv_date, current_date)
+        latest_trading_day = get_previous_trading_day()  # Most recent completed trading day
+        should_fetch_oi = (csv_date == latest_trading_day)
 
         if should_fetch_oi:
-            print(f'   ✓ {csv_date} 至今无新交易日')
+            print(f'   ✓ {csv_date} 是最新的交易日')
             print(f'   → OI 数据有意义（反映 {csv_date} 盘后市场状态）')
             print(f'   ⏳ 正在为前 35 个标的获取 OI 数据...')
             data, metadata = fetcher.enrich_with_oi(data, top_n=35, trading_date=csv_date)
             print(f'   ✅ OI 数据获取完成')
         else:
-            print(f'   ⊘ {csv_date} 至今有新交易日')
-            print(f'   → OI 数据无意义（会是今天的数据，不是 {csv_date} 的）')
+            print(f'   ⊘ {csv_date} 不是最新交易日（最新: {latest_trading_day}）')
+            print(f'   → OI 数据无意义（API返回的是当前OI，不是 {csv_date} 的）')
             print(f'   → 跳过 OI 获取')
             print(f'   → LEAP C/P 已从 CSV 数据计算完成')
             metadata = {
                 'data_source': 'CSV',
                 'csv_date': csv_date,
                 'oi_skipped': 'historical_data',
-                'oi_skip_reason': f'New trading days exist between {csv_date} and {current_date}'
+                'oi_skip_reason': f'{csv_date} is not the latest trading day (latest: {latest_trading_day})'
             }
         print()
 
