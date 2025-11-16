@@ -78,7 +78,7 @@ class AIAnalyzer:
                         'call_oi': item.get('call_oi', 0),
                         'cp_oi_ratio': item['cp_oi_ratio'],
                         'contracts_count': item.get('contracts_count', 0),
-                        'top_3_contracts': item.get('top_3_contracts', [])[:3],
+                        'top_3_oi': item.get('top_3_oi', [])[:3],
                         'strike_concentration': item.get('strike_concentration', {}),
                         'history': {
                             'appearances': item.get('history', {}).get('appearances', 0),
@@ -153,7 +153,7 @@ class AIAnalyzer:
         tickers_detail = []
         for i, item in enumerate(market_summary['top_15'], 1):
             strike_conc = item.get('strike_concentration', {})
-            top_contracts = item.get('top_3_contracts', [])
+            top_contracts = item.get('top_3_oi', [])
 
             # 构建完整的合约详情（包含所有3个合约及其占比）
             contracts_str = ""
@@ -181,7 +181,7 @@ class AIAnalyzer:
             leap_cp = item.get('leap_cp_ratio', 0)
 
             # Format Top 3 LEAP contracts
-            leap_contracts = item.get('top_3_leap_contracts', [])
+            leap_contracts = item.get('top_3_leap_oi', [])
             leap_contracts_list = []
             for j, contract in enumerate(leap_contracts[:3], 1):
                 expiry = contract.get('expiry', '')
@@ -494,39 +494,48 @@ class AIAnalyzer:
             leap_cp = item.get('leap_cp_ratio', 0)
             leap_cp_text = f"{leap_cp:.2f}" if leap_cp else "-"
 
-            # Top 3 Contracts with Current Price at the beginning
-            top3_text = ""
+            # Top 3 Volume (volume-based, from CSV)
+            top3_volume_text = ""
             current_price = item.get('current_price')
             if current_price:
-                top3_text += f"Current: ${current_price:.2f}<br>"
+                top3_volume_text += f"Current: ${current_price:.2f}<br>"
 
-            for j, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
-                expiry = contract.get('expiry', '')
-                if expiry:
-                    expiry = expiry.replace('-', '')[-6:]  # YYMMDD
-                contract_type = contract.get('type', '')[0].upper() if contract.get('type') else 'X'
-                strike = int(contract.get('strike', 0))
+            for j, contract in enumerate(item.get('top_3_contracts_volume', [])[:3], 1):
+                ticker = contract.get('ticker', 'N/A')
+                volume_k = contract.get('volume', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_volume_text += f"{j}. {ticker} {volume_k:.0f}K ({pct:.1f}%)<br>"
+
+            if not top3_volume_text or not item.get('top_3_contracts_volume'):
+                top3_volume_text = "N/A"
+
+            # Top 3 Volume Leap (volume-based, 3+ months out, from CSV)
+            top3_leap_volume_text = ""
+            if current_price:
+                top3_leap_volume_text += f"Current: ${current_price:.2f}<br>"
+
+            for j, contract in enumerate(item.get('top_3_leap_volume', [])[:3], 1):
+                ticker = contract.get('ticker', 'N/A')
+                volume_k = contract.get('volume', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_leap_volume_text += f"{j}. {ticker} {volume_k:.0f}K ({pct:.1f}%)<br>"
+
+            if not top3_leap_volume_text or not item.get('top_3_leap_volume'):
+                top3_leap_volume_text = "N/A"
+
+            # Top 3 OI (OI-based, from API for recent post-market data)
+            top3_oi_text = ""
+            if current_price:
+                top3_oi_text += f"Current: ${current_price:.2f}<br>"
+
+            for j, contract in enumerate(item.get('top_3_oi', [])[:3], 1):
+                ticker = contract.get('ticker', 'N/A')
                 oi_k = contract.get('oi', 0) / 1000
                 pct = contract.get('percentage', 0)
-                top3_text += f"{j}. {expiry}{contract_type}{strike} {oi_k:.0f}K ({pct:.1f}%)<br>"
+                top3_oi_text += f"{j}. {ticker} {oi_k:.0f}K ({pct:.1f}%)<br>"
 
-            if not top3_text:
-                top3_text = "N/A"
-
-            # Top 3 LEAP Contracts (3+ months out)
-            top3_leap_text = ""
-            for j, contract in enumerate(item.get('top_3_leap_contracts', [])[:3], 1):
-                expiry = contract.get('expiry', '')
-                if expiry:
-                    expiry = expiry.replace('-', '')[-6:]  # YYMMDD
-                contract_type = contract.get('type', '')[0].upper() if contract.get('type') else 'X'
-                strike = int(contract.get('strike', 0))
-                oi_k = contract.get('oi', 0) / 1000
-                pct = contract.get('percentage', 0)
-                top3_leap_text += f"{j}. {expiry}{contract_type}{strike} {oi_k:.0f}K ({pct:.1f}%)<br>"
-
-            if not top3_leap_text:
-                top3_leap_text = "N/A"
+            if not top3_oi_text or not item.get('top_3_oi'):
+                top3_oi_text = "N/A"
 
             # History
             history = item.get('history', {})
@@ -551,8 +560,9 @@ class AIAnalyzer:
                     <td style="text-align: center;">{leap_cp_text}</td>
                     <td style="text-align: right;">{oi_w:.2f}W</td>
                     <td style="text-align: center;">{item.get('cp_oi_ratio', 0):.2f}</td>
-                    <td style="font-size: 11px; line-height: 1.4;">{top3_text}</td>
-                    <td style="font-size: 11px; line-height: 1.4;">{top3_leap_text}</td>
+                    <td style="font-size: 11px; line-height: 1.4;">{top3_volume_text}</td>
+                    <td style="font-size: 11px; line-height: 1.4;">{top3_leap_volume_text}</td>
+                    <td style="font-size: 11px; line-height: 1.4;">{top3_oi_text}</td>
                 </tr>
             """)
 
@@ -695,8 +705,9 @@ class AIAnalyzer:
                     <th style="text-align: center;">LEAP C/P</th>
                     <th style="text-align: right;">持仓量</th>
                     <th style="text-align: center;">C/P OI</th>
-                    <th>Top 3 Contracts</th>
-                    <th>Top 3 Leap</th>
+                    <th>Top 3 Volume</th>
+                    <th>Top 3 Volume Leap</th>
+                    <th>Top 3 OI</th>
                 </tr>
             </thead>
             <tbody>
@@ -792,7 +803,7 @@ class AIAnalyzer:
                     'put_oi': item.get('put_oi', 0),
                     'call_oi': item.get('call_oi', 0),
                     'cp_oi_ratio': item['cp_oi_ratio'],
-                    'top_3_contracts': item.get('top_3_contracts', [])[:3],
+                    'top_3_oi': item.get('top_3_oi', [])[:3],
                     'strike_concentration': item.get('strike_concentration', {})
                 })
 
@@ -853,7 +864,7 @@ Write concise but insightful analysis in English."""
         indices_detail = []
         for item in indices_summary:
             strike_conc = item.get('strike_concentration', {})
-            top_contracts = item.get('top_3_contracts', [])
+            top_contracts = item.get('top_3_oi', [])
 
             contracts_str = ""
             if top_contracts:

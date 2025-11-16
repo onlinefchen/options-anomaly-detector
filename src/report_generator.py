@@ -270,32 +270,49 @@ class HTMLReportGenerator:
             volume_w = item['total_volume'] / 10000
             oi_w = item['total_oi'] / 10000
 
-            # Format Top 3 contracts with Current Price at the beginning
-            top3_html = ''
+            # Format Top 3 contracts by VOLUME with Current Price at the beginning
+            top3_volume_html = ''
             current_price = item.get('current_price')
             if current_price:
-                top3_html += f"<div><small>Current: ${current_price:.2f}</small></div>"
+                top3_volume_html += f"<div><small>Current: ${current_price:.2f}</small></div>"
 
-            # Show top 3 contracts
-            for i, contract in enumerate(item.get('top_3_contracts', [])[:3], 1):
+            # Show top 3 contracts by volume (from CSV)
+            for i, contract in enumerate(item.get('top_3_contracts_volume', [])[:3], 1):
+                contract_short = self._format_contract_short(contract)
+                volume_k = contract.get('volume', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_volume_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{volume_k:.0f}K ({pct:.1f}%)</span></div>"
+
+            if not top3_volume_html or not item.get('top_3_contracts_volume'):
+                top3_volume_html = '<small>N/A</small>'
+
+            # Format Top 3 LEAP contracts by VOLUME (3+ months out, from CSV)
+            top3_leap_volume_html = ''
+            if current_price:
+                top3_leap_volume_html += f"<div><small>Current: ${current_price:.2f}</small></div>"
+
+            for i, contract in enumerate(item.get('top_3_leap_volume', [])[:3], 1):
+                contract_short = self._format_contract_short(contract)
+                volume_k = contract.get('volume', 0) / 1000
+                pct = contract.get('percentage', 0)
+                top3_leap_volume_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{volume_k:.0f}K ({pct:.1f}%)</span></div>"
+
+            if not top3_leap_volume_html or not item.get('top_3_leap_volume'):
+                top3_leap_volume_html = '<small>N/A</small>'
+
+            # Format Top 3 contracts by OI (from API, only for recent post-market data)
+            top3_oi_html = ''
+            if current_price:
+                top3_oi_html += f"<div><small>Current: ${current_price:.2f}</small></div>"
+
+            for i, contract in enumerate(item.get('top_3_oi', [])[:3], 1):
                 contract_short = self._format_contract_short(contract)
                 oi_k = contract.get('oi', 0) / 1000
                 pct = contract.get('percentage', 0)
-                top3_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
+                top3_oi_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
 
-            if not top3_html:
-                top3_html = '<small>N/A</small>'
-
-            # Format Top 3 LEAP contracts (3+ months out)
-            top3_leap_html = ''
-            for i, contract in enumerate(item.get('top_3_leap_contracts', [])[:3], 1):
-                contract_short = self._format_contract_short(contract)
-                oi_k = contract.get('oi', 0) / 1000
-                pct = contract.get('percentage', 0)
-                top3_leap_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
-
-            if not top3_leap_html:
-                top3_leap_html = '<small>N/A</small>'
+            if not top3_oi_html or not item.get('top_3_oi'):
+                top3_oi_html = '<small>N/A</small>'
 
             # Format history activity
             history = item.get('history', {})
@@ -329,12 +346,13 @@ class HTMLReportGenerator:
                         <td>{leap_cp_html}</td>
                         <td>{oi_w:.2f}W</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
-                        <td class="compact-cell">{top3_html}</td>
-                        <td class="compact-cell">{top3_leap_html}</td>
+                        <td class="compact-cell">{top3_volume_html}</td>
+                        <td class="compact-cell">{top3_leap_volume_html}</td>
+                        <td class="compact-cell">{top3_oi_html}</td>
                     </tr>
                 """)
             else:
-                # Index table - no LEAP C/P column, no Streak, no 10-Day Activity
+                # Index table - only show: Rank, Ticker, Total Volume, C/P Volume, Avg Trade Size
                 avg_trade_size = item.get('avg_trade_size', 0)
 
                 rows.append(f"""
@@ -344,10 +362,6 @@ class HTMLReportGenerator:
                         <td>{volume_w:.2f}W</td>
                         <td>{item['cp_volume_ratio']:.2f}</td>
                         <td>{avg_trade_size:.1f}</td>
-                        <td>{oi_w:.2f}W</td>
-                        <td>{item['cp_oi_ratio']:.2f}</td>
-                        <td class="compact-cell">{top3_html}</td>
-                        <td class="compact-cell">{top3_leap_html}</td>
                     </tr>
                 """)
         return ''.join(rows)
@@ -703,10 +717,6 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
-                        <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
-                        <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th>Top 3 Contracts</th>
-                        <th>Top 3 Leap</th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -728,14 +738,33 @@ class HTMLReportGenerator:
                         <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th>Top 3 Contracts</th>
-                        <th>Top 3 Leap</th>
+                        <th>Top 3 Volume</th>
+                        <th>Top 3 Volume Leap</th>
+                        <th>Top 3 OI</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">
                     {stock_table_rows}
                 </tbody>
             </table>
+
+            <div style="margin-top: 20px; padding: 15px; background-color: #f5f5f7; border-radius: 8px; font-size: 14px;">
+                <h3 style="margin-top: 0; font-size: 15px; color: #1d1d1f;">📊 Top 3 列说明</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                    <div>
+                        <strong style="color: #06c;">Top 3 Volume</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">成交量最大的前3个期权合约（基于当日成交量）</p>
+                    </div>
+                    <div>
+                        <strong style="color: #06c;">Top 3 Volume Leap</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">距到期日≥90天且成交量最大的前3个期权合约</p>
+                    </div>
+                    <div>
+                        <strong style="color: #06c;">Top 3 OI</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">持仓量（Open Interest）最大的前3个期权合约</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="section">
@@ -850,49 +879,63 @@ class HTMLReportGenerator:
                 // Format volume and OI in 万 (W) with 2 decimal places
                 const volumeW = (item.total_volume / 10000).toFixed(2) + 'W';
                 const oiW = (item.total_oi / 10000).toFixed(2) + 'W';
-
-                // Format Top 3 contracts with Current Price at the beginning
-                let top3Html = '';
+                const avgTradeSize = item.avg_trade_size || 0;
                 const currentPrice = item.current_price;
-                if (currentPrice) {{
-                    top3Html += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
-                }}
-
-                const top3Contracts = item.top_3_contracts || [];
-                // Show top 3 contracts
-                top3Contracts.slice(0, 3).forEach((contract, i) => {{
-                    const contractShort = formatContractShort(contract);
-                    const oiK = (contract.oi || 0) / 1000;
-                    const pct = contract.percentage || 0;
-                    top3Html += `<div class='contract-item'>${{contractShort}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
-                }});
-                if (!top3Html) {{
-                    top3Html = '<small>N/A</small>';
-                }}
-
-                // Format history
-                const history = item.history || {{}};
-                const appearances = history.appearances || 0;
-                const icon = history.icon || '[NEW]';
-                const rankChange = history.rank_change;
-                const avgRank = history.avg_rank;
-
-                let rankSymbol = '-';
-                if (rankChange !== null && rankChange !== undefined && rankChange !== 0) {{
-                    if (rankChange > 0) {{
-                        rankSymbol = `+${{rankChange}}`;
-                    }} else {{
-                        rankSymbol = `-${{Math.abs(rankChange)}}`;
-                    }}
-                }}
 
                 const row = document.createElement('tr');
 
-                // For stock table, include LEAP C/P column
+                // For stock table, include LEAP C/P column and all 3 Top 3 columns
                 if (tableType === 'stock') {{
                     const leapCp = item.leap_cp_ratio || 0;
                     const leapCpHtml = leapCp ? leapCp.toFixed(2) : '-';
-                    const avgTradeSize = item.avg_trade_size || 0;
+
+                    // Format Top 3 Volume
+                    let top3VolumeHtml = '';
+                    if (currentPrice) {{
+                        top3VolumeHtml += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
+                    }}
+                    const top3ContractsVolume = item.top_3_contracts_volume || [];
+                    top3ContractsVolume.slice(0, 3).forEach((contract) => {{
+                        const ticker = contract.ticker || 'N/A';
+                        const volumeK = (contract.volume || 0) / 1000;
+                        const pct = contract.percentage || 0;
+                        top3VolumeHtml += `<div class='contract-item'>${{ticker}} <span class='oi-badge'>${{Math.round(volumeK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                    }});
+                    if (!top3VolumeHtml || top3ContractsVolume.length === 0) {{
+                        top3VolumeHtml = '<small>N/A</small>';
+                    }}
+
+                    // Format Top 3 Volume Leap
+                    let top3LeapVolumeHtml = '';
+                    if (currentPrice) {{
+                        top3LeapVolumeHtml += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
+                    }}
+                    const top3LeapVolume = item.top_3_leap_volume || [];
+                    top3LeapVolume.slice(0, 3).forEach((contract) => {{
+                        const ticker = contract.ticker || 'N/A';
+                        const volumeK = (contract.volume || 0) / 1000;
+                        const pct = contract.percentage || 0;
+                        top3LeapVolumeHtml += `<div class='contract-item'>${{ticker}} <span class='oi-badge'>${{Math.round(volumeK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                    }});
+                    if (!top3LeapVolumeHtml || top3LeapVolume.length === 0) {{
+                        top3LeapVolumeHtml = '<small>N/A</small>';
+                    }}
+
+                    // Format Top 3 OI
+                    let top3OIHtml = '';
+                    if (currentPrice) {{
+                        top3OIHtml += `<div><small>Current: $${{currentPrice.toFixed(2)}}</small></div>`;
+                    }}
+                    const top3OI = item.top_3_oi || [];
+                    top3OI.slice(0, 3).forEach((contract) => {{
+                        const ticker = contract.ticker || 'N/A';
+                        const oiK = (contract.oi || 0) / 1000;
+                        const pct = contract.percentage || 0;
+                        top3OIHtml += `<div class='contract-item'>${{ticker}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                    }});
+                    if (!top3OIHtml || top3OI.length === 0) {{
+                        top3OIHtml = '<small>N/A</small>';
+                    }}
 
                     row.innerHTML = `
                         <td>${{idx + 1}}</td>
@@ -903,21 +946,18 @@ class HTMLReportGenerator:
                         <td>${{leapCpHtml}}</td>
                         <td>${{oiW}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
-                        <td class="compact-cell">${{top3Html}}</td>
+                        <td class="compact-cell">${{top3VolumeHtml}}</td>
+                        <td class="compact-cell">${{top3LeapVolumeHtml}}</td>
+                        <td class="compact-cell">${{top3OIHtml}}</td>
                     `;
                 }} else {{
-                    // Index table - no LEAP C/P column
-                    const avgTradeSize = item.avg_trade_size || 0;
-
+                    // Index table - only show: Rank, Ticker, Total Volume, C/P Volume, Avg Trade Size
                     row.innerHTML = `
                         <td>${{idx + 1}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
                         <td>${{volumeW}}</td>
                         <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
                         <td>${{avgTradeSize.toFixed(1)}}</td>
-                        <td>${{oiW}}</td>
-                        <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
-                        <td class="compact-cell">${{top3Html}}</td>
                     `;
                 }}
 

@@ -97,10 +97,9 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
             'put_oi': int,
             'call_oi': int,
             'cp_oi_ratio': float,
-            'top_3_contracts': list,
-            'top_3_leap_contracts': list,  # NEW: Top 3 contracts expiring 3+ months out
-            'strike_concentration': dict,
-            'leap_cp_ratio': float (if trading_date provided)
+            'top_3_oi': list,  # Top 3 contracts by OI (from API)
+            'top_3_leap_oi': list,  # Top 3 LEAP contracts by OI (from API, 3+ months out)
+            'strike_concentration': dict
         }
     """
     from datetime import datetime, timedelta
@@ -159,17 +158,18 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
     total_oi = put_oi + call_oi
     cp_oi_ratio = round(call_oi / put_oi, 2) if put_oi > 0 else 0
 
-    # 获取 Top 3 活跃合约 (all contracts)
-    top_3 = sorted(contracts_with_oi, key=lambda x: x['oi'], reverse=True)[:3]
-    for contract in top_3:
+    # 获取 Top 3 活跃合约 by OI (all contracts)
+    # This becomes "Top 3 OI" column in the report
+    top_3_oi = sorted(contracts_with_oi, key=lambda x: x['oi'], reverse=True)[:3]
+    for contract in top_3_oi:
         contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0
 
-    # 获取 Top 3 LEAP 合约 (3+ months out)
+    # 获取 Top 3 LEAP 合约 by OI (3+ months out)
     # NOTE: LEAP contracts require OI data from API
     # Historical data (CSV-only) won't have LEAP contracts because OI is not fetched
-    # Only the most recent post-market data will have Top 3 LEAP
-    top_3_leap = sorted(leap_contracts, key=lambda x: x['oi'], reverse=True)[:3]
-    for contract in top_3_leap:
+    # Only the most recent post-market data will have Top 3 LEAP by OI
+    top_3_leap_oi = sorted(leap_contracts, key=lambda x: x['oi'], reverse=True)[:3]
+    for contract in top_3_leap_oi:
         contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0
 
     # 分析价格区间
@@ -180,8 +180,8 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
         'put_oi': put_oi,
         'call_oi': call_oi,
         'cp_oi_ratio': cp_oi_ratio,
-        'top_3_contracts': top_3,
-        'top_3_leap_contracts': top_3_leap,  # NEW
+        'top_3_oi': top_3_oi,  # Renamed from top_3_contracts
+        'top_3_leap_oi': top_3_leap_oi,  # Renamed from top_3_leap_contracts
         'strike_concentration': strike_concentration
     }
 

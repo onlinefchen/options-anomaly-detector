@@ -359,6 +359,13 @@ class PolygonCSVHandler:
                 leap_cp = self._calculate_leap_cp_from_contracts(underlying_df, trading_date)
                 result['leap_cp_ratio'] = leap_cp
 
+            # Collect Top 3 contracts by volume and Top 3 LEAP by volume
+            top_3_volume, top_3_leap_volume = self._get_top_contracts_by_volume(
+                underlying_df, trading_date, total_volume
+            )
+            result['top_3_contracts_volume'] = top_3_volume
+            result['top_3_leap_volume'] = top_3_leap_volume
+
             results.append(result)
 
         # Sort by volume
@@ -414,6 +421,76 @@ class PolygonCSVHandler:
             return 0.0
 
         return round(leap_call_volume / leap_put_volume, 2)
+
+    def _get_top_contracts_by_volume(
+        self,
+        contracts_df: pd.DataFrame,
+        trading_date: str,
+        total_volume: int
+    ) -> tuple:
+        """
+        Get Top 3 contracts by volume and Top 3 LEAP contracts by volume
+
+        Args:
+            contracts_df: DataFrame with parsed contract data (expiry, contract_type, volume, strike)
+            trading_date: Trading date in YYYY-MM-DD format
+            total_volume: Total volume for percentage calculation
+
+        Returns:
+            Tuple of (top_3_contracts_volume, top_3_leap_volume)
+        """
+        from datetime import datetime, timedelta
+
+        # Calculate the 3-month threshold date
+        date_obj = datetime.strptime(trading_date, '%Y-%m-%d')
+        leap_threshold = date_obj + timedelta(days=90)
+
+        # Collect all contracts with volume
+        all_contracts = []
+        leap_contracts = []
+
+        for _, contract in contracts_df.iterrows():
+            volume = contract.get('volume', 0) or 0
+            if volume == 0:
+                continue
+
+            expiry_str = contract.get('expiry')
+            contract_type = contract.get('contract_type')
+            strike = contract.get('strike')
+
+            if not expiry_str or not contract_type:
+                continue
+
+            # Format contract ticker: YYMMDD + C/P + strike
+            # e.g., "251205C480" for Dec 5, 2025, Call at $480
+            contract_type_letter = 'C' if contract_type == 'call' else 'P'
+            ticker = f"{expiry_str}{contract_type_letter}{int(strike)}"
+
+            contract_info = {
+                'ticker': ticker,
+                'volume': volume,
+                'strike': strike,
+                'expiry': expiry_str,
+                'type': contract_type,
+                'percentage': round(volume / total_volume * 100, 1) if total_volume > 0 else 0
+            }
+
+            all_contracts.append(contract_info)
+
+            # Check if this is a LEAP (expires 3+ months out)
+            try:
+                # Parse expiry date (YYMMDD format)
+                expiry_date = datetime.strptime(f'20{expiry_str}', '%Y%m%d')
+                if expiry_date >= leap_threshold:
+                    leap_contracts.append(contract_info)
+            except (ValueError, TypeError):
+                pass
+
+        # Get Top 3 by volume
+        top_3_contracts = sorted(all_contracts, key=lambda x: x['volume'], reverse=True)[:3]
+        top_3_leap = sorted(leap_contracts, key=lambda x: x['volume'], reverse=True)[:3]
+
+        return top_3_contracts, top_3_leap
 
     def get_latest_trading_day(self) -> str:
         """
