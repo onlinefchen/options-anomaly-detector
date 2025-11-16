@@ -165,6 +165,9 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
         contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0
 
     # 获取 Top 3 LEAP 合约 (3+ months out)
+    # NOTE: LEAP contracts require OI data from API
+    # Historical data (CSV-only) won't have LEAP contracts because OI is not fetched
+    # Only the most recent post-market data will have Top 3 LEAP
     top_3_leap = sorted(leap_contracts, key=lambda x: x['oi'], reverse=True)[:3]
     for contract in top_3_leap:
         contract['percentage'] = round(contract['oi'] / total_oi * 100, 1) if total_oi > 0 else 0

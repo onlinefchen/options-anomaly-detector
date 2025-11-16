@@ -469,9 +469,20 @@ class AIAnalyzer:
         # 转换 Markdown 到 HTML（如果有内容）
         analysis_html = markdown.markdown(analysis) if analysis and analysis.strip() else ""
 
+        # Filter and prepare data same as HTML report's "Stocks & ETFs - Top 25"
+        # 1. Filter out SPXW, VIX
+        filtered_data = [d for d in data if d['ticker'] not in ['SPXW', 'VIX']]
+
+        # 2. Exclude market indices (SPY, QQQ, IWM, SPX)
+        INDEX_ETFS = {'SPY', 'QQQ', 'IWM', 'SPX'}
+        stock_data = [d for d in filtered_data if d['ticker'] not in INDEX_ETFS]
+
+        # 3. Sort by volume and take top 25
+        sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:25]
+
         # Top 25 详细表格
         top_25_rows = []
-        for i, item in enumerate(data[:25], 1):
+        for i, item in enumerate(sorted_stock_data, 1):
             # Format volume and OI in 万 (W) with 2 decimal places
             volume_w = item['total_volume'] / 10000
             oi_w = item['total_oi'] / 10000
@@ -667,8 +678,10 @@ class AIAnalyzer:
         <div class="summary">
             <div class="summary-item">分析标的数: <strong>{len(data)}</strong></div>
             <div class="summary-item">检测异常: <strong>{summary.get('total', 0)}</strong></div>
-            <div class="summary-item">最活跃: <strong>{data[0]['ticker']}</strong> (成交量 {data[0]['total_volume']:,})</div>
+            <div class="summary-item">最活跃: <strong>{sorted_stock_data[0]['ticker']}</strong> (成交量 {sorted_stock_data[0]['total_volume']:,})</div>
         </div>
+
+        {f'<div class="ai-analysis"><h2>🤖 AI 市场分析</h2>{analysis_html}</div>' if analysis_html else ''}
 
         <h2>Stocks & ETFs - Top 25</h2>
         <table>
