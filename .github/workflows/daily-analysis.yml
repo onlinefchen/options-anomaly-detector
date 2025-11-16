@@ -107,6 +107,9 @@ jobs:
           POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
           POLYGON_S3_SECRET_KEY: ${{ secrets.POLYGON_S3_SECRET_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWD: ${{ secrets.GMAIL_APP_PASSWD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
           FORCE_OVERWRITE: ${{ github.event.inputs.force_overwrite }}
         run: |
           echo "=================================================="
