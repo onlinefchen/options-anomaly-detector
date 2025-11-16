@@ -120,7 +120,20 @@ class HTMLReportGenerator:
 
         data_source = metadata.get('data_source', 'Unknown')
         if data_source in ['CSV', 'CSV+API']:
-            csv_date = metadata.get('csv_date', 'Unknown')
+            csv_date = metadata.get('csv_date')
+
+            # If csv_date is None or empty, try to infer from output_file name
+            if not csv_date or csv_date == 'Unknown':
+                # Try to extract date from output file name (YYYY-MM-DD.html)
+                import re
+                match = re.search(r'(\d{4}-\d{2}-\d{2})', output_file)
+                if match:
+                    csv_date = match.group(1)
+                else:
+                    # Fallback to current date minus 1 trading day
+                    from trading_calendar import get_previous_trading_day
+                    csv_date = get_previous_trading_day(current_date)
+
             time_display += f' | <strong>数据来源:</strong> CSV文件 ({csv_date}.csv.gz)'
             # Show analysis date and CSV file date
             stock_date_info = f"{current_date} from {csv_date}.csv.gz"

@@ -114,19 +114,6 @@ jobs:
           echo "=================================================="
           python main.py
 
-      - name: 🔧 Fix missing HTML files
-        env:
-          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
-          POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
-          POLYGON_S3_SECRET_KEY: ${{ secrets.POLYGON_S3_SECRET_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          echo "=================================================="
-          echo "🔧 FIXING MISSING HTML FILES"
-          echo "=================================================="
-          python scripts/regenerate_html_from_json.py --all-missing
-          echo ""
-
       - name: 📚 Generate archive index (always update)
         run: |
           echo "=================================================="
