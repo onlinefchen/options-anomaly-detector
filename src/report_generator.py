@@ -135,8 +135,8 @@ class HTMLReportGenerator:
                     csv_date = get_previous_trading_day(current_date)
 
             time_display += f' | <strong>数据来源:</strong> CSV文件 ({csv_date}.csv.gz)'
-            # Show analysis date and CSV file date
-            stock_date_info = f"{current_date} from {csv_date}.csv.gz"
+            # Show trading date with post-market label
+            stock_date_info = f"{csv_date} Post-Market Options Analysis"
         else:
             time_display += f' | <strong>数据来源:</strong> API'
             # Use current date for table header when using API
