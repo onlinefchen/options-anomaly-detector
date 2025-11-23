@@ -4,6 +4,7 @@ Options Data Utilities
 Shared functions for parsing and analyzing options data
 """
 import re
+from datetime import datetime
 from typing import Dict, Optional, List
 
 
@@ -195,6 +196,35 @@ def aggregate_oi_from_contracts(contracts: List[dict], trading_date: Optional[st
     return result
 
 
+def parse_expiry_date(expiry_str: str, format_type: str = 'YYMMDD') -> Optional[datetime]:
+    """
+    Parse expiry date from various formats
+
+    Args:
+        expiry_str: Expiry date string
+        format_type: 'YYMMDD' or 'YYYY-MM-DD'
+
+    Returns:
+        datetime object or None if parsing fails
+    """
+    from datetime import datetime
+
+    if not expiry_str:
+        return None
+
+    try:
+        if format_type == 'YYMMDD':
+            # YYMMDD format -> YYYY-MM-DD
+            return datetime.strptime(f'20{expiry_str}', '%Y%m%d')
+        elif format_type == 'YYYY-MM-DD':
+            # YYYY-MM-DD format
+            return datetime.strptime(expiry_str, '%Y-%m-%d')
+        else:
+            return None
+    except (ValueError, TypeError):
+        return None
+
+
 def calculate_leap_cp_ratio(contracts: List[dict], trading_date: str) -> float:
     """
     Calculate LEAP C/P ratio for options expiring 3+ months out
@@ -228,18 +258,17 @@ def calculate_leap_cp_ratio(contracts: List[dict], trading_date: str) -> float:
         if not expiry_str or not contract_type:
             continue
 
-        try:
-            # Parse expiry date (YYYY-MM-DD format)
-            expiry_date = datetime.strptime(expiry_str, '%Y-%m-%d')
-
-            # Check if this is a LEAP (expires 3+ months out)
-            if expiry_date >= leap_threshold:
-                if contract_type == 'call':
-                    leap_call_volume += volume
-                elif contract_type == 'put':
-                    leap_put_volume += volume
-        except (ValueError, TypeError):
+        # Parse expiry date
+        expiry_date = parse_expiry_date(expiry_str, 'YYYY-MM-DD')
+        if not expiry_date:
             continue
+
+        # Check if this is a LEAP (expires 3+ months out)
+        if expiry_date >= leap_threshold:
+            if contract_type == 'call':
+                leap_call_volume += volume
+            elif contract_type == 'put':
+                leap_put_volume += volume
 
     # Calculate C/P ratio
     if leap_put_volume == 0:

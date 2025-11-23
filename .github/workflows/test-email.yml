@@ -17,22 +17,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: 📧 Test Email Sending
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWD: ${{ secrets.GMAIL_APP_PASSWD }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
-        run: |
-          echo "=================================================="
-          echo "📧 TESTING EMAIL SENDING FUNCTIONALITY"
-          echo "=================================================="
-          echo ""
-          echo "Gmail User: ${{ secrets.GMAIL_USER }}"
-          echo "Recipient: ${{ secrets.RECIPIENT_EMAIL }}"
-          echo ""
-          python3 test_email.py
-          echo ""
-          echo "=================================================="
-          echo "✅ Email test complete!"
-          echo "=================================================="
+        run: python run.py test-email

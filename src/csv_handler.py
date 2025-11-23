@@ -14,7 +14,7 @@ import requests
 import boto3
 from botocore.client import Config
 from utils import get_market_times
-from options_utils import parse_option_ticker
+from options_utils import parse_option_ticker, parse_expiry_date
 
 
 class PolygonCSVHandler:
@@ -402,19 +402,17 @@ class PolygonCSVHandler:
             if not expiry_str or not contract_type:
                 continue
 
-            try:
-                # Parse expiry date (YYMMDD format)
-                # Convert to YYYY-MM-DD
-                expiry_date = datetime.strptime(f'20{expiry_str}', '%Y%m%d')
-
-                # Check if this is a LEAP (expires 3+ months out)
-                if expiry_date >= leap_threshold:
-                    if contract_type == 'call':
-                        leap_call_volume += volume
-                    elif contract_type == 'put':
-                        leap_put_volume += volume
-            except (ValueError, TypeError):
+            # Use centralized date parser
+            expiry_date = parse_expiry_date(expiry_str, 'YYMMDD')
+            if not expiry_date:
                 continue
+
+            # Check if this is a LEAP (expires 3+ months out)
+            if expiry_date >= leap_threshold:
+                if contract_type == 'call':
+                    leap_call_volume += volume
+                elif contract_type == 'put':
+                    leap_put_volume += volume
 
         # Calculate C/P ratio
         if leap_put_volume == 0:
@@ -478,13 +476,9 @@ class PolygonCSVHandler:
             all_contracts.append(contract_info)
 
             # Check if this is a LEAP (expires 3+ months out)
-            try:
-                # Parse expiry date (YYMMDD format)
-                expiry_date = datetime.strptime(f'20{expiry_str}', '%Y%m%d')
-                if expiry_date >= leap_threshold:
-                    leap_contracts.append(contract_info)
-            except (ValueError, TypeError):
-                pass
+            expiry_date = parse_expiry_date(expiry_str, 'YYMMDD')
+            if expiry_date and expiry_date >= leap_threshold:
+                leap_contracts.append(contract_info)
 
         # Get Top 3 by volume
         top_3_contracts = sorted(all_contracts, key=lambda x: x['volume'], reverse=True)[:3]

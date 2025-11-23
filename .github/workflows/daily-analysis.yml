@@ -67,19 +67,7 @@ jobs:
           path: gh-pages-data
         continue-on-error: true
 
-      - name: 💾 Copy historical JSON files
-        run: |
-          mkdir -p output
-          if [ -d "gh-pages-data" ]; then
-            echo "📊 Copying historical JSON files for 10-day analysis..."
-            find gh-pages-data -name "*.json" -type f -exec cp {} output/ \; || true
-            echo "✓ Historical data restored: $(ls output/*.json 2>/dev/null | wc -l) files"
-          else
-            echo "⚠️  No historical data found (first run?)"
-          fi
-
-      - name: 📊 Generate historical data (if days_back specified)
-        if: ${{ github.event.inputs.days_back != '' && github.event.inputs.days_back != '0' }}
+      - name: 🔍 Run daily analysis
         env:
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
           POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
@@ -90,47 +78,9 @@ jobs:
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
           FORCE_OVERWRITE: ${{ github.event.inputs.force_overwrite }}
         run: |
-          echo "=================================================="
-          echo "📊 GENERATING PAST ${{ github.event.inputs.days_back }} TRADING DAYS"
-          echo "=================================================="
-          echo ""
-          echo "Force overwrite: ${{ github.event.inputs.force_overwrite }}"
-          echo ""
-          python generate_historical_data.py --days ${{ github.event.inputs.days_back }}
-          echo ""
-          echo "=================================================="
-
-      - name: 🔍 Run daily analysis (if days_back not specified)
-        if: ${{ github.event.inputs.days_back == '' || github.event.inputs.days_back == '0' }}
-        env:
-          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
-          POLYGON_S3_ACCESS_KEY: ${{ secrets.POLYGON_S3_ACCESS_KEY }}
-          POLYGON_S3_SECRET_KEY: ${{ secrets.POLYGON_S3_SECRET_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWD: ${{ secrets.GMAIL_APP_PASSWD }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
-          FORCE_OVERWRITE: ${{ github.event.inputs.force_overwrite }}
-        run: |
-          echo "=================================================="
-          echo "🔍 STEP 2: ANOMALY DETECTION & ANALYSIS"
-          echo "=================================================="
-          python main.py
-
-      - name: 📚 Generate archive index (always update)
-        run: |
-          echo "=================================================="
-          echo "📚 GENERATING ARCHIVE INDEX"
-          echo "=================================================="
-          python3 -c "
-          import sys
-          sys.path.insert(0, 'src')
-          from archive_index_generator import get_archived_reports, generate_archive_index
-          reports = get_archived_reports('output')
-          generate_archive_index(reports, 'output/archive.html')
-          print(f'✓ Archive index generated: {len(reports)} reports')
-          "
-          echo ""
+          python run.py daily-analysis \
+            --days-back ${{ github.event.inputs.days_back || 0 }} \
+            --restore-from gh-pages-data
 
       - name: 📊 Upload analysis results
         uses: actions/upload-artifact@v4
