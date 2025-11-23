@@ -1,0 +1,38 @@
+name: Test Email Sending
+
+on:
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  test-email:
+    name: 📧 Test Email Sending
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📧 Test Email Sending
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWD: ${{ secrets.GMAIL_APP_PASSWD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: |
+          echo "=================================================="
+          echo "📧 TESTING EMAIL SENDING FUNCTIONALITY"
+          echo "=================================================="
+          echo ""
+          echo "Gmail User: ${{ secrets.GMAIL_USER }}"
+          echo "Recipient: ${{ secrets.RECIPIENT_EMAIL }}"
+          echo ""
+          python3 test_email.py
+          echo ""
+          echo "=================================================="
+          echo "✅ Email test complete!"
+          echo "=================================================="
