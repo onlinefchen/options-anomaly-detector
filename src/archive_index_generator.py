@@ -41,14 +41,18 @@ def get_archived_reports(output_dir: str = 'output') -> List[Dict]:
                 with open(json_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
 
+                # Use date from JSON if available, otherwise use filename date
+                # This ensures the archive lists the correct TRADING DATE even if filename is different
+                report_date = data.get('date', date_str)
+
                 # Check if this date is a trading day
-                is_trade_day = is_trading_day(date_str)
+                is_trade_day = is_trading_day(report_date)
 
                 reports.append({
-                    'date': date_str,
+                    'date': report_date,
                     'tickers_count': data.get('tickers_count', 0),
                     'anomalies_count': data.get('anomalies_count', 0),
-                    'html_file': f'{date_str}.html',
+                    'html_file': f'{date_str}.html',  # Link must match actual filename
                     'json_file': f'{date_str}.json',
                     'has_html': os.path.exists(html_path),
                     'is_trading_day': is_trade_day
