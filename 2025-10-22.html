@@ -266,7 +266,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🔒 <strong>美东时间:</strong> 2025-11-15 20:33:12 EST | <strong>东八区时间:</strong> 2025-11-16 09:33:12 | <strong>交易时段:</strong> 休市 (Market Closed) | <strong>数据来源:</strong> CSV文件 (2025-10-22.csv.gz)</p>
+            <p class="date">🌅 <strong>美东时间:</strong> 2025-12-16 07:42:22 EST | <strong>东八区时间:</strong> 2025-12-16 20:42:22 | <strong>交易时段:</strong> 盘前 (Pre-Market) | <strong>数据来源:</strong> CSV文件 (2025-10-22.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -300,7 +300,27 @@
         <div class="section">
             <h2>Macro Market Outlook</h2>
             <div class="macro-content">
-                <p>AI analysis not configured (OPENAI_API_KEY required)</p>
+                <strong>Market Sentiment &amp; Positioning</strong>
+
+<ul><li><strong>C/P Ratio Analysis</strong>: The Call/Put Volume Ratios for SPY (0.81), QQQ (0.89), and IWM (0.53) suggest a relatively balanced sentiment, with a slight bias towards puts in SPY and QQQ, indicating cautiousness or hedging against downside risks. In contrast, the low C/P ratio in SPX (0.35) signals a more pronounced hedging or bearish sentiment, possibly reflecting concerns about broader market risks.</li>
+
+<li><strong>Smart Money Positioning</strong>: With Open Interest at zero, it's challenging to ascertain long-term positioning. However, the observed volume patterns imply that institutions may be favoring short-term protection strategies rather than directional bets, especially in SPX and IWM where put volumes are notably higher.</li>
+
+<li><strong>Unusual Patterns</strong>: The lack of Open Interest data and strike concentration makes it difficult to identify specific strike-focused strategies. However, the significant put volume in SPX suggests heightened caution among institutional players, potentially due to macroeconomic uncertainties or pending market-moving events.</li>
+
+<strong>Macro Outlook</strong>
+
+<li><strong>Current Environment</strong>: The macro backdrop is characterized by ongoing Federal Reserve vigilance, with interest rates expected to remain high as inflationary pressures persist. Economic growth shows signs of slowing, particularly as the labor market exhibits mixed signals, implying potential challenges ahead.</li>
+
+<li><strong>Key Risks and Opportunities</strong>: Investors face risks from geopolitical tensions, elevated energy prices, and supply chain disruptions. However, opportunities may exist in sectors resilient to rate hikes or those benefiting from structural shifts, such as renewable energy or technology innovations.</li>
+
+<li><strong>Investor Watchlist</strong>: Investors should monitor Fed communications for any shifts in policy stance, particularly regarding interest rate trajectories and quantitative tightening. Additionally, global economic indicators and corporate earnings reports will be crucial in assessing the sustainability of current valuations.</li>
+
+<strong>Key Takeaways</strong>
+
+<li>The options market reveals a cautious sentiment, with institutions likely hedging against downside risks, especially in the SPX.</li>
+<li>The macroeconomic environment remains challenging with persistent inflation and growth concerns, impacting market confidence.</li>
+<li>Investors should focus on Fed policy signals and global economic data for guidance on future market directions.</li></ul>
             </div>
         </div>
 
@@ -314,9 +334,6 @@
                         <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
-                        <th class="sortable" data-table="index" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
-                        <th class="sortable" data-table="index" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th>Top 3 Contracts</th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -327,9 +344,6 @@
                         <td>1022.67W</td>
                         <td>0.81</td>
                         <td>0.0</td>
-                        <td>0.00W</td>
-                        <td>0.00</td>
-                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -338,9 +352,6 @@
                         <td>556.37W</td>
                         <td>0.89</td>
                         <td>0.0</td>
-                        <td>0.00W</td>
-                        <td>0.00</td>
-                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -349,9 +360,6 @@
                         <td>209.67W</td>
                         <td>0.53</td>
                         <td>0.0</td>
-                        <td>0.00W</td>
-                        <td>0.00</td>
-                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -360,9 +368,6 @@
                         <td>49.39W</td>
                         <td>0.35</td>
                         <td>0.0</td>
-                        <td>0.00W</td>
-                        <td>0.00</td>
-                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                 </tbody>
@@ -370,7 +375,7 @@
         </div>
 
         <div class="section">
-            <h2>Stocks & ETFs - Top 25 (2025-11-16 from 2025-10-22.csv.gz)</h2>
+            <h2>Stocks & ETFs - Top 25 (2025-10-22 Post-Market Options Analysis)</h2>
             <table id="stockTable">
                 <thead>
                     <tr>
@@ -382,7 +387,9 @@
                         <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th>Top 3 Contracts</th>
+                        <th>Top 3 Volume</th>
+                        <th>Top 3 Volume Leap</th>
+                        <th>Top 3 OI</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">
@@ -397,6 +404,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -408,6 +417,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -421,6 +432,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -432,6 +445,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -445,6 +460,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -456,6 +473,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -469,6 +488,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -480,6 +501,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -493,6 +516,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -504,6 +529,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -517,6 +544,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -528,6 +557,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -541,6 +572,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -552,6 +585,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -565,6 +600,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -576,6 +613,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -589,6 +628,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -600,6 +641,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -613,6 +656,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -624,6 +669,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -637,6 +684,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -648,6 +697,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -661,6 +712,8 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                     <tr>
@@ -672,6 +725,8 @@
                         <td>-</td>
                         <td>0.00W</td>
                         <td>0.00</td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                         <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
@@ -685,21 +740,41 @@
                         <td>0.00W</td>
                         <td>0.00</td>
                         <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
+                        <td class="compact-cell"><small>N/A</small></td>
                     </tr>
                 
                 </tbody>
             </table>
+
+            <div style="margin-top: 20px; padding: 15px; background-color: #f5f5f7; border-radius: 8px; font-size: 14px;">
+                <h3 style="margin-top: 0; font-size: 15px; color: #1d1d1f;">📊 Top 3 列说明</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                    <div>
+                        <strong style="color: #06c;">Top 3 Volume</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">成交量最大的前3个期权合约（基于当日成交量）</p>
+                    </div>
+                    <div>
+                        <strong style="color: #06c;">Top 3 Volume Leap</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">距到期日≥90天且成交量最大的前3个期权合约</p>
+                    </div>
+                    <div>
+                        <strong style="color: #06c;">Top 3 OI</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">持仓量（Open Interest）最大的前3个期权合约</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="section">
-            <h2>Call/Put Ratio Analysis (2025-11-16 from 2025-10-22.csv.gz)</h2>
+            <h2>Call/Put Ratio Analysis (2025-10-22 Post-Market Options Analysis)</h2>
             <div class="chart-container">
                 <canvas id="cpRatioChart"></canvas>
             </div>
         </div>
 
         <div class="section">
-            <h2>Volume Analysis (2025-11-16 from 2025-10-22.csv.gz)</h2>
+            <h2>Volume Analysis (2025-10-22 Post-Market Options Analysis)</h2>
             <div class="chart-container">
                 <canvas id="volumeOIChart"></canvas>
             </div>
@@ -713,8 +788,8 @@
 
     <script>
         // Store table data for sorting
-        const indexData = [{"ticker": "SPY", "total_volume": 10226652, "put_volume": 5645055, "call_volume": 4581597, "cp_volume_ratio": 0.81, "contracts_count": 4512, "put_contracts": 2568, "call_contracts": 1944, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 1.0, "best_rank": 1, "worst_rank": 1, "today_rank": 1, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "QQQ", "total_volume": 5563706, "put_volume": 2936033, "call_volume": 2627673, "cp_volume_ratio": 0.89, "contracts_count": 3869, "put_contracts": 2052, "call_contracts": 1817, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 2.1, "best_rank": 2, "worst_rank": 3, "today_rank": 2, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "IWM", "total_volume": 2096739, "put_volume": 1370620, "call_volume": 726119, "cp_volume_ratio": 0.53, "contracts_count": 1964, "put_contracts": 970, "call_contracts": 994, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 5, "worst_rank": 9, "today_rank": 8, "rank_change": -1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "SPX", "total_volume": 493885, "put_volume": 365423, "call_volume": 128462, "cp_volume_ratio": 0.35, "contracts_count": 2616, "put_contracts": 1723, "call_contracts": 893, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 21.8, "best_rank": 17, "worst_rank": 28, "today_rank": 22, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}];
-        const stockData = [{"ticker": "BYND", "total_volume": 3322370, "put_volume": 1396390, "call_volume": 1925980, "cp_volume_ratio": 1.38, "contracts_count": 546, "put_contracts": 247, "call_contracts": 299, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 25, "today_rank": 23, "rank_change": 2, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "NVDA", "total_volume": 2207899, "put_volume": 752032, "call_volume": 1455867, "cp_volume_ratio": 1.94, "contracts_count": 2418, "put_contracts": 1090, "call_contracts": 1328, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 4.6, "best_rank": 2, "worst_rank": 7, "today_rank": 4, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "TSLA", "total_volume": 1475390, "put_volume": 649519, "call_volume": 825871, "cp_volume_ratio": 1.27, "contracts_count": 3242, "put_contracts": 1421, "call_contracts": 1821, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 3, "worst_rank": 13, "today_rank": 5, "rank_change": 1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "GLD", "total_volume": 1114652, "put_volume": 437372, "call_volume": 677280, "cp_volume_ratio": 1.55, "contracts_count": 3712, "put_contracts": 1654, "call_contracts": 2058, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.6, "best_rank": 6, "worst_rank": 21, "today_rank": 21, "rank_change": -1, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "SLV", "total_volume": 853669, "put_volume": 288483, "call_volume": 565186, "cp_volume_ratio": 1.96, "contracts_count": 1751, "put_contracts": 624, "call_contracts": 1127, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 16.5, "best_rank": 8, "worst_rank": 26, "today_rank": 20, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "PLTR", "total_volume": 817764, "put_volume": 342086, "call_volume": 475678, "cp_volume_ratio": 1.39, "contracts_count": 1352, "put_contracts": 609, "call_contracts": 743, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 15.3, "best_rank": 8, "worst_rank": 22, "today_rank": 9, "rank_change": 7, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "AAPL", "total_volume": 815030, "put_volume": 276311, "call_volume": 538719, "cp_volume_ratio": 1.95, "contracts_count": 1296, "put_contracts": 612, "call_contracts": 684, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 19, "today_rank": 6, "rank_change": 3, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "AMD", "total_volume": 708769, "put_volume": 297829, "call_volume": 410940, "cp_volume_ratio": 1.38, "contracts_count": 1748, "put_contracts": 751, "call_contracts": 997, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.2, "best_rank": 8, "worst_rank": 17, "today_rank": 12, "rank_change": 5, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "IBIT", "total_volume": 692043, "put_volume": 212287, "call_volume": 479756, "cp_volume_ratio": 2.26, "contracts_count": 1477, "put_contracts": 640, "call_contracts": 837, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.3, "best_rank": 9, "worst_rank": 18, "today_rank": 10, "rank_change": 2, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "AMZN", "total_volume": 615625, "put_volume": 153077, "call_volume": 462548, "cp_volume_ratio": 3.02, "contracts_count": 1454, "put_contracts": 640, "call_contracts": 814, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 14.0, "best_rank": 8, "worst_rank": 20, "today_rank": 8, "rank_change": 5, "trend": "stable", "streak": 0, "icon": "[HOT]"}, "current_price": null}, {"ticker": "OPEN", "total_volume": 546957, "put_volume": 130191, "call_volume": 416766, "cp_volume_ratio": 3.2, "contracts_count": 491, "put_contracts": 195, "call_contracts": 296, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.2, "best_rank": 10, "worst_rank": 30, "today_rank": 25, "rank_change": -1, "trend": "falling", "streak": 1, "icon": "[HOT]"}, "current_price": null}, {"ticker": "TLT", "total_volume": 496815, "put_volume": 161126, "call_volume": 335689, "cp_volume_ratio": 2.08, "contracts_count": 1170, "put_contracts": 530, "call_contracts": 640, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 20.4, "best_rank": 10, "worst_rank": 30, "today_rank": 19, "rank_change": 0, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "NFLX", "total_volume": 493610, "put_volume": 229393, "call_volume": 264217, "cp_volume_ratio": 1.15, "contracts_count": 2898, "put_contracts": 1273, "call_contracts": 1625, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 19.5, "best_rank": 19, "worst_rank": 20, "today_rank": 20, "rank_change": -1, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}, {"ticker": "INTC", "total_volume": 466668, "put_volume": 160470, "call_volume": 306198, "cp_volume_ratio": 1.91, "contracts_count": 1008, "put_contracts": 428, "call_contracts": 580, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.5, "best_rank": 7, "worst_rank": 29, "today_rank": 24, "rank_change": 5, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "HOOD", "total_volume": 451149, "put_volume": 167090, "call_volume": 284059, "cp_volume_ratio": 1.7, "contracts_count": 1462, "put_contracts": 585, "call_contracts": 877, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 6, "appearance_rate": 60.0, "avg_rank": 23.7, "best_rank": 17, "worst_rank": 27, "today_rank": 17, "rank_change": 10, "trend": "stable", "streak": 1, "icon": "[ACT]"}, "current_price": null}, {"ticker": "SOFI", "total_volume": 416893, "put_volume": 116381, "call_volume": 300512, "cp_volume_ratio": 2.58, "contracts_count": 852, "put_contracts": 352, "call_contracts": 500, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.4, "best_rank": 7, "worst_rank": 25, "today_rank": 15, "rank_change": 6, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": null}, {"ticker": "GOOGL", "total_volume": 400596, "put_volume": 140095, "call_volume": 260501, "cp_volume_ratio": 1.86, "contracts_count": 1290, "put_contracts": 611, "call_contracts": 679, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 8, "appearance_rate": 80.0, "avg_rank": 17.8, "best_rank": 9, "worst_rank": 29, "today_rank": 16, "rank_change": -6, "trend": "rising", "streak": 6, "icon": "[ACT]"}, "current_price": null}, {"ticker": "MSTR", "total_volume": 356693, "put_volume": 153234, "call_volume": 203459, "cp_volume_ratio": 1.33, "contracts_count": 1930, "put_contracts": 859, "call_contracts": 1071, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.3, "best_rank": 11, "worst_rank": 28, "today_rank": 11, "rank_change": 3, "trend": "rising", "streak": 2, "icon": "[HOT]"}, "current_price": null}, {"ticker": "UUUU", "total_volume": 355950, "put_volume": 93033, "call_volume": 262917, "cp_volume_ratio": 2.83, "contracts_count": 634, "put_contracts": 261, "call_contracts": 373, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 23.5, "best_rank": 22, "worst_rank": 25, "today_rank": 22, "rank_change": 3, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}, {"ticker": "MARA", "total_volume": 337066, "put_volume": 58518, "call_volume": 278548, "cp_volume_ratio": 4.76, "contracts_count": 666, "put_contracts": 256, "call_contracts": 410, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 4, "appearance_rate": 40.0, "avg_rank": 25.2, "best_rank": 23, "worst_rank": 27, "today_rank": 27, "rank_change": -4, "trend": "stable", "streak": 2, "icon": "[OCC]"}, "current_price": null}, {"ticker": "RGTI", "total_volume": 331010, "put_volume": 206026, "call_volume": 124984, "cp_volume_ratio": 0.61, "contracts_count": 1124, "put_contracts": 540, "call_contracts": 584, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 3, "appearance_rate": 30.0, "avg_rank": 24.0, "best_rank": 15, "worst_rank": 30, "today_rank": 30, "rank_change": -15, "trend": "stable", "streak": 1, "icon": "[OCC]"}, "current_price": null}, {"ticker": "MSFT", "total_volume": 307361, "put_volume": 105861, "call_volume": 201500, "cp_volume_ratio": 1.9, "contracts_count": 1590, "put_contracts": 726, "call_contracts": 864, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 5, "appearance_rate": 50.0, "avg_rank": 18.2, "best_rank": 13, "worst_rank": 28, "today_rank": 13, "rank_change": 0, "trend": "rising", "streak": 4, "icon": "[OCC]"}, "current_price": null}, {"ticker": "GDX", "total_volume": 273087, "put_volume": 118090, "call_volume": 154997, "cp_volume_ratio": 1.31, "contracts_count": 873, "put_contracts": 358, "call_contracts": 515, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 25.0, "best_rank": 21, "worst_rank": 29, "today_rank": 29, "rank_change": -8, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}, {"ticker": "CRWV", "total_volume": 270685, "put_volume": 82599, "call_volume": 188086, "cp_volume_ratio": 2.28, "contracts_count": 1204, "put_contracts": 514, "call_contracts": 690, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 1, "appearance_rate": 10.0, "avg_rank": 30.0, "best_rank": 30, "worst_rank": 30, "today_rank": 30, "rank_change": 0, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}, {"ticker": "BULL", "total_volume": 268408, "put_volume": 55700, "call_volume": 212708, "cp_volume_ratio": 3.82, "contracts_count": 357, "put_contracts": 142, "call_contracts": 215, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 1, "appearance_rate": 10.0, "avg_rank": 24.0, "best_rank": 24, "worst_rank": 24, "today_rank": 24, "rank_change": 0, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": null}];
+        const indexData = [{"ticker": "SPY", "total_volume": 10226652, "put_volume": 5645055, "call_volume": 4581597, "cp_volume_ratio": 0.81, "contracts_count": 4512, "put_contracts": 2568, "call_contracts": 1944, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 1.0, "best_rank": 1, "worst_rank": 1, "today_rank": 1, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 680.5}, {"ticker": "QQQ", "total_volume": 5563706, "put_volume": 2936033, "call_volume": 2627673, "cp_volume_ratio": 0.89, "contracts_count": 3869, "put_contracts": 2052, "call_contracts": 1817, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 2.1, "best_rank": 2, "worst_rank": 3, "today_rank": 2, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 609.87}, {"ticker": "IWM", "total_volume": 2096739, "put_volume": 1370620, "call_volume": 726119, "cp_volume_ratio": 0.53, "contracts_count": 1964, "put_contracts": 970, "call_contracts": 994, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 5, "worst_rank": 9, "today_rank": 8, "rank_change": -1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 250.79}, {"ticker": "SPX", "total_volume": 493885, "put_volume": 365423, "call_volume": 128462, "cp_volume_ratio": 0.35, "contracts_count": 2616, "put_contracts": 1723, "call_contracts": 893, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 21.8, "best_rank": 17, "worst_rank": 28, "today_rank": 22, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": null}];
+        const stockData = [{"ticker": "BYND", "total_volume": 3322370, "put_volume": 1396390, "call_volume": 1925980, "cp_volume_ratio": 1.38, "contracts_count": 546, "put_contracts": 247, "call_contracts": 299, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 25, "today_rank": 23, "rank_change": 2, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 1.025}, {"ticker": "NVDA", "total_volume": 2207899, "put_volume": 752032, "call_volume": 1455867, "cp_volume_ratio": 1.94, "contracts_count": 2418, "put_contracts": 1090, "call_contracts": 1328, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 4.6, "best_rank": 2, "worst_rank": 7, "today_rank": 4, "rank_change": 0, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 176.82}, {"ticker": "TSLA", "total_volume": 1475390, "put_volume": 649519, "call_volume": 825871, "cp_volume_ratio": 1.27, "contracts_count": 3242, "put_contracts": 1421, "call_contracts": 1821, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 6.5, "best_rank": 3, "worst_rank": 13, "today_rank": 5, "rank_change": 1, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 472.4}, {"ticker": "GLD", "total_volume": 1114652, "put_volume": 437372, "call_volume": 677280, "cp_volume_ratio": 1.55, "contracts_count": 3712, "put_contracts": 1654, "call_contracts": 2058, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.6, "best_rank": 6, "worst_rank": 21, "today_rank": 21, "rank_change": -1, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 394.53}, {"ticker": "SLV", "total_volume": 853669, "put_volume": 288483, "call_volume": 565186, "cp_volume_ratio": 1.96, "contracts_count": 1751, "put_contracts": 624, "call_contracts": 1127, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 16.5, "best_rank": 8, "worst_rank": 26, "today_rank": 20, "rank_change": 6, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 57.25}, {"ticker": "PLTR", "total_volume": 817764, "put_volume": 342086, "call_volume": 475678, "cp_volume_ratio": 1.39, "contracts_count": 1352, "put_contracts": 609, "call_contracts": 743, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 15.3, "best_rank": 8, "worst_rank": 22, "today_rank": 9, "rank_change": 7, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 182}, {"ticker": "AAPL", "total_volume": 815030, "put_volume": 276311, "call_volume": 538719, "cp_volume_ratio": 1.95, "contracts_count": 1296, "put_contracts": 612, "call_contracts": 684, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 11.4, "best_rank": 4, "worst_rank": 19, "today_rank": 6, "rank_change": 3, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 273.62}, {"ticker": "AMD", "total_volume": 708769, "put_volume": 297829, "call_volume": 410940, "cp_volume_ratio": 1.38, "contracts_count": 1748, "put_contracts": 751, "call_contracts": 997, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.2, "best_rank": 8, "worst_rank": 17, "today_rank": 12, "rank_change": 5, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 207.1}, {"ticker": "IBIT", "total_volume": 692043, "put_volume": 212287, "call_volume": 479756, "cp_volume_ratio": 2.26, "contracts_count": 1477, "put_contracts": 640, "call_contracts": 837, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 13.3, "best_rank": 9, "worst_rank": 18, "today_rank": 10, "rank_change": 2, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 49.43}, {"ticker": "AMZN", "total_volume": 615625, "put_volume": 153077, "call_volume": 462548, "cp_volume_ratio": 3.02, "contracts_count": 1454, "put_contracts": 640, "call_contracts": 814, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 14.0, "best_rank": 8, "worst_rank": 20, "today_rank": 8, "rank_change": 5, "trend": "stable", "streak": 0, "icon": "[HOT]"}, "current_price": 223}, {"ticker": "OPEN", "total_volume": 546957, "put_volume": 130191, "call_volume": 416766, "cp_volume_ratio": 3.2, "contracts_count": 491, "put_contracts": 195, "call_contracts": 296, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.2, "best_rank": 10, "worst_rank": 30, "today_rank": 25, "rank_change": -1, "trend": "falling", "streak": 1, "icon": "[HOT]"}, "current_price": 6.44}, {"ticker": "TLT", "total_volume": 496815, "put_volume": 161126, "call_volume": 335689, "cp_volume_ratio": 2.08, "contracts_count": 1170, "put_contracts": 530, "call_contracts": 640, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 20.4, "best_rank": 10, "worst_rank": 30, "today_rank": 19, "rank_change": 0, "trend": "rising", "streak": 10, "icon": "[HOT]"}, "current_price": 87.46}, {"ticker": "NFLX", "total_volume": 493610, "put_volume": 229393, "call_volume": 264217, "cp_volume_ratio": 1.15, "contracts_count": 2898, "put_contracts": 1273, "call_contracts": 1625, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 19.5, "best_rank": 19, "worst_rank": 20, "today_rank": 20, "rank_change": -1, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 93.47}, {"ticker": "INTC", "total_volume": 466668, "put_volume": 160470, "call_volume": 306198, "cp_volume_ratio": 1.91, "contracts_count": 1008, "put_contracts": 428, "call_contracts": 580, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.5, "best_rank": 7, "worst_rank": 29, "today_rank": 24, "rank_change": 5, "trend": "falling", "streak": 10, "icon": "[HOT]"}, "current_price": 37.93}, {"ticker": "HOOD", "total_volume": 451149, "put_volume": 167090, "call_volume": 284059, "cp_volume_ratio": 1.7, "contracts_count": 1462, "put_contracts": 585, "call_contracts": 877, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 6, "appearance_rate": 60.0, "avg_rank": 23.7, "best_rank": 17, "worst_rank": 27, "today_rank": 17, "rank_change": 10, "trend": "stable", "streak": 1, "icon": "[ACT]"}, "current_price": 116.06}, {"ticker": "SOFI", "total_volume": 416893, "put_volume": 116381, "call_volume": 300512, "cp_volume_ratio": 2.58, "contracts_count": 852, "put_contracts": 352, "call_contracts": 500, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 10, "appearance_rate": 100.0, "avg_rank": 17.4, "best_rank": 7, "worst_rank": 25, "today_rank": 15, "rank_change": 6, "trend": "stable", "streak": 10, "icon": "[HOT]"}, "current_price": 25.71}, {"ticker": "GOOGL", "total_volume": 400596, "put_volume": 140095, "call_volume": 260501, "cp_volume_ratio": 1.86, "contracts_count": 1290, "put_contracts": 611, "call_contracts": 679, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 8, "appearance_rate": 80.0, "avg_rank": 17.8, "best_rank": 9, "worst_rank": 29, "today_rank": 16, "rank_change": -6, "trend": "rising", "streak": 6, "icon": "[ACT]"}, "current_price": 308.39}, {"ticker": "MSTR", "total_volume": 356693, "put_volume": 153234, "call_volume": 203459, "cp_volume_ratio": 1.33, "contracts_count": 1930, "put_contracts": 859, "call_contracts": 1071, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 9, "appearance_rate": 90.0, "avg_rank": 22.3, "best_rank": 11, "worst_rank": 28, "today_rank": 11, "rank_change": 3, "trend": "rising", "streak": 2, "icon": "[HOT]"}, "current_price": 165.37}, {"ticker": "UUUU", "total_volume": 355950, "put_volume": 93033, "call_volume": 262917, "cp_volume_ratio": 2.83, "contracts_count": 634, "put_contracts": 261, "call_contracts": 373, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 23.5, "best_rank": 22, "worst_rank": 25, "today_rank": 22, "rank_change": 3, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 13.75}, {"ticker": "MARA", "total_volume": 337066, "put_volume": 58518, "call_volume": 278548, "cp_volume_ratio": 4.76, "contracts_count": 666, "put_contracts": 256, "call_contracts": 410, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 4, "appearance_rate": 40.0, "avg_rank": 25.2, "best_rank": 23, "worst_rank": 27, "today_rank": 27, "rank_change": -4, "trend": "stable", "streak": 2, "icon": "[OCC]"}, "current_price": 10.82}, {"ticker": "RGTI", "total_volume": 331010, "put_volume": 206026, "call_volume": 124984, "cp_volume_ratio": 0.61, "contracts_count": 1124, "put_contracts": 540, "call_contracts": 584, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 3, "appearance_rate": 30.0, "avg_rank": 24.0, "best_rank": 15, "worst_rank": 30, "today_rank": 30, "rank_change": -15, "trend": "stable", "streak": 1, "icon": "[OCC]"}, "current_price": 23.62}, {"ticker": "MSFT", "total_volume": 307361, "put_volume": 105861, "call_volume": 201500, "cp_volume_ratio": 1.9, "contracts_count": 1590, "put_contracts": 726, "call_contracts": 864, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 5, "appearance_rate": 50.0, "avg_rank": 18.2, "best_rank": 13, "worst_rank": 28, "today_rank": 13, "rank_change": 0, "trend": "rising", "streak": 4, "icon": "[OCC]"}, "current_price": 473.98}, {"ticker": "GDX", "total_volume": 273087, "put_volume": 118090, "call_volume": 154997, "cp_volume_ratio": 1.31, "contracts_count": 873, "put_contracts": 358, "call_contracts": 515, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 2, "appearance_rate": 20.0, "avg_rank": 25.0, "best_rank": 21, "worst_rank": 29, "today_rank": 29, "rank_change": -8, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 84.38}, {"ticker": "CRWV", "total_volume": 270685, "put_volume": 82599, "call_volume": 188086, "cp_volume_ratio": 2.28, "contracts_count": 1204, "put_contracts": 514, "call_contracts": 690, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 1, "appearance_rate": 10.0, "avg_rank": 30.0, "best_rank": 30, "worst_rank": 30, "today_rank": 30, "rank_change": 0, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 71.9}, {"ticker": "BULL", "total_volume": 268408, "put_volume": 55700, "call_volume": 212708, "cp_volume_ratio": 3.82, "contracts_count": 357, "put_contracts": 142, "call_contracts": 215, "total_oi": 0, "put_oi": 0, "call_oi": 0, "cp_oi_ratio": 0, "history": {"appearances": 1, "appearance_rate": 10.0, "avg_rank": 24.0, "best_rank": 24, "worst_rank": 24, "today_rank": 24, "rank_change": 0, "trend": "stable", "streak": 0, "icon": "[NEW]"}, "current_price": 8.6}];
 
         let indexSortColumn = 'total_volume';
         let indexSortOrder = 'desc';
@@ -803,49 +878,63 @@
                 // Format volume and OI in 万 (W) with 2 decimal places
                 const volumeW = (item.total_volume / 10000).toFixed(2) + 'W';
                 const oiW = (item.total_oi / 10000).toFixed(2) + 'W';
-
-                // Format Top 3 contracts with Current Price at the beginning
-                let top3Html = '';
+                const avgTradeSize = item.avg_trade_size || 0;
                 const currentPrice = item.current_price;
-                if (currentPrice) {
-                    top3Html += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
-                }
-
-                const top3Contracts = item.top_3_contracts || [];
-                // Show top 3 contracts
-                top3Contracts.slice(0, 3).forEach((contract, i) => {
-                    const contractShort = formatContractShort(contract);
-                    const oiK = (contract.oi || 0) / 1000;
-                    const pct = contract.percentage || 0;
-                    top3Html += `<div class='contract-item'>${contractShort} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
-                });
-                if (!top3Html) {
-                    top3Html = '<small>N/A</small>';
-                }
-
-                // Format history
-                const history = item.history || {};
-                const appearances = history.appearances || 0;
-                const icon = history.icon || '[NEW]';
-                const rankChange = history.rank_change;
-                const avgRank = history.avg_rank;
-
-                let rankSymbol = '-';
-                if (rankChange !== null && rankChange !== undefined && rankChange !== 0) {
-                    if (rankChange > 0) {
-                        rankSymbol = `+${rankChange}`;
-                    } else {
-                        rankSymbol = `-${Math.abs(rankChange)}`;
-                    }
-                }
 
                 const row = document.createElement('tr');
 
-                // For stock table, include LEAP C/P column
+                // For stock table, include LEAP C/P column and all 3 Top 3 columns
                 if (tableType === 'stock') {
                     const leapCp = item.leap_cp_ratio || 0;
                     const leapCpHtml = leapCp ? leapCp.toFixed(2) : '-';
-                    const avgTradeSize = item.avg_trade_size || 0;
+
+                    // Format Top 3 Volume
+                    let top3VolumeHtml = '';
+                    if (currentPrice) {
+                        top3VolumeHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
+                    }
+                    const top3ContractsVolume = item.top_3_contracts_volume || [];
+                    top3ContractsVolume.slice(0, 3).forEach((contract) => {
+                        const ticker = contract.ticker || 'N/A';
+                        const volumeK = (contract.volume || 0) / 1000;
+                        const pct = contract.percentage || 0;
+                        top3VolumeHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(volumeK)}K (${pct.toFixed(1)}%)</span></div>`;
+                    });
+                    if (!top3VolumeHtml || top3ContractsVolume.length === 0) {
+                        top3VolumeHtml = '<small>N/A</small>';
+                    }
+
+                    // Format Top 3 Volume Leap
+                    let top3LeapVolumeHtml = '';
+                    if (currentPrice) {
+                        top3LeapVolumeHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
+                    }
+                    const top3LeapVolume = item.top_3_leap_volume || [];
+                    top3LeapVolume.slice(0, 3).forEach((contract) => {
+                        const ticker = contract.ticker || 'N/A';
+                        const volumeK = (contract.volume || 0) / 1000;
+                        const pct = contract.percentage || 0;
+                        top3LeapVolumeHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(volumeK)}K (${pct.toFixed(1)}%)</span></div>`;
+                    });
+                    if (!top3LeapVolumeHtml || top3LeapVolume.length === 0) {
+                        top3LeapVolumeHtml = '<small>N/A</small>';
+                    }
+
+                    // Format Top 3 OI
+                    let top3OIHtml = '';
+                    if (currentPrice) {
+                        top3OIHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
+                    }
+                    const top3OI = item.top_3_oi || [];
+                    top3OI.slice(0, 3).forEach((contract) => {
+                        const ticker = contract.ticker || 'N/A';
+                        const oiK = (contract.oi || 0) / 1000;
+                        const pct = contract.percentage || 0;
+                        top3OIHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
+                    });
+                    if (!top3OIHtml || top3OI.length === 0) {
+                        top3OIHtml = '<small>N/A</small>';
+                    }
 
                     row.innerHTML = `
                         <td>${idx + 1}</td>
@@ -856,21 +945,18 @@
                         <td>${leapCpHtml}</td>
                         <td>${oiW}</td>
                         <td>${item.cp_oi_ratio.toFixed(2)}</td>
-                        <td class="compact-cell">${top3Html}</td>
+                        <td class="compact-cell">${top3VolumeHtml}</td>
+                        <td class="compact-cell">${top3LeapVolumeHtml}</td>
+                        <td class="compact-cell">${top3OIHtml}</td>
                     `;
                 } else {
-                    // Index table - no LEAP C/P column
-                    const avgTradeSize = item.avg_trade_size || 0;
-
+                    // Index table - only show: Rank, Ticker, Total Volume, C/P Volume, Avg Trade Size
                     row.innerHTML = `
                         <td>${idx + 1}</td>
                         <td><strong>${item.ticker}</strong></td>
                         <td>${volumeW}</td>
                         <td>${item.cp_volume_ratio.toFixed(2)}</td>
                         <td>${avgTradeSize.toFixed(1)}</td>
-                        <td>${oiW}</td>
-                        <td>${item.cp_oi_ratio.toFixed(2)}</td>
-                        <td class="compact-cell">${top3Html}</td>
                     `;
                 }
 
