@@ -39,13 +39,14 @@ def restore_historical_data(source_dir: str, output_dir: str = 'output'):
         print(f"⚠️  No historical data found (first run?)")
         return 0
 
-    # Copy all JSON files
+    # Copy all JSON and HTML files
     count = 0
-    for file in Path(source_dir).rglob('*.json'):
-        if file.name.endswith('.json'):
-            dest = os.path.join(output_dir, file.name)
-            shutil.copy2(file, dest)
-            count += 1
+    for ext in ['*.json', '*.html']:
+        for file in Path(source_dir).rglob(ext):
+            if file.name.endswith(ext.replace('*', '')):
+                dest = os.path.join(output_dir, file.name)
+                shutil.copy2(file, dest)
+                count += 1
 
     print(f"✓ Historical data restored: {count} files")
     return count
