@@ -11,7 +11,7 @@ from typing import List, Dict
 
 def get_archived_reports(output_dir: str = 'output') -> List[Dict]:
     """
-    Scan output directory for archived reports
+    Scan output directory for archived reports and include all dates from earliest report to today.
 
     Args:
         output_dir: Directory containing reports
@@ -19,51 +19,87 @@ def get_archived_reports(output_dir: str = 'output') -> List[Dict]:
     Returns:
         List of report info dicts sorted by date (newest first)
     """
-    reports = []
-
-    if not os.path.exists(output_dir):
-        return reports
+    existing_reports = {}
 
     # Import trading calendar to check trading days
     import sys
     sys.path.insert(0, os.path.dirname(__file__))
-    from trading_calendar import is_trading_day
+    from trading_calendar import is_trading_day, format_date_with_weekday
 
-    for filename in os.listdir(output_dir):
-        # Look for dated JSON files (YYYY-MM-DD.json)
-        if filename.endswith('.json') and len(filename) == 15:  # YYYY-MM-DD.json
-            date_str = filename[:-5]
-            json_path = os.path.join(output_dir, filename)
-            html_path = os.path.join(output_dir, f'{date_str}.html')
+    # 1. Scan for existing reports
+    if os.path.exists(output_dir):
+        for filename in os.listdir(output_dir):
+            # Look for dated JSON files (YYYY-MM-DD.json)
+            if filename.endswith('.json') and len(filename) == 15:  # YYYY-MM-DD.json
+                date_str = filename[:-5]
+                json_path = os.path.join(output_dir, filename)
+                html_path = os.path.join(output_dir, f'{date_str}.html')
 
-            try:
-                # Load JSON to get metadata
-                with open(json_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
+                try:
+                    # Load JSON to get metadata
+                    with open(json_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
 
-                # Use date from JSON if available, otherwise use filename date
-                # This ensures the archive lists the correct TRADING DATE even if filename is different
-                report_date = data.get('date', date_str)
+                    # Use date from JSON if available, otherwise use filename date
+                    report_date = data.get('date', date_str)
+                    
+                    existing_reports[report_date] = {
+                        'date': report_date,
+                        'tickers_count': data.get('tickers_count', 0),
+                        'anomalies_count': data.get('anomalies_count', 0),
+                        'html_file': f'{date_str}.html',
+                        'json_file': f'{date_str}.json',
+                        'has_html': os.path.exists(html_path),
+                        'exists': True
+                    }
+                except Exception as e:
+                    print(f"Warning: Failed to read {json_path}: {e}")
+                    continue
 
-                # Check if this date is a trading day
-                is_trade_day = is_trading_day(report_date)
+    # 2. Determine date range (from earliest report to today)
+    if not existing_reports:
+        return []
 
-                reports.append({
-                    'date': report_date,
-                    'tickers_count': data.get('tickers_count', 0),
-                    'anomalies_count': data.get('anomalies_count', 0),
-                    'html_file': f'{date_str}.html',  # Link must match actual filename
-                    'json_file': f'{date_str}.json',
-                    'has_html': os.path.exists(html_path),
-                    'is_trading_day': is_trade_day
-                })
-            except Exception as e:
-                print(f"Warning: Failed to read {json_path}: {e}")
-                continue
+    earliest_date = min(existing_reports.keys())
+    today = datetime.now().strftime('%Y-%m-%d')
+    
+    start_dt = datetime.strptime(earliest_date, '%Y-%m-%d')
+    end_dt = datetime.strptime(today, '%Y-%m-%d')
+    
+    all_reports = []
+    
+    # Iterate through all dates
+    import pandas as pd
+    date_range = pd.date_range(start=start_dt, end=end_dt)
+    
+    for dt in date_range:
+        current_date = dt.strftime('%Y-%m-%d')
+        is_trade = is_trading_day(current_date)
+        weekday_str = dt.strftime('%A') # e.g. Monday
+        
+        if current_date in existing_reports:
+            # Report exists
+            report = existing_reports[current_date]
+            report['is_trading_day'] = is_trade
+            report['weekday'] = weekday_str
+            all_reports.append(report)
+        else:
+            # Report missing
+            all_reports.append({
+                'date': current_date,
+                'tickers_count': 0,
+                'anomalies_count': 0,
+                'html_file': None,
+                'json_file': None,
+                'has_html': False,
+                'exists': False,
+                'is_trading_day': is_trade,
+                'weekday': weekday_str
+            })
 
     # Sort by date (newest first)
-    reports.sort(key=lambda x: x['date'], reverse=True)
-    return reports
+    all_reports.sort(key=lambda x: x['date'], reverse=True)
+    return all_reports
 
 
 def generate_archive_index(reports: List[Dict], output_file: str = 'output/archive.html'):
@@ -187,6 +223,14 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
             font-family: "Courier New", Courier, monospace;
             font-weight: 600;
             color: #1d1d1f;
+            white-space: nowrap;
+        }}
+        
+        .weekday {{
+            color: #86868b;
+            font-weight: normal;
+            font-size: 0.9em;
+            margin-left: 5px;
         }}
 
         .badge {{
@@ -198,15 +242,21 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
         }}
 
         .badge-trading {{
-            background: #f5f5f7;
-            color: #1d1d1f;
-            border: 1px solid #d2d2d7;
+            background: #e3f2fd;
+            color: #0d47a1;
+            border: 1px solid #bbdefb;
         }}
 
         .badge-non-trading {{
-            background: #ffffff;
+            background: #f5f5f7;
             color: #86868b;
             border: 1px solid #d2d2d7;
+        }}
+        
+        .badge-missing {{
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
         }}
 
         .stats {{
@@ -273,9 +323,9 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
         </div>
 
         <div class="section">
-            <div class="section-title">Historical Reports</div>
+            <div class="section-title">Historical Timeline</div>
             <div class="summary">
-                Total {total_reports} reports | Updated daily
+                Timeline from {earliest_date} to {latest_date}
             </div>
 
             {report_table}
@@ -292,30 +342,49 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
     # Generate table rows
     if not reports:
         table_html = '<p style="text-align:center; padding:40px; color:#86868b;">No historical reports</p>'
+        earliest = "N/A"
+        latest = "N/A"
     else:
+        earliest = reports[-1]['date']
+        latest = reports[0]['date']
         rows = []
         for report in reports:
-            html_link = f'<a href="{report["html_file"]}" class="link">View Report</a>' if report['has_html'] else '<span style="color:#d2d2d7;">-</span>'
-            json_link = f'<a href="{report["json_file"]}" class="link">Download Data</a>'
-
-            # Trading day badge
-            if report['is_trading_day']:
+            # Determine status and actions
+            actions_cell = ''
+            stats_cell = ''
+            
+            if report['exists']:
+                # Data exists
                 trading_badge = '<span class="badge badge-trading">Trading Day</span>'
+                stats_cell = f'''
+                    <span class="stats">{report['tickers_count']} Tickers</span>
+                    <span class="stats">{report['anomalies_count']} Anomalies</span>
+                '''
+                
+                html_link = f'<a href="{report["html_file"]}" class="link">View Report</a>' if report['has_html'] else ''
+                json_link = f'<a href="{report["json_file"]}" class="link">Download Data</a>'
+                actions_cell = f'{html_link} {json_link}'
+                
             else:
-                trading_badge = '<span class="badge badge-non-trading">Non-Trading</span>'
+                # No data
+                if report['is_trading_day']:
+                    trading_badge = '<span class="badge badge-missing">Missing Data</span>'
+                    stats_cell = '<span class="stats">-</span>'
+                    actions_cell = '<span style="color:#d2d2d7;">-</span>'
+                else:
+                    trading_badge = '<span class="badge badge-non-trading">Non-Trading</span>'
+                    stats_cell = '<span class="stats">Market Closed</span>'
+                    actions_cell = '<span style="color:#d2d2d7;">-</span>'
+
+            # Add weekday to date
+            date_display = f"{report['date']} <span class='weekday'>{report['weekday']}</span>"
 
             rows.append(f'''
                 <tr>
-                    <td class="date-cell">{report['date']}</td>
+                    <td class="date-cell">{date_display}</td>
                     <td>{trading_badge}</td>
-                    <td>
-                        <span class="stats">{report['tickers_count']} Tickers</span>
-                        <span class="stats">{report['anomalies_count']} Anomalies</span>
-                    </td>
-                    <td>
-                        {html_link}
-                        {json_link}
-                    </td>
+                    <td>{stats_cell}</td>
+                    <td>{actions_cell}</td>
                 </tr>
             ''')
 
@@ -324,8 +393,8 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Trading Day</th>
-                        <th>Statistics</th>
+                        <th>Status</th>
+                        <th>Info</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -336,7 +405,8 @@ def generate_archive_index(reports: List[Dict], output_file: str = 'output/archi
         '''
 
     html = template.format(
-        total_reports=len(reports),
+        earliest_date=earliest,
+        latest_date=latest,
         report_table=table_html
     )
 
