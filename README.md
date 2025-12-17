@@ -1,140 +1,107 @@
 # Options Anomaly Detector
 
-🔍 Daily options market anomaly detection and analysis system
+## Overview
+
+This project is an automated system for detecting anomalies in the US options market. It ingests daily market data, applies statistical models to identify unusual activity (volume spikes, sentiment shifts, institutional positioning), and generates actionable insights via HTML reports and AI-driven analysis.
+
+For a conceptual understanding of the project's philosophy and "Smart Money" analysis, please refer to [idea.md](idea.md).
 
 ## Features
 
-- ⚡ **Hybrid CSV + API Strategy**: Optimal performance with smart fallback
-- 📊 **Volume Analysis**: Detect unusual trading volume spikes
-- 📈 **Put/Call Ratio Anomalies**: Identify extreme sentiment shifts
-- 🎯 **Open Interest Tracking**: Monitor position building and unwinding
-- 🚨 **Real-time Alerts**: Automated anomaly detection
-- 📱 **Interactive Dashboard**: Beautiful HTML reports with charts
-- 🤖 **GitHub Actions**: Automated daily analysis and reports
+- **Hybrid Data Ingestion**: efficiently combines Polygon.io Flat Files (S3/CSV) for market-wide breadth with Real-time APIs for depth (Open Interest).
+- **Anomaly Detection**: Algorithms to spot:
+    - Volume Z-Score spikes (>3σ)
+    - Extreme Put/Call Ratios (Fear/Greed)
+    - High Turnover vs. Accumulation patterns
+    - LEAP (Long-Term Equity Anticipation Securities) unusual activity
+- **AI Analysis**: Integrates with OpenAI (GPT-4) to generate macro commentary and specific trade ideas based on the data.
+- **Reporting**:
+    - Interactive HTML Dashboard (deployed to GitHub Pages).
+    - Email notifications with summarized insights.
+    - Historical JSON archives.
 
-## Data Strategy
+## Installation
 
-The system uses an intelligent **hybrid data fetching strategy**:
+### Prerequisites
 
-### Strategy 1: CSV + API (Optimal - if Flat Files available)
-1. 📦 Download daily options aggregates CSV (~50-100MB)
-2. ⚡ Parse and aggregate volume data for all tickers (~10 sec)
-3. 🎯 Fetch Open Interest via API for top 30 tickers only (~30 API calls)
-4. ✅ **Total time: ~30 seconds** with complete market coverage
+- Python 3.11+
+- Polygon.io API Key (Starter plan or above required for Options data)
+- (Optional) OpenAI API Key for AI analysis
+- (Optional) Gmail App Password for email notifications
 
-### Strategy 2: Pure API (Fallback - always works)
-1. 📱 Fetch data for ~50 popular tickers via API (~50 calls)
-2. ✅ **Total time: ~15-20 seconds** with targeted coverage
+### Setup
 
-The system **automatically detects** your subscription level and chooses the optimal strategy!
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/onlinefchen/options-anomaly-detector.git
+    cd options-anomaly-detector
+    ```
 
-## Quick Start
+2.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-### Local Development
+3.  **Configure Environment:**
+    Copy `.env.example` to `.env` and fill in your credentials:
+    ```bash
+    cp .env.example .env
+    ```
 
-1. Clone the repository:
+    **Required:**
+    - `POLYGON_API_KEY`: Your Polygon.io API Key.
+
+    **Optional (Recommended):**
+    - `POLYGON_S3_ACCESS_KEY` & `POLYGON_S3_SECRET_KEY`: For faster Flat File downloads.
+    - `OPENAI_API_KEY`: To enable AI analysis.
+    - `GMAIL_USER` & `GMAIL_APP_PASSWD`: To enable email reports.
+
+## Usage
+
+### 1. Daily Analysis (Manual)
+
+To run the full daily analysis pipeline (Download -> Analyze -> Report -> Email):
+
 ```bash
-git clone https://github.com/onlinefchen/options-anomaly-detector.git
-cd options-anomaly-detector
+python run.py daily-analysis
 ```
 
-2. Install dependencies:
+### 2. Regenerate Historical Data
+
+To backfill or regenerate reports for past trading days (e.g., last 10 days):
+
 ```bash
-pip install -r requirements.txt
+python run.py daily-analysis --days-back 10
 ```
 
-3. Set up environment variables:
+*Note: Historical generation skips real-time Open Interest (OI) enrichment to save API calls, relying on the CSV's volume data.*
+
+### 3. Regenerate HTML Reports
+
+If you've modified the report template and want to update existing HTML files without re-downloading data:
+
 ```bash
-cp .env.example .env
-# Edit .env and add your POLYGON_API_KEY
+python run.py regenerate-html --days 7
 ```
 
-4. Run analysis:
-```bash
-python main.py
-```
+## Automation (GitHub Actions)
 
-5. View the report:
-```bash
-open output/anomaly_report.html
-```
+The system is designed to run automatically via GitHub Actions.
 
-### GitHub Actions (Automated)
+- **Schedule**: Runs hourly from 16:00 to 21:00 Beijing Time (08:00-13:00 UTC) to check for the latest data availability.
+- **Workflow**: `daily-analysis.yml` handles the end-to-end process and deploys the report to GitHub Pages.
 
-The system runs automatically every day at 11:30 AM ET via GitHub Actions.
+## Project Structure
 
-Reports are published to: **https://onlinefchen.github.io/options-anomaly-detector/**
-
-## Configuration
-
-### Required Secrets
-
-Configure in GitHub repository settings → Secrets and variables → Actions:
-
-- `POLYGON_API_KEY`: Your Polygon.io API key
-
-### Data Sources
-
-- **Trading Volume**: Options Chain Snapshot API
-- **Open Interest**: Options Contract Snapshot API
-- **Price Data**: Options Aggregates API
-
-## Architecture
-
-```
-options-anomaly-detector/
-├── src/
-│   ├── data_fetcher.py      # Data acquisition
-│   ├── anomaly_detector.py  # Anomaly detection logic
-│   ├── report_generator.py  # HTML report generation
-│   └── utils.py             # Utility functions
-├── .github/
-│   └── workflows/
-│       └── daily-analysis.yml
-├── output/
-│   └── anomaly_report.html
-├── main.py
-└── requirements.txt
-```
-
-## Anomaly Detection Methods
-
-### 1. Volume Anomalies
-- Z-score > 3 (3 standard deviations)
-- Day-over-day growth > 200%
-- Ranking jumps
-
-### 2. Put/Call Ratio Anomalies
-- Extreme fear: Put/Call > 1.8
-- Extreme greed: Put/Call < 0.4
-
-### 3. Open Interest Anomalies
-- Large OI increases (new positions)
-- OI decreases (position unwinding)
-- Volume/OI divergence
-
-### 4. Structural Anomalies
-- Deep OTM activity
-- Strike price concentration
-- Expiration clustering
-
-## Output
-
-### Terminal Output
-- Top 30 volume rankings
-- Detected anomalies summary
-- Key metrics and alerts
-
-### HTML Report
-- Interactive charts (Chart.js)
-- Volume rankings table
-- Anomaly details
-- Historical trends
+- `src/`: Core source code.
+    - `hybrid_fetcher.py`: Handles data downloading (S3/API).
+    - `anomaly_detector.py`: Statistical logic for anomaly detection.
+    - `ai_analyzer.py`: Prompt engineering and OpenAI integration.
+    - `report_generator.py`: HTML templating.
+- `output/`: Generated JSON data and HTML reports.
+- `data/`: Temporary storage for downloaded CSVs (ignored by git).
+- `.github/workflows/`: Automation configurations.
 
 ## License
 
 MIT
-
-## Author
-
-Created with ❤️ by onlinefchen

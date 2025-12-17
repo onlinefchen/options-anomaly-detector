@@ -5,8 +5,10 @@ on:
   # Purpose: Check if Polygon has uploaded today's CSV file and process it
   # CSV is THE CORE prerequisite - without it, analysis cannot proceed
   schedule:
-    - cron: '0 8 * * *'  # 08:00 UTC = 4:00 PM Beijing Time (daily)
-                         # Runs once per day to check and process CSV
+    # Run every hour from 8:00 UTC to 13:00 UTC (16:00 to 21:00 Beijing Time)
+    # This acts as a retry mechanism: if CSV is not ready at 16:00, it tries again at 17:00, etc.
+    # Once data is processed, subsequent runs will detect the existing file and skip.
+    - cron: '0 8-13 * * *'
 
   # Allow manual trigger
   workflow_dispatch:
