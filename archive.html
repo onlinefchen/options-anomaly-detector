@@ -111,6 +111,14 @@
             font-family: "Courier New", Courier, monospace;
             font-weight: 600;
             color: #1d1d1f;
+            white-space: nowrap;
+        }
+        
+        .weekday {
+            color: #86868b;
+            font-weight: normal;
+            font-size: 0.9em;
+            margin-left: 5px;
         }
 
         .badge {
@@ -122,15 +130,21 @@
         }
 
         .badge-trading {
-            background: #f5f5f7;
-            color: #1d1d1f;
-            border: 1px solid #d2d2d7;
+            background: #e3f2fd;
+            color: #0d47a1;
+            border: 1px solid #bbdefb;
         }
 
         .badge-non-trading {
-            background: #ffffff;
+            background: #f5f5f7;
             color: #86868b;
             border: 1px solid #d2d2d7;
+        }
+        
+        .badge-missing {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
         }
 
         .stats {
@@ -197,9 +211,9 @@
         </div>
 
         <div class="section">
-            <div class="section-title">Historical Reports</div>
+            <div class="section-title">Historical Timeline</div>
             <div class="summary">
-                Total 39 reports | Updated daily
+                Timeline from 2025-10-17 to 2025-12-17
             </div>
 
             
@@ -207,518 +221,562 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Trading Day</th>
-                        <th>Statistics</th>
+                        <th>Status</th>
+                        <th>Info</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     
                 <tr>
-                    <td class="date-cell">2025-12-15</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4352 Tickers</span>
-                        <span class="stats">3339 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-15.html" class="link">View Report</a>
-                        <a href="2025-12-15.json" class="link">Download Data</a>
-                    </td>
+                    <td class="date-cell">2025-12-17 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-missing">Missing Data</span></td>
+                    <td><span class="stats">-</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-12-12</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4311 Tickers</span>
-                        <span class="stats">3327 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-12.html" class="link">View Report</a>
-                        <a href="2025-12-12.json" class="link">Download Data</a>
-                    </td>
+                    <td class="date-cell">2025-12-16 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-missing">Missing Data</span></td>
+                    <td><span class="stats">-</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-12-11</td>
+                    <td class="date-cell">2025-12-15 <span class='weekday'>Monday</span></td>
                     <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <span class="stats">4383 Tickers</span>
-                        <span class="stats">3526 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-11.html" class="link">View Report</a>
-                        <a href="2025-12-11.json" class="link">Download Data</a>
-                    </td>
+                    <span class="stats">4352 Tickers</span>
+                    <span class="stats">3339 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-15.html" class="link">View Report</a> <a href="2025-12-15.json" class="link">Download Data</a></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-12-10</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4348 Tickers</span>
-                        <span class="stats">3424 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-10.html" class="link">View Report</a>
-                        <a href="2025-12-10.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-12-09</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4284 Tickers</span>
-                        <span class="stats">3307 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-09.html" class="link">View Report</a>
-                        <a href="2025-12-09.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-12-08</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4331 Tickers</span>
-                        <span class="stats">3349 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-08.html" class="link">View Report</a>
-                        <a href="2025-12-08.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-12-05</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4288 Tickers</span>
-                        <span class="stats">3332 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-05.html" class="link">View Report</a>
-                        <a href="2025-12-05.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-12-04</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4285 Tickers</span>
-                        <span class="stats">3394 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-04.html" class="link">View Report</a>
-                        <a href="2025-12-04.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-12-03</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4308 Tickers</span>
-                        <span class="stats">3342 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-12-03.html" class="link">View Report</a>
-                        <a href="2025-12-03.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-28</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4081 Tickers</span>
-                        <span class="stats">3087 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-28.html" class="link">View Report</a>
-                        <a href="2025-11-28.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-26</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4361 Tickers</span>
-                        <span class="stats">3373 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-26.html" class="link">View Report</a>
-                        <a href="2025-11-26.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-25</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4455 Tickers</span>
-                        <span class="stats">3430 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-25.html" class="link">View Report</a>
-                        <a href="2025-11-25.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-24</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4540 Tickers</span>
-                        <span class="stats">3695 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-24.html" class="link">View Report</a>
-                        <a href="2025-11-24.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-21</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4687 Tickers</span>
-                        <span class="stats">3732 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-21.html" class="link">View Report</a>
-                        <a href="2025-11-21.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-19</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4345 Tickers</span>
-                        <span class="stats">3295 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-19.html" class="link">View Report</a>
-                        <a href="2025-11-19.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-17</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4463 Tickers</span>
-                        <span class="stats">3498 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-17.html" class="link">View Report</a>
-                        <a href="2025-11-17.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-14</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4325 Tickers</span>
-                        <span class="stats">3304 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-14.html" class="link">View Report</a>
-                        <a href="2025-11-14.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-13</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4325 Tickers</span>
-                        <span class="stats">3325 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-13.html" class="link">View Report</a>
-                        <a href="2025-11-13.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-12</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4355 Tickers</span>
-                        <span class="stats">3395 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-12.html" class="link">View Report</a>
-                        <a href="2025-11-12.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-11</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4344 Tickers</span>
-                        <span class="stats">3313 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-11.html" class="link">View Report</a>
-                        <a href="2025-11-11.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-10</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4396 Tickers</span>
-                        <span class="stats">3508 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-10.html" class="link">View Report</a>
-                        <a href="2025-11-10.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-07</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4346 Tickers</span>
-                        <span class="stats">3387 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-07.html" class="link">View Report</a>
-                        <a href="2025-11-07.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-06</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4303 Tickers</span>
-                        <span class="stats">3394 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-06.html" class="link">View Report</a>
-                        <a href="2025-11-06.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-05</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4275 Tickers</span>
-                        <span class="stats">3420 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-05.html" class="link">View Report</a>
-                        <a href="2025-11-05.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-04</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4316 Tickers</span>
-                        <span class="stats">3392 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-04.html" class="link">View Report</a>
-                        <a href="2025-11-04.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-11-03</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4357 Tickers</span>
-                        <span class="stats">3358 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-11-03.html" class="link">View Report</a>
-                        <a href="2025-11-03.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-10-31</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4128 Tickers</span>
-                        <span class="stats">3205 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-31.html" class="link">View Report</a>
-                        <a href="2025-10-31.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-10-30</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4355 Tickers</span>
-                        <span class="stats">3457 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-30.html" class="link">View Report</a>
-                        <a href="2025-10-30.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-10-29</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4423 Tickers</span>
-                        <span class="stats">3505 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-29.html" class="link">View Report</a>
-                        <a href="2025-10-29.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-10-28</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4386 Tickers</span>
-                        <span class="stats">3359 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-28.html" class="link">View Report</a>
-                        <a href="2025-10-28.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-10-27</td>
-                    <td><span class="badge badge-trading">Trading Day</span></td>
-                    <td>
-                        <span class="stats">4456 Tickers</span>
-                        <span class="stats">3464 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-27.html" class="link">View Report</a>
-                        <a href="2025-10-27.json" class="link">Download Data</a>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="date-cell">2025-10-26</td>
+                    <td class="date-cell">2025-12-14 <span class='weekday'>Sunday</span></td>
                     <td><span class="badge badge-non-trading">Non-Trading</span></td>
-                    <td>
-                        <span class="stats">0 Tickers</span>
-                        <span class="stats">0 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-26.html" class="link">View Report</a>
-                        <a href="2025-10-26.json" class="link">Download Data</a>
-                    </td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-10-25</td>
+                    <td class="date-cell">2025-12-13 <span class='weekday'>Saturday</span></td>
                     <td><span class="badge badge-non-trading">Non-Trading</span></td>
-                    <td>
-                        <span class="stats">0 Tickers</span>
-                        <span class="stats">0 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-25.html" class="link">View Report</a>
-                        <a href="2025-10-25.json" class="link">Download Data</a>
-                    </td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-10-24</td>
+                    <td class="date-cell">2025-12-12 <span class='weekday'>Friday</span></td>
                     <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <span class="stats">4359 Tickers</span>
-                        <span class="stats">3376 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-24.html" class="link">View Report</a>
-                        <a href="2025-10-24.json" class="link">Download Data</a>
-                    </td>
+                    <span class="stats">4311 Tickers</span>
+                    <span class="stats">3327 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-12.html" class="link">View Report</a> <a href="2025-12-12.json" class="link">Download Data</a></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-10-23</td>
+                    <td class="date-cell">2025-12-11 <span class='weekday'>Thursday</span></td>
                     <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <span class="stats">4331 Tickers</span>
-                        <span class="stats">3358 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-23.html" class="link">View Report</a>
-                        <a href="2025-10-23.json" class="link">Download Data</a>
-                    </td>
+                    <span class="stats">4383 Tickers</span>
+                    <span class="stats">3526 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-11.html" class="link">View Report</a> <a href="2025-12-11.json" class="link">Download Data</a></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-10-22</td>
+                    <td class="date-cell">2025-12-10 <span class='weekday'>Wednesday</span></td>
                     <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <span class="stats">4327 Tickers</span>
-                        <span class="stats">3346 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-22.html" class="link">View Report</a>
-                        <a href="2025-10-22.json" class="link">Download Data</a>
-                    </td>
+                    <span class="stats">4348 Tickers</span>
+                    <span class="stats">3424 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-10.html" class="link">View Report</a> <a href="2025-12-10.json" class="link">Download Data</a></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-10-21</td>
+                    <td class="date-cell">2025-12-09 <span class='weekday'>Tuesday</span></td>
                     <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <span class="stats">4420 Tickers</span>
-                        <span class="stats">3447 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-21.html" class="link">View Report</a>
-                        <a href="2025-10-21.json" class="link">Download Data</a>
-                    </td>
+                    <span class="stats">4284 Tickers</span>
+                    <span class="stats">3307 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-09.html" class="link">View Report</a> <a href="2025-12-09.json" class="link">Download Data</a></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-10-20</td>
+                    <td class="date-cell">2025-12-08 <span class='weekday'>Monday</span></td>
                     <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <span class="stats">4596 Tickers</span>
-                        <span class="stats">3621 Anomalies</span>
-                    </td>
-                    <td>
-                        <a href="2025-10-20.html" class="link">View Report</a>
-                        <a href="2025-10-20.json" class="link">Download Data</a>
-                    </td>
+                    <span class="stats">4331 Tickers</span>
+                    <span class="stats">3349 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-08.html" class="link">View Report</a> <a href="2025-12-08.json" class="link">Download Data</a></td>
                 </tr>
             
                 <tr>
-                    <td class="date-cell">2025-10-17</td>
+                    <td class="date-cell">2025-12-07 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-12-06 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-12-05 <span class='weekday'>Friday</span></td>
                     <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <span class="stats">26 Tickers</span>
-                        <span class="stats">0 Anomalies</span>
-                    </td>
+                    <span class="stats">4288 Tickers</span>
+                    <span class="stats">3332 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-05.html" class="link">View Report</a> <a href="2025-12-05.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-12-04 <span class='weekday'>Thursday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
                     <td>
-                        <a href="2025-10-17.html" class="link">View Report</a>
-                        <a href="2025-10-17.json" class="link">Download Data</a>
-                    </td>
+                    <span class="stats">4285 Tickers</span>
+                    <span class="stats">3394 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-04.html" class="link">View Report</a> <a href="2025-12-04.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-12-03 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4308 Tickers</span>
+                    <span class="stats">3342 Anomalies</span>
+                </td>
+                    <td><a href="2025-12-03.html" class="link">View Report</a> <a href="2025-12-03.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-12-02 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-missing">Missing Data</span></td>
+                    <td><span class="stats">-</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-12-01 <span class='weekday'>Monday</span></td>
+                    <td><span class="badge badge-missing">Missing Data</span></td>
+                    <td><span class="stats">-</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-30 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-29 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-28 <span class='weekday'>Friday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4081 Tickers</span>
+                    <span class="stats">3087 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-28.html" class="link">View Report</a> <a href="2025-11-28.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-27 <span class='weekday'>Thursday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-26 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4361 Tickers</span>
+                    <span class="stats">3373 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-26.html" class="link">View Report</a> <a href="2025-11-26.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-25 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4455 Tickers</span>
+                    <span class="stats">3430 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-25.html" class="link">View Report</a> <a href="2025-11-25.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-24 <span class='weekday'>Monday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4540 Tickers</span>
+                    <span class="stats">3695 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-24.html" class="link">View Report</a> <a href="2025-11-24.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-23 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-22 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-21 <span class='weekday'>Friday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4687 Tickers</span>
+                    <span class="stats">3732 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-21.html" class="link">View Report</a> <a href="2025-11-21.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-20 <span class='weekday'>Thursday</span></td>
+                    <td><span class="badge badge-missing">Missing Data</span></td>
+                    <td><span class="stats">-</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-19 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4345 Tickers</span>
+                    <span class="stats">3295 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-19.html" class="link">View Report</a> <a href="2025-11-19.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-18 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-missing">Missing Data</span></td>
+                    <td><span class="stats">-</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-17 <span class='weekday'>Monday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4463 Tickers</span>
+                    <span class="stats">3498 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-17.html" class="link">View Report</a> <a href="2025-11-17.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-16 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-15 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-14 <span class='weekday'>Friday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4325 Tickers</span>
+                    <span class="stats">3304 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-14.html" class="link">View Report</a> <a href="2025-11-14.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-13 <span class='weekday'>Thursday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4325 Tickers</span>
+                    <span class="stats">3325 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-13.html" class="link">View Report</a> <a href="2025-11-13.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-12 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4355 Tickers</span>
+                    <span class="stats">3395 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-12.html" class="link">View Report</a> <a href="2025-11-12.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-11 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4344 Tickers</span>
+                    <span class="stats">3313 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-11.html" class="link">View Report</a> <a href="2025-11-11.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-10 <span class='weekday'>Monday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4396 Tickers</span>
+                    <span class="stats">3508 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-10.html" class="link">View Report</a> <a href="2025-11-10.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-09 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-08 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-07 <span class='weekday'>Friday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4346 Tickers</span>
+                    <span class="stats">3387 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-07.html" class="link">View Report</a> <a href="2025-11-07.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-06 <span class='weekday'>Thursday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4303 Tickers</span>
+                    <span class="stats">3394 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-06.html" class="link">View Report</a> <a href="2025-11-06.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-05 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4275 Tickers</span>
+                    <span class="stats">3420 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-05.html" class="link">View Report</a> <a href="2025-11-05.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-04 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4316 Tickers</span>
+                    <span class="stats">3392 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-04.html" class="link">View Report</a> <a href="2025-11-04.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-03 <span class='weekday'>Monday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4357 Tickers</span>
+                    <span class="stats">3358 Anomalies</span>
+                </td>
+                    <td><a href="2025-11-03.html" class="link">View Report</a> <a href="2025-11-03.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-02 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-11-01 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-31 <span class='weekday'>Friday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4128 Tickers</span>
+                    <span class="stats">3205 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-31.html" class="link">View Report</a> <a href="2025-10-31.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-30 <span class='weekday'>Thursday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4355 Tickers</span>
+                    <span class="stats">3457 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-30.html" class="link">View Report</a> <a href="2025-10-30.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-29 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4423 Tickers</span>
+                    <span class="stats">3505 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-29.html" class="link">View Report</a> <a href="2025-10-29.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-28 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4386 Tickers</span>
+                    <span class="stats">3359 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-28.html" class="link">View Report</a> <a href="2025-10-28.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-27 <span class='weekday'>Monday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4456 Tickers</span>
+                    <span class="stats">3464 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-27.html" class="link">View Report</a> <a href="2025-10-27.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-26 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">0 Tickers</span>
+                    <span class="stats">0 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-26.html" class="link">View Report</a> <a href="2025-10-26.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-25 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">0 Tickers</span>
+                    <span class="stats">0 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-25.html" class="link">View Report</a> <a href="2025-10-25.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-24 <span class='weekday'>Friday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4359 Tickers</span>
+                    <span class="stats">3376 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-24.html" class="link">View Report</a> <a href="2025-10-24.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-23 <span class='weekday'>Thursday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4331 Tickers</span>
+                    <span class="stats">3358 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-23.html" class="link">View Report</a> <a href="2025-10-23.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-22 <span class='weekday'>Wednesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4327 Tickers</span>
+                    <span class="stats">3346 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-22.html" class="link">View Report</a> <a href="2025-10-22.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-21 <span class='weekday'>Tuesday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4420 Tickers</span>
+                    <span class="stats">3447 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-21.html" class="link">View Report</a> <a href="2025-10-21.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-20 <span class='weekday'>Monday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">4596 Tickers</span>
+                    <span class="stats">3621 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-20.html" class="link">View Report</a> <a href="2025-10-20.json" class="link">Download Data</a></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-19 <span class='weekday'>Sunday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-18 <span class='weekday'>Saturday</span></td>
+                    <td><span class="badge badge-non-trading">Non-Trading</span></td>
+                    <td><span class="stats">Market Closed</span></td>
+                    <td><span style="color:#d2d2d7;">-</span></td>
+                </tr>
+            
+                <tr>
+                    <td class="date-cell">2025-10-17 <span class='weekday'>Friday</span></td>
+                    <td><span class="badge badge-trading">Trading Day</span></td>
+                    <td>
+                    <span class="stats">26 Tickers</span>
+                    <span class="stats">0 Anomalies</span>
+                </td>
+                    <td><a href="2025-10-17.html" class="link">View Report</a> <a href="2025-10-17.json" class="link">Download Data</a></td>
                 </tr>
             
                 </tbody>
