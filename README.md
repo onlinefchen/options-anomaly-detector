@@ -6,6 +6,10 @@ This project is an automated system for detecting anomalies in the US options ma
 
 For a conceptual understanding of the project's philosophy and "Smart Money" analysis, please refer to [idea.md](idea.md).
 
+### 🔗 Live Reports
+
+View the interactive daily options anomaly reports here: **[https://onlinefchen.github.io/options-anomaly-detector/](https://onlinefchen.github.io/options-anomaly-detector/)**
+
 ## Features
 
 - **Hybrid Data Ingestion**: efficiently combines Polygon.io Flat Files (S3/CSV) for market-wide breadth with Real-time APIs for depth (Open Interest).
@@ -89,7 +93,7 @@ python run.py regenerate-html --days 7
 The system is designed to run automatically via GitHub Actions.
 
 - **Schedule**: Runs hourly from 16:00 to 21:00 Beijing Time (08:00-13:00 UTC) to check for the latest data availability.
-- **Workflow**: `daily-analysis.yml` handles the end-to-end process and deploys the report to GitHub Pages.
+- **Workflow**: `daily-analysis.yml` handles the end-to-end process and deploys the report to **[GitHub Pages](https://onlinefchen.github.io/options-anomaly-detector/)**.
 
 ## Project Structure
 
