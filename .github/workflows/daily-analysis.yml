@@ -1,14 +1,11 @@
 name: Daily Options Analysis
 
 on:
-  # CSV-CENTRIC WORKFLOW: Run daily at 4:00 PM Beijing Time
-  # Purpose: Check if Polygon has uploaded today's CSV file and process it
-  # CSV is THE CORE prerequisite - without it, analysis cannot proceed
+  # Daily scheduled run starting at 6:00 PM Beijing Time
+  # Retry hourly until 9:00 PM if data not yet available
+  # If already processed, subsequent runs will skip automatically
   schedule:
-    # Run every hour from 8:00 UTC to 13:00 UTC (16:00 to 21:00 Beijing Time)
-    # This acts as a retry mechanism: if CSV is not ready at 16:00, it tries again at 17:00, etc.
-    # Once data is processed, subsequent runs will detect the existing file and skip.
-    - cron: '0 8-13 * * *'
+    - cron: '0 10-13 * * *'  # 18:00-21:00 Beijing Time / 10:00-13:00 UTC
 
   # Allow manual trigger
   workflow_dispatch:

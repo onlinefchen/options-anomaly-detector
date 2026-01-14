@@ -8,7 +8,8 @@ For a conceptual understanding of the project's philosophy and "Smart Money" ana
 
 ### 🔗 Live Reports
 
-View the interactive daily options anomaly reports here: **[https://onlinefchen.github.io/options-anomaly-detector/](https://onlinefchen.github.io/options-anomaly-detector/)**
+- **Latest Report**: [https://onlinefchen.github.io/watch-options/](https://onlinefchen.github.io/watch-options/)
+- **Archive**: [https://onlinefchen.github.io/watch-options/archive.html](https://onlinefchen.github.io/watch-options/archive.html)
 
 ## Features
 
@@ -37,8 +38,8 @@ View the interactive daily options anomaly reports here: **[https://onlinefchen.
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/onlinefchen/options-anomaly-detector.git
-    cd options-anomaly-detector
+    git clone https://github.com/onlinefchen/watch-options.git
+    cd watch-options
     ```
 
 2.  **Install dependencies:**
@@ -92,8 +93,8 @@ python run.py regenerate-html --days 7
 
 The system is designed to run automatically via GitHub Actions.
 
-- **Schedule**: Runs hourly from 16:00 to 21:00 Beijing Time (08:00-13:00 UTC) to check for the latest data availability.
-- **Workflow**: `daily-analysis.yml` handles the end-to-end process and deploys the report to **[GitHub Pages](https://onlinefchen.github.io/options-anomaly-detector/)**.
+- **Schedule**: Runs hourly from 18:00 to 21:00 Beijing Time (10:00-13:00 UTC). If data is already processed, subsequent runs skip automatically.
+- **Workflow**: `daily-analysis.yml` handles the end-to-end process and deploys the report to **[GitHub Pages](https://onlinefchen.github.io/watch-options/)**.
 
 ## Project Structure
 
