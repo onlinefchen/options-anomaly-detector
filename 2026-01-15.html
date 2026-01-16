@@ -266,7 +266,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">🌅 <strong>美东时间:</strong> 2026-01-16 05:11:53 EST | <strong>东八区时间:</strong> 2026-01-16 18:11:53 | <strong>交易时段:</strong> 盘前 (Pre-Market) | <strong>数据来源:</strong> CSV文件 (2026-01-15.csv.gz)</p>
+            <p class="date">📈 <strong>美东时间:</strong> 2026-01-16 11:01:17 EST | <strong>东八区时间:</strong> 2026-01-17 00:01:17 | <strong>交易时段:</strong> 盘中 (Market Hours) | <strong>数据来源:</strong> CSV文件 (2026-01-15.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -302,25 +302,29 @@
             <div class="macro-content">
                 <strong>Market Sentiment &amp; Positioning</strong>
 
-<ul><li><strong>C/P Ratio Insights</strong>: The Call/Put (C/P) volume and open interest ratios across SPY, QQQ, IWM, and SPX suggest a cautious sentiment among institutional investors. The relatively high open interest in puts, particularly in SPY (C/P OI Ratio: 0.47) and IWM (C/P OI Ratio: 0.41), indicates a prevailing bearish outlook or a need for downside protection.</li>
+<ul><li><strong>C/P Ratio Analysis</strong>: Across the major indices, the C/P volume ratios hover around 0.64 to 0.92, indicating a relatively balanced sentiment with a slight bias towards puts, suggesting cautiousness or hedging by institutions. The C/P open interest (OI) ratios are significantly below 1, especially for SPY (0.47) and IWM (0.41), indicating a stronger inclination for downside protection.</li>
 
-<li><strong>Smart Money Positioning</strong>: The concentration of open interest in far-out-of-the-money puts, especially in SPY and QQQ, points to significant hedging activity. The presence of large positions in long-dated put options with strikes well below current market levels suggests that institutions are preparing for potential downside risks.</li>
+<li><strong>Smart Money Positioning</strong>: The concentration of open interest in deep out-of-the-money puts, particularly in SPY and IWM, suggests a strong hedging bias. The SPY and SPX exhibit significant put open interest on strikes far below current levels, reflecting expectations or fears of a significant downturn. The top contracts, especially the SPY PUT $550 and SPX PUT $6000, highlight a defensive posture among institutional investors.</li>
 
-<li><strong>Unusual Patterns</strong>: The substantial open interest in long-dated puts at lower strike prices in SPY ($550, $680, $650) and QQQ ($550, $600) indicates a strategic hedging approach. This pattern reflects concerns about market volatility or potential economic downturns over the medium to long term.</li>
+<li><strong>Unusual Patterns</strong>: The strike concentration in deep out-of-the-money puts across indices, particularly for long-dated expirations (2026), signals an enduring concern over potential macroeconomic shocks or volatility spikes. This could be indicative of hedging against tail risks or a strategic bet on a market correction.</li>
 
 <strong>Macro Outlook</strong>
 
-<li><strong>Current Environment</strong>: The macro landscape is characterized by persistent inflationary pressures, leading to ongoing Federal Reserve tightening. Rate hikes and quantitative tightening (QT) continue as the Fed aims to anchor inflation expectations, which poses challenges for growth prospects.</li>
+<li><strong>Current Environment</strong>: The macro landscape is characterized by cautious optimism tempered by inflationary pressures and a vigilant Federal Reserve. While the Fed maintains a data-dependent stance, the market is wary of persistent inflation that could prompt further tightening.</li>
 
-<li><strong>Key Risks and Opportunities</strong>: Key risks include a potential policy misstep by central banks, geopolitical tensions, and supply chain disruptions. Opportunities may arise from any signs of easing inflation, which could lead to a repricing of risk assets.</li>
+<li><strong>Key Risks and Opportunities</strong>: Continued geopolitical tensions and supply chain disruptions pose downside risks. However, any easing in these areas or a dovish pivot by the Fed could provide upside surprises. Investors should remain vigilant on employment data and corporate earnings, which will be critical in assessing economic resilience.</li>
 
-<li><strong>Investor Watchlist</strong>: Investors should monitor upcoming Fed meetings, inflation data releases, and geopolitical developments. Additionally, shifts in yield curves and credit spreads will be critical indicators of changing economic conditions.</li>
+<li><strong>Investor Focus</strong>: Monitor Fed communications for clues on monetary policy trajectory. Economic indicators, particularly inflation and growth metrics, will be crucial in gauging market direction. Additionally, watch for volatility spikes as potential entry points for long-term positioning.</li>
 
 <strong>Key Takeaways</strong>
 
-<li>The predominant use of long-dated puts across major indices indicates significant caution and hedging against downside risks by institutional investors.</li>
-<li>The macro environment remains challenging, with the Fed's tightening cycle and inflation concerns at the forefront, constraining growth expectations.</li>
-<li>Investors should remain vigilant about inflation trends, central bank policy shifts, and geopolitical events, which could significantly impact market dynamics and asset prices.</li></ul>
+<li>Institutional sentiment is cautious with a pronounced bias towards downside protection through puts, reflecting concerns over potential market corrections.</li>
+
+<li>The macro environment is on a knife-edge, with inflationary pressures and Fed policy the main drivers of uncertainty and potential volatility.</li>
+
+<li>Investors should focus on economic indicators and Fed communications for guidance on the market's next move, while being prepared for potential volatility spikes as strategic entry points.</li>
+
+<li>The prevalence of long-dated put positions suggests a strategic focus on long-term hedging against economic downturns, indicating smart money is preparing for prolonged uncertainty.</li></ul>
             </div>
         </div>
 
@@ -333,7 +337,6 @@
                         <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
-                        <th class="sortable" data-table="index" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -343,7 +346,6 @@
                         <td><strong>SPY</strong></td>
                         <td>916.93W</td>
                         <td>0.85</td>
-                        <td>8.4</td>
                     </tr>
                 
                     <tr>
@@ -351,7 +353,6 @@
                         <td><strong>QQQ</strong></td>
                         <td>572.14W</td>
                         <td>0.92</td>
-                        <td>8.0</td>
                     </tr>
                 
                     <tr>
@@ -359,7 +360,6 @@
                         <td><strong>IWM</strong></td>
                         <td>180.36W</td>
                         <td>0.64</td>
-                        <td>11.4</td>
                     </tr>
                 
                     <tr>
@@ -367,7 +367,6 @@
                         <td><strong>SPX</strong></td>
                         <td>89.19W</td>
                         <td>0.74</td>
-                        <td>10.4</td>
                     </tr>
                 
                 </tbody>
@@ -383,13 +382,12 @@
                         <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_volume" data-type="number">Total Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
-                        <th class="sortable" data-table="stock" data-column="avg_trade_size" data-type="number">Avg Trade Size <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="total_oi" data-type="number">Total OI <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
-                        <th>Top 3 Volume</th>
-                        <th>Top 3 Volume Leap</th>
-                        <th>Top 3 OI</th>
+                        <th>Top Volume</th>
+                        <th>Top Leap</th>
+                        <th>Top OI</th>
                     </tr>
                 </thead>
                 <tbody id="stockTableBody">
@@ -399,13 +397,12 @@
                         <td><strong>NVDA</strong></td>
                         <td>256.30W</td>
                         <td>1.53</td>
-                        <td>7.6</td>
                         <td>2.03</td>
                         <td>1367.26W</td>
                         <td>1.06</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C190 <span class='oi-badge'>167K (6.5%)</span></div><div class='contract-item'>260116C188 <span class='oi-badge'>82K (3.2%)</span></div><div class='contract-item'>260116C189 <span class='oi-badge'>77K (3.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618C250 <span class='oi-badge'>6K (0.2%)</span></div><div class='contract-item'>260417C180 <span class='oi-badge'>5K (0.2%)</span></div><div class='contract-item'>260618C190 <span class='oi-badge'>3K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C200 <span class='oi-badge'>167K (1.2%)</span></div><div class='contract-item'>260320C200 <span class='oi-badge'>123K (0.9%)</span></div><div class='contract-item'>260220C220 <span class='oi-badge'>119K (0.9%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C190 <span class='oi-badge'>167K (6.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618C250 <span class='oi-badge'>6K (0.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C200 <span class='oi-badge'>167K (1.2%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -413,13 +410,12 @@
                         <td><strong>SLV</strong></td>
                         <td>209.05W</td>
                         <td>1.31</td>
-                        <td>12.4</td>
                         <td>2.14</td>
                         <td>503.35W</td>
                         <td>0.93</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P80 <span class='oi-badge'>87K (4.2%)</span></div><div class='contract-item'>260116C83 <span class='oi-badge'>48K (2.3%)</span></div><div class='contract-item'>260116P82 <span class='oi-badge'>42K (2.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618C80 <span class='oi-badge'>19K (0.9%)</span></div><div class='contract-item'>260417P75 <span class='oi-badge'>17K (0.8%)</span></div><div class='contract-item'>260618C81 <span class='oi-badge'>16K (0.8%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116P50 <span class='oi-badge'>100K (2.0%)</span></div><div class='contract-item'>260116P60 <span class='oi-badge'>83K (1.6%)</span></div><div class='contract-item'>260116C50 <span class='oi-badge'>77K (1.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P80 <span class='oi-badge'>87K (4.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618C80 <span class='oi-badge'>19K (0.9%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P50 <span class='oi-badge'>100K (2.0%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -427,13 +423,12 @@
                         <td><strong>TSLA</strong></td>
                         <td>165.13W</td>
                         <td>1.28</td>
-                        <td>5.2</td>
                         <td>0.89</td>
                         <td>379.94W</td>
                         <td>1.05</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C450 <span class='oi-badge'>103K (6.2%)</span></div><div class='contract-item'>260116C445 <span class='oi-badge'>102K (6.2%)</span></div><div class='contract-item'>260116C440 <span class='oi-badge'>90K (5.4%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>270115P175 <span class='oi-badge'>6K (0.4%)</span></div><div class='contract-item'>260515P50 <span class='oi-badge'>2K (0.1%)</span></div><div class='contract-item'>260417P450 <span class='oi-badge'>2K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116P170 <span class='oi-badge'>58K (1.5%)</span></div><div class='contract-item'>260116C960 <span class='oi-badge'>51K (1.3%)</span></div><div class='contract-item'>260116C500 <span class='oi-badge'>48K (1.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C450 <span class='oi-badge'>103K (6.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>270115P175 <span class='oi-badge'>6K (0.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P170 <span class='oi-badge'>58K (1.5%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -441,13 +436,12 @@
                         <td><strong>NFLX</strong></td>
                         <td>114.33W</td>
                         <td>0.38</td>
-                        <td>19.0</td>
                         <td>2.70</td>
                         <td>405.98W</td>
                         <td>1.25</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P105 <span class='oi-badge'>78K (6.8%)</span></div><div class='contract-item'>260116P107 <span class='oi-badge'>78K (6.8%)</span></div><div class='contract-item'>260116P101 <span class='oi-badge'>65K (5.7%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417C100 <span class='oi-badge'>4K (0.3%)</span></div><div class='contract-item'>260417C95 <span class='oi-badge'>1K (0.1%)</span></div><div class='contract-item'>260821P70 <span class='oi-badge'>1K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116P10 <span class='oi-badge'>108K (2.7%)</span></div><div class='contract-item'>260515P1 <span class='oi-badge'>100K (2.5%)</span></div><div class='contract-item'>260116C1 <span class='oi-badge'>77K (1.9%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P105 <span class='oi-badge'>78K (6.8%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417C100 <span class='oi-badge'>4K (0.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P10 <span class='oi-badge'>108K (2.7%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -455,13 +449,12 @@
                         <td><strong>AMD</strong></td>
                         <td>108.95W</td>
                         <td>1.56</td>
-                        <td>5.0</td>
                         <td>1.36</td>
                         <td>332.43W</td>
                         <td>1.01</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C235 <span class='oi-badge'>75K (6.9%)</span></div><div class='contract-item'>260116C240 <span class='oi-badge'>65K (6.0%)</span></div><div class='contract-item'>260116P230 <span class='oi-badge'>49K (4.5%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417P230 <span class='oi-badge'>3K (0.3%)</span></div><div class='contract-item'>260618C450 <span class='oi-badge'>2K (0.2%)</span></div><div class='contract-item'>260417P220 <span class='oi-badge'>2K (0.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C300 <span class='oi-badge'>29K (0.9%)</span></div><div class='contract-item'>260116C250 <span class='oi-badge'>24K (0.7%)</span></div><div class='contract-item'>260116P100 <span class='oi-badge'>23K (0.7%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C235 <span class='oi-badge'>75K (6.9%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417P230 <span class='oi-badge'>3K (0.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C300 <span class='oi-badge'>29K (0.9%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -469,13 +462,12 @@
                         <td><strong>AAPL</strong></td>
                         <td>107.72W</td>
                         <td>0.71</td>
-                        <td>11.0</td>
                         <td>1.66</td>
                         <td>530.35W</td>
                         <td>1.42</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P270 <span class='oi-badge'>191K (17.7%)</span></div><div class='contract-item'>260116P275 <span class='oi-badge'>145K (13.4%)</span></div><div class='contract-item'>260116C260 <span class='oi-badge'>62K (5.8%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>280121C350 <span class='oi-badge'>4K (0.4%)</span></div><div class='contract-item'>260717P225 <span class='oi-badge'>2K (0.2%)</span></div><div class='contract-item'>260417P260 <span class='oi-badge'>2K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C270 <span class='oi-badge'>95K (1.8%)</span></div><div class='contract-item'>260116C280 <span class='oi-badge'>68K (1.3%)</span></div><div class='contract-item'>260220C310 <span class='oi-badge'>64K (1.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P270 <span class='oi-badge'>191K (17.7%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>280121C350 <span class='oi-badge'>4K (0.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C270 <span class='oi-badge'>95K (1.8%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -483,13 +475,12 @@
                         <td><strong>META</strong></td>
                         <td>104.91W</td>
                         <td>0.44</td>
-                        <td>8.4</td>
                         <td>2.16</td>
                         <td>125.49W</td>
                         <td>1.55</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P650 <span class='oi-badge'>106K (10.1%)</span></div><div class='contract-item'>260116P670 <span class='oi-badge'>94K (8.9%)</span></div><div class='contract-item'>260116P660 <span class='oi-badge'>63K (6.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618C700 <span class='oi-badge'>1K (0.1%)</span></div><div class='contract-item'>260717P520 <span class='oi-badge'>1K (0.1%)</span></div><div class='contract-item'>260618C1030 <span class='oi-badge'>1K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C700 <span class='oi-badge'>34K (2.7%)</span></div><div class='contract-item'>260116C800 <span class='oi-badge'>23K (1.8%)</span></div><div class='contract-item'>260116C1360 <span class='oi-badge'>18K (1.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P650 <span class='oi-badge'>106K (10.1%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618C700 <span class='oi-badge'>1K (0.1%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C700 <span class='oi-badge'>34K (2.7%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -497,13 +488,12 @@
                         <td><strong>MSFT</strong></td>
                         <td>85.93W</td>
                         <td>0.47</td>
-                        <td>9.8</td>
                         <td>1.89</td>
                         <td>217.25W</td>
                         <td>1.46</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P495 <span class='oi-badge'>75K (8.7%)</span></div><div class='contract-item'>260116P500 <span class='oi-badge'>57K (6.7%)</span></div><div class='contract-item'>260116P510 <span class='oi-badge'>51K (5.9%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417C550 <span class='oi-badge'>2K (0.2%)</span></div><div class='contract-item'>260618C560 <span class='oi-badge'>2K (0.2%)</span></div><div class='contract-item'>261218C500 <span class='oi-badge'>1K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C520 <span class='oi-badge'>34K (1.6%)</span></div><div class='contract-item'>260116C700 <span class='oi-badge'>26K (1.2%)</span></div><div class='contract-item'>260220C545 <span class='oi-badge'>23K (1.0%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P495 <span class='oi-badge'>75K (8.7%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417C550 <span class='oi-badge'>2K (0.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C520 <span class='oi-badge'>34K (1.6%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -511,13 +501,12 @@
                         <td><strong>MSTR</strong></td>
                         <td>84.87W</td>
                         <td>1.01</td>
-                        <td>10.2</td>
                         <td>1.69</td>
                         <td>225.94W</td>
                         <td>1.47</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C175 <span class='oi-badge'>44K (5.2%)</span></div><div class='contract-item'>260116P350 <span class='oi-badge'>40K (4.8%)</span></div><div class='contract-item'>260116C180 <span class='oi-badge'>37K (4.4%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>261218P180 <span class='oi-badge'>6K (0.7%)</span></div><div class='contract-item'>261218C180 <span class='oi-badge'>6K (0.7%)</span></div><div class='contract-item'>260417P145 <span class='oi-badge'>2K (0.3%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260320C160 <span class='oi-badge'>65K (2.9%)</span></div><div class='contract-item'>260116C175 <span class='oi-badge'>30K (1.3%)</span></div><div class='contract-item'>260116P5 <span class='oi-badge'>27K (1.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C175 <span class='oi-badge'>44K (5.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>261218P180 <span class='oi-badge'>6K (0.7%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260320C160 <span class='oi-badge'>65K (2.9%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -525,13 +514,12 @@
                         <td><strong>INTC</strong></td>
                         <td>81.59W</td>
                         <td>1.88</td>
-                        <td>11.3</td>
                         <td>1.93</td>
                         <td>665.88W</td>
                         <td>1.32</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C50 <span class='oi-badge'>59K (7.3%)</span></div><div class='contract-item'>260116C49 <span class='oi-badge'>37K (4.5%)</span></div><div class='contract-item'>260116P45 <span class='oi-badge'>27K (3.3%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>270115P27 <span class='oi-badge'>18K (2.2%)</span></div><div class='contract-item'>270115C65 <span class='oi-badge'>10K (1.3%)</span></div><div class='contract-item'>270115C45 <span class='oi-badge'>9K (1.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C60 <span class='oi-badge'>222K (3.3%)</span></div><div class='contract-item'>260116C35 <span class='oi-badge'>99K (1.5%)</span></div><div class='contract-item'>260320C50 <span class='oi-badge'>91K (1.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C50 <span class='oi-badge'>59K (7.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>270115P27 <span class='oi-badge'>18K (2.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C60 <span class='oi-badge'>222K (3.3%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -539,13 +527,12 @@
                         <td><strong>EEM</strong></td>
                         <td>80.71W</td>
                         <td>2.81</td>
-                        <td>166.8</td>
                         <td>1.27</td>
                         <td>524.90W</td>
                         <td>0.54</td>
-                        <td class="compact-cell"><div class='contract-item'>260320C58 <span class='oi-badge'>117K (14.5%)</span></div><div class='contract-item'>260320C64 <span class='oi-badge'>79K (9.8%)</span></div><div class='contract-item'>260417C64 <span class='oi-badge'>71K (8.8%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417C64 <span class='oi-badge'>71K (8.8%)</span></div><div class='contract-item'>260417C65 <span class='oi-badge'>59K (7.3%)</span></div><div class='contract-item'>260417P55 <span class='oi-badge'>46K (5.8%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116P40 <span class='oi-badge'>130K (2.5%)</span></div><div class='contract-item'>260116C55 <span class='oi-badge'>122K (2.3%)</span></div><div class='contract-item'>260116C60 <span class='oi-badge'>111K (2.1%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260320C58 <span class='oi-badge'>117K (14.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417C64 <span class='oi-badge'>71K (8.8%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P40 <span class='oi-badge'>130K (2.5%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -553,13 +540,12 @@
                         <td><strong>ABBV</strong></td>
                         <td>79.78W</td>
                         <td>103.82</td>
-                        <td>160.2</td>
                         <td>1.57</td>
                         <td>30.11W</td>
                         <td>1.13</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C210 <span class='oi-badge'>172K (21.6%)</span></div><div class='contract-item'>260116C200 <span class='oi-badge'>168K (21.1%)</span></div><div class='contract-item'>260116C175 <span class='oi-badge'>120K (15.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618C85 <span class='oi-badge'>0K (0.0%)</span></div><div class='contract-item'>270617P115 <span class='oi-badge'>0K (0.0%)</span></div><div class='contract-item'>260618P190 <span class='oi-badge'>0K (0.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260320C250 <span class='oi-badge'>8K (2.5%)</span></div><div class='contract-item'>260116C230 <span class='oi-badge'>7K (2.2%)</span></div><div class='contract-item'>260116C210 <span class='oi-badge'>7K (2.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C210 <span class='oi-badge'>172K (21.6%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618C85 <span class='oi-badge'>0K (0.0%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260320C250 <span class='oi-badge'>8K (2.5%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -567,13 +553,12 @@
                         <td><strong>GLD</strong></td>
                         <td>70.60W</td>
                         <td>3.03</td>
-                        <td>12.7</td>
                         <td>1.24</td>
                         <td>279.83W</td>
                         <td>1.81</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C429 <span class='oi-badge'>142K (20.1%)</span></div><div class='contract-item'>260116C435 <span class='oi-badge'>139K (19.6%)</span></div><div class='contract-item'>260116C425 <span class='oi-badge'>30K (4.3%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260515P400 <span class='oi-badge'>10K (1.4%)</span></div><div class='contract-item'>260417P380 <span class='oi-badge'>2K (0.3%)</span></div><div class='contract-item'>260417C430 <span class='oi-badge'>2K (0.3%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260130C425 <span class='oi-badge'>154K (5.5%)</span></div><div class='contract-item'>260130C440 <span class='oi-badge'>137K (4.9%)</span></div><div class='contract-item'>260116C425 <span class='oi-badge'>119K (4.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C429 <span class='oi-badge'>142K (20.1%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260515P400 <span class='oi-badge'>10K (1.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260130C425 <span class='oi-badge'>154K (5.5%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -581,13 +566,12 @@
                         <td><strong>TSM</strong></td>
                         <td>66.45W</td>
                         <td>2.40</td>
-                        <td>6.4</td>
                         <td>1.46</td>
                         <td>181.25W</td>
                         <td>0.60</td>
-                        <td class="compact-cell"><div class='contract-item'>260123C345 <span class='oi-badge'>120K (18.0%)</span></div><div class='contract-item'>260116C350 <span class='oi-badge'>34K (5.0%)</span></div><div class='contract-item'>260116C315 <span class='oi-badge'>27K (4.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618C400 <span class='oi-badge'>4K (0.6%)</span></div><div class='contract-item'>260515P300 <span class='oi-badge'>4K (0.5%)</span></div><div class='contract-item'>260417P250 <span class='oi-badge'>3K (0.5%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260220C290 <span class='oi-badge'>36K (2.0%)</span></div><div class='contract-item'>260116C315 <span class='oi-badge'>26K (1.5%)</span></div><div class='contract-item'>260116P300 <span class='oi-badge'>26K (1.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260123C345 <span class='oi-badge'>120K (18.0%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618C400 <span class='oi-badge'>4K (0.6%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260220C290 <span class='oi-badge'>36K (2.0%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -595,13 +579,12 @@
                         <td><strong>PLTR</strong></td>
                         <td>57.01W</td>
                         <td>1.51</td>
-                        <td>6.7</td>
                         <td>1.17</td>
                         <td>376.02W</td>
                         <td>0.99</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C180 <span class='oi-badge'>40K (7.0%)</span></div><div class='contract-item'>260116C190 <span class='oi-badge'>30K (5.2%)</span></div><div class='contract-item'>260116P175 <span class='oi-badge'>29K (5.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417C175 <span class='oi-badge'>2K (0.4%)</span></div><div class='contract-item'>260717C180 <span class='oi-badge'>1K (0.2%)</span></div><div class='contract-item'>260821C210 <span class='oi-badge'>1K (0.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>270115P50 <span class='oi-badge'>65K (1.7%)</span></div><div class='contract-item'>260116C190 <span class='oi-badge'>42K (1.1%)</span></div><div class='contract-item'>260116C200 <span class='oi-badge'>38K (1.0%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C180 <span class='oi-badge'>40K (7.0%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417C175 <span class='oi-badge'>2K (0.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>270115P50 <span class='oi-badge'>65K (1.7%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -609,13 +592,12 @@
                         <td><strong>AMZN</strong></td>
                         <td>55.06W</td>
                         <td>2.52</td>
-                        <td>6.1</td>
                         <td>0.80</td>
                         <td>455.96W</td>
                         <td>1.34</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C240 <span class='oi-badge'>53K (9.5%)</span></div><div class='contract-item'>260116C242 <span class='oi-badge'>24K (4.4%)</span></div><div class='contract-item'>260116C245 <span class='oi-badge'>23K (4.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260918P130 <span class='oi-badge'>5K (0.9%)</span></div><div class='contract-item'>260918P170 <span class='oi-badge'>2K (0.4%)</span></div><div class='contract-item'>260717P200 <span class='oi-badge'>2K (0.4%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C240 <span class='oi-badge'>59K (1.3%)</span></div><div class='contract-item'>260116C250 <span class='oi-badge'>56K (1.2%)</span></div><div class='contract-item'>260116C260 <span class='oi-badge'>38K (0.8%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C240 <span class='oi-badge'>53K (9.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260918P130 <span class='oi-badge'>5K (0.9%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C240 <span class='oi-badge'>59K (1.3%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -623,13 +605,12 @@
                         <td><strong>NOW</strong></td>
                         <td>52.02W</td>
                         <td>0.07</td>
-                        <td>46.6</td>
                         <td>0.57</td>
                         <td>56.86W</td>
                         <td>1.25</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P152 <span class='oi-badge'>59K (11.3%)</span></div><div class='contract-item'>260116P156 <span class='oi-badge'>57K (11.0%)</span></div><div class='contract-item'>260116P168 <span class='oi-badge'>41K (7.9%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618P220 <span class='oi-badge'>2K (0.5%)</span></div><div class='contract-item'>260618P216 <span class='oi-badge'>1K (0.2%)</span></div><div class='contract-item'>260618P200 <span class='oi-badge'>1K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260220P128 <span class='oi-badge'>11K (1.9%)</span></div><div class='contract-item'>260116P140 <span class='oi-badge'>9K (1.6%)</span></div><div class='contract-item'>260116C200 <span class='oi-badge'>8K (1.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P152 <span class='oi-badge'>59K (11.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618P220 <span class='oi-badge'>2K (0.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260220P128 <span class='oi-badge'>11K (1.9%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -637,13 +618,12 @@
                         <td><strong>TLT</strong></td>
                         <td>51.55W</td>
                         <td>1.61</td>
-                        <td>22.8</td>
                         <td>1.32</td>
                         <td>687.22W</td>
                         <td>1.47</td>
-                        <td class="compact-cell"><div class='contract-item'>260220C90 <span class='oi-badge'>69K (13.4%)</span></div><div class='contract-item'>260116P95 <span class='oi-badge'>23K (4.5%)</span></div><div class='contract-item'>260220C89 <span class='oi-badge'>22K (4.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618C100 <span class='oi-badge'>13K (2.5%)</span></div><div class='contract-item'>260618C88 <span class='oi-badge'>11K (2.1%)</span></div><div class='contract-item'>260618P88 <span class='oi-badge'>11K (2.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C90 <span class='oi-badge'>122K (1.8%)</span></div><div class='contract-item'>260116C150 <span class='oi-badge'>118K (1.7%)</span></div><div class='contract-item'>260116P87 <span class='oi-badge'>105K (1.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260220C90 <span class='oi-badge'>69K (13.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618C100 <span class='oi-badge'>13K (2.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C90 <span class='oi-badge'>122K (1.8%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -651,13 +631,12 @@
                         <td><strong>COIN</strong></td>
                         <td>50.26W</td>
                         <td>0.41</td>
-                        <td>12.0</td>
                         <td>1.61</td>
                         <td>112.39W</td>
                         <td>1.42</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P300 <span class='oi-badge'>61K (12.1%)</span></div><div class='contract-item'>260116P320 <span class='oi-badge'>59K (11.8%)</span></div><div class='contract-item'>260116P290 <span class='oi-badge'>55K (11.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>270115C200 <span class='oi-badge'>1K (0.2%)</span></div><div class='contract-item'>260417P240 <span class='oi-badge'>1K (0.2%)</span></div><div class='contract-item'>280121C5 <span class='oi-badge'>1K (0.1%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C400 <span class='oi-badge'>21K (1.8%)</span></div><div class='contract-item'>260220C260 <span class='oi-badge'>16K (1.5%)</span></div><div class='contract-item'>260320C270 <span class='oi-badge'>16K (1.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P300 <span class='oi-badge'>61K (12.1%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>270115C200 <span class='oi-badge'>1K (0.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C400 <span class='oi-badge'>21K (1.8%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -665,13 +644,12 @@
                         <td><strong>IBIT</strong></td>
                         <td>50.20W</td>
                         <td>1.32</td>
-                        <td>12.3</td>
                         <td>2.48</td>
                         <td>680.05W</td>
                         <td>1.75</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P60 <span class='oi-badge'>32K (6.3%)</span></div><div class='contract-item'>260116C55 <span class='oi-badge'>23K (4.6%)</span></div><div class='contract-item'>260116P58 <span class='oi-badge'>13K (2.6%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260618P45 <span class='oi-badge'>3K (0.6%)</span></div><div class='contract-item'>260618C70 <span class='oi-badge'>3K (0.6%)</span></div><div class='contract-item'>260515C70 <span class='oi-badge'>3K (0.5%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C100 <span class='oi-badge'>92K (1.3%)</span></div><div class='contract-item'>260116P43 <span class='oi-badge'>91K (1.3%)</span></div><div class='contract-item'>260116C70 <span class='oi-badge'>80K (1.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P60 <span class='oi-badge'>32K (6.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260618P45 <span class='oi-badge'>3K (0.6%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C100 <span class='oi-badge'>92K (1.3%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -679,13 +657,12 @@
                         <td><strong>HOOD</strong></td>
                         <td>48.92W</td>
                         <td>1.87</td>
-                        <td>7.0</td>
                         <td>3.42</td>
                         <td>199.97W</td>
                         <td>1.60</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C120 <span class='oi-badge'>31K (6.2%)</span></div><div class='contract-item'>260116C125 <span class='oi-badge'>18K (3.6%)</span></div><div class='contract-item'>260116C118 <span class='oi-badge'>13K (2.7%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417C130 <span class='oi-badge'>3K (0.6%)</span></div><div class='contract-item'>261218C150 <span class='oi-badge'>1K (0.3%)</span></div><div class='contract-item'>260618C120 <span class='oi-badge'>1K (0.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260116C125 <span class='oi-badge'>31K (1.6%)</span></div><div class='contract-item'>260116C120 <span class='oi-badge'>29K (1.5%)</span></div><div class='contract-item'>261218C165 <span class='oi-badge'>26K (1.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C120 <span class='oi-badge'>31K (6.2%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417C130 <span class='oi-badge'>3K (0.6%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C125 <span class='oi-badge'>31K (1.6%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -693,13 +670,12 @@
                         <td><strong>ORCL</strong></td>
                         <td>46.56W</td>
                         <td>0.26</td>
-                        <td>14.0</td>
                         <td>0.48</td>
                         <td>223.22W</td>
                         <td>1.15</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P220 <span class='oi-badge'>74K (15.9%)</span></div><div class='contract-item'>260116P270 <span class='oi-badge'>48K (10.4%)</span></div><div class='contract-item'>260116P240 <span class='oi-badge'>42K (9.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>270115P95 <span class='oi-badge'>8K (1.7%)</span></div><div class='contract-item'>270115P100 <span class='oi-badge'>2K (0.4%)</span></div><div class='contract-item'>270115P110 <span class='oi-badge'>1K (0.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260320C300 <span class='oi-badge'>30K (1.3%)</span></div><div class='contract-item'>260320C250 <span class='oi-badge'>25K (1.1%)</span></div><div class='contract-item'>260116C300 <span class='oi-badge'>25K (1.1%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P220 <span class='oi-badge'>74K (15.9%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>270115P95 <span class='oi-badge'>8K (1.7%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260320C300 <span class='oi-badge'>30K (1.3%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -707,13 +683,12 @@
                         <td><strong>CRWV</strong></td>
                         <td>40.51W</td>
                         <td>1.42</td>
-                        <td>6.3</td>
                         <td>2.22</td>
                         <td>202.99W</td>
                         <td>1.44</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C100 <span class='oi-badge'>42K (10.4%)</span></div><div class='contract-item'>260116C105 <span class='oi-badge'>20K (4.9%)</span></div><div class='contract-item'>260116P50 <span class='oi-badge'>19K (4.7%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417C100 <span class='oi-badge'>1K (0.3%)</span></div><div class='contract-item'>260918C125 <span class='oi-badge'>1K (0.2%)</span></div><div class='contract-item'>260618C200 <span class='oi-badge'>1K (0.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260320C100 <span class='oi-badge'>105K (5.2%)</span></div><div class='contract-item'>260320C165 <span class='oi-badge'>44K (2.1%)</span></div><div class='contract-item'>260116C150 <span class='oi-badge'>40K (2.0%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C100 <span class='oi-badge'>42K (10.4%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417C100 <span class='oi-badge'>1K (0.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260320C100 <span class='oi-badge'>105K (5.2%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -721,13 +696,12 @@
                         <td><strong>ADBE</strong></td>
                         <td>36.47W</td>
                         <td>0.07</td>
-                        <td>25.3</td>
                         <td>1.83</td>
                         <td>49.52W</td>
                         <td>1.20</td>
-                        <td class="compact-cell"><div class='contract-item'>260116P360 <span class='oi-badge'>79K (21.6%)</span></div><div class='contract-item'>260116P340 <span class='oi-badge'>33K (9.0%)</span></div><div class='contract-item'>260116P350 <span class='oi-badge'>31K (8.6%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>280121C200 <span class='oi-badge'>5K (1.3%)</span></div><div class='contract-item'>260618P240 <span class='oi-badge'>1K (0.2%)</span></div><div class='contract-item'>260515P280 <span class='oi-badge'>1K (0.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260320C370 <span class='oi-badge'>7K (1.5%)</span></div><div class='contract-item'>260618C500 <span class='oi-badge'>7K (1.3%)</span></div><div class='contract-item'>260320P320 <span class='oi-badge'>5K (0.9%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116P360 <span class='oi-badge'>79K (21.6%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>280121C200 <span class='oi-badge'>5K (1.3%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260320C370 <span class='oi-badge'>7K (1.5%)</span></div></td>
                     </tr>
                 
                     <tr>
@@ -735,32 +709,31 @@
                         <td><strong>HYG</strong></td>
                         <td>35.90W</td>
                         <td>0.60</td>
-                        <td>168.4</td>
                         <td>0.19</td>
                         <td>1096.46W</td>
                         <td>0.16</td>
-                        <td class="compact-cell"><div class='contract-item'>260116C81 <span class='oi-badge'>64K (17.8%)</span></div><div class='contract-item'>260417P79 <span class='oi-badge'>34K (9.5%)</span></div><div class='contract-item'>260220C81 <span class='oi-badge'>26K (7.2%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417P79 <span class='oi-badge'>34K (9.5%)</span></div><div class='contract-item'>260618P78 <span class='oi-badge'>25K (7.0%)</span></div><div class='contract-item'>260618P70 <span class='oi-badge'>25K (7.0%)</span></div></td>
-                        <td class="compact-cell"><div class='contract-item'>260417P74 <span class='oi-badge'>497K (4.5%)</span></div><div class='contract-item'>260116P75 <span class='oi-badge'>473K (4.3%)</span></div><div class='contract-item'>260116P79 <span class='oi-badge'>443K (4.0%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260116C81 <span class='oi-badge'>64K (17.8%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417P79 <span class='oi-badge'>34K (9.5%)</span></div></td>
+                        <td class="compact-cell"><div class='contract-item'>260417P74 <span class='oi-badge'>497K (4.5%)</span></div></td>
                     </tr>
                 
                 </tbody>
             </table>
 
             <div style="margin-top: 20px; padding: 15px; background-color: #f5f5f7; border-radius: 8px; font-size: 14px;">
-                <h3 style="margin-top: 0; font-size: 15px; color: #1d1d1f;">📊 Top 3 列说明</h3>
+                <h3 style="margin-top: 0; font-size: 15px; color: #1d1d1f;">📊 Top 列说明</h3>
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                     <div>
-                        <strong style="color: #06c;">Top 3 Volume</strong>
-                        <p style="margin: 5px 0 0 0; color: #86868b;">成交量最大的前3个期权合约（基于当日成交量）</p>
+                        <strong style="color: #06c;">Top Volume</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">成交量最大的期权合约（基于当日成交量）</p>
                     </div>
                     <div>
-                        <strong style="color: #06c;">Top 3 Volume Leap</strong>
-                        <p style="margin: 5px 0 0 0; color: #86868b;">距到期日≥90天且成交量最大的前3个期权合约</p>
+                        <strong style="color: #06c;">Top Leap</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">距到期日≥90天且成交量最大的期权合约</p>
                     </div>
                     <div>
-                        <strong style="color: #06c;">Top 3 OI</strong>
-                        <p style="margin: 5px 0 0 0; color: #86868b;">持仓量（Open Interest）最大的前3个期权合约</p>
+                        <strong style="color: #06c;">Top OI</strong>
+                        <p style="margin: 5px 0 0 0; color: #86868b;">持仓量（Open Interest）最大的期权合约</p>
                     </div>
                 </div>
             </div>
@@ -878,62 +851,61 @@
                 // Format volume and OI in 万 (W) with 2 decimal places
                 const volumeW = (item.total_volume / 10000).toFixed(2) + 'W';
                 const oiW = (item.total_oi / 10000).toFixed(2) + 'W';
-                const avgTradeSize = item.avg_trade_size || 0;
                 const currentPrice = item.current_price;
 
                 const row = document.createElement('tr');
 
-                // For stock table, include LEAP C/P column and all 3 Top 3 columns
+                // For stock table, include LEAP C/P column and Top 1 columns
                 if (tableType === 'stock') {
                     const leapCp = item.leap_cp_ratio || 0;
                     const leapCpHtml = leapCp ? leapCp.toFixed(2) : '-';
 
-                    // Format Top 3 Volume
-                    let top3VolumeHtml = '';
+                    // Format Top 1 Volume
+                    let top1VolumeHtml = '';
                     if (currentPrice) {
-                        top3VolumeHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
+                        top1VolumeHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
                     }
                     const top3ContractsVolume = item.top_3_contracts_volume || [];
-                    top3ContractsVolume.slice(0, 3).forEach((contract) => {
+                    top3ContractsVolume.slice(0, 1).forEach((contract) => {
                         const ticker = contract.ticker || 'N/A';
                         const volumeK = (contract.volume || 0) / 1000;
                         const pct = contract.percentage || 0;
-                        top3VolumeHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(volumeK)}K (${pct.toFixed(1)}%)</span></div>`;
+                        top1VolumeHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(volumeK)}K (${pct.toFixed(1)}%)</span></div>`;
                     });
-                    if (!top3VolumeHtml || top3ContractsVolume.length === 0) {
-                        top3VolumeHtml = '<small>N/A</small>';
+                    if (!top1VolumeHtml || top3ContractsVolume.length === 0) {
+                        top1VolumeHtml = '<small>N/A</small>';
                     }
 
-                    // Format Top 3 Volume Leap
-                    let top3LeapVolumeHtml = '';
+                    // Format Top 1 Volume Leap
+                    let top1LeapVolumeHtml = '';
                     if (currentPrice) {
-                        top3LeapVolumeHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
+                        top1LeapVolumeHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
                     }
                     const top3LeapVolume = item.top_3_leap_volume || [];
-                    top3LeapVolume.slice(0, 3).forEach((contract) => {
+                    top3LeapVolume.slice(0, 1).forEach((contract) => {
                         const ticker = contract.ticker || 'N/A';
                         const volumeK = (contract.volume || 0) / 1000;
                         const pct = contract.percentage || 0;
-                        top3LeapVolumeHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(volumeK)}K (${pct.toFixed(1)}%)</span></div>`;
+                        top1LeapVolumeHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(volumeK)}K (${pct.toFixed(1)}%)</span></div>`;
                     });
-                    if (!top3LeapVolumeHtml || top3LeapVolume.length === 0) {
-                        top3LeapVolumeHtml = '<small>N/A</small>';
+                    if (!top1LeapVolumeHtml || top3LeapVolume.length === 0) {
+                        top1LeapVolumeHtml = '<small>N/A</small>';
                     }
 
-                    // Format Top 3 OI
-                    let top3OIHtml = '';
+                    // Format Top 1 OI
+                    let top1OIHtml = '';
                     if (currentPrice) {
-                        top3OIHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
+                        top1OIHtml += `<div><small>Current: $${currentPrice.toFixed(2)}</small></div>`;
                     }
                     const top3OI = item.top_3_oi || [];
-                    top3OI.slice(0, 3).forEach((contract) => {
+                    top3OI.slice(0, 1).forEach((contract) => {
                         const ticker = contract.ticker || 'N/A';
                         const oiK = (contract.oi || 0) / 1000;
                         const pct = contract.percentage || 0;
-                        top3OIHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
+                        top1OIHtml += `<div class='contract-item'>${ticker} <span class='oi-badge'>${Math.round(oiK)}K (${pct.toFixed(1)}%)</span></div>`;
                     });
-                    if (!top3OIHtml || top3OI.length === 0) {
-                        top3OIHtml = '<small>N/A</small>';
+                    if (!top1OIHtml || top3OI.length === 0) {
+                        top1OIHtml = '<small>N/A</small>';
                     }
 
                     row.innerHTML = `
@@ -941,22 +913,20 @@
                         <td><strong>${item.ticker}</strong></td>
                         <td>${volumeW}</td>
                         <td>${item.cp_volume_ratio.toFixed(2)}</td>
-                        <td>${avgTradeSize.toFixed(1)}</td>
                         <td>${leapCpHtml}</td>
                         <td>${oiW}</td>
                         <td>${item.cp_oi_ratio.toFixed(2)}</td>
-                        <td class="compact-cell">${top3VolumeHtml}</td>
-                        <td class="compact-cell">${top3LeapVolumeHtml}</td>
-                        <td class="compact-cell">${top3OIHtml}</td>
+                        <td class="compact-cell">${top1VolumeHtml}</td>
+                        <td class="compact-cell">${top1LeapVolumeHtml}</td>
+                        <td class="compact-cell">${top1OIHtml}</td>
                     `;
                 } else {
-                    // Index table - only show: Rank, Ticker, Total Volume, C/P Volume, Avg Trade Size
+                    // Index table - only show: Rank, Ticker, Total Volume, C/P Volume
                     row.innerHTML = `
                         <td>${idx + 1}</td>
                         <td><strong>${item.ticker}</strong></td>
                         <td>${volumeW}</td>
                         <td>${item.cp_volume_ratio.toFixed(2)}</td>
-                        <td>${avgTradeSize.toFixed(1)}</td>
                     `;
                 }
 
