@@ -266,7 +266,7 @@
     <div class="container">
         <div class="header">
             <h1>Options Market Anomaly Analysis</h1>
-            <p class="date">📈 <strong>美东时间:</strong> 2026-01-16 11:53:32 EST | <strong>东八区时间:</strong> 2026-01-17 00:53:32 | <strong>交易时段:</strong> 盘中 (Market Hours) | <strong>数据来源:</strong> CSV文件 (2026-01-07.csv.gz)</p>
+            <p class="date">📈 <strong>美东时间:</strong> 2026-01-16 12:01:51 EST | <strong>东八区时间:</strong> 2026-01-17 01:01:51 | <strong>交易时段:</strong> 盘中 (Market Hours) | <strong>数据来源:</strong> CSV文件 (2026-01-07.csv.gz)</p>
         </div>
 
         <div class="nav">
@@ -302,29 +302,31 @@
             <div class="macro-content">
                 <strong>Market Sentiment &amp; Positioning</strong>
 
-<ul><li><strong>C/P Ratio Insight</strong>: The Call/Put (C/P) ratios across major indices suggest a cautious yet not overtly bearish sentiment. SPY's C/P Volume Ratio of 0.89 and C/P OI Ratio of 0.53 indicate heavier put interest, reflecting concern over potential downside, yet not extreme fear. Similar patterns in QQQ and IWM suggest a defensive stance, with IWM showing a particularly low C/P OI Ratio of 0.46, indicating a significant skew towards protective puts.</li>
-  
-<li><strong>Smart Money Positioning</strong>: The concentration of open interest in longer-dated put contracts, especially those expiring in 2026, implies long-term hedging or strategic positioning for downside protection. The top contracts' focus on deep out-of-the-money puts (e.g., SPY PUT $680) suggests institutions are bracing for potential volatility or corrections over an extended horizon.</li>
+<ul><li><strong>C/P Ratio Insights</strong>: The Call/Put (C/P) Volume and Open Interest (OI) ratios across SPY, QQQ, IWM, and SPX indicate a moderate preference for puts over calls. This typically signifies a cautious or bearish sentiment among institutional investors. Particularly, the SPY's low C/P OI Ratio of 0.53 suggests a significant skew towards protective positioning.</li>
 
-<li><strong>Unusual Patterns</strong>: The significant open interest in these deep out-of-the-money puts, especially with long expirations, could indicate institutional hedging against tail risks or potential macroeconomic disruptions. This positioning may also reflect concerns over prolonged uncertainties rather than imminent bearish expectations.</li>
+<li><strong>Smart Money Positioning</strong>: The top contracts are heavily concentrated in long-dated puts, notably in SPY and QQQ, with expiries in 2026. This reflects a strategic preference to hedge against potential downside risks over a multi-year horizon. The overrepresentation of puts in the OI, especially in SPY and IWM, suggests that institutions are prioritizing protection against significant market corrections.</li>
+
+<li><strong>Unusual Patterns</strong>: The high concentration of OI in deep out-of-the-money puts, especially in SPY and QQQ, may indicate anticipation of potential market downturns or increased volatility. This suggests a hedging bias rather than aggressive directional bets on a market decline.</li>
 
 <strong>Macro Outlook</strong>
 
-<li><strong>Current Environment</strong>: The macro landscape is characterized by heightened uncertainty with regard to Federal Reserve policy, as inflation remains persistent and the Fed navigates the balance between controlling inflation and sustaining growth. The yield curve is a critical indicator, potentially signaling caution on growth prospects.</li>
+<li><strong>Current Macro Environment</strong>: The macro backdrop is characterized by persistent inflationary pressures, despite some softening, with the Federal Reserve maintaining a cautious stance on rate hikes. Economic growth remains uneven, with uncertainty around geopolitical tensions and supply chain disruptions influencing market sentiment.</li>
 
-<li><strong>Key Risks &amp; Opportunities</strong>: Key risks include potential Fed policy missteps, geopolitical tensions, and ongoing supply chain disruptions. Opportunities may arise from sectors or regions less impacted by these risks, or from tactical positioning in volatility-related trades.</li>
+<li><strong>Key Risks and Opportunities</strong>: Risks include potential stagflation, geopolitical tensions impacting energy markets, and further tightening by the Fed. Opportunities may arise from technological innovation sectors or regions less impacted by global supply chain disruptions.</li>
 
-<li><strong>Investor Watchlist</strong>: Investors should monitor Fed communications for clarity on rate trajectories, inflation data for signs of peaking or persistence, and global geopolitical developments that could impact supply chains and energy prices.</li>
+<li><strong>Investor Watch List</strong>: Investors should closely monitor Fed communications for any shifts in policy tone, inflation data releases, and geopolitical developments, particularly in energy-dependent regions. Market volatility could present tactical opportunities for nimble investors.</li></ul>
 
 <strong>Key Takeaways</strong>
 
-<li>Institutional sentiment is defensive with a focus on long-term hedging, reflecting uncertainty over macroeconomic stability rather than immediate bearishness.</li>
-  
-<li>Significant open interest in deep out-of-the-money puts suggests concerns over potential tail risks, possibly linked to economic or geopolitical shocks.</li>
+<p>1. <strong>Bearish Hedging Bias</strong>: The options market exhibits a strong preference for downside protection, with significant long-dated put positions indicating a defensive posture among institutional players.</p>
 
-<li>The current macro environment is fraught with uncertainties, particularly surrounding Fed policy and inflation, presenting both risks and tactical opportunities for investors.</li>
+<p>2. <strong>Macro Uncertainty</strong>: Persistent inflation and geopolitical risks are driving cautious sentiment, with the Fed's policy trajectory being a critical variable for future market dynamics.</p>
 
-<li>Investors should closely track Fed signals, inflation trends, and geopolitical developments to navigate this complex landscape effectively.</li></ul>
+<p>3. <strong>Opportunities in Volatility</strong>: While risks are pronounced, periods of increased volatility may offer strategic entry points for investors focused on long-term value and innovation-driven sectors.</p>
+
+<p>4. <strong>Focus on Fed Signals</strong>: The market's sensitivity to Fed decisions and communication underscores the importance of staying attuned to potential shifts in monetary policy.</p>
+
+<p>5. <strong>Geopolitical Vigilance</strong>: Energy market disruptions and geopolitical tensions remain pivotal concerns that could rapidly influence market sentiment and positioning.</p>
             </div>
         </div>
 
@@ -335,6 +337,7 @@
                     <tr>
                         <th>Rank</th>
                         <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -342,21 +345,25 @@
                     <tr>
                         <td>1</td>
                         <td><strong>SPY</strong></td>
+                        <td>0.89</td>
                     </tr>
                 
                     <tr>
                         <td>2</td>
                         <td><strong>QQQ</strong></td>
+                        <td>0.86</td>
                     </tr>
                 
                     <tr>
                         <td>3</td>
                         <td><strong>IWM</strong></td>
+                        <td>0.74</td>
                     </tr>
                 
                     <tr>
                         <td>4</td>
                         <td><strong>SPX</strong></td>
+                        <td>0.65</td>
                     </tr>
                 
                 </tbody>
@@ -370,6 +377,7 @@
                     <tr>
                         <th>Rank</th>
                         <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top Volume</th>
@@ -382,6 +390,7 @@
                     <tr>
                         <td>1</td>
                         <td><strong>NVDA</strong></td>
+                        <td>1.88</td>
                         <td>1.33</td>
                         <td>1.12</td>
                         <td class="compact-cell"><div class='contract-item'>260109C190 <span class='oi-badge'>166K (9.8%)</span></div></td>
@@ -392,6 +401,7 @@
                     <tr>
                         <td>2</td>
                         <td><strong>TSLA</strong></td>
+                        <td>1.39</td>
                         <td>1.56</td>
                         <td>1.01</td>
                         <td class="compact-cell"><div class='contract-item'>260109P435 <span class='oi-badge'>81K (5.2%)</span></div></td>
@@ -402,6 +412,7 @@
                     <tr>
                         <td>3</td>
                         <td><strong>SLV</strong></td>
+                        <td>1.28</td>
                         <td>2.27</td>
                         <td>1.21</td>
                         <td class="compact-cell"><div class='contract-item'>260107C71 <span class='oi-badge'>45K (2.9%)</span></div></td>
@@ -412,6 +423,7 @@
                     <tr>
                         <td>4</td>
                         <td><strong>INTC</strong></td>
+                        <td>3.45</td>
                         <td>6.03</td>
                         <td>1.43</td>
                         <td class="compact-cell"><div class='contract-item'>260109C46 <span class='oi-badge'>74K (5.8%)</span></div></td>
@@ -422,6 +434,7 @@
                     <tr>
                         <td>5</td>
                         <td><strong>AMZN</strong></td>
+                        <td>3.01</td>
                         <td>4.17</td>
                         <td>1.35</td>
                         <td class="compact-cell"><div class='contract-item'>260109C245 <span class='oi-badge'>92K (10.2%)</span></div></td>
@@ -432,6 +445,7 @@
                     <tr>
                         <td>6</td>
                         <td><strong>PLTR</strong></td>
+                        <td>1.37</td>
                         <td>1.09</td>
                         <td>1.00</td>
                         <td class="compact-cell"><div class='contract-item'>260109C190 <span class='oi-badge'>48K (7.0%)</span></div></td>
@@ -442,6 +456,7 @@
                     <tr>
                         <td>7</td>
                         <td><strong>MSTR</strong></td>
+                        <td>1.80</td>
                         <td>0.56</td>
                         <td>1.46</td>
                         <td class="compact-cell"><div class='contract-item'>260109C167 <span class='oi-badge'>50K (7.3%)</span></div></td>
@@ -452,6 +467,7 @@
                     <tr>
                         <td>8</td>
                         <td><strong>AAPL</strong></td>
+                        <td>1.79</td>
                         <td>1.43</td>
                         <td>1.45</td>
                         <td class="compact-cell"><div class='contract-item'>260109C262 <span class='oi-badge'>47K (6.9%)</span></div></td>
@@ -462,6 +478,7 @@
                     <tr>
                         <td>9</td>
                         <td><strong>GOOGL</strong></td>
+                        <td>2.69</td>
                         <td>10.29</td>
                         <td>1.22</td>
                         <td class="compact-cell"><div class='contract-item'>260618C430 <span class='oi-badge'>56K (8.7%)</span></div></td>
@@ -472,6 +489,7 @@
                     <tr>
                         <td>10</td>
                         <td><strong>HYG</strong></td>
+                        <td>0.17</td>
                         <td>0.02</td>
                         <td>0.20</td>
                         <td class="compact-cell"><div class='contract-item'>260220P79 <span class='oi-badge'>76K (13.7%)</span></div></td>
@@ -482,6 +500,7 @@
                     <tr>
                         <td>11</td>
                         <td><strong>GLD</strong></td>
+                        <td>1.75</td>
                         <td>3.18</td>
                         <td>1.83</td>
                         <td class="compact-cell"><div class='contract-item'>260107C410 <span class='oi-badge'>16K (3.6%)</span></div></td>
@@ -492,6 +511,7 @@
                     <tr>
                         <td>12</td>
                         <td><strong>AMD</strong></td>
+                        <td>1.51</td>
                         <td>0.99</td>
                         <td>1.05</td>
                         <td class="compact-cell"><div class='contract-item'>260109C210 <span class='oi-badge'>26K (6.0%)</span></div></td>
@@ -502,6 +522,7 @@
                     <tr>
                         <td>13</td>
                         <td><strong>TLT</strong></td>
+                        <td>1.07</td>
                         <td>2.95</td>
                         <td>1.46</td>
                         <td class="compact-cell"><div class='contract-item'>260116P87 <span class='oi-badge'>28K (6.6%)</span></div></td>
@@ -512,6 +533,7 @@
                     <tr>
                         <td>14</td>
                         <td><strong>META</strong></td>
+                        <td>1.56</td>
                         <td>2.47</td>
                         <td>1.55</td>
                         <td class="compact-cell"><div class='contract-item'>260109C660 <span class='oi-badge'>16K (3.9%)</span></div></td>
@@ -522,6 +544,7 @@
                     <tr>
                         <td>15</td>
                         <td><strong>MSFT</strong></td>
+                        <td>1.82</td>
                         <td>1.94</td>
                         <td>1.42</td>
                         <td class="compact-cell"><div class='contract-item'>260109C485 <span class='oi-badge'>16K (3.7%)</span></div></td>
@@ -532,6 +555,7 @@
                     <tr>
                         <td>16</td>
                         <td><strong>OPEN</strong></td>
+                        <td>1.83</td>
                         <td>5.31</td>
                         <td>3.33</td>
                         <td class="compact-cell"><div class='contract-item'>260109C7 <span class='oi-badge'>53K (12.8%)</span></div></td>
@@ -542,6 +566,7 @@
                     <tr>
                         <td>17</td>
                         <td><strong>NFLX</strong></td>
+                        <td>1.60</td>
                         <td>1.43</td>
                         <td>1.16</td>
                         <td class="compact-cell"><div class='contract-item'>260116C92 <span class='oi-badge'>18K (4.7%)</span></div></td>
@@ -552,6 +577,7 @@
                     <tr>
                         <td>18</td>
                         <td><strong>IBIT</strong></td>
+                        <td>1.86</td>
                         <td>1.25</td>
                         <td>1.75</td>
                         <td class="compact-cell"><div class='contract-item'>260109C52 <span class='oi-badge'>29K (8.4%)</span></div></td>
@@ -562,6 +588,7 @@
                     <tr>
                         <td>19</td>
                         <td><strong>BYND</strong></td>
+                        <td>12.75</td>
                         <td>3.57</td>
                         <td>1.76</td>
                         <td class="compact-cell"><div class='contract-item'>260109C1 <span class='oi-badge'>85K (24.7%)</span></div></td>
@@ -572,6 +599,7 @@
                     <tr>
                         <td>20</td>
                         <td><strong>MU</strong></td>
+                        <td>1.18</td>
                         <td>1.12</td>
                         <td>0.75</td>
                         <td class="compact-cell"><div class='contract-item'>260109C350 <span class='oi-badge'>28K (8.3%)</span></div></td>
@@ -582,6 +610,7 @@
                     <tr>
                         <td>21</td>
                         <td><strong>GOOG</strong></td>
+                        <td>2.26</td>
                         <td>2.98</td>
                         <td>1.29</td>
                         <td class="compact-cell"><div class='contract-item'>260109C325 <span class='oi-badge'>22K (6.8%)</span></div></td>
@@ -592,6 +621,7 @@
                     <tr>
                         <td>22</td>
                         <td><strong>SOFI</strong></td>
+                        <td>1.78</td>
                         <td>1.47</td>
                         <td>1.41</td>
                         <td class="compact-cell"><div class='contract-item'>260109C27 <span class='oi-badge'>14K (5.0%)</span></div></td>
@@ -602,6 +632,7 @@
                     <tr>
                         <td>23</td>
                         <td><strong>BABA</strong></td>
+                        <td>1.37</td>
                         <td>3.22</td>
                         <td>1.14</td>
                         <td class="compact-cell"><div class='contract-item'>260618C200 <span class='oi-badge'>11K (4.3%)</span></div></td>
@@ -612,6 +643,7 @@
                     <tr>
                         <td>24</td>
                         <td><strong>GME</strong></td>
+                        <td>7.07</td>
                         <td>4.55</td>
                         <td>1.85</td>
                         <td class="compact-cell"><div class='contract-item'>260109C22 <span class='oi-badge'>21K (8.2%)</span></div></td>
@@ -622,6 +654,7 @@
                     <tr>
                         <td>25</td>
                         <td><strong>RIVN</strong></td>
+                        <td>3.07</td>
                         <td>1.84</td>
                         <td>0.88</td>
                         <td class="compact-cell"><div class='contract-item'>260109C20 <span class='oi-badge'>29K (11.6%)</span></div></td>
@@ -823,6 +856,7 @@
                     row.innerHTML = `
                         <td>${item.original_rank}</td>
                         <td><strong>${item.ticker}</strong></td>
+                        <td>${item.cp_volume_ratio.toFixed(2)}</td>
                         <td>${leapCpHtml}</td>
                         <td>${item.cp_oi_ratio.toFixed(2)}</td>
                         <td class="compact-cell">${top1VolumeHtml}</td>
@@ -830,10 +864,11 @@
                         <td class="compact-cell">${top1OIHtml}</td>
                     `;
                 } else {
-                    // Index table - only show: Rank, Ticker
+                    // Index table - only show: Rank, Ticker, C/P Volume
                     row.innerHTML = `
                         <td>${item.original_rank}</td>
                         <td><strong>${item.ticker}</strong></td>
+                        <td>${item.cp_volume_ratio.toFixed(2)}</td>
                     `;
                 }
 
