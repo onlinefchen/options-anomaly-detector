@@ -345,6 +345,7 @@ class HTMLReportGenerator:
                     <tr>
                         <td>{idx}</td>
                         <td><strong>{item['ticker']}</strong></td>
+                        <td>{item['cp_volume_ratio']:.2f}</td>
                         <td>{leap_cp_html}</td>
                         <td>{item['cp_oi_ratio']:.2f}</td>
                         <td class="compact-cell">{top1_volume_html}</td>
@@ -353,11 +354,12 @@ class HTMLReportGenerator:
                     </tr>
                 """)
             else:
-                # Index table - only show: Rank, Ticker
+                # Index table - only show: Rank, Ticker, C/P Volume
                 rows.append(f"""
                     <tr>
                         <td>{idx}</td>
                         <td><strong>{item['ticker']}</strong></td>
+                        <td>{item['cp_volume_ratio']:.2f}</td>
                     </tr>
                 """)
         return ''.join(rows)
@@ -710,6 +712,7 @@ class HTMLReportGenerator:
                     <tr>
                         <th>Rank</th>
                         <th class="sortable" data-table="index" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="index" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                     </tr>
                 </thead>
                 <tbody id="indexTableBody">
@@ -725,6 +728,7 @@ class HTMLReportGenerator:
                     <tr>
                         <th>Rank</th>
                         <th class="sortable" data-table="stock" data-column="ticker" data-type="string">Ticker <span class="sort-icon"></span></th>
+                        <th class="sortable" data-table="stock" data-column="cp_volume_ratio" data-type="number">C/P Volume <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="leap_cp_ratio" data-type="number">LEAP C/P <span class="sort-icon"></span></th>
                         <th class="sortable" data-table="stock" data-column="cp_oi_ratio" data-type="number">C/P OI <span class="sort-icon"></span></th>
                         <th>Top Volume</th>
@@ -928,6 +932,7 @@ class HTMLReportGenerator:
                     row.innerHTML = `
                         <td>${{item.original_rank}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
+                        <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
                         <td>${{leapCpHtml}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
                         <td class="compact-cell">${{top1VolumeHtml}}</td>
@@ -935,10 +940,11 @@ class HTMLReportGenerator:
                         <td class="compact-cell">${{top1OIHtml}}</td>
                     `;
                 }} else {{
-                    // Index table - only show: Rank, Ticker
+                    // Index table - only show: Rank, Ticker, C/P Volume
                     row.innerHTML = `
                         <td>${{item.original_rank}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
+                        <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
                     `;
                 }}
 
