@@ -64,10 +64,16 @@ class HTMLReportGenerator:
         index_order = ['SPY', 'QQQ', 'IWM', 'SPX']
         index_dict = {d['ticker']: d for d in filtered_data if d['ticker'] in self.INDEX_ETFS}
         sorted_index_data = [index_dict[ticker] for ticker in index_order if ticker in index_dict]
+        # Add original_rank to index data (fixed order)
+        for idx, item in enumerate(sorted_index_data, 1):
+            item['original_rank'] = idx
 
         # 个股和ETF：排除指数ETF，取Top 25
         stock_data = [d for d in filtered_data if d['ticker'] not in self.INDEX_ETFS]
         sorted_stock_data = sorted(stock_data, key=lambda x: x['total_volume'], reverse=True)[:25]
+        # Add original_rank to stock data (based on volume ranking)
+        for idx, item in enumerate(sorted_stock_data, 1):
+            item['original_rank'] = idx
 
         # 用于整体图表的数据（包含所有过滤后数据的Top 30）
         sorted_data = sorted(filtered_data, key=lambda x: x['total_volume'], reverse=True)[:30]
@@ -920,7 +926,7 @@ class HTMLReportGenerator:
                     }}
 
                     row.innerHTML = `
-                        <td>${{idx + 1}}</td>
+                        <td>${{item.original_rank}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
                         <td>${{leapCpHtml}}</td>
                         <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
@@ -931,7 +937,7 @@ class HTMLReportGenerator:
                 }} else {{
                     // Index table - only show: Rank, Ticker
                     row.innerHTML = `
-                        <td>${{idx + 1}}</td>
+                        <td>${{item.original_rank}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
                     `;
                 }}
