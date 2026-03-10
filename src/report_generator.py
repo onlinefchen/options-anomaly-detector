@@ -263,6 +263,33 @@ class HTMLReportGenerator:
         except:
             return "N/A"
 
+    def _cp_ratio_html(self, value: float) -> str:
+        """Wrap C/P ratio value with color span based on value"""
+        text = f"{value:.2f}"
+        if value >= 10:
+            return f'<span class="cp-extreme-bull">{text}</span>'
+        elif value >= 2.0:
+            return f'<span class="cp-strong-bull">{text}</span>'
+        elif value >= 1.5:
+            return f'<span class="cp-bull">{text}</span>'
+        elif value >= 1.0:
+            return f'<span class="cp-neutral">{text}</span>'
+        elif value >= 0.8:
+            return f'<span class="cp-slight-bear">{text}</span>'
+        elif value >= 0.5:
+            return f'<span class="cp-bear">{text}</span>'
+        else:
+            return f'<span class="cp-extreme-bear">{text}</span>'
+
+    def _contract_type_class(self, contract: Dict) -> str:
+        """Get CSS class for contract type coloring"""
+        ct = (contract.get('type', '') or '')[0:1].upper()
+        if ct == 'C':
+            return 'contract-call'
+        elif ct == 'P':
+            return 'contract-put'
+        return ''
+
     def _generate_table_rows(self, data: List[Dict], include_leap_cp: bool = False) -> str:
         """Generate table rows HTML for volume rankings
 
@@ -285,9 +312,10 @@ class HTMLReportGenerator:
             # Show top 1 contract by volume (from CSV)
             for i, contract in enumerate(item.get('top_3_contracts_volume', [])[:1], 1):
                 contract_short = self._format_contract_short(contract)
+                type_class = self._contract_type_class(contract)
                 volume_k = contract.get('volume', 0) / 1000
                 pct = contract.get('percentage', 0)
-                top1_volume_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{volume_k:.0f}K ({pct:.1f}%)</span></div>"
+                top1_volume_html += f"<div class='contract-item'><span class='{type_class}'>{contract_short}</span> <span class='oi-badge'>{volume_k:.0f}K ({pct:.1f}%)</span></div>"
 
             if not top1_volume_html or not item.get('top_3_contracts_volume'):
                 top1_volume_html = '<small>N/A</small>'
@@ -299,9 +327,10 @@ class HTMLReportGenerator:
 
             for i, contract in enumerate(item.get('top_3_leap_volume', [])[:1], 1):
                 contract_short = self._format_contract_short(contract)
+                type_class = self._contract_type_class(contract)
                 volume_k = contract.get('volume', 0) / 1000
                 pct = contract.get('percentage', 0)
-                top1_leap_volume_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{volume_k:.0f}K ({pct:.1f}%)</span></div>"
+                top1_leap_volume_html += f"<div class='contract-item'><span class='{type_class}'>{contract_short}</span> <span class='oi-badge'>{volume_k:.0f}K ({pct:.1f}%)</span></div>"
 
             if not top1_leap_volume_html or not item.get('top_3_leap_volume'):
                 top1_leap_volume_html = '<small>N/A</small>'
@@ -313,9 +342,10 @@ class HTMLReportGenerator:
 
             for i, contract in enumerate(item.get('top_3_oi', [])[:1], 1):
                 contract_short = self._format_contract_short(contract)
+                type_class = self._contract_type_class(contract)
                 oi_k = contract.get('oi', 0) / 1000
                 pct = contract.get('percentage', 0)
-                top1_oi_html += f"<div class='contract-item'>{contract_short} <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
+                top1_oi_html += f"<div class='contract-item'><span class='{type_class}'>{contract_short}</span> <span class='oi-badge'>{oi_k:.0f}K ({pct:.1f}%)</span></div>"
 
             if not top1_oi_html or not item.get('top_3_oi'):
                 top1_oi_html = '<small>N/A</small>'
@@ -339,15 +369,23 @@ class HTMLReportGenerator:
             if include_leap_cp:
                 # Stocks table - include LEAP C/P column
                 leap_cp = item.get('leap_cp_ratio', 0)
-                leap_cp_html = f"{leap_cp:.2f}" if leap_cp else "-"
+                leap_cp_html = self._cp_ratio_html(leap_cp) if leap_cp else "-"
+
+                # Row class for extreme C/P
+                row_class = ''
+                cp_vol = item['cp_volume_ratio']
+                if cp_vol < 0.5:
+                    row_class = ' class="row-extreme-bear"'
+                elif cp_vol >= 10:
+                    row_class = ' class="row-extreme-bull"'
 
                 rows.append(f"""
-                    <tr>
+                    <tr{row_class}>
                         <td>{idx}</td>
                         <td><strong>{item['ticker']}</strong></td>
-                        <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td>{self._cp_ratio_html(item['cp_volume_ratio'])}</td>
                         <td>{leap_cp_html}</td>
-                        <td>{item['cp_oi_ratio']:.2f}</td>
+                        <td>{self._cp_ratio_html(item['cp_oi_ratio'])}</td>
                         <td class="compact-cell">{top1_volume_html}</td>
                         <td class="compact-cell">{top1_leap_volume_html}</td>
                         <td class="compact-cell">{top1_oi_html}</td>
@@ -355,11 +393,18 @@ class HTMLReportGenerator:
                 """)
             else:
                 # Index table - only show: Rank, Ticker, C/P Volume
+                row_class = ''
+                cp_vol = item['cp_volume_ratio']
+                if cp_vol < 0.5:
+                    row_class = ' class="row-extreme-bear"'
+                elif cp_vol >= 10:
+                    row_class = ' class="row-extreme-bull"'
+
                 rows.append(f"""
-                    <tr>
+                    <tr{row_class}>
                         <td>{idx}</td>
                         <td><strong>{item['ticker']}</strong></td>
-                        <td>{item['cp_volume_ratio']:.2f}</td>
+                        <td>{self._cp_ratio_html(item['cp_volume_ratio'])}</td>
                     </tr>
                 """)
         return ''.join(rows)
@@ -476,10 +521,27 @@ class HTMLReportGenerator:
             letter-spacing: 0.5px;
         }}
 
-        .stat-card.high .number {{ color: #1d1d1f; }}
-        .stat-card.medium .number {{ color: #1d1d1f; }}
-        .stat-card.low .number {{ color: #1d1d1f; }}
-        .stat-card.total .number {{ color: #1d1d1f; }}
+        .stat-card.high .number {{ color: #ef4444; }}
+        .stat-card.medium .number {{ color: #f59e0b; }}
+        .stat-card.low .number {{ color: #22c55e; }}
+        .stat-card.total .number {{ color: #ef4444; }}
+
+        /* C/P ratio color coding */
+        .cp-extreme-bear {{ color: #ef4444; font-weight: 700; }}
+        .cp-bear {{ color: #f87171; }}
+        .cp-slight-bear {{ color: #fb923c; }}
+        .cp-neutral {{ color: #1d1d1f; }}
+        .cp-bull {{ color: #4ade80; }}
+        .cp-strong-bull {{ color: #22c55e; font-weight: 700; }}
+        .cp-extreme-bull {{ color: #10b981; font-weight: 700; }}
+
+        /* Contract type colors */
+        .contract-call {{ color: #22c55e; }}
+        .contract-put {{ color: #ef4444; }}
+
+        /* Row border for extreme C/P */
+        tr.row-extreme-bear td:first-child {{ border-left: 3px solid #ef4444; }}
+        tr.row-extreme-bull td:first-child {{ border-left: 3px solid #22c55e; }}
 
         .nav {{
             background: #fff;
@@ -862,6 +924,25 @@ class HTMLReportGenerator:
             }}
         }}
 
+        // C/P ratio color class
+        function getCpClass(value) {{
+            if (value >= 10) return 'cp-extreme-bull';
+            if (value >= 2.0) return 'cp-strong-bull';
+            if (value >= 1.5) return 'cp-bull';
+            if (value >= 1.0) return 'cp-neutral';
+            if (value >= 0.8) return 'cp-slight-bear';
+            if (value >= 0.5) return 'cp-bear';
+            return 'cp-extreme-bear';
+        }}
+
+        // Contract type color class
+        function getContractTypeClass(contract) {{
+            const t = (contract.type || '')[0].toUpperCase();
+            if (t === 'C') return 'contract-call';
+            if (t === 'P') return 'contract-put';
+            return '';
+        }}
+
         // Render table with data
         function renderTable(tableType, data) {{
             const tbodyId = tableType === 'index' ? 'indexTableBody' : 'stockTableBody';
@@ -879,7 +960,7 @@ class HTMLReportGenerator:
                 // For stock table, include LEAP C/P column and Top 1 columns
                 if (tableType === 'stock') {{
                     const leapCp = item.leap_cp_ratio || 0;
-                    const leapCpHtml = leapCp ? leapCp.toFixed(2) : '-';
+                    const leapCpHtml = leapCp ? `<span class="${{getCpClass(leapCp)}}">${{leapCp.toFixed(2)}}</span>` : '-';
 
                     // Format Top 1 Volume
                     let top1VolumeHtml = '';
@@ -889,9 +970,10 @@ class HTMLReportGenerator:
                     const top3ContractsVolume = item.top_3_contracts_volume || [];
                     top3ContractsVolume.slice(0, 1).forEach((contract) => {{
                         const ticker = contract.ticker || 'N/A';
+                        const typeClass = getContractTypeClass(contract);
                         const volumeK = (contract.volume || 0) / 1000;
                         const pct = contract.percentage || 0;
-                        top1VolumeHtml += `<div class='contract-item'>${{ticker}} <span class='oi-badge'>${{Math.round(volumeK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                        top1VolumeHtml += `<div class='contract-item'><span class='${{typeClass}}'>${{ticker}}</span> <span class='oi-badge'>${{Math.round(volumeK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
                     }});
                     if (!top1VolumeHtml || top3ContractsVolume.length === 0) {{
                         top1VolumeHtml = '<small>N/A</small>';
@@ -905,9 +987,10 @@ class HTMLReportGenerator:
                     const top3LeapVolume = item.top_3_leap_volume || [];
                     top3LeapVolume.slice(0, 1).forEach((contract) => {{
                         const ticker = contract.ticker || 'N/A';
+                        const typeClass = getContractTypeClass(contract);
                         const volumeK = (contract.volume || 0) / 1000;
                         const pct = contract.percentage || 0;
-                        top1LeapVolumeHtml += `<div class='contract-item'>${{ticker}} <span class='oi-badge'>${{Math.round(volumeK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                        top1LeapVolumeHtml += `<div class='contract-item'><span class='${{typeClass}}'>${{ticker}}</span> <span class='oi-badge'>${{Math.round(volumeK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
                     }});
                     if (!top1LeapVolumeHtml || top3LeapVolume.length === 0) {{
                         top1LeapVolumeHtml = '<small>N/A</small>';
@@ -921,30 +1004,40 @@ class HTMLReportGenerator:
                     const top3OI = item.top_3_oi || [];
                     top3OI.slice(0, 1).forEach((contract) => {{
                         const ticker = contract.ticker || 'N/A';
+                        const typeClass = getContractTypeClass(contract);
                         const oiK = (contract.oi || 0) / 1000;
                         const pct = contract.percentage || 0;
-                        top1OIHtml += `<div class='contract-item'>${{ticker}} <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
+                        top1OIHtml += `<div class='contract-item'><span class='${{typeClass}}'>${{ticker}}</span> <span class='oi-badge'>${{Math.round(oiK)}}K (${{pct.toFixed(1)}}%)</span></div>`;
                     }});
                     if (!top1OIHtml || top3OI.length === 0) {{
                         top1OIHtml = '<small>N/A</small>';
                     }}
 
+                    // Row class for extreme C/P
+                    const cpVol = item.cp_volume_ratio;
+                    if (cpVol < 0.5) row.className = 'row-extreme-bear';
+                    else if (cpVol >= 10) row.className = 'row-extreme-bull';
+
                     row.innerHTML = `
                         <td>${{item.original_rank}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
-                        <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                        <td><span class="${{getCpClass(cpVol)}}">${{cpVol.toFixed(2)}}</span></td>
                         <td>${{leapCpHtml}}</td>
-                        <td>${{item.cp_oi_ratio.toFixed(2)}}</td>
+                        <td><span class="${{getCpClass(item.cp_oi_ratio)}}">${{item.cp_oi_ratio.toFixed(2)}}</span></td>
                         <td class="compact-cell">${{top1VolumeHtml}}</td>
                         <td class="compact-cell">${{top1LeapVolumeHtml}}</td>
                         <td class="compact-cell">${{top1OIHtml}}</td>
                     `;
                 }} else {{
                     // Index table - only show: Rank, Ticker, C/P Volume
+                    const cpVol = item.cp_volume_ratio;
+                    if (cpVol < 0.5) row.className = 'row-extreme-bear';
+                    else if (cpVol >= 10) row.className = 'row-extreme-bull';
+
                     row.innerHTML = `
                         <td>${{item.original_rank}}</td>
                         <td><strong>${{item.ticker}}</strong></td>
-                        <td>${{item.cp_volume_ratio.toFixed(2)}}</td>
+                        <td><span class="${{getCpClass(cpVol)}}">${{cpVol.toFixed(2)}}</span></td>
                     `;
                 }}
 
