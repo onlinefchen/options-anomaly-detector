@@ -192,7 +192,7 @@ class EmailSender:
 
         <p style="color: #666; font-size: 0.9em; text-align: center;">
             此邮件由 Options Anomaly Detector 自动生成<br>
-            <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub 项目</a>
+            <a href="https://github.com/devfchen/options-anomaly-detector">GitHub 项目</a>
         </p>
     </div>
 </body>
@@ -218,7 +218,7 @@ class EmailSender:
 - 完整在线报告链接
 
 此邮件由 Options Anomaly Detector 自动生成
-GitHub: https://github.com/onlinefchen/options-anomaly-detector
+GitHub: https://github.com/devfchen/options-anomaly-detector
 """
 
         return self.send_report(to_email, subject, html_content, text_content)

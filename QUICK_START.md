@@ -185,8 +185,8 @@ chmod +x run.sh
 
 ## 🔗 相关链接
 
-- GitHub 仓库: https://github.com/onlinefchen/options-anomaly-detector
-- 在线报告: https://onlinefchen.github.io/options-anomaly-detector/
+- GitHub 仓库: https://github.com/devfchen/options-anomaly-detector
+- 在线报告: https://devfchen.github.io/options-anomaly-detector/
 - Polygon API 文档: https://polygon.io/docs/options
 
 ---

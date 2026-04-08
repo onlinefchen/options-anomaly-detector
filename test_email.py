@@ -130,7 +130,7 @@ def test_email():
 
     <div class="footer">
         <p>Options Anomaly Detection System | Email Test</p>
-        <p>GitHub: onlinefchen/options-anomaly-detector</p>
+        <p>GitHub: devfchen/options-anomaly-detector</p>
     </div>
 </body>
 </html>

@@ -65,7 +65,7 @@ python generate_historical_data.py --start 2025-10-20 --end 2025-10-27
 
 1. **访问 GitHub Actions 页面**
    ```
-   https://github.com/onlinefchen/options-anomaly-detector/actions
+   https://github.com/devfchen/options-anomaly-detector/actions
    ```
 
 2. **选择 "Daily Options Analysis" workflow**

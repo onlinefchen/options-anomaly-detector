@@ -71,6 +71,6 @@ jobs:
           echo "=================================================="
           echo "✅ HTML REGENERATION COMPLETE"
           echo "=================================================="
-          echo "🔗 Report URL: https://onlinefchen.github.io/options-anomaly-detector/"
+          echo "🔗 Report URL: https://devfchen.github.io/options-anomaly-detector/"
           echo "📊 Days processed: ${{ github.event.inputs.days }}"
           echo "=================================================="

@@ -763,7 +763,7 @@ class AIAnalyzer:
         </table>
 
         <div class="footer">
-            <div><a href="https://onlinefchen.github.io/options-anomaly-detector/">查看完整报告</a> | <a href="https://github.com/onlinefchen/options-anomaly-detector">GitHub</a></div>
+            <div><a href="https://devfchen.github.io/options-anomaly-detector/">查看完整报告</a> | <a href="https://github.com/devfchen/options-anomaly-detector">GitHub</a></div>
             <div style="margin-top: 10px;">自动化报告 - 仅供参考</div>
         </div>
     </div>
