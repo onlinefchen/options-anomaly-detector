@@ -33,7 +33,7 @@ jobs:
   # Job 1: 数据下载与分析
   fetch-and-analyze:
     name: 📊 Data Fetching & Analysis
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, ARM64]
 
     outputs:
       analysis-date: ${{ steps.get-date.outputs.date }}
@@ -96,7 +96,7 @@ jobs:
     name: 🚀 Deploy to GitHub Pages
     needs: fetch-and-analyze
     if: success()
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, ARM64]
 
     permissions:
       contents: write  # Needed for pushing to gh-pages
